@@ -1,0 +1,155 @@
+Testing Results for SPSM_Test_Cases.java
+
+Test 1.1
+Calling SPSM with source,  & target(s), 
+Target: 
+Expected Result: results.size() == 0 
+Actual Result: results.size() == 0
+
+Test 2.1
+Calling SPSM with source, author(name) & target(s), 
+Expected Result: results.size() == 0 
+Actual Result: results.size() == 0
+
+Test 2.2
+Calling SPSM with source,  & target(s), author(name)
+Expected Result: results.size() == 0 
+Actual Result: results.size() == 0
+
+Test 2.3
+Calling SPSM with source, author(name) & target(s), author(name)
+Expected Result: similarity == 1.0 & numMatches == 2 
+Actual Result: similarity == 1.0 & numMatches == 2
+
+Test 2.4
+Target: author(name,document)
+Expected Result: similarity == 1.0 & numMatches == 2
+Actual Result: similarity == 1.0 & numMatches == 2
+
+Target: reviewAuthor(firstname,lastname,review)
+Expected Result: similarity == 0.75 & numMatches == 2
+Actual Result: similarity == 0.75 & numMatches == 2
+
+Test 3.1
+Calling SPSM with source, author(name) & target(s), document(title,author) ; conferenceMember(name)
+Expected Result: results.size() == 0 
+Actual Result: results.size() == 0
+
+Test 3.2
+Calling SPSM with source, author(name) & target(s), author(name) ; document(title,author)
+Target: author(name)
+Expected Result: similarity == 1.0 & numMatches == 2 
+Actual Result: similarity == 1.0 & numMatches == 2
+
+Test 3.3
+Calling SPSM with source, author(name) & target(s), author(name) ; document(title,author) ; paperWriter(firstname,surname,paper) ; reviewAuthor(firstname,lastname,review)
+Target: author(name)
+Expected Result: similarity == 1.0 & numMatches == 2
+Actual Result: similarity == 1.0 & numMatches == 2
+
+Target: paperWriter(firstname,surname,paper)
+Expected Result: similarity == 0.5 & numMatches == 2
+Actual Result: similarity == 0.5 & numMatches == 2
+
+Target: reviewAuthor(firstname,lastname,review)
+Expected Result: similarity == 0.75 & numMatches == 2
+Actual Result: similarity == 0.75 & numMatches == 2
+
+Test 4.1
+Calling SPSM with source, author & target(s), writer
+Target: writer
+Expected Result: similarity == 1.0 & numMatches == 1 
+Actual Result: similarity == 1.0 & numMatches == 1
+
+Test 4.2
+Calling SPSM with source, author & target(s), document
+Expected Result: results.size() == 0 
+Actual Result: results.size() == 0
+
+Test 4.3
+Calling SPSM with source, author(name) & target(s), document(name)
+Expected Result: results.size() == 0 
+Actual Result: results.size() == 0
+
+Test 4.4
+Calling SPSM with source, author(name) & target(s), reviewWriter(review,name)
+Expected Result: similarity == 0.5 & numMatches == 2 
+Actual Result: similarity == 0.5 & numMatches == 2
+
+Test 4.5
+Calling SPSM with source, reviewWriter(document,date,name) & target(s), author(name,email,coAuthors,writePaper,submitPapers,review)
+Null Results! 
+
+Test 5.1
+Calling SPSM with source, review(date(day,month,year)) & target(s), document(date(day,month,year))
+Target: document(date(day,month,year))
+Expected Result: similarity == 1.0 & numMatches == 5 
+Actual Result: similarity == 0.5 & numMatches == 5
+
+Test 5.2
+Calling SPSM with source, review(publication(day,month,year)) & target(s), review(date(day,month,year))
+Expected Result: similarity == 0.6 & numMatches == 5 
+Actual Result: similarity == 0.6 & numMatches == 5
+
+Test 5.3
+Calling SPSM with source, review(publication(day,month,year)) & target(s), document(date(day,month,year))
+Expected Result: results.size() == 0 
+Actual Result: results.size() == 0
+
+Test 5.4
+Calling SPSM with source, review(category(day,month,year)) & target(s), review(date(day,month,year))
+Expected Result: similarity == 0.19999999999999996 & numMatches == 1 
+Null Results! 
+
+Test 5.5
+Calling SPSM with source, review(category(day,month,year)) & target(s), document(date(day,month,year))
+Null Results! 
+
+Test 5.6
+Calling SPSM with source, conference(paper(title,review(date(day,month,year),author(name(first,second))))) & target(s), conference(paper(title,document(date(day,month,year),writer(name(first,second)))))
+Expected Result: similarity == 0.625 & numMatches == 12 
+Actual Result: similarity == 0.625 & numMatches == 12
+
+Test 5.7
+Calling SPSM with source, conference(paper(title,review(date(day,month,year),author(name(first,second))))) & target(s), conference(paper(title,document(category(day,month,year),writer(name(first,second)))))
+Null Results! 
+
+Test 5.8
+Calling SPSM with source, conference(paper(title,review(date(day,month,year),author(name(first,second))))) & target(s), event(paper(title,document(category(day,month,year),writer(name(first,second)))))
+Expected Result: results.size() == 0 
+Actual Result: results.size() == 0
+
+Test 6.1
+Calling SPSM with source, conferenceDocument(nameOfAuthor) & target(s), conferenceReview(authorName)
+Expected Result: similarity == 0.5 & numMatches ==2 
+Actual Result: similarity == 0.5 & numMatches == 2
+
+Test 6.2
+Calling SPSM with source, conference_document(name_of_author) & target(s), conference_review(author_name)
+Expected Result: similarity == 0.5 & numMatches == 2 
+Actual Result: similarity == 0.5 & numMatches == 2
+
+Test 6.3
+Calling SPSM with source, conference_document(name_of_author) & target(s), ConferenceReview(authorName)
+Expected Result: similarity == 0.5 & numMatches == 2 
+Actual Result: similarity == 0.5 & numMatches == 2
+
+Test 6.4
+Calling SPSM with source, conference document(name of author) & target(s), conference review(author name)
+Expected Result: similarity == 0.5 & numMatches == 2 
+Actual Result: similarity == 0.5 & numMatches == 2
+
+Test 6.5
+Calling SPSM with source, conference document(nameOfAuthor) & target(s), conference review(authorName)
+Expected Result: similarity == 0.5 & numMatches == 2 
+Actual Result: similarity == 0.5 & numMatches == 2
+
+Test 6.6
+Calling SPSM with source, conferencedocument(nameofauthor) & target(s), conference review(authorname)
+Expected Result: similarity == 0.5 & numMatches == 2 
+Actual Result: similarity == 0.5 & numMatches == 2
+
+Test 6.7
+Calling SPSM with source, auto(brand,name,color) & target(s), car(year,brand,colour)
+Null Results! 
+

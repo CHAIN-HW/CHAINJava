@@ -1,0 +1,28 @@
+[{
+  "name":"geo",
+  "link":"<http://www.w3.org/2003/01/geo/wgs84_pos#>",
+  "properties":"geo,location,lat,long"
+},
+{
+  "name":"sepaidw",
+  "link":"<http://data.sepa.org.uk/id/Water/>"
+},
+{
+  "name":"sepaidloc",
+  "link":"<http://data.sepa.org.uk/id/Location/>"
+},
+{
+  "name":"sepaloc",
+  "link":"<http://data.sepa.org.uk/ont/Location#>",
+  "properties":"catchment,hydrocode,localAuthority,locationCode,locationDescription,ngr,sepaRegion,sepaTeam,year"
+},
+{
+  "name":"rdf",
+  "link":"<http://www.w3.org/1999/02/22-rdf-syntax-ns#>",
+  "properties":"type"
+},
+{
+  "name":"sepaw",
+  "link":"<http://data.sepa.org.uk/ont/Water#>",
+  "properties":"timePeriod,geo,measure,resource,waterBodyId,secondaryMeasure,dataSource,primaryMeasure,geologyTypology,altitudeTypology,subBasinArea,riverBodyName,associatedGroundwaterId,bathingWaterId,bwLocation,classDescription,description,year,areaSqKm,category,classificationCertainty,classificationCertaintyBand,currentClassificationYear,currOverallClassification,ecoRegion,genre,isArtificial,isHeavilyModified,isLessThanGood,noDetRiskAssessment,rbdCode,riverBasinDistrict,sbdCode,statusRiskAssessment,subBasinDistrict,targetClass,team,waterBodyId,waterBodyName,wiseCode,locationCode,agreed,atGepCurClassYear,atGepCurrentPeriod,atGepNextPeriod,atGepPeriodAfterNext,atGepSysdate,comments,deadline,measureFixedDate,measureId,onTrack,owner,pressureId,projected,waterBodyId,onTrack,owner,pressureId,projected,waterBodyId,activity,activityCode,assessmentCategory,assessmentParameter,eiAfterConfidence,eiCurrentConfidence,eiCurrentFailReason,eiNextConfidence,eiNextFailReason,envImprovementAfterNext,envImprovementCurrent,envImprovementNext,identifiedDate,industrySector,industrySectorCode,isPrimary,pressureId,pressureType,swmiSector,affectsGroundwater,source,riverName"
+}]

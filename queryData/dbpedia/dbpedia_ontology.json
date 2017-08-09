@@ -1,0 +1,31 @@
+[{
+  "name":"dbo",
+  "link":"<http://dbpedia.org/ontology/>",
+  "properties":"River,Automobile,Royalty,Place,Film,Politician,Astronaut,Country,Company,Game,River,Island,Town,City,Mountain,Cave,FormulaOneRacer,length,assembly,manufacturer,place,locationCountry,birthPlace,deathPlace,parent,language,director,religion,spouse,nationality,battle,populationTotal,location,publisher,mission,country,occupation,leaderParty,elevation,instrument,races,team,birthDate"
+
+},
+{
+  "name":"dbp",
+  "link":"<http://dbpedia.org/property/>",
+  "properties":"length,admittancedate,birthName,leaderParty,mission"
+},
+{
+  "name":"res",
+  "link":"<http://dbpedia.org/resource/>",
+  "properties":"Nonprofit_organization"
+},
+{
+  "name":"rdf",
+  "link":"<http://www.w3.org/1999/02/22-rdf-syntax-ns#>",
+  "properties":"type"
+},
+{
+  "name":"foaf",
+  "link":"<http://xmlns.com/foaf/0.1/>",
+  "properties":"Person"
+},
+{
+  "name":"yago",
+  "link":"<http://dbpedia.org/class/yago/>",
+  "properties":"StatesOfTheUnitedStates"
+}]

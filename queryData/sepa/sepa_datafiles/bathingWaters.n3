@@ -1,0 +1,752 @@
+@prefix geo:     <http://www.w3.org/2003/01/ge0/wgs84_pos#> .
+@prefix sepaidw:  <http://data.sepa.org.uk/id/Water/> .
+@prefix sepaidloc:  <http://data.sepa.org.uk/id/Location/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sepaw:   <http://data.sepa.org.uk/ont/Water#> .
+
+sepaidw:UKS7616073_2011
+      sepaw:bathingWaterId
+              "UKS7616073" ;
+      sepaw:bwLocation sepaidloc:9337 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Kirkcaldy (Seafield)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616088_2011
+      sepaw:bathingWaterId
+              "UKS7616088" ;
+      sepaw:bwLocation sepaidloc:10307 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Monifieth" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616059_2011
+      sepaw:bathingWaterId
+              "UKS7616059" ;
+      sepaw:bwLocation sepaidloc:4573 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Thorntonloch" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616074_2011
+      sepaw:bathingWaterId
+              "UKS7616074" ;
+      sepaw:bwLocation sepaidloc:4561 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Leven" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616038_2011
+      sepaw:bathingWaterId
+              "UKS7616038" ;
+      sepaw:bwLocation sepaidloc:206178 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Nairn (East)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616066_2011
+      sepaw:bathingWaterId
+              "UKS7616066" ;
+      sepaw:bwLocation sepaidloc:304147 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Achmelvich" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616014_2011
+      sepaw:bathingWaterId
+              "UKS7616014" ;
+      sepaw:bwLocation sepaidloc:124651 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Millport Bay" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616029_2011
+      sepaw:bathingWaterId
+              "UKS7616029" ;
+      sepaw:bwLocation sepaidloc:4566 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Kinghorn (Pettycur)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616044_2011
+      sepaw:bathingWaterId
+              "UKS7616044" ;
+      sepaw:bwLocation sepaidloc:4593 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Portobello (Central)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616072_2011
+      sepaw:bathingWaterId
+              "UKS7616072" ;
+      sepaw:bwLocation sepaidloc:4565 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Kinghorn (Harbour Beach)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616012_2011
+      sepaw:bathingWaterId
+              "UKS7616012" ;
+      sepaw:bwLocation sepaidloc:233613 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Cruden Bay" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616053_2011
+      sepaw:bathingWaterId
+              "UKS7616053" ;
+      sepaw:bwLocation sepaidloc:124787 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Southerness" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616078_2011
+      sepaw:bathingWaterId
+              "UKS7616078" ;
+      sepaw:bwLocation sepaidloc:124599 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Lunderston bay" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616060_2011
+      sepaw:bathingWaterId
+              "UKS7616060" ;
+      sepaw:bwLocation sepaidloc:124706 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Troon (South Beach)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS761605_2011
+      sepaw:bathingWaterId
+              "UKS761605" ;
+      sepaw:bwLocation sepaidloc:235334 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Balmedie" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616016_2011
+      sepaw:bathingWaterId
+              "UKS7616016" ;
+      sepaw:bwLocation sepaidloc:202936 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Dornoch" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616048_2011
+      sepaw:bathingWaterId
+              "UKS7616048" ;
+      sepaw:bwLocation sepaidloc:233608 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Rosehearty" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616065_2011
+      sepaw:bathingWaterId
+              "UKS7616065" ;
+      sepaw:bwLocation sepaidloc:10962 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Elie (Ruby Bay)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616045_2011
+      sepaw:bathingWaterId
+              "UKS7616045" ;
+      sepaw:bwLocation sepaidloc:4594 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Portobello (West)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616041_2011
+      sepaw:bathingWaterId
+              "UKS7616041" ;
+      sepaw:bwLocation sepaidloc:9336 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Pease Bay" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616035_2011
+      sepaw:bathingWaterId
+              "UKS7616035" ;
+      sepaw:bwLocation sepaidloc:9381 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Montrose" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616040_2011
+      sepaw:bathingWaterId
+              "UKS7616040" ;
+      sepaw:bwLocation sepaidloc:4585 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "North Berwick (West)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS761603_2011
+      sepaw:bathingWaterId
+              "UKS761603" ;
+      sepaw:bwLocation sepaidloc:9378 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Arbroath (West Links)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616082_2011
+      sepaw:bathingWaterId
+              "UKS7616082" ;
+      sepaw:bwLocation sepaidloc:4403 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Seacliff" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616071_2011
+      sepaw:bathingWaterId
+              "UKS7616071" ;
+      sepaw:bwLocation sepaidloc:124738 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Heads of Ayr" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616079_2011
+      sepaw:bathingWaterId
+              "UKS7616079" ;
+      sepaw:bwLocation sepaidloc:124755 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Maidens" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616010_2011
+      sepaw:bathingWaterId
+              "UKS7616010" ;
+      sepaw:bwLocation sepaidloc:114580 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Carrick" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616077_2011
+      sepaw:bathingWaterId
+              "UKS7616077" ;
+      sepaw:bwLocation sepaidloc:9380 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Lunan Bay" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616055_2011
+      sepaw:bathingWaterId
+              "UKS7616055" ;
+      sepaw:bwLocation sepaidloc:9335 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Coldingham" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616015_2011
+      sepaw:bathingWaterId
+              "UKS7616015" ;
+      sepaw:bwLocation sepaidloc:200305 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Dores" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616058_2011
+      sepaw:bathingWaterId
+              "UKS7616058" ;
+      sepaw:bwLocation sepaidloc:233617 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Stonehaven" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616011_2011
+      sepaw:bathingWaterId
+              "UKS7616011" ;
+      sepaw:bwLocation sepaidloc:4548 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Crail (Roome Bay)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS761608_2011
+      sepaw:bathingWaterId
+              "UKS761608" ;
+      sepaw:bwLocation sepaidloc:4567 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Burntisland" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616037_2011
+      sepaw:bathingWaterId
+              "UKS7616037" ;
+      sepaw:bwLocation sepaidloc:206179 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Nairn (Central)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616024_2011
+      sepaw:bathingWaterId
+              "UKS7616024" ;
+      sepaw:bwLocation sepaidloc:124482 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Ganavan " ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616081_2011
+      sepaw:bathingWaterId
+              "UKS7616081" ;
+      sepaw:bwLocation sepaidloc:206238 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Rosemarkie" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616031_2011
+      sepaw:bathingWaterId
+              "UKS7616031" ;
+      sepaw:bwLocation sepaidloc:124640 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Largs (Pencil Beach)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616062_2011
+      sepaw:bathingWaterId
+              "UKS7616062" ;
+      sepaw:bwLocation sepaidloc:4574 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Whitesands" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616019_2011
+      sepaw:bathingWaterId
+              "UKS7616019" ;
+      sepaw:bwLocation sepaidloc:200324 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Dunnet " ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616067_2011
+      sepaw:bathingWaterId
+              "UKS7616067" ;
+      sepaw:bwLocation sepaidloc:366962 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Broad Sands" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616034_2011
+      sepaw:bathingWaterId
+              "UKS7616034" ;
+      sepaw:bwLocation sepaidloc:124505 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Machrihanish" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS761601_2011
+      sepaw:bathingWaterId
+              "UKS761601" ;
+      sepaw:bwLocation sepaidloc:233616 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Aberdeen" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616027_2011
+      sepaw:bathingWaterId
+              "UKS7616027" ;
+      sepaw:bwLocation sepaidloc:233607 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Inverboyndie" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616068_2011
+      sepaw:bathingWaterId
+              "UKS7616068" ;
+      sepaw:bwLocation sepaidloc:124748 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Culzean" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS761604_2011
+      sepaw:bathingWaterId
+              "UKS761604" ;
+      sepaw:bwLocation sepaidloc:124725 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Ayr (South Beach)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616075_2011
+      sepaw:bathingWaterId
+              "UKS7616075" ;
+      sepaw:bwLocation sepaidloc:366986 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Loch Morlich" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616033_2011
+      sepaw:bathingWaterId
+              "UKS7616033" ;
+      sepaw:bwLocation sepaidloc:125080 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Luss Bay" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616039_2011
+      sepaw:bathingWaterId
+              "UKS7616039" ;
+      sepaw:bwLocation sepaidloc:4584 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "North Berwick (Milsey Bay)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616086_2011
+      sepaw:bathingWaterId
+              "UKS7616086" ;
+      sepaw:bwLocation sepaidloc:4569 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Aberdour (Harbour)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616080_2011
+      sepaw:bathingWaterId
+              "UKS7616080" ;
+      sepaw:bwLocation sepaidloc:114582 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Mossyard" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS761606_2011
+      sepaw:bathingWaterId
+              "UKS761606" ;
+      sepaw:bwLocation sepaidloc:124793 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Brighouse Bay" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616047_2011
+      sepaw:bathingWaterId
+              "UKS7616047" ;
+      sepaw:bwLocation sepaidloc:124791 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Rockcliffe" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS761602_2011
+      sepaw:bathingWaterId
+              "UKS761602" ;
+      sepaw:bwLocation sepaidloc:4568 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Aberdour (Silver Sands)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616063_2011
+      sepaw:bathingWaterId
+              "UKS7616063" ;
+      sepaw:bwLocation sepaidloc:4586 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Yellowcraig" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616028_2011
+      sepaw:bathingWaterId
+              "UKS7616028" ;
+      sepaw:bwLocation sepaidloc:124688 ;
+      sepaw:classDescription
+              "Fail" ;
+      sepaw:description "Irvine" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS761607_2011
+      sepaw:bathingWaterId
+              "UKS761607" ;
+      sepaw:bwLocation sepaidloc:10308 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Broughty Ferry" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616046_2011
+      sepaw:bathingWaterId
+              "UKS7616046" ;
+      sepaw:bwLocation sepaidloc:124714 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Prestwick" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616084_2011
+      sepaw:bathingWaterId
+              "UKS7616084" ;
+      sepaw:bwLocation sepaidloc:10310 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Tentsmuir Sands" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616018_2011
+      sepaw:bathingWaterId
+              "UKS7616018" ;
+      sepaw:bwLocation sepaidloc:4575 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Dunbar (East)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616087_2011
+      sepaw:bathingWaterId
+              "UKS7616087" ;
+      sepaw:bwLocation sepaidloc:4552 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Anstruther (Billow Ness)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616013_2011
+      sepaw:bathingWaterId
+              "UKS7616013" ;
+      sepaw:bwLocation sepaidloc:233605 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Cullen Bay" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616042_2011
+      sepaw:bathingWaterId
+              "UKS7616042" ;
+      sepaw:bwLocation sepaidloc:233612 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Peterhead (Lido)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616021_2011
+      sepaw:bathingWaterId
+              "UKS7616021" ;
+      sepaw:bwLocation sepaidloc:124817 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Ettrick Bay" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616043_2011
+      sepaw:bathingWaterId
+              "UKS7616043" ;
+      sepaw:bwLocation sepaidloc:233610 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Fraserburgh (Philorth)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS761609_2011
+      sepaw:bathingWaterId
+              "UKS761609" ;
+      sepaw:bwLocation sepaidloc:9314 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Carnoustie" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616050_2011
+      sepaw:bathingWaterId
+              "UKS7616050" ;
+      sepaw:bwLocation sepaidloc:114567 ;
+      sepaw:classDescription
+              "Fail" ;
+      sepaw:description "Sandyhills" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616025_2011
+      sepaw:bathingWaterId
+              "UKS7616025" ;
+      sepaw:bwLocation sepaidloc:124770 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Girvan" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616064_2011
+      sepaw:bathingWaterId
+              "UKS7616064" ;
+      sepaw:bwLocation sepaidloc:4556 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Elie (Harbour) and Earlsferry" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616051_2011
+      sepaw:bathingWaterId
+              "UKS7616051" ;
+      sepaw:bwLocation sepaidloc:11789 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Seton Sands" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616049_2011
+      sepaw:bathingWaterId
+              "UKS7616049" ;
+      sepaw:bwLocation sepaidloc:124673 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Saltcoats/Ardrossan " ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616023_2011
+      sepaw:bathingWaterId
+              "UKS7616023" ;
+      sepaw:bwLocation sepaidloc:235333 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Fraserburgh (Tiger Hill)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616085_2011
+      sepaw:bathingWaterId
+              "UKS7616085" ;
+      sepaw:bwLocation sepaidloc:205952 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Thurso" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616083_2011
+      sepaw:bathingWaterId
+              "UKS7616083" ;
+      sepaw:bwLocation sepaidloc:124665 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Seamill" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616022_2011
+      sepaw:bathingWaterId
+              "UKS7616022" ;
+      sepaw:bwLocation sepaidloc:9334 ;
+      sepaw:classDescription
+              "Fail" ;
+      sepaw:description "Eyemouth" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616069_2011
+      sepaw:bathingWaterId
+              "UKS7616069" ;
+      sepaw:bwLocation sepaidloc:320901 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Dhoon Bay" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616017_2011
+      sepaw:bathingWaterId
+              "UKS7616017" ;
+      sepaw:bwLocation sepaidloc:4579 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Dunbar (Belhaven)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616032_2011
+      sepaw:bathingWaterId
+              "UKS7616032" ;
+      sepaw:bwLocation sepaidloc:344047 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "Longniddry" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616056_2011
+      sepaw:bathingWaterId
+              "UKS7616056" ;
+      sepaw:bwLocation sepaidloc:9318 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "St. Andrews (East Sands)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616030_2011
+      sepaw:bathingWaterId
+              "UKS7616030" ;
+      sepaw:bwLocation sepaidloc:9320 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Kingsbarns" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616026_2011
+      sepaw:bathingWaterId
+              "UKS7616026" ;
+      sepaw:bwLocation sepaidloc:4587 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Gullane" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616070_2011
+      sepaw:bathingWaterId
+              "UKS7616070" ;
+      sepaw:bwLocation sepaidloc:301895 ;
+      sepaw:classDescription
+              "Guideline" ;
+      sepaw:description "Findhorn" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616076_2011
+      sepaw:bathingWaterId
+              "UKS7616076" ;
+      sepaw:bwLocation sepaidloc:233603 ;
+      sepaw:classDescription
+              "Fail" ;
+      sepaw:description "Lossiemouth (East)" ;
+      sepaw:year "2011" .
+
+sepaidw:UKS7616057_2011
+      sepaw:bathingWaterId
+              "UKS7616057" ;
+      sepaw:bwLocation sepaidloc:9316 ;
+      sepaw:classDescription
+              "Mandatory" ;
+      sepaw:description "St. Andrews (West Sands)" ;
+      sepaw:year "2011" .

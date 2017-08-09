@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<context>
+  <node id="n0">
+    <name>car(year,brand, colour)</name>
+  </node>
+</context>

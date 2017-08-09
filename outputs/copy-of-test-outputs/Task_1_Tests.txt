@@ -1,0 +1,32 @@
+Testing Results for SPSM_Filter_Results_Test_Cases.java
+
+Test 1 - success single call
+Calling SPSM with source, author(name) & target, author(name)
+Calling with threshold: 0.6 & limit: 0 
+Expected Result: results.size() == 1 
+Actual Result: results.size() == 1
+
+Test 2 - fail with limit
+Calling SPSM with source, author(name) & target, document(title,author)
+Calling with threshold: 0.0 & limit: 2 
+Expected Result: results.size() == 0 
+Actual Result: results.size() == 0
+
+Test 3 - success multi call
+Calling SPSM with source, author(name) & target, author(name) ; document(title,author) ; paperWriter(firstname,surname,paper) ; reviewAuthor(firstname,lastname,review)
+Calling with threshold: 0.6 & limit: 0 
+Expected Result: results.size() == 2 
+Actual Result: results.size() == 2
+
+Test 4 - fail single call
+Calling SPSM with source, author(name) & target, document(title,author)
+Calling with threshold: 0.0 & limit: 0 
+Expected Result: results.size() == 0 
+Actual Result: results.size() == 0
+
+Test 5 - success with limit
+Calling SPSM with source, author(name) & target, author(name) ; document(title,author) ; paperWriter(firstname,surname,paper) ; reviewAuthor(firstname,lastname,review)
+Calling with threshold: 0.0 & limit: 2 
+Expected Result: results.size() == 2 
+Actual Result: results.size() == 2
+

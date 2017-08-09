@@ -1,0 +1,664 @@
+Testing Results for Create_Query_Test_Cases.java
+
+Test 1.1 - sepa query
+Creating query from schema, waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)
+Expected Result:
+
+PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE { ?id sepaw:dataSource ?dataSource;
+sepaw:identifiedDate  ?identifiedDate  ;
+sepaw:affectsGroundwater ?affectsGroundwater ;
+sepaw:waterBodyId ?waterBodyId .}
+
+Actual Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE { ?id sepaw:identifiedDate ?identifiedDate ;
+sepaw:waterBodyId ?waterBodyId ;
+sepaw:dataSource ?dataSource ;
+sepaw:affectsGroundwater ?affectsGroundwater
+.}
+
+
+Test 1.2 - sepa query
+Creating query from schema, water(timePeriod, geo, measure, resource)
+Expected Result:
+
+PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/water.n3>
+WHERE { ?id sepaw:timePeriod ?timePeriod;
+geo:geo ?geo  ;
+sepaw:measure ?measure ;
+sepaw:resource ?resource .}
+
+Actual Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/water.n3>
+WHERE { ?id sepaw:resource ?resource ;
+sepaw:measure ?measure ;
+geo:geo ?geo ;
+sepaw:timePeriod ?timePeriod
+.}
+
+
+Test 1.3 - sepa query
+Creating query from schema, waterBodyMeasures(timePeriod, geo, measure, resource)
+Expected Result:
+
+PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
+WHERE { ?id sepaw:timePeriod ?timePeriod;
+geo:geo ?geo  ;
+sepaw:measure ?measure ;
+sepaw:resource ?resource .}
+
+Actual Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
+WHERE { ?id geo:geo ?geo ;
+sepaw:timePeriod ?timePeriod ;
+sepaw:resource ?resource ;
+sepaw:measure ?measure
+.}
+
+
+Test 1.4 - sepa query
+Creating query from schema, waterBodyPressures(identifiedDate,waterBodyId,assessmentCategory,source)
+Expected Result:
+
+PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE { ?id sepaw:identifiedDate ?identifiedDate;
+sepaw:waterBodyId ?waterBodyId  ;
+sepaw:assessmentCategory ?assessmentCategory ;
+sepaw:source ?source .}
+
+Actual Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE { ?id sepaw:assessmentCategory ?assessmentCategory ;
+sepaw:source ?source ;
+sepaw:identifiedDate ?identifiedDate ;
+sepaw:waterBodyId ?waterBodyId
+.}
+
+
+Test 1.5 - sepa query
+Creating query from schema, waterBodyMeasures(waterBodyId,secondaryMeasure,dataSource)
+Expected Result:
+
+PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
+WHERE { ?id sepaw:waterBodyId ?waterBodyId;
+sepaw:secondaryMeasure ?secondaryMeasure  ;
+sepaw:dataSource ?dataSource .}
+
+Actual Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
+WHERE { ?id sepaw:dataSource ?dataSource ;
+sepaw:secondaryMeasure ?secondaryMeasure ;
+sepaw:waterBodyId ?waterBodyId
+.}
+
+
+Test 1.6 - sepa query
+Creating query from schema, surfaceWaterBodies(riverName,associatedGroundwaterId)
+Expected Result:
+
+PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
+WHERE { ?id sepaw:riverName ?riverName;
+sepaw:associatedGroundwaterId ?associatedGroundwaterId .}
+
+Actual Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
+WHERE { ?id sepaw:riverName ?riverName ;
+sepaw:associatedGroundwaterId ?associatedGroundwaterId
+.}
+
+
+Test 1.7 - sepa query
+Creating query from schema, bathingWaters(catchment, localAuthority, lat, long)
+Expected Result:
+
+PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
+WHERE { ?id sepaloc:catchment ?catchment;
+sepaloc:localAuthority ?localAuthority  ;
+geo:lat ?lat ;
+geo:long ?long .}
+
+Actual Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
+WHERE { ?id geo:long ?long ;
+sepaloc:catchment ?catchment ;
+geo:lat ?lat ;
+sepaloc:localAuthority ?localAuthority
+.}
+
+
+Test 1.8 - sepa query
+Creating query from schema, surfaceWaterBodies(subBasinDistrict,riverName,altitudeTypology,associatedGroundwaterId)
+Expected Result:
+
+PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
+WHERE { ?id sepaw:altitudeTypology ?altitudeTypology;
+sepaw:associatedGrounwaterId ?associatedGroundwaterId  ;
+sepaw:riverName ?riverName ;
+sepaw:subBasinDistrict ?subBasinDistrict .}
+
+Actual Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
+WHERE { ?id sepaw:altitudeTypology ?altitudeTypology ;
+sepaw:subBasinDistrict ?subBasinDistrict ;
+sepaw:riverName ?riverName ;
+sepaw:associatedGroundwaterId ?associatedGroundwaterId
+.}
+
+
+Test 1.9 - sepa query
+Creating query from schema, bathingWaters(bathingWaterId)
+Expected Result:
+
+PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
+WHERE { ?id sepaw:bathingWaterId ?bathingWaterId;
+.}
+
+Actual Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
+WHERE { ?id sepaw:bathingWaterId ?bathingWaterId
+.}
+
+
+Test 2.1 - dbpedia query
+Creating query from schema, City(country,populationTotal)
+Expected Result:
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+PREFIX  dbp: <http://dbpedia.org/property/>   
+PREFIX  res: <http://dbpedia.org/resource/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
+PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
+
+SELECT DISTINCT *  
+WHERE { ?id rdf:type dbo:City ;
+dbo:country ?country ;
+dbo:populationTotal ?populationTotal .}
+LIMIT 20
+
+Actual Result: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:City;
+dbo:country ?country ;
+dbo:populationTotal ?populationTotal
+.}
+LIMIT 20
+
+Test 2.10 - dbpedia query
+Creating query from schema, Royalty(parent)
+Expected Result:
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+PREFIX  dbp: <http://dbpedia.org/property/>   
+PREFIX  res: <http://dbpedia.org/resource/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
+PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
+
+SELECT DISTINCT *  
+WHERE { ?id rdf:type dbo:Royalty ;
+dbo:parent ?parent ;
+.}
+LIMIT 20
+
+Actual Result: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:Royalty;
+dbo:parent ?parent
+.}
+LIMIT 20
+
+Test 2.11 - dbpedia query
+Creating query from schema, river(length)
+Expected Result:
+
+Actual Result: 
+
+
+
+Test 2.12 - dbpedia query
+Creating query from schema, Stream(length)
+Expected Result:
+
+Actual Result: 
+
+
+
+Test 2.13 - dbpedia query
+Creating query from schema, River(Mountain(elevation))
+Expected Result:
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+PREFIX  dbp: <http://dbpedia.org/property/>   
+PREFIX  res: <http://dbpedia.org/resource/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
+PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
+
+SELECT DISTINCT *  
+WHERE { ?id rdf:type dbo:River;
+dbo:Mountain ?Mountain ;
+.}
+LIMIT 20
+
+Actual Result: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:River;
+dbo:Mountain ?Mountain
+.}
+LIMIT 20
+
+Test 2.2 - dbpedia query
+Creating query from schema, Country
+Expected Result:
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+PREFIX  dbp: <http://dbpedia.org/property/>   
+PREFIX  res: <http://dbpedia.org/resource/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
+PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
+
+SELECT DISTINCT *  
+WHERE { ?id rdf:type dbo:City .}
+LIMIT 20
+
+Actual Result: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:Country.}
+LIMIT 20
+
+Test 2.3 - dbpedia query
+Creating query from schema, Astronaut(nationality)
+Expected Result:
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+PREFIX  dbp: <http://dbpedia.org/property/>   
+PREFIX  res: <http://dbpedia.org/resource/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
+PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
+
+SELECT DISTINCT *  
+WHERE { ?id rdf:type Astronaut ;
+dbo:nationality ?nationality ;
+.}
+LIMIT 20
+
+Actual Result: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:Astronaut;
+dbo:nationality ?nationality
+.}
+LIMIT 20
+
+Test 2.4 - dbpedia query
+Creating query from schema, Mountain(elevation)
+Expected Result:
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+PREFIX  dbp: <http://dbpedia.org/property/>   
+PREFIX  res: <http://dbpedia.org/resource/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
+PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
+
+SELECT DISTINCT *  
+WHERE { ?id rdf:type dbo:Mountain ;
+dbo:elevation ?elevation ;
+.}
+LIMIT 20
+
+Actual Result: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:Mountain;
+dbo:elevation ?elevation
+.}
+LIMIT 20
+
+Test 2.5 - dbpedia query
+Creating query from schema, Person(occupation, birthPlace)
+Expected Result:
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+PREFIX  dbp: <http://dbpedia.org/property/>   
+PREFIX  res: <http://dbpedia.org/resource/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
+PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
+
+SELECT DISTINCT *  
+WHERE { ?id rdf:type dbo:Person ;
+dbo:occupation ?occupation ;
+dbo:birthPlace ?birthPlace .}
+LIMIT 20
+
+Actual Result: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type foaf:Person;
+dbo:occupation ?occupation ;
+dbo:birthPlace ?birthPlace
+.}
+LIMIT 20
+
+Test 2.6 - dbpedia query
+Creating query from schema, Person(occupation, instrument)
+Expected Result:
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+PREFIX  dbp: <http://dbpedia.org/property/>   
+PREFIX  res: <http://dbpedia.org/resource/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
+PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
+
+SELECT DISTINCT *  
+WHERE { ?id rdf:type dbo:Person ;
+dbo:occupation ?occupation ;
+dbo:instrument ?instrument .}
+LIMIT 20
+
+Actual Result: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type foaf:Person;
+dbo:instrument ?instrument ;
+dbo:occupation ?occupation
+.}
+LIMIT 20
+
+Test 2.7 - dbpedia query
+Creating query from schema, Cave(location)
+Expected Result:
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+PREFIX  dbp: <http://dbpedia.org/property/>   
+PREFIX  res: <http://dbpedia.org/resource/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
+PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
+
+SELECT DISTINCT *  
+WHERE { ?id rdf:type dbo:Cave ;
+dbo:location ?location ;
+.}
+LIMIT 20
+
+Actual Result: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:Cave;
+dbo:location ?location
+.}
+LIMIT 20
+
+Test 2.8 - dbpedia query
+Creating query from schema, FormulaOneRacer(races)
+Expected Result:
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+PREFIX  dbp: <http://dbpedia.org/property/>   
+PREFIX  res: <http://dbpedia.org/resource/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
+PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
+
+SELECT DISTINCT *  
+WHERE { ?id rdf:type dbo:FormulaOneRacer ;
+dbo:races ?races ;
+.}
+LIMIT 20
+
+Actual Result: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:FormulaOneRacer;
+dbo:races ?races
+.}
+LIMIT 20
+
+Test 2.9 - dbpedia query
+Creating query from schema, River(length)
+Expected Result:
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+PREFIX  dbp: <http://dbpedia.org/property/>   
+PREFIX  res: <http://dbpedia.org/resource/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
+PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
+
+SELECT DISTINCT *  
+WHERE { ?id rdf:type dbo:River ;
+dbo:length ?length ;
+.}
+LIMIT 20
+
+Actual Result: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:River;
+dbo:length ?length
+.}
+LIMIT 20
+

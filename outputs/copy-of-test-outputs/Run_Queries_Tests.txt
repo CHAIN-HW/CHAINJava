@@ -1,0 +1,465 @@
+Testing Results for Run_Query_Test_Cases.java
+
+Test 1.1 - sepa query
+Trying to run query: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE { ?id sepaw:identifiedDate ?identifiedDate ;
+sepaw:waterBodyId ?waterBodyId ;
+sepaw:dataSource ?dataSource ;
+sepaw:affectsGroundwater ?affectsGroundwater
+.}
+
+Query HAS run successfully.
+
+Test 1.10 - sepa query
+Trying to run query: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyTemperatures.n3>
+WHERE { ?id sepaw:identifiedDate ?identifiedDate ;
+sepaw:waterBodyId ?waterBodyId ;
+sepaw:dataSource ?dataSource ;
+sepaw:affectsGroundwater ?affectsGroundwater
+.}
+
+Query has NOT run successfully with error message,
+org.apache.jena.riot.RiotNotFoundException: Not found: queryData/sepa/sepa_datafiles/waterBodyTemperatures.n3
+
+Test 1.2 - sepa query
+Trying to run query: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/water.n3>
+WHERE { ?id sepaw:resource ?resource ;
+sepaw:measure ?measure ;
+geo:geo ?geo ;
+sepaw:timePeriod ?timePeriod
+.}
+
+Query has NOT run successfully with error message,
+org.apache.jena.riot.RiotNotFoundException: Not found: queryData/sepa/sepa_datafiles/water.n3
+
+Test 1.3 - sepa query
+Trying to run query: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
+WHERE { ?id sepaw:resource ?resource ;
+sepaw:measure ?measure ;
+geo:geo ?geo ;
+sepaw:timePeriod ?timePeriod
+.}
+
+Query HAS run successfully but NO data has been returned.
+
+Test 1.4 - sepa query
+Trying to run query: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE { ?id sepaw:identifiedDate ?identifiedDate ;
+sepaw:source ?source ;
+sepaw:assessmentCategory ?assessmentCategory ;
+sepaw:waterBodyId ?waterBodyId
+.}
+
+Query HAS run successfully.
+
+Test 1.5 - sepa query
+Trying to run query: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
+WHERE { ?id sepaw:secondaryMeasure ?secondaryMeasure ;
+sepaw:waterBodyId ?waterBodyId ;
+sepaw:dataSource ?dataSource
+.}
+
+Query HAS run successfully.
+
+Test 1.6 - sepa query
+Trying to run query: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
+WHERE { ?id sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
+sepaw:riverName ?riverName
+.}
+
+Query HAS run successfully.
+
+Test 1.7 - sepa query
+Trying to run query: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
+WHERE { ?id sepaloc:catchment ?catchment ;
+geo:lat ?lat ;
+geo:long ?long ;
+sepaloc:localAuthority ?localAuthority
+.}
+
+Query HAS run successfully but NO data has been returned.
+
+Test 1.8 - sepa query
+Trying to run query: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
+WHERE { ?id sepaw:subBasinDistrict ?subBasinDistrict ;
+sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
+sepaw:riverName ?riverName ;
+sepaw:altitudeTypology ?altitudeTypology
+.}
+
+Query HAS run successfully.
+
+Test 1.9 - sepa query
+Trying to run query: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
+WHERE { ?id sepaw:bathingWaterId ?bathingWaterId
+.}
+
+Query HAS run successfully.
+
+Test 2.1 - dbpedia query
+Trying to run query: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:City;
+dbo:country ?country ;
+dbo:populationTotal ?populationTotal
+.}
+LIMIT 20
+
+Query HAS run successfully.
+
+Test 2.10 - dbpedia query
+Trying to run query: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:Royalty;
+dbo:parent ?parent
+.}
+LIMIT 20
+
+Query HAS run successfully.
+
+Test 2.11 - dbpedia query
+Trying to run query: 
+
+
+
+Query has NOT run successfully with error message,
+com.hp.hpl.jena.query.QueryParseException: Encountered "<EOF>" at line 1, column 0.
+Was expecting one of:
+    "base" ...
+    "prefix" ...
+    "select" ...
+    "describe" ...
+    "construct" ...
+    "ask" ...
+    
+
+Test 2.12 - dbpedia query
+Trying to run query: 
+
+
+
+Query has NOT run successfully with error message,
+com.hp.hpl.jena.query.QueryParseException: Encountered "<EOF>" at line 1, column 0.
+Was expecting one of:
+    "base" ...
+    "prefix" ...
+    "select" ...
+    "describe" ...
+    "construct" ...
+    "ask" ...
+    
+
+Test 2.13 - dbpedia query
+Trying to run query: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:River;
+dbo:Mountain ?Mountain
+.}
+LIMIT 20
+
+Query HAS run successfully but NO data has been returned.
+
+Test 2.14 - dbpedia query
+Trying to run query: 
+
+
+
+Query has NOT run successfully with error message,
+com.hp.hpl.jena.query.QueryParseException: Encountered "<EOF>" at line 1, column 0.
+Was expecting one of:
+    "base" ...
+    "prefix" ...
+    "select" ...
+    "describe" ...
+    "construct" ...
+    "ask" ...
+    
+
+Test 2.15 - dbpedia query
+Trying to run query: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:River;
+dbo:manufacturer ?manufacturer ;
+dbo:assembly ?assembly ;
+dbo:place ?place
+.}
+LIMIT 20
+
+Query HAS run successfully but NO data has been returned.
+
+Test 2.2 - dbpedia query
+Trying to run query: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:Country.}
+LIMIT 20
+
+Query HAS run successfully.
+
+Test 2.3 - dbpedia query
+Trying to run query: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:Astronaut;
+dbo:nationality ?nationality
+.}
+LIMIT 20
+
+Query HAS run successfully.
+
+Test 2.4 - dbpedia query
+Trying to run query: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:Mountain;
+dbo:elevation ?elevation
+.}
+LIMIT 20
+
+Query HAS run successfully.
+
+Test 2.5 - dbpedia query
+Trying to run query: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type foaf:Person;
+dbo:birthPlace ?birthPlace ;
+dbo:occupation ?occupation
+.}
+LIMIT 20
+
+Query HAS run successfully.
+
+Test 2.6 - dbpedia query
+Trying to run query: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type foaf:Person;
+dbo:instrument ?instrument ;
+dbo:occupation ?occupation
+.}
+LIMIT 20
+
+Query HAS run successfully.
+
+Test 2.7 - dbpedia query
+Trying to run query: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:Cave;
+dbo:location ?location
+.}
+LIMIT 20
+
+Query HAS run successfully.
+
+Test 2.8 - dbpedia query
+Trying to run query: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:FormulaOneRacer;
+dbo:races ?races
+.}
+LIMIT 20
+
+Query HAS run successfully.
+
+Test 2.9 - dbpedia query
+Trying to run query: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT*
+WHERE { ?id rdf:type dbo:River;
+dbo:length ?length
+.}
+LIMIT 20
+
+Query HAS run successfully.
+

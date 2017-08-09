@@ -1,0 +1,47 @@
+Testing Results for Match_Results_Test_Cases.java
+
+Test 1 - fail with limit
+Calling with threshold: 1.0 & limit: 5 on multiple matches 
+Expected Result: results.size() == 0 
+Actual Result: results.size() == 0
+
+Test 2 - multiple successes match
+Calling with threshold: 0.6 & limit: 0 on multiple matches 
+Expected Result: results.size() == 2 
+Actual Result: results.size() == 2
+
+Test 3 - multiple successes match
+Calling with threshold: 0.2 & limit: 0 on multiple matches 
+Expected Result: results.size() == 4 
+Actual Result: results.size() == 4
+
+Test 4 - success with large limit
+Calling with threshold: 0.2 & limit: 5 on multiple matches 
+Expected Result: results.size() == 4 
+Actual Result: results.size() == 4
+
+Test 5 - single fail match
+Calling with threshold: 0.5 & limit: 0 on a single match 
+Expected Result: results.size() == 0 
+Actual Result: results.size() == 0
+
+Test 6 - empty matches
+Calling with threshold: 0.2 & limit: 0 on an empty list of matches 
+Expected Result: results.size() == 0 
+Actual Result: results.size() == 0
+
+Test 7 - success with limit
+Calling with threshold: 0.2 & limit: 3 on multiple matches 
+Expected Result: results.size() == 3 
+Actual Result: results.size() == 3
+
+Test 8 - multiple fail matches
+Calling with threshold: 1.0 & limit: 0 on multiple matches 
+Expected Result: results.size() == 0 
+Actual Result: results.size() == 0
+
+Test 9 - single success match
+Calling with threshold: 0.1 & limit: 0 on a single match 
+Expected Result: results.size() == 1 
+Actual Result: results.size() == 1
+

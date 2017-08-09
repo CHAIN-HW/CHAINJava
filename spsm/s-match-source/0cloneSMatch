@@ -1,0 +1,27 @@
+#!/bin/bash
+
+rm -rf s-match-parent
+rm -rf s-match-core
+rm -rf s-match-io
+rm -rf s-match-logic
+rm -rf s-match-nlp
+rm -rf s-match-nlp-annotation
+rm -rf s-match-nlp-opennlp
+rm -rf s-match-spsm
+rm -rf s-match-wordnet
+rm -rf s-match-examples
+rm -rf s-match-utils
+rm -rf s-match-spsm-prolog
+
+git clone https://github.com/s-match/s-match-parent/
+git clone https://github.com/CHAIN-HW/s-match-core/
+git clone https://github.com/s-match/s-match-io/
+git clone https://github.com/s-match/s-match-logic/
+git clone https://github.com/s-match/s-match-nlp/
+git clone https://github.com/s-match/s-match-nlp-annotation/
+git clone https://github.com/s-match/s-match-nlp-opennlp/
+git clone https://github.com/s-match/s-match-spsm/
+git clone https://github.com/s-match/s-match-wordnet/
+git clone https://github.com/s-match/s-match-examples/
+git clone https://github.com/CHAIN-HW/s-match-utils/
+git clone https://github.com/CHAIN-HW/s-match-spsm-prolog/

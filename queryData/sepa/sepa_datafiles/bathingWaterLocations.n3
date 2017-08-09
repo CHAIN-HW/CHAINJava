@@ -1,0 +1,1324 @@
+@prefix sepaloc:  <http://data.sepa.org.uk/ont/Location#> .
+@prefix geo:     <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix sepaidloc:  <http://data.sepa.org.uk/id/Location/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+sepaidloc:202936
+      sepaloc:catchment "Dornoch Coastal" ;
+      sepaloc:hydrocode "9\\5\\125.671" ;
+      sepaloc:localAuthority
+              "Highland" ;
+      sepaloc:locationCode
+              sepaidloc:202936 ;
+      sepaloc:locationDescription
+              "DORNOCH, BATHING WATER AT CARAVAN SITE" ;
+      sepaloc:ngr "NH 80500 89400" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "North Highland" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.8779972" ;
+      geo:long "-4.0166487" .
+
+sepaidloc:366962
+      sepaloc:catchment "East Lothian Coastal" ;
+      sepaloc:hydrocode "64\\5\\54.182" ;
+      sepaloc:localAuthority
+              "East Lothian" ;
+      sepaloc:locationCode
+              sepaidloc:366962 ;
+      sepaloc:locationDescription
+              "BROAD SANDS" ;
+      sepaloc:ngr "NT 52440 85870" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Edinburgh and Lothians" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.0632892" ;
+      geo:long "-2.765401" .
+
+sepaidloc:124791
+      sepaloc:catchment "Stewartry Coastal" ;
+      sepaloc:hydrocode "77\\6\\88.069" ;
+      sepaloc:localAuthority
+              "Dumfries & Galloway" ;
+      sepaloc:locationCode
+              sepaidloc:124791 ;
+      sepaloc:locationDescription
+              "ROCKCLIFFE, ROUGH FIRTH AT PORT DONNEL POINT" ;
+      sepaloc:ngr "NX 84777 53682" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Dumfries and Galloway" ;
+      sepaloc:year "2012" ;
+      geo:lat "54.8646143" ;
+      geo:long "-3.7967895" .
+
+sepaidloc:114582
+      sepaloc:catchment "Galloway Coastal" ;
+      sepaloc:hydrocode "80\\6\\337.16" ;
+      sepaloc:localAuthority
+              "Dumfries & Galloway" ;
+      sepaloc:locationCode
+              sepaidloc:114582 ;
+      sepaloc:locationDescription
+              "MOSSYARD, FLEET BAY" ;
+      sepaloc:ngr "NX 55250 51870" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Dumfries and Galloway" ;
+      sepaloc:year "2012" ;
+      geo:lat "54.8406696" ;
+      geo:long "-4.2555727" .
+
+sepaidloc:124817
+      sepaloc:catchment "Cowal / Clyde Sealochs Coastal" ;
+      sepaloc:hydrocode "101\\5\\6.933" ;
+      sepaloc:localAuthority
+              "Argyll & Bute" ;
+      sepaloc:locationCode
+              sepaidloc:124817 ;
+      sepaloc:locationDescription
+              "ETTRICK BAY, BUTE 150M NW OF ST COLMAC BURN" ;
+      sepaloc:ngr "NS 03724 66058" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "West Highlands and Argyll" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.8476645" ;
+      geo:long "-5.1368111" .
+
+sepaidloc:4593
+      sepaloc:catchment "NT" ;
+      sepaloc:hydrocode "9024\\3\\1" ;
+      sepaloc:localAuthority
+              "City of Edinburgh" ;
+      sepaloc:locationCode
+              sepaidloc:4593 ;
+      sepaloc:locationDescription
+              "PORTOBELLO (CENTRAL), BATHING WATER N OF LAING TERRACE" ;
+      sepaloc:ngr "NT 31296 73847" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Edinburgh and Lothians" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.9527128" ;
+      geo:long "-3.1018259" .
+
+sepaidloc:206178
+      sepaloc:catchment "Moray Coastal" ;
+      sepaloc:hydrocode "22\\5\\115.46" ;
+      sepaloc:localAuthority
+              "Highland" ;
+      sepaloc:locationCode
+              sepaidloc:206178 ;
+      sepaloc:locationDescription
+              "NAIRN (EAST), BATHING WATER" ;
+      sepaloc:ngr "NH 89106 57461" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Hebrides and Central Highlands" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.5934875" ;
+      geo:long "-3.8568642" .
+
+sepaidloc:124738
+      sepaloc:catchment "South Ayrshire Coastal" ;
+      sepaloc:hydrocode "84\\5\\5.27" ;
+      sepaloc:localAuthority
+              "South Ayrshire" ;
+      sepaloc:locationCode
+              sepaidloc:124738 ;
+      sepaloc:locationDescription
+              "HEADS OF AYR, AT BEACH GATE FROM HOLIDAY PARK" ;
+      sepaloc:ngr "NS 30202 18902" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Ayrshire" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.4344863" ;
+      geo:long "-4.685293" .
+
+sepaidloc:4568
+      sepaloc:catchment "South Fife Coastal" ;
+      sepaloc:hydrocode "51\\5\\53.927" ;
+      sepaloc:localAuthority
+              "Fife" ;
+      sepaloc:locationCode
+              sepaidloc:4568 ;
+      sepaloc:locationDescription
+              "ABERDOUR (SILVERSANDS)" ;
+      sepaloc:ngr "NT 20100 85219" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.0531289" ;
+      geo:long "-3.2844564" .
+
+sepaidloc:10308
+      sepaloc:catchment "Dundee Coastal" ;
+      sepaloc:hydrocode "43\\6\\34.419" ;
+      sepaloc:localAuthority
+              "Dundee City" ;
+      sepaloc:locationCode
+              sepaidloc:10308 ;
+      sepaloc:locationDescription
+              "BROUGHTY FERRY, BATHING WATER" ;
+      sepaloc:ngr "NO 46900 30600" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Dundee and Angus" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.4645226" ;
+      geo:long "-2.8633648" .
+
+sepaidloc:4574
+      sepaloc:catchment "East Lothian Coastal" ;
+      sepaloc:hydrocode "64\\5\\10.865" ;
+      sepaloc:localAuthority
+              "East Lothian" ;
+      sepaloc:locationCode
+              sepaidloc:4574 ;
+      sepaloc:locationDescription
+              "WHITESANDS, NW OF CATCRAIG" ;
+      sepaloc:ngr "NT 71186 77436" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Edinburgh and Lothians" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.9890149" ;
+      geo:long "-2.4634455" .
+
+sepaidloc:366986
+      sepaloc:catchment "River Spey" ;
+      sepaloc:hydrocode "28\\64.7\\107.988" ;
+      sepaloc:localAuthority
+              "Highland" ;
+      sepaloc:locationCode
+              sepaidloc:366986 ;
+      sepaloc:locationDescription
+              "LOCH MORLICH" ;
+      sepaloc:ngr "NH 97160 09750" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Grampian North and Speyside" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.1670166" ;
+      geo:long "-3.7022278" .
+
+sepaidloc:4548
+      sepaloc:catchment "South Fife Coastal" ;
+      sepaloc:hydrocode "51\\5\\127.207" ;
+      sepaloc:localAuthority
+              "Fife" ;
+      sepaloc:locationCode
+              sepaidloc:4548 ;
+      sepaloc:locationDescription
+              "CRAIL (ROOME BAY)" ;
+      sepaloc:ngr "NO 61926 07822" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.2613504" ;
+      geo:long "-2.6162165" .
+
+sepaidloc:301895
+      sepaloc:catchment "Moray Coastal" ;
+      sepaloc:hydrocode "22\\5\\45.96" ;
+      sepaloc:localAuthority
+              "Moray" ;
+      sepaloc:locationCode
+              sepaidloc:301895 ;
+      sepaloc:locationDescription
+              "FINDHORN, BATHING WATER" ;
+      sepaloc:ngr "NJ 03560 64940" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Grampian North and Speyside" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.6639622" ;
+      geo:long "-3.618161" .
+
+sepaidloc:4587
+      sepaloc:catchment "East Lothian Coastal" ;
+      sepaloc:hydrocode "64\\5\\61.231" ;
+      sepaloc:localAuthority
+              "East Lothian" ;
+      sepaloc:locationCode
+              sepaidloc:4587 ;
+      sepaloc:locationDescription
+              "GULLANE, BATHING WATER" ;
+      sepaloc:ngr "NT 47491 83319" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Edinburgh and Lothians" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.0398579" ;
+      geo:long "-2.8443711" .
+
+sepaidloc:124748
+      sepaloc:catchment "South Ayrshire Coastal" ;
+      sepaloc:hydrocode "84\\5\\20.451" ;
+      sepaloc:localAuthority
+              "South Ayrshire" ;
+      sepaloc:locationCode
+              sepaidloc:124748 ;
+      sepaloc:locationDescription
+              "CULZEAN, BATHING WATER AT GLASSON ROCK" ;
+      sepaloc:ngr "NS 22041 09681" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Ayrshire" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.3488379" ;
+      geo:long "-4.8082376" .
+
+sepaidloc:233608
+      sepaloc:catchment "Buchan Coastal" ;
+      sepaloc:hydrocode "31\\5\\139.823" ;
+      sepaloc:localAuthority
+              "Aberdeenshire" ;
+      sepaloc:locationCode
+              sepaidloc:233608 ;
+      sepaloc:locationDescription
+              "ROSEHEARTY, E OF ROSEHEARTY CARAVAN PARK, PORT RAE" ;
+      sepaloc:ngr "NJ 93391 67651" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Grampian North and Speyside" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.6986134" ;
+      geo:long "-2.1125493" .
+
+sepaidloc:206238
+      sepaloc:catchment "Cromarty Coastal" ;
+      sepaloc:hydrocode "14\\5\\39.119" ;
+      sepaloc:localAuthority
+              "Highland" ;
+      sepaloc:locationCode
+              sepaidloc:206238 ;
+      sepaloc:locationDescription
+              "ROSEMARKIE, N BEACH" ;
+      sepaloc:ngr "NH 73900 57900" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Hebrides and Central Highlands" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.5934365" ;
+      geo:long "-4.1113016" .
+
+sepaidloc:124599
+      sepaloc:catchment "Inverclyde Coastal" ;
+      sepaloc:hydrocode "92\\5\\24.11" ;
+      sepaloc:localAuthority
+              "Inverclyde" ;
+      sepaloc:locationCode
+              sepaidloc:124599 ;
+      sepaloc:locationDescription
+              "LUNDERSTON BAY, AT PICNIC AREA 150M SE OF U/N W/C" ;
+      sepaloc:ngr "NS 20400 74514" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Renfrew & Inverclyde" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.9300403" ;
+      geo:long "-4.8764471" .
+
+sepaidloc:114567
+      sepaloc:catchment "Stewartry Coastal" ;
+      sepaloc:hydrocode "77\\5\\95.887" ;
+      sepaloc:localAuthority
+              "Dumfries & Galloway" ;
+      sepaloc:locationCode
+              sepaidloc:114567 ;
+      sepaloc:locationDescription
+              "SANDYHILLS, BAY 100M E OF BARNHOURIE BURN" ;
+      sepaloc:ngr "NX 89200 55100" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Dumfries and Galloway" ;
+      sepaloc:year "2012" ;
+      geo:lat "54.8783458" ;
+      geo:long "-3.7284576" .
+
+sepaidloc:9381
+      sepaloc:catchment "Kincardine and Angus Coastal" ;
+      sepaloc:hydrocode "38\\5\\59.13" ;
+      sepaloc:localAuthority
+              "Angus" ;
+      sepaloc:locationCode
+              sepaidloc:9381 ;
+      sepaloc:locationDescription
+              "MONTROSE, ADJ TO THE FAULDS GOLF COURSE, E OF TRAILL DRIVE" ;
+      sepaloc:ngr "NO 72853 57869" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Dundee and Angus" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.711707" ;
+      geo:long "-2.445067" .
+
+sepaidloc:9335
+      sepaloc:catchment "Berwick Coastal" ;
+      sepaloc:hydrocode "66\\5\\18.334" ;
+      sepaloc:localAuthority
+              "Scottish Borders" ;
+      sepaloc:locationCode
+              sepaidloc:9335 ;
+      sepaloc:locationDescription
+              "COLDINGHAM, BATHING WATER" ;
+      sepaloc:ngr "NT 91769 66557" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Borders" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.8920682" ;
+      geo:long "-2.133193" .
+
+sepaidloc:4579
+      sepaloc:catchment "East Lothian Coastal" ;
+      sepaloc:hydrocode "64\\5\\21.294" ;
+      sepaloc:localAuthority
+              "East Lothian" ;
+      sepaloc:locationCode
+              sepaidloc:4579 ;
+      sepaloc:locationDescription
+              "DUNBAR (BELHAVEN), BATHING WATER AT BIEL WATER OUTFLOW" ;
+      sepaloc:ngr "NT 65491 79125" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Edinburgh and Lothians" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.0038103" ;
+      geo:long "-2.554948" .
+
+sepaidloc:4565
+      sepaloc:catchment "South Fife Coastal" ;
+      sepaloc:hydrocode "51\\5\\65.169" ;
+      sepaloc:localAuthority
+              "Fife" ;
+      sepaloc:locationCode
+              sepaidloc:4565 ;
+      sepaloc:locationDescription
+              "KINGHORN (HARBOUR BEACH), FIFE" ;
+      sepaloc:ngr "NT 27125 86697" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.0675291" ;
+      geo:long "-3.172101" .
+
+sepaidloc:233603
+      sepaloc:catchment "Moray Coastal" ;
+      sepaloc:hydrocode "22\\5\\9.576" ;
+      sepaloc:localAuthority
+              "Moray" ;
+      sepaloc:locationCode
+              sepaidloc:233603 ;
+      sepaloc:locationDescription
+              "LOSSIEMOUTH (EAST), SPEY BAY E OF FOOTBRIDGE" ;
+      sepaloc:ngr "NJ 24050 70500" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Grampian North and Speyside" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.717817" ;
+      geo:long "-3.2765771" .
+
+sepaidloc:206179
+      sepaloc:catchment "Moray Coastal" ;
+      sepaloc:hydrocode "22\\5\\117.949" ;
+      sepaloc:localAuthority
+              "Highland" ;
+      sepaloc:locationCode
+              sepaidloc:206179 ;
+      sepaloc:locationDescription
+              "NAIRN (CENTRAL), BATHING WATER" ;
+      sepaloc:ngr "NH 88227 57117" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Hebrides and Central Highlands" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.5901837" ;
+      geo:long "-3.871403" .
+
+sepaidloc:233613
+      sepaloc:catchment "Buchan Coastal" ;
+      sepaloc:hydrocode "31\\5\\61.243" ;
+      sepaloc:localAuthority
+              "Aberdeenshire" ;
+      sepaloc:locationCode
+              sepaidloc:233613 ;
+      sepaloc:locationDescription
+              "CRUDEN BAY, BATHING WATER" ;
+      sepaloc:ngr "NK 08996 35687" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Grampian North and Speyside" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.4114633" ;
+      geo:long "-1.8519076" .
+
+sepaidloc:4403
+      sepaloc:catchment "East Lothian Coastal" ;
+      sepaloc:hydrocode "64\\5\\43.05" ;
+      sepaloc:localAuthority
+              "East Lothian" ;
+      sepaloc:locationCode
+              sepaidloc:4403 ;
+      sepaloc:locationDescription
+              "SEACLIFF, BATHING WATER" ;
+      sepaloc:ngr "NT 60500 84600" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Edinburgh and Lothians" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.0526136" ;
+      geo:long "-2.6357792" .
+
+sepaidloc:4575
+      sepaloc:catchment "East Lothian Coastal" ;
+      sepaloc:hydrocode "64\\5\\14.992" ;
+      sepaloc:localAuthority
+              "East Lothian" ;
+      sepaloc:locationCode
+              sepaidloc:4575 ;
+      sepaloc:locationDescription
+              "DUNBAR (EAST), BATHING WATER" ;
+      sepaloc:ngr "NT 68238 78987" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Edinburgh and Lothians" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.0027624" ;
+      geo:long "-2.5108817" .
+
+sepaidloc:10307
+      sepaloc:catchment "Dundee Coastal" ;
+      sepaloc:hydrocode "43\\6\\38" ;
+      sepaloc:localAuthority
+              "Angus" ;
+      sepaloc:locationCode
+              sepaidloc:10307 ;
+      sepaloc:locationDescription
+              "MONIFIETH, BATHING WATER W OF PIPELINE ADJ TO MARINE DRIVE" ;
+      sepaloc:ngr "NO 50000 32000" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Dundee and Angus" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.4774383" ;
+      geo:long "-2.8133304" .
+
+sepaidloc:4569
+      sepaloc:catchment "NT" ;
+      sepaloc:hydrocode "9024\\3\\1" ;
+      sepaloc:localAuthority
+              "Fife" ;
+      sepaloc:locationCode
+              sepaidloc:4569 ;
+      sepaloc:locationDescription
+              "ABERDOUR HARBOUR (BLACK SANDS)" ;
+      sepaloc:ngr "NT 19400 85000" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.0510423" ;
+      geo:long "-3.2956341" .
+
+sepaidloc:124665
+      sepaloc:catchment "North Ayrshire Coastal" ;
+      sepaloc:hydrocode "88\\5\\24.803" ;
+      sepaloc:localAuthority
+              "North Ayrshire" ;
+      sepaloc:locationCode
+              sepaidloc:124665 ;
+      sepaloc:locationDescription
+              "SEAMILL, SHORE BY BRITHER ROCKS" ;
+      sepaloc:ngr "NS 19802 47319" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Ayrshire" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.6857837" ;
+      geo:long "-4.8679911" .
+
+sepaidloc:9318
+      sepaloc:catchment "North Fife Coastal" ;
+      sepaloc:hydrocode "49\\5\\12.155" ;
+      sepaloc:localAuthority
+              "Fife" ;
+      sepaloc:locationCode
+              sepaidloc:9318 ;
+      sepaloc:locationDescription
+              "ST ANDREWS (EAST SANDS), FIFE" ;
+      sepaloc:ngr "NO 52000 16299" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.3366046" ;
+      geo:long "-2.7779738" .
+
+sepaidloc:233617
+      sepaloc:catchment "Kincardine and Angus Coastal" ;
+      sepaloc:hydrocode "38\\5\\116.156" ;
+      sepaloc:locationCode
+              sepaidloc:233617 ;
+      sepaloc:locationDescription
+              "STONEHAVEN, BATHING WATER" ;
+      sepaloc:ngr "NO 87690 86060" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Grampian South" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.9655865" ;
+      geo:long "-2.2040836" .
+
+sepaidloc:9320
+      sepaloc:catchment "North Fife Coastal" ;
+      sepaloc:hydrocode "49\\5\\.164" ;
+      sepaloc:localAuthority
+              "Fife" ;
+      sepaloc:locationCode
+              sepaidloc:9320 ;
+      sepaloc:locationDescription
+              "KINGSBARNS, BATHING WATER E OF KINGSBARNS GOLF LINKS COURSE, FIFE" ;
+      sepaloc:ngr "NO 60414 12362" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.3020124" ;
+      geo:long "-2.6413035" .
+
+sepaidloc:4561
+      sepaloc:catchment "NO" ;
+      sepaloc:hydrocode "9020\\3\\1" ;
+      sepaloc:localAuthority
+              "Fife" ;
+      sepaloc:locationCode
+              sepaidloc:4561 ;
+      sepaloc:locationDescription
+              "LEVEN, BATHING WATER ADJ TO GOLF COURSE AND CAMPSITE" ;
+      sepaloc:ngr "NO 39600 01400" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.2013442" ;
+      geo:long "-2.9751046" .
+
+sepaidloc:4586
+      sepaloc:catchment "East Lothian Coastal" ;
+      sepaloc:hydrocode "64\\5\\55.215" ;
+      sepaloc:localAuthority
+              "East Lothian" ;
+      sepaloc:locationCode
+              sepaidloc:4586 ;
+      sepaloc:locationDescription
+              "YELLOW CRAIG, BATHING WATER, EAST LOTHIAN" ;
+      sepaloc:ngr "NT 51512 86091" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Edinburgh and Lothians" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.0651808" ;
+      geo:long "-2.7803428" .
+
+sepaidloc:124770
+      sepaloc:catchment "South Ayrshire Coastal" ;
+      sepaloc:hydrocode "84\\5\\37.203" ;
+      sepaloc:localAuthority
+              "South Ayrshire" ;
+      sepaloc:locationCode
+              sepaidloc:124770 ;
+      sepaloc:locationDescription
+              "GIRVAN, BATHING WATER 100M N OF CEMETERY" ;
+      sepaloc:ngr "NX 18154 97413" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Ayrshire" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.2373156" ;
+      geo:long "-4.8615196" .
+
+sepaidloc:304147
+      sepaloc:catchment "Minch Coastal" ;
+      sepaloc:hydrocode "124\\5\\279.157" ;
+      sepaloc:localAuthority
+              "Highland" ;
+      sepaloc:locationCode
+              sepaidloc:304147 ;
+      sepaloc:locationDescription
+              "ACHMELVICH, BATHING WATER" ;
+      sepaloc:ngr "NC 05560 24940" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "North Highland" ;
+      sepaloc:year "2012" ;
+      geo:lat "58.1703428" ;
+      geo:long "-5.3076593" .
+
+sepaidloc:9314
+      sepaloc:catchment "Dundee Coastal" ;
+      sepaloc:hydrocode "43\\5\\48.942" ;
+      sepaloc:localAuthority
+              "Angus" ;
+      sepaloc:locationCode
+              sepaidloc:9314 ;
+      sepaloc:locationDescription
+              "CARNOUSTIE, BATHING WATER" ;
+      sepaloc:ngr "NO 56468 34214" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Dundee and Angus" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.4979707" ;
+      geo:long "-2.7087085" .
+
+sepaidloc:124651
+      sepaloc:catchment "Great Cumbrae Coastal" ;
+      sepaloc:hydrocode "1907\\5\\10.729" ;
+      sepaloc:localAuthority
+              "North Ayrshire" ;
+      sepaloc:locationCode
+              sepaidloc:124651 ;
+      sepaloc:locationDescription
+              "MILLPORT BAY, NEWTOWN BAY AT SHORE (W OF THE LECK)" ;
+      sepaloc:ngr "NS 16598 54917" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Ayrshire" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.7527631" ;
+      geo:long "-4.9239683" .
+
+sepaidloc:233607
+      sepaloc:catchment "Banff Coastal" ;
+      sepaloc:hydrocode "29\\5\\31.712" ;
+      sepaloc:localAuthority
+              "Aberdeenshire" ;
+      sepaloc:locationCode
+              sepaidloc:233607 ;
+      sepaloc:locationDescription
+              "INVERBOYNDIE, BATHING WATER" ;
+      sepaloc:ngr "NJ 67187 64743" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Grampian North and Speyside" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.671338" ;
+      geo:long "-2.5517488" .
+
+sepaidloc:124714
+      sepaloc:catchment "North Ayrshire Coastal" ;
+      sepaloc:hydrocode "88\\5\\87.603" ;
+      sepaloc:localAuthority
+              "South Ayrshire" ;
+      sepaloc:locationCode
+              sepaidloc:124714 ;
+      sepaloc:locationDescription
+              "PRESTWICK, BATHING WATER AT SLIPWAY BY CARPARK AND RAILWAY STATION" ;
+      sepaloc:ngr "NS 34466 26192" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Ayrshire" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.5013802" ;
+      geo:long "-4.6223237" .
+
+sepaidloc:9334
+      sepaloc:catchment "Berwick Coastal" ;
+      sepaloc:hydrocode "66\\5\\12.643" ;
+      sepaloc:localAuthority
+              "Scottish Borders" ;
+      sepaloc:locationCode
+              sepaidloc:9334 ;
+      sepaloc:locationDescription
+              "EYEMOUTH, BATHING WATER WEST OF HARBOUR" ;
+      sepaloc:ngr "NT 94463 64524" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Borders" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.8738431" ;
+      geo:long "-2.0900683" .
+
+sepaidloc:9380
+      sepaloc:catchment "Kincardine and Angus Coastal" ;
+      sepaloc:hydrocode "38\\5\\26.641" ;
+      sepaloc:localAuthority
+              "Angus" ;
+      sepaloc:locationCode
+              sepaidloc:9380 ;
+      sepaloc:locationDescription
+              "LUNAN BAY, ADJ TO LUNAN LINKS CAR PARK" ;
+      sepaloc:ngr "NO 69300 51600" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Dundee and Angus" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.6551715" ;
+      geo:long "-2.5023539" .
+
+sepaidloc:124793
+      sepaloc:catchment "Galloway Coastal" ;
+      sepaloc:hydrocode "80\\5\\368.373" ;
+      sepaloc:localAuthority
+              "Dumfries & Galloway" ;
+      sepaloc:locationCode
+              sepaidloc:124793 ;
+      sepaloc:locationDescription
+              "BRIGHOUSE BAY, E OF BRIGHOUSE BURN" ;
+      sepaloc:ngr "NX 63516 45472" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Dumfries and Galloway" ;
+      sepaloc:year "2012" ;
+      geo:lat "54.7855344" ;
+      geo:long "-4.1239375" .
+
+sepaidloc:10962
+      sepaloc:catchment "NT" ;
+      sepaloc:hydrocode "9024\\3\\1" ;
+      sepaloc:locationCode
+              sepaidloc:10962 ;
+      sepaloc:locationDescription
+              "ELIE (RUBY BAY), FIFE" ;
+      sepaloc:ngr "NT 49532 99544" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.1858303" ;
+      geo:long "-2.8146897" .
+
+sepaidloc:114580
+      sepaloc:catchment "Galloway Coastal" ;
+      sepaloc:hydrocode "80\\6\\355.133" ;
+      sepaloc:localAuthority
+              "Dumfries & Galloway" ;
+      sepaloc:locationCode
+              sepaidloc:114580 ;
+      sepaloc:locationDescription
+              "CARRICK, FLEET BAY 100M S OF ISLE MOUTH ROCKS" ;
+      sepaloc:ngr "NX 57495 49981" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Dumfries and Galloway" ;
+      sepaloc:year "2012" ;
+      geo:lat "54.8243542" ;
+      geo:long "-4.2197158" .
+
+sepaidloc:233612
+      sepaloc:catchment "NK" ;
+      sepaloc:hydrocode "9016\\3\\1" ;
+      sepaloc:localAuthority
+              "Aberdeenshire" ;
+      sepaloc:locationCode
+              sepaidloc:233612 ;
+      sepaloc:locationDescription
+              "PETERHEAD (LIDO), PETERHEAD BAY AT PETERHEAD MARINA, NE OF THE LIDO" ;
+      sepaloc:ngr "NK 12489 45175" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Grampian North and Speyside" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.4966079" ;
+      geo:long "-1.7932907" .
+
+sepaidloc:4585
+      sepaloc:catchment "NT" ;
+      sepaloc:hydrocode "9024\\3\\1" ;
+      sepaloc:localAuthority
+              "East Lothian" ;
+      sepaloc:locationCode
+              sepaidloc:4585 ;
+      sepaloc:locationDescription
+              "NORTH BERWICK (WEST), BATHING WATER N OF 56 FORTH STREET SE OF HARBOUR" ;
+      sepaloc:ngr "NT 55164 85462" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Edinburgh and Lothians" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.059886" ;
+      geo:long "-2.7215869" .
+
+sepaidloc:233616
+      sepaloc:catchment "Aberdeen North Coastal" ;
+      sepaloc:hydrocode "34\\5\\.055" ;
+      sepaloc:localAuthority
+              "Aberdeen City" ;
+      sepaloc:locationCode
+              sepaidloc:233616 ;
+      sepaloc:locationDescription
+              "ABERDEEN, BALLROOM LEISURE BEACH" ;
+      sepaloc:ngr "NJ 95401 07182" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Grampian South" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.1554709" ;
+      geo:long "-2.077663" .
+
+sepaidloc:4566
+      sepaloc:catchment "NT" ;
+      sepaloc:hydrocode "9024\\3\\1" ;
+      sepaloc:localAuthority
+              "Fife" ;
+      sepaloc:locationCode
+              sepaidloc:4566 ;
+      sepaloc:locationDescription
+              "KINGHORN (PETTYCUR), NW OF PETTYCUR HARBOUR PIER" ;
+      sepaloc:ngr "NT 26435 86176" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.0627404" ;
+      geo:long "-3.1830366" .
+
+sepaidloc:235333
+      sepaloc:catchment "Buchan Coastal" ;
+      sepaloc:hydrocode "31\\5\\129.414" ;
+      sepaloc:localAuthority
+              "Aberdeenshire" ;
+      sepaloc:locationCode
+              sepaidloc:235333 ;
+      sepaloc:locationDescription
+              "FRASERBURGH (TIGER HILL), E OF CEMETERY" ;
+      sepaloc:ngr "NK 00510 65640" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Grampian North and Speyside" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.6806005" ;
+      geo:long "-1.9931175" .
+
+sepaidloc:9337
+      sepaloc:catchment "South Fife Coastal" ;
+      sepaloc:hydrocode "51\\5\\68.526" ;
+      sepaloc:localAuthority
+              "Fife" ;
+      sepaloc:locationCode
+              sepaidloc:9337 ;
+      sepaloc:locationDescription
+              "KIRKCALDY (SEAFIELD), BATHING WATER W OF LONG CRAIG" ;
+      sepaloc:ngr "NT 28105 89694" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.0945952" ;
+      geo:long "-3.1571756" .
+
+sepaidloc:472272
+      sepaloc:catchment "North Ayrshire Coastal" ;
+      sepaloc:hydrocode "88\\5\\3.428" ;
+      sepaloc:localAuthority
+              "North Ayrshire" ;
+      sepaloc:locationCode
+              sepaidloc:472272 ;
+      sepaloc:locationDescription
+              "LARGS (PENCIL BEACH), AT BOWEN CRAIGS SANDS" ;
+      sepaloc:ngr "NS 20700 58050" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Ayrshire" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.7824148" ;
+      geo:long "-4.8607634" .
+
+sepaidloc:124787
+      sepaloc:catchment "Stewartry Coastal" ;
+      sepaloc:hydrocode "77\\5\\112.14" ;
+      sepaloc:localAuthority
+              "Dumfries & Galloway" ;
+      sepaloc:locationCode
+              sepaidloc:124787 ;
+      sepaloc:locationDescription
+              "SOUTHERNESS, 150M W OF POINT" ;
+      sepaloc:ngr "NX 97686 54006" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Dumfries and Galloway" ;
+      sepaloc:year "2012" ;
+      geo:lat "54.8703281" ;
+      geo:long "-3.5958709" .
+
+sepaidloc:320901
+      sepaloc:catchment "Dee (Kirkcudbright) Estuary" ;
+      sepaloc:hydrocode "8003\\6\\.039" ;
+      sepaloc:localAuthority
+              "Dumfries & Galloway" ;
+      sepaloc:locationCode
+              sepaidloc:320901 ;
+      sepaloc:locationDescription
+              "DHOON BAY, NUN MILL BAY" ;
+      sepaloc:ngr "NX 65748 48600" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Dumfries and Galloway" ;
+      sepaloc:year "2012" ;
+      geo:lat "54.8142295" ;
+      geo:long "-4.0907083" .
+
+sepaidloc:124673
+      sepaloc:catchment "North Ayrshire Coastal" ;
+      sepaloc:hydrocode "88\\5\\35.511" ;
+      sepaloc:localAuthority
+              "North Ayrshire" ;
+      sepaloc:locationCode
+              sepaidloc:124673 ;
+      sepaloc:locationDescription
+              "SALTCOATS/ARDROSSAN, BATHING WATER 100M SE OF WAR MEMORIAL" ;
+      sepaloc:ngr "NS 23453 41997" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Ayrshire" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.6393649" ;
+      geo:long "-4.8065633" .
+
+sepaidloc:9378
+      sepaloc:catchment "Kincardine and Angus Coastal" ;
+      sepaloc:hydrocode "38\\5\\.794" ;
+      sepaloc:localAuthority
+              "Angus" ;
+      sepaloc:locationCode
+              sepaidloc:9378 ;
+      sepaloc:locationDescription
+              "ARBROATH (WEST LINKS)" ;
+      sepaloc:ngr "NO 63070 40044" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Dundee and Angus" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.5509096" ;
+      geo:long "-2.6023079" .
+
+sepaidloc:4556
+      sepaloc:catchment "South Fife Coastal" ;
+      sepaloc:hydrocode "51\\5\\104.243" ;
+      sepaloc:localAuthority
+              "Fife" ;
+      sepaloc:locationCode
+              sepaidloc:4556 ;
+      sepaloc:locationDescription
+              "ELIE (HARBOUR) AND EARLSFERRY, BATHING WATER, FIFE" ;
+      sepaloc:ngr "NT 48900 99800" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.1880625" ;
+      geo:long "-2.8249201" .
+
+sepaidloc:124505
+      sepaloc:catchment "Kintyre Coastal" ;
+      sepaloc:hydrocode "104\\5\\64.82" ;
+      sepaloc:localAuthority
+              "Argyll & Bute" ;
+      sepaloc:locationCode
+              sepaidloc:124505 ;
+      sepaloc:locationDescription
+              "MACHRIHANISH, BATHING WATER AT GOLF COURSE" ;
+      sepaloc:ngr "NR 64100 20900" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "West Highlands and Argyll" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.4250411" ;
+      geo:long "-5.7296259" .
+
+sepaidloc:4552
+      sepaloc:catchment "NO" ;
+      sepaloc:hydrocode "9020\\3\\1" ;
+      sepaloc:localAuthority
+              "Fife" ;
+      sepaloc:locationCode
+              sepaidloc:4552 ;
+      sepaloc:locationDescription
+              "ANSTRUTHER (BILLOW NESS), NR WEST HAVEN" ;
+      sepaloc:ngr "NO 56277 03029" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.2178061" ;
+      geo:long "-2.7066075" .
+
+sepaidloc:124688
+      sepaloc:catchment "North Ayrshire Coastal" ;
+      sepaloc:hydrocode "88\\5\\66.5" ;
+      sepaloc:localAuthority
+              "North Ayrshire" ;
+      sepaloc:locationCode
+              sepaidloc:124688 ;
+      sepaloc:locationDescription
+              "IRVINE, BATHING WATER 400M SE OF RIVER IRVINE" ;
+      sepaloc:ngr "NS 30700 37499" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Ayrshire" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.6015735" ;
+      geo:long "-4.6888022" .
+
+sepaidloc:124482
+      sepaloc:catchment "Knapdale Coastal" ;
+      sepaloc:hydrocode "105\\5\\9.206" ;
+      sepaloc:localAuthority
+              "Argyll & Bute" ;
+      sepaloc:locationCode
+              sepaidloc:124482 ;
+      sepaloc:locationDescription
+              "GANAVAN, BATHING WATER NORTH OF JETTY" ;
+      sepaloc:ngr "NM 86200 32813" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "West Highlands and Argyll" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.438884" ;
+      geo:long "-5.4697761" .
+
+sepaidloc:124725
+      sepaloc:catchment "North Ayrshire Coastal" ;
+      sepaloc:hydrocode "88\\5\\97.201" ;
+      sepaloc:localAuthority
+              "South Ayrshire" ;
+      sepaloc:locationCode
+              sepaidloc:124725 ;
+      sepaloc:locationDescription
+              "AYR (SOUTH BEACH), BETWEEN BATH PL AND CHARLOTTE ST" ;
+      sepaloc:ngr "NS 32964 21888" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Ayrshire" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.462242" ;
+      geo:long "-4.6434911" .
+
+sepaidloc:344047
+      sepaloc:catchment "East Lothian Coastal" ;
+      sepaloc:hydrocode "64\\5\\75.035" ;
+      sepaloc:locationCode
+              sepaidloc:344047 ;
+      sepaloc:locationDescription
+              "LONGNIDDRY, BATHING WATER, FERRY NESS" ;
+      sepaloc:ngr "NT 43619 77170" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Edinburgh and Lothians" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.9841759" ;
+      geo:long "-2.9052212" .
+
+sepaidloc:4594
+      sepaloc:catchment "NT" ;
+      sepaloc:hydrocode "9024\\3\\1" ;
+      sepaloc:localAuthority
+              "City of Edinburgh" ;
+      sepaloc:locationCode
+              sepaidloc:4594 ;
+      sepaloc:locationDescription
+              "PORTOBELLO (WEST), BATHING WATER N OF KINGS RD" ;
+      sepaloc:ngr "NT 30314 74632" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Edinburgh and Lothians" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.959621" ;
+      geo:long "-3.1177591" .
+
+sepaidloc:124706
+      sepaloc:catchment "North Ayrshire Coastal" ;
+      sepaloc:hydrocode "88\\5\\80.427" ;
+      sepaloc:localAuthority
+              "South Ayrshire" ;
+      sepaloc:locationCode
+              sepaidloc:124706 ;
+      sepaloc:locationDescription
+              "TROON (SOUTH BEACH), OPP TOILETS AND CAR PARK" ;
+      sepaloc:ngr "NS 32070 30620" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Ayrshire" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.540307" ;
+      geo:long "-4.6628987" .
+
+sepaidloc:200324
+      sepaloc:catchment "Thurso Coastal" ;
+      sepaloc:hydrocode "136\\5\\49.869" ;
+      sepaloc:localAuthority
+              "Highland" ;
+      sepaloc:locationCode
+              sepaidloc:200324 ;
+      sepaloc:locationDescription
+              "DUNNET, BATHING WATER" ;
+      sepaloc:ngr "ND 21601 70749" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "North Highland" ;
+      sepaloc:year "2012" ;
+      geo:lat "58.6175415" ;
+      geo:long "-3.3514036" .
+
+sepaidloc:235334
+      sepaloc:catchment "Buchan Coastal" ;
+      sepaloc:hydrocode "31\\5\\8.185" ;
+      sepaloc:localAuthority
+              "Aberdeenshire" ;
+      sepaloc:locationCode
+              sepaidloc:235334 ;
+      sepaloc:locationDescription
+              "BALMEDIE, SHORE" ;
+      sepaloc:ngr "NJ 98050 18330" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Grampian South" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.255631" ;
+      geo:long "-2.0339682" .
+
+sepaidloc:11789
+      sepaloc:catchment "East Lothian Coastal" ;
+      sepaloc:hydrocode "64\\5\\76.185" ;
+      sepaloc:localAuthority
+              "East Lothian" ;
+      sepaloc:locationCode
+              sepaidloc:11789 ;
+      sepaloc:locationDescription
+              "SETON SANDS, NW OF CANTY BURN" ;
+      sepaloc:ngr "NT 42738 76251" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Edinburgh and Lothians" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.9758128" ;
+      geo:long "-2.9191298" .
+
+sepaidloc:4567
+      sepaloc:catchment "South Fife Coastal" ;
+      sepaloc:hydrocode "51\\5\\60.547" ;
+      sepaloc:localAuthority
+              "Fife" ;
+      sepaloc:locationCode
+              sepaidloc:4567 ;
+      sepaloc:locationDescription
+              "BURNTISLAND, BATHING WATER, LAMMERLAWS" ;
+      sepaloc:ngr "NT 24106 85699" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.0580891" ;
+      geo:long "-3.2203018" .
+
+sepaidloc:4584
+      sepaloc:catchment "NT" ;
+      sepaloc:hydrocode "9024\\3\\1" ;
+      sepaloc:localAuthority
+              "East Lothian" ;
+      sepaloc:locationCode
+              sepaidloc:4584 ;
+      sepaloc:locationDescription
+              "NORTH BERWICK (MILSEY BAY), AT SHORE ADJ TO TANTALLON TERRACE" ;
+      sepaloc:ngr "NT 56211 85327" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Edinburgh and Lothians" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.0587687" ;
+      geo:long "-2.7047561" .
+
+sepaidloc:205952
+      sepaloc:catchment "Thurso Coastal" ;
+      sepaloc:hydrocode "136\\5\\66.345" ;
+      sepaloc:locationCode
+              sepaidloc:205952 ;
+      sepaloc:locationDescription
+              "THURSO, BATHING WATER" ;
+      sepaloc:ngr "ND 11697 68860" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "North Highland" ;
+      sepaloc:year "2012" ;
+      geo:lat "58.5986819" ;
+      geo:long "-3.521109" .
+
+sepaidloc:9336
+      sepaloc:catchment "NT" ;
+      sepaloc:hydrocode "9024\\3\\1" ;
+      sepaloc:localAuthority
+              "Scottish Borders" ;
+      sepaloc:locationCode
+              sepaidloc:9336 ;
+      sepaloc:locationDescription
+              "PEASE BAY, PEASE SANDS E OF RED ROCK COCKBURNSPATH" ;
+      sepaloc:ngr "NT 79264 71083" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Borders" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.9323524" ;
+      geo:long "-2.3334752" .
+
+sepaidloc:200305
+      sepaloc:catchment "River Ness" ;
+      sepaloc:hydrocode "21\\12.5\\16.037" ;
+      sepaloc:localAuthority
+              "Highland" ;
+      sepaloc:locationCode
+              sepaidloc:200305 ;
+      sepaloc:locationDescription
+              "DORES, BATHING WATER" ;
+      sepaloc:ngr "NH 59671 35000" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Hebrides and Central Highlands" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.3837099" ;
+      geo:long "-4.335966" .
+
+sepaidloc:4573
+      sepaloc:catchment "East Lothian Coastal" ;
+      sepaloc:hydrocode "64\\5\\3.623" ;
+      sepaloc:localAuthority
+              "East Lothian" ;
+      sepaloc:locationCode
+              sepaidloc:4573 ;
+      sepaloc:locationDescription
+              "THORNTONLOCH, BEACH N OF THORNTON BURN" ;
+      sepaloc:ngr "NT 75384 74410" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Edinburgh and Lothians" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.9620626" ;
+      geo:long "-2.3958816" .
+
+sepaidloc:124755
+      sepaloc:catchment "South Ayrshire Coastal" ;
+      sepaloc:hydrocode "84\\5\\21.72" ;
+      sepaloc:localAuthority
+              "South Ayrshire" ;
+      sepaloc:locationCode
+              sepaidloc:124755 ;
+      sepaloc:locationDescription
+              "MAIDENS, MAIDENHEAD BAY AT APPROX 250M E OF CARSE ROCKS" ;
+      sepaloc:ngr "NS 21700 08501" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Ayrshire" ;
+      sepaloc:year "2012" ;
+      geo:lat "55.3381214" ;
+      geo:long "-4.8128644" .
+
+sepaidloc:125080
+      sepaloc:catchment "River Leven (Loch Lomond)" ;
+      sepaloc:hydrocode "100\\19\\20.469" ;
+      sepaloc:localAuthority
+              "Argyll & Bute" ;
+      sepaloc:locationCode
+              sepaidloc:125080 ;
+      sepaloc:locationDescription
+              "LUSS BAY, AT THE LODGE, LOCH LOMOND" ;
+      sepaloc:ngr "NS 36015 93296" ;
+      sepaloc:sepaRegion "South West" ;
+      sepaloc:sepaTeam "Glasgow and Dunbartonshire" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.1041916" ;
+      geo:long "-4.6382808" .
+
+sepaidloc:9316
+      sepaloc:catchment "North Fife Coastal" ;
+      sepaloc:hydrocode "49\\5\\16.419" ;
+      sepaloc:localAuthority
+              "Fife" ;
+      sepaloc:locationCode
+              sepaidloc:9316 ;
+      sepaloc:locationDescription
+              "ST ANDREWS (WEST SANDS), FIFE" ;
+      sepaloc:ngr "NO 50474 17681" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.3488594" ;
+      geo:long "-2.8029212" .
+
+sepaidloc:233610
+      sepaloc:catchment "Buchan Coastal" ;
+      sepaloc:hydrocode "31\\5\\127.682" ;
+      sepaloc:localAuthority
+              "Aberdeenshire" ;
+      sepaloc:locationCode
+              sepaidloc:233610 ;
+      sepaloc:locationDescription
+              "FRASERBURGH (PHILORTH), AT WATERS OF PHILORTH" ;
+      sepaloc:ngr "NK 02120 65050" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Grampian North and Speyside" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.6752964" ;
+      geo:long "-1.9661189" .
+
+sepaidloc:233605
+      sepaloc:catchment "Banff Coastal" ;
+      sepaloc:hydrocode "29\\5\\59.515" ;
+      sepaloc:localAuthority
+              "Moray" ;
+      sepaloc:locationCode
+              sepaidloc:233605 ;
+      sepaloc:locationDescription
+              "CULLEN BAY, BUCKIE" ;
+      sepaloc:ngr "NJ 50320 67499" ;
+      sepaloc:sepaRegion "North" ;
+      sepaloc:sepaTeam "Grampian North and Speyside" ;
+      sepaloc:year "2012" ;
+      geo:lat "57.6945427" ;
+      geo:long "-2.8350541" .
+
+sepaidloc:10310
+      sepaloc:catchment "North Fife Coastal" ;
+      sepaloc:hydrocode "49\\5\\39.325" ;
+      sepaloc:localAuthority
+              "Fife" ;
+      sepaloc:locationCode
+              sepaidloc:10310 ;
+      sepaloc:locationDescription
+              "TENTSMUIR SANDS, AT U/N W/C, KINSHALDY, LEUCHARS" ;
+      sepaloc:ngr "NO 50244 24280" ;
+      sepaloc:sepaRegion "South East" ;
+      sepaloc:sepaTeam "Fife" ;
+      sepaloc:year "2012" ;
+      geo:lat "56.4081137" ;
+      geo:long "-2.8078976" .

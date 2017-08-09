@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
+
+<!--
+    S-Match configuration file for working with WordNet cache (InMemoryWordNetBinaryArray).
+    See and run bin/create-wn-caches command line script.
+-->
+    <import resource="s-match.xml"/>
+
+    <bean id="linguisticOracle" class="it.unitn.disi.smatch.oracles.wordnet.WordNet">
+        <constructor-arg name="jwnlPropertiesPath" value="classpath://net/sf/extjwnl/data/wordnet/wn31/res_properties.xml"/>
+        <constructor-arg name="multiwordsFileName" value="../data/wordnet/3.1/cache/multiwords.hash"/>
+    </bean>
+    <bean id="binarySenseMatcher" class="it.unitn.disi.smatch.oracles.wordnet.InMemoryWordNetBinaryArray">
+        <constructor-arg name="adjectiveSynonyms" value="../data/wordnet/3.1/cache/adj_syn.arr"/>
+        <constructor-arg name="adjectiveAntonyms" value="../data/wordnet/3.1/cache/adj_opp.arr"/>
+        <constructor-arg name="nounHypernyms" value="../data/wordnet/3.1/cache/noun3_mg.arr"/>
+        <constructor-arg name="nounAntonyms" value="../data/wordnet/3.1/cache/noun_opp.arr"/>
+        <constructor-arg name="adverbAntonyms" value="../data/wordnet/3.1/cache/adv_opp.arr"/>
+        <constructor-arg name="verbHypernyms" value="../data/wordnet/3.1/cache/verb_mg.arr"/>
+        <constructor-arg name="nominalizations" value="../data/wordnet/3.1/cache/nominalizations.arr"/>
+    </bean>
+
+    <bean id="contextPreprocessor" class="it.unitn.disi.smatch.preprocessors.DefaultContextPreprocessor">
+        <constructor-arg name="senseMatcher" ref="binarySenseMatcher"/>
+        <constructor-arg name="linguisticOracle" ref="linguisticOracle"/>
+    </bean>
+    <bean id="elementMatcher" class="it.unitn.disi.smatch.matchers.element.ElementMatcher">
+        <constructor-arg name="mappingFactory" ref="mappingFactory"/>
+        <constructor-arg name="senseMatcher" ref="binarySenseMatcher"/>
+        <constructor-arg name="useWeakSemanticsElementLevelMatchersLibrary" value="true"/>
+        <constructor-arg name="stringMatchers">
+            <util:list>
+                <bean class="it.unitn.disi.smatch.matchers.element.string.Synonym"/>
+                <bean class="it.unitn.disi.smatch.matchers.element.string.Prefix"/>
+                <bean class="it.unitn.disi.smatch.matchers.element.string.Suffix"/>
+                <bean class="it.unitn.disi.smatch.matchers.element.string.NGram"/>
+                <bean class="it.unitn.disi.smatch.matchers.element.string.EditDistanceOptimized"/>
+            </util:list>
+        </constructor-arg>
+        <constructor-arg name="senseGlossMatchers"><null /></constructor-arg>
+    </bean>
+
+
+</beans>

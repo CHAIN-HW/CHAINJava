@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><context>
+  <node id="n0">
+    <name>Course</name>
+    <children>
+      <node id="n1" parent-id="n0">
+        <name>College of Arts and Sciences</name>
+        <children>
+          <node id="n2" parent-id="n1">
+            <name>English</name>
+          </node>
+          <node id="n3" parent-id="n1">
+            <name>Earth Sciences</name>
+            <children>
+              <node id="n4" parent-id="n3">
+                <name>Geophysics</name>
+              </node>
+              <node id="n5" parent-id="n3">
+                <name>Geological Sciences</name>
+              </node>
+            </children>
+          </node>
+          <node id="n6" parent-id="n1">
+            <name>Computer Science</name>
+          </node>
+          <node id="n7" parent-id="n1">
+            <name>Economics</name>
+          </node>
+          <node id="n8" parent-id="n1">
+            <name>Astronomy</name>
+          </node>
+          <node id="n9" parent-id="n1">
+            <name>Asian Languages</name>
+            <children>
+              <node id="n10" parent-id="n9">
+                <name>Korean</name>
+              </node>
+              <node id="n11" parent-id="n9">
+                <name>Vietnamese</name>
+              </node>
+              <node id="n12" parent-id="n9">
+                <name>Sanskrit</name>
+              </node>
+              <node id="n13" parent-id="n9">
+                <name>Thai</name>
+              </node>
+              <node id="n14" parent-id="n9">
+                <name>Japanese</name>
+              </node>
+              <node id="n15" parent-id="n9">
+                <name>Indian</name>
+              </node>
+              <node id="n16" parent-id="n9">
+                <name>Hindi</name>
+              </node>
+              <node id="n17" parent-id="n9">
+                <name>Indonesian</name>
+              </node>
+              <node id="n18" parent-id="n9">
+                <name>Chinese</name>
+              </node>
+            </children>
+          </node>
+          <node id="n19" parent-id="n1">
+            <name>Classics</name>
+            <children>
+              <node id="n20" parent-id="n19">
+                <name>Greek</name>
+              </node>
+              <node id="n21" parent-id="n19">
+                <name>Latin</name>
+              </node>
+            </children>
+          </node>
+          <node id="n22" parent-id="n1">
+            <name>History</name>
+            <children>
+              <node id="n23" parent-id="n22">
+                <name>Modern European History</name>
+              </node>
+              <node id="n24" parent-id="n22">
+                <name>History of Americas</name>
+              </node>
+              <node id="n25" parent-id="n22">
+                <name>Ancient and Medieval History</name>
+              </node>
+              <node id="n26" parent-id="n22">
+                <name>History Asia</name>
+              </node>
+            </children>
+          </node>
+          <node id="n27" parent-id="n1">
+            <name>Linguistics</name>
+            <children>
+              <node id="n28" parent-id="n27">
+                <name>French Linguistics</name>
+              </node>
+              <node id="n29" parent-id="n27">
+                <name>Spanish Linguistics</name>
+              </node>
+              <node id="n30" parent-id="n27">
+                <name>Romance Linguistics</name>
+              </node>
+              <node id="n31" parent-id="n27">
+                <name>Linguistics</name>
+              </node>
+            </children>
+          </node>
+          <node id="n32" parent-id="n1">
+            <name>Mathematics</name>
+          </node>
+          <node id="n33" parent-id="n1">
+            <name>History and Philosophy Science</name>
+          </node>
+        </children>
+      </node>
+      <node id="n34" parent-id="n0">
+        <name>College Engineering</name>
+        <children>
+          <node id="n35" parent-id="n34">
+            <name>Civil and Environmental Engineering</name>
+          </node>
+          <node id="n36" parent-id="n34">
+            <name>Electrical Engineering</name>
+          </node>
+          <node id="n37" parent-id="n34">
+            <name>Chemical Engineering</name>
+          </node>
+          <node id="n38" parent-id="n34">
+            <name>Materials Science and Engineering</name>
+          </node>
+        </children>
+      </node>
+    </children>
+  </node>
+</context>
