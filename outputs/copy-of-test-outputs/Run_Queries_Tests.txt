@@ -32,10 +32,10 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyTemperatures.n3>
-WHERE { ?id sepaw:identifiedDate ?identifiedDate ;
-sepaw:waterBodyId ?waterBodyId ;
-sepaw:dataSource ?dataSource ;
-sepaw:affectsGroundwater ?affectsGroundwater
+WHERE { ?id sepaw:dataSource ?dataSource ;
+sepaw:identifiedDate ?identifiedDate ;
+sepaw:affectsGroundwater ?affectsGroundwater ;
+sepaw:waterBodyId ?waterBodyId
 .}
 
 Query has NOT run successfully with error message,
@@ -53,10 +53,10 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/water.n3>
-WHERE { ?id sepaw:resource ?resource ;
+WHERE { ?id geo:geo ?geo ;
 sepaw:measure ?measure ;
-geo:geo ?geo ;
-sepaw:timePeriod ?timePeriod
+sepaw:timePeriod ?timePeriod ;
+sepaw:resource ?resource
 .}
 
 Query has NOT run successfully with error message,
@@ -74,8 +74,8 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
-WHERE { ?id sepaw:resource ?resource ;
-sepaw:measure ?measure ;
+WHERE { ?id sepaw:measure ?measure ;
+sepaw:resource ?resource ;
 geo:geo ?geo ;
 sepaw:timePeriod ?timePeriod
 .}
@@ -94,8 +94,8 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
-WHERE { ?id sepaw:identifiedDate ?identifiedDate ;
-sepaw:source ?source ;
+WHERE { ?id sepaw:source ?source ;
+sepaw:identifiedDate ?identifiedDate ;
 sepaw:assessmentCategory ?assessmentCategory ;
 sepaw:waterBodyId ?waterBodyId
 .}
@@ -114,9 +114,9 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
-WHERE { ?id sepaw:secondaryMeasure ?secondaryMeasure ;
+WHERE { ?id sepaw:dataSource ?dataSource ;
 sepaw:waterBodyId ?waterBodyId ;
-sepaw:dataSource ?dataSource
+sepaw:secondaryMeasure ?secondaryMeasure
 .}
 
 Query HAS run successfully.
@@ -133,8 +133,8 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
-WHERE { ?id sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
-sepaw:riverName ?riverName
+WHERE { ?id sepaw:riverName ?riverName ;
+sepaw:associatedGroundwaterId ?associatedGroundwaterId
 .}
 
 Query HAS run successfully.
@@ -151,10 +151,10 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
-WHERE { ?id sepaloc:catchment ?catchment ;
-geo:lat ?lat ;
-geo:long ?long ;
-sepaloc:localAuthority ?localAuthority
+WHERE { ?id geo:lat ?lat ;
+sepaloc:localAuthority ?localAuthority ;
+sepaloc:catchment ?catchment ;
+geo:long ?long
 .}
 
 Query HAS run successfully but NO data has been returned.
@@ -171,10 +171,10 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
-WHERE { ?id sepaw:subBasinDistrict ?subBasinDistrict ;
-sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
-sepaw:riverName ?riverName ;
-sepaw:altitudeTypology ?altitudeTypology
+WHERE { ?id sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
+sepaw:altitudeTypology ?altitudeTypology ;
+sepaw:subBasinDistrict ?subBasinDistrict ;
+sepaw:riverName ?riverName
 .}
 
 Query HAS run successfully.
@@ -311,8 +311,8 @@ PREFIX yago: <http://dbpedia.org/class/yago/>
 
 SELECT DISTINCT*
 WHERE { ?id rdf:type dbo:River;
-dbo:manufacturer ?manufacturer ;
 dbo:assembly ?assembly ;
+dbo:manufacturer ?manufacturer ;
 dbo:place ?place
 .}
 LIMIT 20
@@ -383,8 +383,8 @@ PREFIX yago: <http://dbpedia.org/class/yago/>
 
 SELECT DISTINCT*
 WHERE { ?id rdf:type foaf:Person;
-dbo:birthPlace ?birthPlace ;
-dbo:occupation ?occupation
+dbo:occupation ?occupation ;
+dbo:birthPlace ?birthPlace
 .}
 LIMIT 20
 
@@ -402,8 +402,8 @@ PREFIX yago: <http://dbpedia.org/class/yago/>
 
 SELECT DISTINCT*
 WHERE { ?id rdf:type foaf:Person;
-dbo:instrument ?instrument ;
-dbo:occupation ?occupation
+dbo:occupation ?occupation ;
+dbo:instrument ?instrument
 .}
 LIMIT 20
 

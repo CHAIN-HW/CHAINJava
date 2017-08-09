@@ -2,7 +2,6 @@ Testing Results for SPSM_Test_Cases.java
 
 Test 1.1
 Calling SPSM with source,  & target(s), 
-Target: 
 Expected Result: results.size() == 0 
 Actual Result: results.size() == 0
 
@@ -22,6 +21,7 @@ Expected Result: similarity == 1.0 & numMatches == 2
 Actual Result: similarity == 1.0 & numMatches == 2
 
 Test 2.4
+Calling SPSM with source, author(name) & target(s), document(title,author) ; author(name,document) ; reviewAuthor(firstname,lastname,review)
 Target: author(name,document)
 Expected Result: similarity == 1.0 & numMatches == 2
 Actual Result: similarity == 1.0 & numMatches == 2
@@ -57,7 +57,6 @@ Actual Result: similarity == 0.75 & numMatches == 2
 
 Test 4.1
 Calling SPSM with source, author & target(s), writer
-Target: writer
 Expected Result: similarity == 1.0 & numMatches == 1 
 Actual Result: similarity == 1.0 & numMatches == 1
 
@@ -82,7 +81,6 @@ Null Results!
 
 Test 5.1
 Calling SPSM with source, review(date(day,month,year)) & target(s), document(date(day,month,year))
-Target: document(date(day,month,year))
 Expected Result: similarity == 1.0 & numMatches == 5 
 Actual Result: similarity == 0.5 & numMatches == 5
 

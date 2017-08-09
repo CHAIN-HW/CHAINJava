@@ -19,6 +19,7 @@ sepaw:waterBodyId ?waterBodyId .}
 
 Expected Result: waterBodyPressures(dataSource, identifiedDate, affectsGroundwater, waterBodyId)
 Actual Result: waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)
+
 Test 1.10 - sepa query
 Creating schema from query,
 PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
