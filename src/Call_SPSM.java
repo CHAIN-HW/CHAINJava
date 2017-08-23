@@ -22,11 +22,11 @@ public class Call_SPSM{
 		Call_SPSM classInst = new Call_SPSM();
 		
 		ArrayList<Match_Struc> result = new ArrayList<Match_Struc>();
-		String source = "author(name)";
-		String target = "paperWriter(firstname,lastname,paper)";
+		String source = "waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
+		String target = "waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
 		
-		source="author(name)";
-		target="document(title,author) ; author(name,document) ; reviewAuthor(firstname,lastname,review)";
+		//source="author(name)";
+		//target="document(title,author) ; author(name,document) ; reviewAuthor(firstname,lastname,review)";
 		result = classInst.getSchemas(result,source,target);
 		
 		//then lets see if we can read the results from our new structure

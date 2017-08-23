@@ -31,7 +31,7 @@ public class Schema_From_Query_Test_Cases {
 	public static void beforeAll(){
 		System.out.println("These tests are responsible for testing Schema_From_Query.java to ensure that\n"
 				+"we can create a valid schema from a sepa or dbpedia query.");
-		System.out.println("\nThe results from these tests can be found in outputs/tests/Schema_From_Query_Tests.txt\n");
+		System.out.println("\nThe results from these tests can be found in outputs/testing/Schema_From_Query_Tests.txt\n");
 
 		alreadyWritten = false;
 		try{
@@ -64,7 +64,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test11(){
-		System.out.println("\nRunning test 1.1 - sepa query");
+		System.out.println("\nRunning test 7.1.1 - sepa query");
 		
 		query="PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
 				+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
@@ -79,19 +79,19 @@ public class Schema_From_Query_Test_Cases {
 				+ "sepaw:waterBodyId ?waterBodyId .}"
 				+ "\n\n";
 		
-		fOut.write("Test 1.1 - sepa query\n");
+		fOut.write("Test 7.1.1 - sepa query\n");
 		fOut.write("Creating schema from query,\n\n"+query + "\n\n");
 		
 		//get results
 		res = schemaCreator.getSchemaFromQuery(query, "sepa");
 		
 		fOut.write("Expected Result: waterBodyPressures(dataSource, identifiedDate, affectsGroundwater, waterBodyId)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n");
+		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");
 	}
 	
 	@Test
 	public void test12(){
-		System.out.println("\nRunning test 1.2 - sepa query");
+		System.out.println("\nRunning test 7.1.2 - sepa query");
 		
 		query=	"PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
 				+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
@@ -106,7 +106,7 @@ public class Schema_From_Query_Test_Cases {
 				+ "sepaw:resource ?resource .}"
 				+ "\n";
 		
-		fOut.write("Test 1.2 - sepa query\n");
+		fOut.write("Test 7.1.2 - sepa query\n");
 		fOut.write("Creating schema from query,\n\n"+query + "\n");
 		
 		//get results
@@ -118,7 +118,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test13(){
-		System.out.println("\nRunning test 1.3 - sepa query");
+		System.out.println("\nRunning test 7.1.3 - sepa query");
 		
 		query=	"PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
 		          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
@@ -133,7 +133,7 @@ public class Schema_From_Query_Test_Cases {
 		          + "sepaw:resource ?resource .}"
 		          + "\n";
 		
-		fOut.write("Test 1.3 - sepa query\n");
+		fOut.write("Test 7.1.3 - sepa query\n");
 		fOut.write("Creating schema from query,\n\n"+query + "\n");
 		
 		//get results
@@ -145,7 +145,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test14(){
-		System.out.println("\nRunning test 1.4 - sepa query");
+		System.out.println("\nRunning test 7.1.4 - sepa query");
 		
 		query=	"PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
 	          	+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
@@ -160,7 +160,7 @@ public class Schema_From_Query_Test_Cases {
 	          	+ "sepaw:source ?source .}"
 	          	+ "\n";
 		
-		fOut.write("Test 1.4 - sepa query\n");
+		fOut.write("Test 7.1.4 - sepa query\n");
 		fOut.write("Creating schema from query,\n\n"+query + "\n");
 		
 		//get results
@@ -172,7 +172,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test15(){
-		System.out.println("\nRunning test 1.5 - sepa query");
+		System.out.println("\nRunning test 7.1.5 - sepa query");
 		
 		query=	"PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
 		          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
@@ -186,7 +186,7 @@ public class Schema_From_Query_Test_Cases {
 		          + "sepaw:dataSource ?dataSource .}"
 		          + "\n";
 		
-		fOut.write("Test 1.5 - sepa query\n");
+		fOut.write("Test 7.1.5 - sepa query\n");
 		fOut.write("Creating schema from query,\n\n"+query + "\n");
 		
 		//get results
@@ -198,7 +198,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test16(){
-		System.out.println("\nRunning test 1.6 - sepa query");
+		System.out.println("\nRunning test 7.1.6 - sepa query");
 		
 		query=	"PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
 		          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
@@ -211,7 +211,7 @@ public class Schema_From_Query_Test_Cases {
 		          + "sepaw:associatedGroundwaterId ?associatedGroundwaterId .}"
 		          + "\n";
 		
-		fOut.write("Test 1.6 - sepa query\n");
+		fOut.write("Test 7.1.6 - sepa query\n");
 		fOut.write("Creating schema from query,\n\n"+query + "\n");
 		
 		//get results
@@ -223,7 +223,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test17(){
-		System.out.println("\nRunning test 1.7 - sepa query");
+		System.out.println("\nRunning test 7.1.7 - sepa query");
 		
 		query=	"PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
 		          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
@@ -238,7 +238,7 @@ public class Schema_From_Query_Test_Cases {
 		          + "geo:long ?long .}"
 		          + "\n";
 		
-		fOut.write("Test 1.7 - sepa query\n");
+		fOut.write("Test 7.1.7 - sepa query\n");
 		fOut.write("Creating schema from query,\n\n"+query + "\n");
 		
 		//get results
@@ -250,7 +250,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test18(){
-		System.out.println("\nRunning test 1.8 - sepa query");
+		System.out.println("\nRunning test 7.1.8 - sepa query");
 		
 		query=	"PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
 		          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
@@ -265,7 +265,7 @@ public class Schema_From_Query_Test_Cases {
 		          + "sepaw:subBasinDistrict ?subBasinDistrict .}"
 		          + "\n";
 		
-		fOut.write("Test 1.8 - sepa query\n");
+		fOut.write("Test 7.1.8 - sepa query\n");
 		fOut.write("Creating schema from query,\n\n"+query + "\n");
 		
 		//get results
@@ -277,7 +277,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test19(){
-		System.out.println("\nRunning test 1.9 - sepa query");
+		System.out.println("\nRunning test 7.1.9 - sepa query");
 		
 		query=	"PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
 		          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
@@ -290,7 +290,7 @@ public class Schema_From_Query_Test_Cases {
 		          + ".}"
 		          + "\n";
 		
-		fOut.write("Test 1.9 - sepa query\n");
+		fOut.write("Test 7.1.9 - sepa query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results
@@ -302,7 +302,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test110(){
-		System.out.println("\nRunning test 1.10 - sepa query");
+		System.out.println("\nRunning test 7.1.10 - sepa query");
 		
 		query=	"PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
 		          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
@@ -314,7 +314,7 @@ public class Schema_From_Query_Test_Cases {
 		          + ".}"
 		          + "\n";
 		
-		fOut.write("Test 1.10 - sepa query\n");
+		fOut.write("Test 7.1.10 - sepa query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results
@@ -331,7 +331,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test21(){
-		System.out.println("\nRunning test 2.1 - dbpedia query");
+		System.out.println("\nRunning test 7.2.1 - dbpedia query");
 		
 		query=	"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 				+ "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
@@ -345,7 +345,7 @@ public class Schema_From_Query_Test_Cases {
 				+ "dbo:populationTotal ?populationTotal .}\n"
 				+ "LIMIT 20\n";
 		
-		fOut.write("Test 2.1 - dbpedia query\n");
+		fOut.write("Test 7.2.1 - dbpedia query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results
@@ -357,7 +357,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test22(){
-		System.out.println("\nRunning test 2.2 - dbpedia query");
+		System.out.println("\nRunning test 7.2.2 - dbpedia query");
 		
 		query=	"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 				+ "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
@@ -369,7 +369,7 @@ public class Schema_From_Query_Test_Cases {
 				+ "WHERE { ?id rdf:type dbo:City .}\n"
 				+ "LIMIT 20\n";
 		
-		fOut.write("Test 2.2 - dbpedia query\n");
+		fOut.write("Test 7.2.2 - dbpedia query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results
@@ -381,7 +381,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test23(){
-		System.out.println("\nRunning test 2.3 - dbpedia query");
+		System.out.println("\nRunning test 7.2.3 - dbpedia query");
 		
 		query=	"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
@@ -395,7 +395,7 @@ public class Schema_From_Query_Test_Cases {
 		          + ".}\n"
 		          + "LIMIT 20\n";
 		
-		fOut.write("Test 2.3 - dbpedia query\n");
+		fOut.write("Test 7.2.3 - dbpedia query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results
@@ -407,7 +407,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test24(){
-		System.out.println("\nRunning test 2.4 - dbpedia query");
+		System.out.println("\nRunning test 7.2.4 - dbpedia query");
 		
 		query=	"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
@@ -421,7 +421,7 @@ public class Schema_From_Query_Test_Cases {
 		          + ".}\n"
 		          + "LIMIT 20\n";
 		
-		fOut.write("Test 2.4 - dbpedia query\n");
+		fOut.write("Test 7.2.4 - dbpedia query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results
@@ -433,7 +433,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test25(){
-		System.out.println("\nRunning test 2.5 - dbpedia query");
+		System.out.println("\nRunning test 7.2.5 - dbpedia query");
 		
 		query=	"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
@@ -447,7 +447,7 @@ public class Schema_From_Query_Test_Cases {
 		          + "dbo:birthPlace ?birthPlace .}\n"
 		          + "LIMIT 20\n";
 		
-		fOut.write("Test 2.5 - dbpedia query\n");
+		fOut.write("Test 7.2.5 - dbpedia query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results
@@ -459,7 +459,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test26(){
-		System.out.println("\nRunning test 2.6 - dbpedia query");
+		System.out.println("\nRunning test 7.2.6 - dbpedia query");
 		
 		query=	"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
@@ -473,7 +473,7 @@ public class Schema_From_Query_Test_Cases {
 		          + "dbo:instrument ?instrument .}\n"
 		          + "LIMIT 20\n";
 		
-		fOut.write("Test 2.6 - dbpedia query\n");
+		fOut.write("Test 7.2.6 - dbpedia query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results
@@ -485,7 +485,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test27(){
-		System.out.println("\nRunning test 2.7 - dbpedia query");
+		System.out.println("\nRunning test 7.2.7 - dbpedia query");
 		
 		query=	"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
@@ -499,7 +499,7 @@ public class Schema_From_Query_Test_Cases {
 		          + ".}\n"
 		          + "LIMIT 20\n";
 		
-		fOut.write("Test 2.7 - dbpedia query\n");
+		fOut.write("Test 7.2.7 - dbpedia query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results
@@ -511,7 +511,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test28(){
-		System.out.println("\nRunning test 2.8 - dbpedia query");
+		System.out.println("\nRunning test 7.2.8 - dbpedia query");
 		
 		query=	"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
@@ -525,7 +525,7 @@ public class Schema_From_Query_Test_Cases {
 		          + ".}\n"
 		          + "LIMIT 20\n";
 		
-		fOut.write("Test 2.8 - dbpedia query\n");
+		fOut.write("Test 7.2.8 - dbpedia query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results
@@ -537,7 +537,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test29(){
-		System.out.println("\nRunning test 2.9 - dbpedia query");
+		System.out.println("\nRunning test 7.2.9 - dbpedia query");
 		
 		query=	"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
@@ -551,7 +551,7 @@ public class Schema_From_Query_Test_Cases {
 		          + ".}\n"
 		          + "LIMIT 20\n";
 		
-		fOut.write("Test 2.9 - dbpedia query\n");
+		fOut.write("Test 7.2.9 - dbpedia query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results
@@ -563,7 +563,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test210(){
-		System.out.println("\nRunning test 2.10 - dbpedia query");
+		System.out.println("\nRunning test 7.2.10 - dbpedia query");
 		
 		query=	"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
@@ -577,7 +577,7 @@ public class Schema_From_Query_Test_Cases {
 		          + ".}\n"
 		          + "LIMIT 20\n";
 		
-		fOut.write("Test 2.10 - dbpedia query\n");
+		fOut.write("Test 7.2.10 - dbpedia query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results
@@ -589,11 +589,11 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test211(){
-		System.out.println("\nRunning test 2.11 - dbpedia query");
+		System.out.println("\nRunning test 7.2.11 - dbpedia query");
 		
 		query=	"";
 		
-		fOut.write("Test 2.11 - dbpedia query\n");
+		fOut.write("Test 7.2.11 - dbpedia query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results
@@ -605,7 +605,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test212(){
-		System.out.println("\nRunning test 2.12 - dbpedia query");
+		System.out.println("\nRunning test 7.2.12 - dbpedia query");
 		
 		query=	"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
@@ -619,7 +619,7 @@ public class Schema_From_Query_Test_Cases {
 		          + ".}\n"
 		          + "LIMIT 20\n";
 		
-		fOut.write("Test 2.12 - dbpedia query\n");
+		fOut.write("Test 7.2.12 - dbpedia query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results
@@ -631,7 +631,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Test
 	public void test213(){
-		System.out.println("\nRunning test 2.13 - dbpedia query");
+		System.out.println("\nRunning test 7.2.13 - dbpedia query");
 		
 		query=	 "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
 		          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
@@ -644,7 +644,7 @@ public class Schema_From_Query_Test_Cases {
 		          + ".}\n"
 		          + "LIMIT 20\n";
 		
-		fOut.write("Test 2.13 - dbpedia query\n");
+		fOut.write("Test 7.2.13 - dbpedia query\n");
 		fOut.write("Creating schema from query,\n"+query + "\n\n");
 		
 		//get results

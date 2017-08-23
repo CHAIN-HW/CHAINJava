@@ -1,6 +1,6 @@
 Testing Results for Create_Query_Test_Cases.java
 
-Test 1.1 - sepa query
+Test 5.1.1 - sepa query
 Creating query from schema, waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)
 Expected Result:
 
@@ -27,14 +27,14 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
-WHERE { ?id sepaw:waterBodyId ?waterBodyId ;
-sepaw:affectsGroundwater ?affectsGroundwater ;
+WHERE { ?id sepaw:identifiedDate ?identifiedDate ;
+sepaw:waterBodyId ?waterBodyId ;
 sepaw:dataSource ?dataSource ;
-sepaw:identifiedDate ?identifiedDate
+sepaw:affectsGroundwater ?affectsGroundwater
 .}
 
 
-Test 1.2 - sepa query
+Test 5.1.2 - sepa query
 Creating query from schema, water(timePeriod, geo, measure, resource)
 Expected Result:
 
@@ -61,14 +61,14 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/water.n3>
-WHERE { ?id sepaw:timePeriod ?timePeriod ;
-sepaw:resource ?resource ;
+WHERE { ?id sepaw:resource ?resource ;
+sepaw:measure ?measure ;
 geo:geo ?geo ;
-sepaw:measure ?measure
+sepaw:timePeriod ?timePeriod
 .}
 
 
-Test 1.3 - sepa query
+Test 5.1.3 - sepa query
 Creating query from schema, waterBodyMeasures(timePeriod, geo, measure, resource)
 Expected Result:
 
@@ -95,14 +95,14 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
-WHERE { ?id sepaw:resource ?resource ;
-geo:geo ?geo ;
+WHERE { ?id geo:geo ?geo ;
 sepaw:timePeriod ?timePeriod ;
+sepaw:resource ?resource ;
 sepaw:measure ?measure
 .}
 
 
-Test 1.4 - sepa query
+Test 5.1.4 - sepa query
 Creating query from schema, waterBodyPressures(identifiedDate,waterBodyId,assessmentCategory,source)
 Expected Result:
 
@@ -129,14 +129,14 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
-WHERE { ?id sepaw:source ?source ;
-sepaw:assessmentCategory ?assessmentCategory ;
+WHERE { ?id sepaw:assessmentCategory ?assessmentCategory ;
+sepaw:source ?source ;
 sepaw:identifiedDate ?identifiedDate ;
 sepaw:waterBodyId ?waterBodyId
 .}
 
 
-Test 1.5 - sepa query
+Test 5.1.5 - sepa query
 Creating query from schema, waterBodyMeasures(waterBodyId,secondaryMeasure,dataSource)
 Expected Result:
 
@@ -163,12 +163,12 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
 WHERE { ?id sepaw:dataSource ?dataSource ;
-sepaw:waterBodyId ?waterBodyId ;
-sepaw:secondaryMeasure ?secondaryMeasure
+sepaw:secondaryMeasure ?secondaryMeasure ;
+sepaw:waterBodyId ?waterBodyId
 .}
 
 
-Test 1.6 - sepa query
+Test 5.1.6 - sepa query
 Creating query from schema, surfaceWaterBodies(riverName,associatedGroundwaterId)
 Expected Result:
 
@@ -198,7 +198,7 @@ sepaw:associatedGroundwaterId ?associatedGroundwaterId
 .}
 
 
-Test 1.7 - sepa query
+Test 5.1.7 - sepa query
 Creating query from schema, bathingWaters(catchment, localAuthority, lat, long)
 Expected Result:
 
@@ -225,14 +225,14 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
-WHERE { ?id sepaloc:localAuthority ?localAuthority ;
+WHERE { ?id geo:long ?long ;
 sepaloc:catchment ?catchment ;
-geo:long ?long ;
-geo:lat ?lat
+geo:lat ?lat ;
+sepaloc:localAuthority ?localAuthority
 .}
 
 
-Test 1.8 - sepa query
+Test 5.1.8 - sepa query
 Creating query from schema, surfaceWaterBodies(subBasinDistrict,riverName,altitudeTypology,associatedGroundwaterId)
 Expected Result:
 
@@ -259,14 +259,14 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
-WHERE { ?id sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
-sepaw:altitudeTypology ?altitudeTypology ;
+WHERE { ?id sepaw:altitudeTypology ?altitudeTypology ;
 sepaw:subBasinDistrict ?subBasinDistrict ;
-sepaw:riverName ?riverName
+sepaw:riverName ?riverName ;
+sepaw:associatedGroundwaterId ?associatedGroundwaterId
 .}
 
 
-Test 1.9 - sepa query
+Test 5.1.9 - sepa query
 Creating query from schema, bathingWaters(bathingWaterId)
 Expected Result:
 
@@ -295,7 +295,7 @@ WHERE { ?id sepaw:bathingWaterId ?bathingWaterId
 .}
 
 
-Test 2.1 - dbpedia query
+Test 5.2.1 - dbpedia query
 Creating query from schema, City(country,populationTotal)
 Expected Result:
 
@@ -323,12 +323,12 @@ PREFIX yago: <http://dbpedia.org/class/yago/>
 
 SELECT DISTINCT*
 WHERE { ?id rdf:type dbo:City;
-dbo:populationTotal ?populationTotal ;
-dbo:country ?country
+dbo:country ?country ;
+dbo:populationTotal ?populationTotal
 .}
 LIMIT 20
 
-Test 2.10 - dbpedia query
+Test 5.2.10 - dbpedia query
 Creating query from schema, Royalty(parent)
 Expected Result:
 
@@ -360,7 +360,7 @@ dbo:parent ?parent
 .}
 LIMIT 20
 
-Test 2.11 - dbpedia query
+Test 5.2.11 - dbpedia query
 Creating query from schema, river(length)
 Expected Result:
 
@@ -368,7 +368,7 @@ Actual Result:
 
 
 
-Test 2.12 - dbpedia query
+Test 5.2.12 - dbpedia query
 Creating query from schema, Stream(length)
 Expected Result:
 
@@ -376,7 +376,7 @@ Actual Result:
 
 
 
-Test 2.13 - dbpedia query
+Test 5.2.13 - dbpedia query
 Creating query from schema, River(Mountain(elevation))
 Expected Result:
 
@@ -408,7 +408,7 @@ dbo:Mountain ?Mountain
 .}
 LIMIT 20
 
-Test 2.2 - dbpedia query
+Test 5.2.2 - dbpedia query
 Creating query from schema, Country
 Expected Result:
 
@@ -436,7 +436,7 @@ SELECT DISTINCT*
 WHERE { ?id rdf:type dbo:Country.}
 LIMIT 20
 
-Test 2.3 - dbpedia query
+Test 5.2.3 - dbpedia query
 Creating query from schema, Astronaut(nationality)
 Expected Result:
 
@@ -468,7 +468,7 @@ dbo:nationality ?nationality
 .}
 LIMIT 20
 
-Test 2.4 - dbpedia query
+Test 5.2.4 - dbpedia query
 Creating query from schema, Mountain(elevation)
 Expected Result:
 
@@ -500,7 +500,7 @@ dbo:elevation ?elevation
 .}
 LIMIT 20
 
-Test 2.5 - dbpedia query
+Test 5.2.5 - dbpedia query
 Creating query from schema, Person(occupation, birthPlace)
 Expected Result:
 
@@ -528,12 +528,12 @@ PREFIX yago: <http://dbpedia.org/class/yago/>
 
 SELECT DISTINCT*
 WHERE { ?id rdf:type foaf:Person;
-dbo:birthPlace ?birthPlace ;
-dbo:occupation ?occupation
+dbo:occupation ?occupation ;
+dbo:birthPlace ?birthPlace
 .}
 LIMIT 20
 
-Test 2.6 - dbpedia query
+Test 5.2.6 - dbpedia query
 Creating query from schema, Person(occupation, instrument)
 Expected Result:
 
@@ -566,7 +566,7 @@ dbo:occupation ?occupation
 .}
 LIMIT 20
 
-Test 2.7 - dbpedia query
+Test 5.2.7 - dbpedia query
 Creating query from schema, Cave(location)
 Expected Result:
 
@@ -598,7 +598,7 @@ dbo:location ?location
 .}
 LIMIT 20
 
-Test 2.8 - dbpedia query
+Test 5.2.8 - dbpedia query
 Creating query from schema, FormulaOneRacer(races)
 Expected Result:
 
@@ -630,7 +630,7 @@ dbo:races ?races
 .}
 LIMIT 20
 
-Test 2.9 - dbpedia query
+Test 5.2.9 - dbpedia query
 Creating query from schema, River(length)
 Expected Result:
 

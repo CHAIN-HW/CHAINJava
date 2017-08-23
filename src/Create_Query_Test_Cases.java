@@ -36,7 +36,7 @@ public class Create_Query_Test_Cases {
 	public static void beforeAll(){
 		System.out.println("These tests are responsible for testing Create_Query.java to ensure that\n"
 				+"after calling SPSM and repairing the target schema, we can create the correct sepa or dbpedia query.");
-		System.out.println("\nThe results from these tests can be found in outputs/tests/Create_Queries_Test.txt\n");
+		System.out.println("\nThe results from these tests can be found in outputs/testing/Create_Queries_Test.txt\n");
 
 		alreadyWritten = false;
 		try{
@@ -71,7 +71,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Sepa
 	public void test11(){
-		System.out.println("\nRunning test 1.1 - sepa query");
+		System.out.println("\nRunning test 5.1.1 - sepa query");
 		
 		source="waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
 		target="waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
@@ -86,7 +86,7 @@ public class Create_Query_Test_Cases {
 		
 		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
 		
-		fOut.write("Test 1.1 - sepa query\n");
+		fOut.write("Test 5.1.1 - sepa query\n");
 		
 		if(finalRes!=null){
 			if(finalRes.size() == 0){	
@@ -121,7 +121,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Sepa
 	public void test12(){
-		System.out.println("\nRunning test 1.2 - sepa query");
+		System.out.println("\nRunning test 5.1.2 - sepa query");
 		
 		source="water(timePeriod, geo, measure, resource)";
 		target="water(timePeriod, geo, measure, resource)";
@@ -136,7 +136,7 @@ public class Create_Query_Test_Cases {
 		
 		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/",0);
 		
-		fOut.write("Test 1.2 - sepa query\n");
+		fOut.write("Test 5.1.2 - sepa query\n");
 		
 		if(finalRes!=null){
 			if(finalRes.size() == 0){	
@@ -171,7 +171,7 @@ public class Create_Query_Test_Cases {
 
 	@Test //Sepa
 	public void test13(){
-		System.out.println("\nRunning test 1.3 - sepa query");
+		System.out.println("\nRunning test 5.1.3 - sepa query");
 		
 	  source="waterBodyMeasures(timePeriod, geo, measure, resource)";
 	  target="waterBodyMeasures(timePeriod, geo, measure, resource)";
@@ -186,7 +186,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
 	  
-	  fOut.write("Test 1.3 - sepa query\n");
+	  fOut.write("Test 5.1.3 - sepa query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){	
@@ -221,7 +221,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Sepa
 	public void test14(){
-		System.out.println("\nRunning test 1.4 - sepa query");
+		System.out.println("\nRunning test 5.1.4 - sepa query");
 		
 		source="waterBodyPressures(identifiedDate,waterBodyId,assessmentCategory,source)";
 		target="waterBodyPressures(identifiedDate,waterBodyId,assessmentCategory,source)";
@@ -236,7 +236,7 @@ public class Create_Query_Test_Cases {
 	  
 		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
 	  
-		fOut.write("Test 1.4 - sepa query\n");
+		fOut.write("Test 5.1.4 - sepa query\n");
 	  
 		if(finalRes!=null){
 			if(finalRes.size() == 0){	
@@ -271,7 +271,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Sepa
 	public void test15(){
-	  System.out.println("\nRunning test 1.5 - sepa query");
+	  System.out.println("\nRunning test 5.1.5 - sepa query");
 		
 	  source="waterBodyMeasures(waterBodyId,secondaryMeasure,dataSource)";
 	  target="waterBodyMeasures(waterBodyId,secondaryMeasure,dataSource)";
@@ -286,7 +286,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
 	  
-	  fOut.write("Test 1.5 - sepa query\n");
+	  fOut.write("Test 5.1.5 - sepa query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){	
@@ -320,7 +320,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Sepa
 	public void test16(){
-	  System.out.println("\nRunning test 1.6 - sepa query");
+	  System.out.println("\nRunning test 5.1.6 - sepa query");
 		
 	  source="surfaceWaterBodies(riverName,associatedGroundwaterId)";
 	  target="surfaceWaterBodies(riverName,associatedGroundwaterId)";
@@ -335,7 +335,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
 	  
-	  fOut.write("Test 1.6 - sepa query\n");
+	  fOut.write("Test 5.1.6 - sepa query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){	
@@ -368,7 +368,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Sepa
 	public void test17(){
-	  System.out.println("\nRunning test 1.7 - sepa query");
+	  System.out.println("\nRunning test 5.1.7 - sepa query");
 		
 	  source="bathingWaters(catchment, localAuthority, lat, long)";
 	  target="bathingWaters(catchment, localAuthority, lat, long)";
@@ -383,7 +383,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
 	  
-	  fOut.write("Test 1.7 - sepa query\n");
+	  fOut.write("Test 5.1.7 - sepa query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){	
@@ -418,7 +418,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Sepa
 	public void test18(){
-	  System.out.println("\nRunning test 1.8 - sepa query");
+	  System.out.println("\nRunning test 5.1.8 - sepa query");
 		
 	  source="surfaceWaterBodies(subBasinDistrict,riverName,altitudeTypology,associatedGroundwaterId)";
 	  target="surfaceWaterBodies(subBasinDistrict,riverName,altitudeTypology,associatedGroundwaterId)";
@@ -433,7 +433,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/",0);
 	  
-	  fOut.write("Test 1.8 - sepa query\n");
+	  fOut.write("Test 5.1.8 - sepa query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){	
@@ -468,7 +468,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Sepa
 	public void test19(){
-	  System.out.println("\nRunning test 1.9 - sepa query");
+	  System.out.println("\nRunning test 5.1.9 - sepa query");
 		
 	  source="bathingWaters(bathingWaterId)";
 	  target="bathingWaters(bathingWaterId)";
@@ -483,7 +483,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
 	  
-	  fOut.write("Test 1.9 - sepa query\n");
+	  fOut.write("Test 5.1.9 - sepa query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){	
@@ -516,7 +516,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Dbpedia
 	public void test21(){
-		System.out.println("\nRunning test 2.1 - dbpedia query");
+		System.out.println("\nRunning test 5.2.1 - dbpedia query");
 		
 		source="City(country,populationTotal)";
 		target="City(country,populationTotal)";
@@ -531,7 +531,7 @@ public class Create_Query_Test_Cases {
 		
 		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
 		
-		fOut.write("Test 2.1 - dbpedia query\n");
+		fOut.write("Test 5.2.1 - dbpedia query\n");
 		
 		if(finalRes!=null){
 			if(finalRes.size() == 0){
@@ -565,7 +565,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Dbpedia
 	public void test22(){
-		System.out.println("\nRunning test 2.2 - dbpedia query");
+		System.out.println("\nRunning test 5.2.2 - dbpedia query");
 		
 		source="Country";
 		target="Country";
@@ -580,7 +580,7 @@ public class Create_Query_Test_Cases {
 		
 		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
 		
-		fOut.write("Test 2.2 - dbpedia query\n");
+		fOut.write("Test 5.2.2 - dbpedia query\n");
 		
 		if(finalRes!=null){
 			if(finalRes.size() == 0){
@@ -612,7 +612,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Dbpedia
 	public void test23(){
-	  System.out.println("\nRunning test 2.3 - dbpedia query");
+	  System.out.println("\nRunning test 5.2.3 - dbpedia query");
 		
 	  source="Astronaut(nationality)";
 	  target="Astronaut(nationality)";
@@ -627,7 +627,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
 	  
-	  fOut.write("Test 2.3 - dbpedia query\n");
+	  fOut.write("Test 5.2.3 - dbpedia query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){
@@ -661,7 +661,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Dbpedia
 	public void test24(){
-	  System.out.println("\nRunning test 2.4 - dbpedia query");
+	  System.out.println("\nRunning test 5.2.4 - dbpedia query");
 		
 	  source="Mountain(elevation)";
 	  target="Mountain(elevation)";
@@ -676,7 +676,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
 	  
-	  fOut.write("Test 2.4 - dbpedia query\n");
+	  fOut.write("Test 5.2.4 - dbpedia query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){
@@ -710,7 +710,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Dbpedia
 	public void test25(){
-	  System.out.println("\nRunning test 2.5 - dbpedia query");	
+	  System.out.println("\nRunning test 5.2.5 - dbpedia query");	
 		
 	  source="Person(occupation, birthPlace)";
 	  target="Person(occupation, birthPlace)";
@@ -725,7 +725,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
 	  
-	  fOut.write("Test 2.5 - dbpedia query\n");
+	  fOut.write("Test 5.2.5 - dbpedia query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){
@@ -759,7 +759,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Dbpedia
 	public void test26(){
-	  System.out.println("\nRunning test 2.6 - dbpedia query");
+	  System.out.println("\nRunning test 5.2.6 - dbpedia query");
 	  
 	  source="Person(occupation, instrument)";
 	  target="Person(occupation, instrument)";
@@ -774,7 +774,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
 	  
-	  fOut.write("Test 2.6 - dbpedia query\n");
+	  fOut.write("Test 5.2.6 - dbpedia query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){
@@ -808,7 +808,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Dbpedia
 	public void test27(){
-	  System.out.println("\nRunning test 2.7 - dbpedia query");
+	  System.out.println("\nRunning test 5.2.7 - dbpedia query");
 		
 	  source="Cave(location)";
 	  target="Cave(location)";
@@ -823,7 +823,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
 	  
-	  fOut.write("Test 2.7 - dbpedia query\n");
+	  fOut.write("Test 5.2.7 - dbpedia query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){
@@ -857,7 +857,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Dbpedia
 	public void test28(){
-	  System.out.println("\nRunning test 2.8 - dbpedia query");
+	  System.out.println("\nRunning test 5.2.8 - dbpedia query");
 		
 	  source="FormulaOneRacer(races)";
 	  target="FormulaOneRacer(races)";
@@ -872,7 +872,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
 	  
-	  fOut.write("Test 2.8 - dbpedia query\n");
+	  fOut.write("Test 5.2.8 - dbpedia query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){
@@ -906,7 +906,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Dbpedia
 	public void test29(){
-	  System.out.println("\nRunning test 2.9 - dbpedia query");	
+	  System.out.println("\nRunning test 5.2.9 - dbpedia query");	
 		
 	  source="River(length)";
 	  target="River(length)";
@@ -921,7 +921,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
 	  
-	  fOut.write("Test 2.9 - dbpedia query\n");
+	  fOut.write("Test 5.2.9 - dbpedia query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){
@@ -955,7 +955,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Dbpedia
 	public void test210(){
-	  System.out.println("\nRunning test 2.10 - dbpedia query");
+	  System.out.println("\nRunning test 5.2.10 - dbpedia query");
 		
 	  source="Royalty(parent)";
 	  target="Royalty(parent)";
@@ -970,7 +970,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
 	  
-	  fOut.write("Test 2.10 - dbpedia query\n");
+	  fOut.write("Test 5.2.10 - dbpedia query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){
@@ -1004,7 +1004,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Dbpedia
 	public void test211(){
-	  System.out.println("\nRunning test 2.11 - dbpedia query");
+	  System.out.println("\nRunning test 5.2.11 - dbpedia query");
 		
 	  source="river(length)";
 	  target="river(length)";
@@ -1019,7 +1019,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
 	  
-	  fOut.write("Test 2.11 - dbpedia query\n");
+	  fOut.write("Test 5.2.11 - dbpedia query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){
@@ -1043,7 +1043,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Dbpedia
 	public void test212(){
-	  System.out.println("\nRunning test 2.12 - dbpedia query");
+	  System.out.println("\nRunning test 5.2.12 - dbpedia query");
 		
 	  source="Stream(length)";
 	  target="Stream(length)";
@@ -1058,7 +1058,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
 	  
-	  fOut.write("Test 2.12 - dbpedia query\n");
+	  fOut.write("Test 5.2.12 - dbpedia query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){
@@ -1082,7 +1082,7 @@ public class Create_Query_Test_Cases {
 	
 	@Test //Dbpedia
 	public void test213(){
-	  System.out.println("\nRunning test 2.13 - dbpedia query");
+	  System.out.println("\nRunning test 5.2.13 - dbpedia query");
 		
 	  source="River(Mountain(elevation))";
 	  target="River(Mountain(elevation))";
@@ -1097,7 +1097,7 @@ public class Create_Query_Test_Cases {
 	  
 	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
 	  
-	  fOut.write("Test 2.13 - dbpedia query\n");
+	  fOut.write("Test 5.2.13 - dbpedia query\n");
 	  
 	  if(finalRes!=null){
 	    if(finalRes.size() == 0){

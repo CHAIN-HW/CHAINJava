@@ -35,7 +35,7 @@ public class Repair_Schema_Test_Cases {
 		System.out.println("These tests are responsible for testing the element of CHAIn that after calling SPSM\n"
 				+"and filtering the results will try to create a repaired schema based on the match data between\n"
 				+"the source and target schemas.");
-		System.out.println("\nThe results from these tests can be found in outputs/tests/Schema_Repair_Tests.txt\n");
+		System.out.println("\nThe results from these tests can be found in outputs/testing/Schema_Repair_Tests.txt\n");
 
 		
 		alreadyWritten = false;
@@ -69,7 +69,7 @@ public class Repair_Schema_Test_Cases {
 	
 	@Test
 	public void test11(){
-		System.out.println("\nRunning test 1.1");
+		System.out.println("\nRunning test 4.1.1");
 		
 		source="auto(brand,name,color)";
 		target="car(year,brand,colour)";
@@ -82,7 +82,7 @@ public class Repair_Schema_Test_Cases {
 			finalRes = getRepairedSchema.prepare(finalRes);
 		}
 		
-		fOut.write("Test 1.1\n");
+		fOut.write("Test 4.1.1\n");
 		fOut.write("Calling SPSM with source, "+source+" & target, "+target+"\n");
 		
 		fOut.write("Expected Result: repaired schema == 'car(colour,brand)' \n");
@@ -104,7 +104,7 @@ public class Repair_Schema_Test_Cases {
 	
 	@Test
 	public void test56(){
-		System.out.println("\nRunning test 5.6");
+		System.out.println("\nRunning test 4.5.6");
 		
 		source="conference(paper(title,review(date(day,month,year),author(name(first,second)))))";
 		target="conference(paper(title,document(date(day,month,year),writer(name(first,second)))))";
@@ -117,7 +117,7 @@ public class Repair_Schema_Test_Cases {
 			finalRes = getRepairedSchema.prepare(finalRes);
 		}
 		
-		fOut.write("Test 5.6\n");
+		fOut.write("Test 4.5.6\n");
 		fOut.write("Calling SPSM with source, "+source+" & target, "+target+"\n");
 		
 		fOut.write("Expected Result: repaired schema == 'conference(paper(title,document(date(day,month,year),writer(name(first,second)))))' \n");
@@ -140,7 +140,7 @@ public class Repair_Schema_Test_Cases {
 	
 	@Test
 	public void test57(){
-		System.out.println("\nRunning test 5.7");
+		System.out.println("\nRunning test 4.5.7");
 		
 		source="conference(paper(title,review(date(day,month,year),author(name(first,second)))))";
 		target="conference(paper(title,document(category(day,month,year),writer(name(first,second)))))";
@@ -153,7 +153,7 @@ public class Repair_Schema_Test_Cases {
 			finalRes = getRepairedSchema.prepare(finalRes);
 		}
 		
-		fOut.write("Test 5.7\n");
+		fOut.write("Test 4.5.7\n");
 		fOut.write("Calling SPSM with source, "+source+" & target, "+target+"\n");
 		
 		fOut.write("Expected Result: repaired schema == 'conference(paper(title,document(writer(name(first,second)))))' \n");

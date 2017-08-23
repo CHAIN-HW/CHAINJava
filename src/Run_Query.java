@@ -8,6 +8,13 @@ import com.hp.hpl.jena.query.ResultSetFormatter;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.util.FileManager;
 
+/*
+ * 
+ * Responsible for taking in a Match_Struc 
+ * object and running the query that is 
+ * stored as part of that structure.
+ * 
+ */
 public class Run_Query {
 
 	//main method, used for testing the class
@@ -56,21 +63,21 @@ public class Run_Query {
 	
 	//runs a sepa query
 	public boolean runSepaQuery(String query, String datasetToUseDir, Match_Struc currMatchStruc){
-		System.out.println("Running sepa query based on,");
-		System.out.println("Repaired Schema: "+currMatchStruc.getDatasetSchema());
+		System.out.println("Running sepa query,");
 		System.out.println("\n\nQuery:\t" + query);
 		
 		//create query object
 		Query queryObj = QueryFactory.create(query);
 		
-		//load model locally
-		String dbDir = datasetToUseDir + currMatchStruc.getRepairedSchemaTree().getValue() + ".n3";
-		Model model = FileManager.get().loadModel(dbDir);
+		try{
+			//load model locally
+			String dbDir = datasetToUseDir + currMatchStruc.getRepairedSchemaTree().getValue() + ".n3";
+			Model model = FileManager.get().loadModel(dbDir);
 		
-		//query execution factory
-		QueryExecution queryExec = QueryExecutionFactory.create(queryObj, model);
+			//query execution factory
+			QueryExecution queryExec = QueryExecutionFactory.create(queryObj, model);
 		
-		try{	
+			
 			System.out.println("\nResults:\n");
 			//execute and print results to console
 			ResultSet results = queryExec.execSelect();
@@ -81,7 +88,8 @@ public class Run_Query {
 				ResultSetFormatter.out(System.out, results);
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			System.out.println("Run_Query.java: QUERY ERROR!");
+			return false;
 		}
 		
 		return true;
@@ -89,15 +97,14 @@ public class Run_Query {
 	
 	//runs a dbpedia query
 	public boolean runDbpediaQuery(String query, Match_Struc currMatchStruc){
-		System.out.println("\n\nRunning dbpedia query based on,");
-		System.out.println("Repaired Schema: "+currMatchStruc.getDatasetSchema());
+		System.out.println("\n\nRunning dbpedia query,");
 		System.out.println("\nQuery:\t"+query);
-		
+
 		//create query object
 		Query queryObj = QueryFactory.create(query);
-		QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", queryObj);
+		QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", queryObj);	
 		
-		try{
+		try{			
 			System.out.println("\nResults:\n");
 			
 			//execute and print results to console
@@ -110,7 +117,9 @@ public class Run_Query {
 			}
 			
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println("Run_Query.java: QUERY ERROR!");
+			return false;
 		}
 		
 		return true;
