@@ -1,3 +1,5 @@
+package tests;
+
 import static org.junit.Assert.*;
 
 import java.io.File;
@@ -6,6 +8,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import org.junit.*;
+
+import chain_source.Best_Match_Results;
+import chain_source.Call_SPSM;
+import chain_source.Match_Struc;
 
 /*
  * Responsible for testing the whole of task 1 which involves

@@ -1,3 +1,4 @@
+package chain_source;
 import java.util.ArrayList;
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryExecution;
@@ -13,6 +14,8 @@ import com.hp.hpl.jena.util.FileManager;
  * Responsible for taking in a Match_Struc 
  * object and running the query that is 
  * stored as part of that structure.
+ * 
+ * This class is tested in Run_Query_Test_Cases.java
  * 
  */
 public class Run_Query {

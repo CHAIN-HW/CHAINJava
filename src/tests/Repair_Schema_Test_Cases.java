@@ -1,3 +1,5 @@
+package tests;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -9,6 +11,10 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+
+import chain_source.Call_SPSM;
+import chain_source.Match_Struc;
+import chain_source.Repair_Schema;
 
 /*
  * Responsible for testing the element of CHAIn

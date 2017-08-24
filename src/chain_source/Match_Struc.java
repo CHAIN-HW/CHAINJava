@@ -1,3 +1,4 @@
+package chain_source;
  import java.util.ArrayList;
 
 /*
@@ -8,6 +9,7 @@
  * the name of the target, a list of the individual
  * matches and relations as well as storing how many
  * individual matches this target has
+ * 
  */
 public class Match_Struc{
 	

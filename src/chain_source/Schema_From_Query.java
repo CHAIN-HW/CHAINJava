@@ -1,3 +1,4 @@
+package chain_source;
  import java.util.*;
 
 import com.hp.hpl.jena.query.Query;
@@ -8,6 +9,8 @@ import com.hp.hpl.jena.sparql.core.Var;
  * 
  * Responsible for taking in a query (either sepa or dbpedia)
  * and creating a CHAIn schema based on this query.
+ * 
+ * This class is tested in Schema_From_Query_Test_Cases.java
  * 
  */
 public class Schema_From_Query {
