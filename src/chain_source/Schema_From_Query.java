@@ -1,6 +1,11 @@
 package chain_source;
  import java.util.*;
 
+ /* Author Tanya Howden
+  * Date September 2017
+  * Modified
+  */
+
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.sparql.core.Var;
@@ -35,6 +40,9 @@ public class Schema_From_Query {
 		
 		Match_Struc res = getSchema.getSchemaFromQuery(query, queryType);
 		System.out.println("Schema created from query: \n\n"+res.getRepairedSchema());
+		System.out.println("Query Schema "+ res.getQuerySchema());
+		System.out.println("Query Schema Head "+ res.getQuerySchemaHead());
+		System.out.println("Dataset Schema "+ res.getDatasetSchema());
 	}
 	
 	//first step to creating schema from query
@@ -61,6 +69,7 @@ public class Schema_From_Query {
 	//create the schema for a sepa query that has been passed in as a parameter
 	public Match_Struc schemaFromSepaQuery(String query, Match_Struc res){
 		String schema="";
+		String predicate = "" ;
 		
 		if(!query.equals("")){
 			
@@ -80,6 +89,9 @@ public class Schema_From_Query {
 				
 				//then remove the .n3 from the filename and we have our predicate
 				datasetFile = datasetFile.substring(0, datasetFile.length() - 3);
+				
+				predicate = datasetFile ;
+				System.out.println("Predicate " + predicate) ;
 				
 				//add to schema string
 				schema = datasetFile + "(";
@@ -115,8 +127,12 @@ public class Schema_From_Query {
 		
 		//set string and tree equivalent of schema in our structure
 		//and return
+		System.out.println("Predicate " + predicate) ;
 		res.setRepairedSchema(schema);
 		res.setRepairedSchemaTree(createTreeFromSchemaString(schema));
+		res.setQuerySchema(schema);
+		res.setQuerySchemaHead(predicate);
+		System.out.println("Schema head in setter " + res.getQuerySchemaHead()) ;
 		
 		return res;
 	}
@@ -124,6 +140,7 @@ public class Schema_From_Query {
 	//create the schema for a dbpedia query that has been passed in as a parameter
 	public Match_Struc schemaFromDbpediaQuery(String query, Match_Struc res){
 		String schema="";
+		String predicate = "";
 		
 		if(!query.equals("")){
 
@@ -142,7 +159,8 @@ public class Schema_From_Query {
 				
 				//then get the first value from this list and set as predicate
 				String[] patternArr = queryPattern.split("\n")[0].split("/");
-				String predicate = patternArr[patternArr.length-1];
+				predicate = patternArr[patternArr.length-1];
+				System.out.println("Predicate " + predicate) ;
 				
 				if(projectVars.size() > 1){
 					predicate = predicate.trim().substring(0,predicate.length()-3);
@@ -181,8 +199,12 @@ public class Schema_From_Query {
 		
 		//set string and tree equivalent of schema in our structure
 		//and return
+		
 		res.setRepairedSchema(schema);
 		res.setRepairedSchemaTree(createTreeFromSchemaString(schema));
+		res.setQuerySchema(schema);
+		res.setQuerySchemaHead(predicate);
+		System.out.println("Schema head in setter " + res.getQuerySchemaHead()) ;
 		
 		return res;
 	}

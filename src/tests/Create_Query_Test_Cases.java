@@ -1,6 +1,7 @@
 package tests;
 
 import java.io.File;
+
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -16,6 +17,11 @@ import chain_source.Call_SPSM;
 import chain_source.Create_Query;
 import chain_source.Match_Struc;
 import chain_source.Repair_Schema;
+
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
 
 /*
  * Responsible for testing Create_Query.java to ensure

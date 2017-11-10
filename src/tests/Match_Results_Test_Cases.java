@@ -10,6 +10,11 @@ import org.junit.*;
 import chain_source.Best_Match_Results;
 import chain_source.Match_Struc;
 
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
+
 /*
  * Responsible for testing the Best_Match_Results.java file
  * to make sure that when we pass in the results we get results 

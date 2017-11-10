@@ -11,6 +11,11 @@ import org.junit.Test;
 
 import chain_source.Run_CHAIn;
 
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
+
 /*
  * 
  * Responsible for testing Run_CHAIn.java that

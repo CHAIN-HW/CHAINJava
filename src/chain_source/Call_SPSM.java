@@ -1,4 +1,10 @@
 package chain_source;
+
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
+
 import java.io.*;
 import java.util.*;
 
@@ -62,7 +68,6 @@ public class Call_SPSM{
 	//get the schemas from the user, either through the console or as a parameter
 	//when this method gets called
 	public ArrayList<Match_Struc> getSchemas(ArrayList<Match_Struc> results, String srcSchema, String targetSchema){
-
 		//if we haven't been passed the schemas as params
 		//then get them through the command line
 		if(srcSchema==null && targetSchema==null){
@@ -91,6 +96,7 @@ public class Call_SPSM{
 			//then write the source schema to file
 			PrintWriter srcWriter = new PrintWriter("inputs/source.txt","UTF-8");
 			srcWriter.write(srcSchema);
+			System.out.println("Calling SPSM with Source Schema: " + srcSchema) ;
 			srcWriter.close();
 			
 			//then save the target schemas to our array
@@ -104,6 +110,7 @@ public class Call_SPSM{
 				//write the current target schema to file
 				PrintWriter targetWriter = new PrintWriter("inputs/target.txt","UTF-8");
 				currTarget = targetList[i].trim();
+				System.out.println("Calling SPSM with Target Schema: " + currTarget) ;
 				targetWriter.write(currTarget);
 				targetWriter.close();
 				

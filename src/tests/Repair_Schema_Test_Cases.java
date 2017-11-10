@@ -16,6 +16,11 @@ import chain_source.Call_SPSM;
 import chain_source.Match_Struc;
 import chain_source.Repair_Schema;
 
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
+
 /*
  * Responsible for testing the element of CHAIn
  * that after calling SPSM and filtering the results

@@ -1,6 +1,12 @@
 package chain_source;
 import java.util.*;
 
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
+
+
 /*
  * Responsible for taking results after calling SPSM
  * and then filtering to ensure each result is over the 

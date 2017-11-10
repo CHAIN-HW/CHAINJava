@@ -1,4 +1,9 @@
 package chain_source;
+
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
 /*
  * 
  * Structure that is used to store the 

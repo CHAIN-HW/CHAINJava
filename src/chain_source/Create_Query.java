@@ -1,5 +1,10 @@
 package chain_source;
 import java.nio.charset.StandardCharsets;
+
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;

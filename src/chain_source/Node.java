@@ -1,6 +1,11 @@
 package chain_source;
 import java.util.*;
 
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
+
 /*
  * 
  * Structure that is being used to store the

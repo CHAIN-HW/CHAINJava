@@ -9,6 +9,11 @@ import org.junit.runners.MethodSorters;
 import chain_source.Call_SPSM;
 import chain_source.Match_Struc;
 
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
+
 /*
  * Responsible for testing the output results from
  * Call_SPSM.java which takes in source and target

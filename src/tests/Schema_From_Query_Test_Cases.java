@@ -14,6 +14,11 @@ import org.junit.runners.MethodSorters;
 import chain_source.Match_Struc;
 import chain_source.Schema_From_Query;
 
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
+
 /*
  * Responsible for testing Schema_From_Query.java to ensure
  * that we can create a valid schema from a sepa or dbpedia

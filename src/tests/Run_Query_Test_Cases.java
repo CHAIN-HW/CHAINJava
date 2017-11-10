@@ -18,6 +18,11 @@ import chain_source.Match_Struc;
 import chain_source.Repair_Schema;
 import chain_source.Run_Query;
 
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
+
 /*
  * Responsible for testing Run_Query.java to ensure
  * that after creating a query, we are able to run it 

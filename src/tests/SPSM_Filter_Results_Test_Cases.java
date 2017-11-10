@@ -13,6 +13,11 @@ import chain_source.Best_Match_Results;
 import chain_source.Call_SPSM;
 import chain_source.Match_Struc;
 
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
+
 /*
  * Responsible for testing the whole of task 1 which involves
  * methods from both Call_SPSM.java and Best_Match_Results.java

@@ -2,6 +2,11 @@ package chain_source;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
+
 /*
  * 
  * Responsible for running CHAIn when passed
@@ -42,28 +47,27 @@ public class Run_CHAIn {
 		String queryType="sepa";
 		double simThresholdVal = 0.3;
 		
-		//note if there are several schemas here they are seperated with ';'
-		String targetSchemas="waterBodyPressures(dataSource, identifiedDate, affectsGroundwater, waterBodyId)";
+		//note if there are several schemas here they are separated with ';'
+		//-- Two target schemas
+		// String targetSchemas="waterBodyPressures(dataSource, identifiedDate, affectsGroundwater, waterBodyId) ; waterBodyMeasures(dataSource, identifiedDate, affectsGroundwater, waterBodyId)";
+		//-- No target schemas
+		// String targetSchemas="";
+		//-- One target schema
+		// String targetSchemas="waterBodyPressures(dataSource, identifiedDate, affectsGroundwater, waterBodyId)" ;
+		//-- No narrowed schemas
+		// String targetSchemas="places(dataSource, identifiedDate, affectsGroundwater, waterBodyId)" ;
+		//-- Two targets, one  narrowed target schema
+		String targetSchemas="places(dataSource, identifiedDate, affectsGroundwater, waterBodyId) ; waterBodyPressures(dataSource, identifiedDate, affectsGroundwater, waterBodyId)" ;
+		
 		
 		runCHAIn.startCHAIn(query, queryType, targetSchemas, 10, simThresholdVal, 5, null);
 	}
 	
 	public void startCHAIn(String query, String queryType, String targetSchemas, int queryLim, double simThresholdVal, int resLimit, PrintWriter fOut){
+		
 		//first step is trying to run the query
 		Match_Struc current = new Match_Struc();
-		current = getSchema.getSchemaFromQuery(query, queryType);
-		
-		if(current==null){
-			//then we have an invalid query
-			//terminate chain with appropriate message
-			fOut.write("Invalid SPARQL query, please enter a valid query, terminating...\n\n");
-			System.out.println("Terminating.");
-			
-			return;
-		}
-		
-		current.setQuery(query);
-		
+		current.setQuery(query);	
 		boolean queryRunStatus = runQuery.runQuery(current, queryType, "queryData/sepa/sepa_datafiles/");
 		
 		if(queryRunStatus == true){
@@ -79,6 +83,17 @@ public class Run_CHAIn {
 			//has not run successfully, need to call SPSM & start repair work
 			System.out.println("Query has not run successfully");
 			System.out.println("CHAIn will now try to repair this query.\n");
+			
+			current = getSchema.getSchemaFromQuery(query, queryType);
+			
+			if(current==null){
+				//then we have an invalid query
+				//terminate chain with appropriate message
+				fOut.write("Invalid SPARQL query, please enter a valid query, terminating...\n\n");
+				System.out.println("Terminating.");
+				
+				return;
+			}
 			
 			ArrayList<Match_Struc> results = startRepair(current, targetSchemas, queryType, "queryData/sepa/sepa_datafiles/", queryLim, simThresholdVal, resLimit);
 			
@@ -121,6 +136,13 @@ public class Run_CHAIn {
 	}
 	
 	public ArrayList<Match_Struc> startRepair(Match_Struc current, String targetSchemas, String queryType, String dataset, int queryLim, double simThresholdVal, int resLimit){
+		
+		//Narrow down the target schemas by filtering them against the associated words in the source schema
+		System.out.println("All Target Schemas: " + targetSchemas);
+		
+		targetSchemas = Narrow_Down.narrowDown(current.getQuerySchemaHead(), targetSchemas) ;
+		
+		System.out.println("Narrowed Target Schemas: " + targetSchemas);
 		
 		//start off by calling SPSM with schema created from query
 		//and target schemas passed in originally

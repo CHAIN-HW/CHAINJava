@@ -9,6 +9,12 @@ import com.hp.hpl.jena.query.ResultSetFormatter;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.util.FileManager;
 
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
+
+
 /*
  * 
  * Responsible for taking in a Match_Struc 
@@ -52,7 +58,10 @@ public class Run_Query {
 	
 	
 	public boolean runQuery(Match_Struc current, String queryType, String datasetDir){
-		
+			
+		System.out.println("Repaired schema: "+current.getRepairedSchema());
+		System.out.println("Similarity == "+current.getSimValue()+" & size of matched structure == "+current.getNumMatches()+"\n"); 
+	
 		if(queryType.equals("dbpedia")){
 			return runDbpediaQuery(current.getQuery(),current);
 		}else if(queryType.equals("sepa")){

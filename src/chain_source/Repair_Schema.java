@@ -1,6 +1,11 @@
 package chain_source;
 import java.util.ArrayList;
 
+/* Author Tanya Howden
+ * Date September 2017
+ * Modified
+ */
+
 /*
  * 
  * Responsible for taking in ArrayList of Match_Struc objects
