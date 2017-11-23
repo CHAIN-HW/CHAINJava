@@ -1,14 +1,21 @@
 package chain_source;
  import java.util.*;
 
- /* Author Tanya Howden
+import com.hp.hpl.jena.graph.Node;
+
+/* Author Tanya Howden
   * Date September 2017
-  * Modified
+  * Modified Diana Bental November 2017
+  * - use the property names for schema predicate and parameters instead of variable names
   */
 
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryFactory;
+import com.hp.hpl.jena.sparql.core.TriplePath;
 import com.hp.hpl.jena.sparql.core.Var;
+import com.hp.hpl.jena.sparql.syntax.ElementPathBlock;
+import com.hp.hpl.jena.sparql.syntax.ElementVisitorBase;
+import com.hp.hpl.jena.sparql.syntax.ElementWalker;
 
 /*
  * 
@@ -96,26 +103,56 @@ public class Schema_From_Query {
 				//add to schema string
 				schema = datasetFile + "(";
 				
-				//then get the variables that will make up
-				//parameters in our schema
-				List<Var> projectVars = sepaQuery.getProjectVars();
+				// Temp structure for elements of a CHAIn schema
+				ArrayList<String> chainParameters = new ArrayList<String>();
 				
-				//loop for each project variable apart from first which is id
-				//and add as parameter to schema
-				for(int i = 1 ; i < projectVars.size() ; i++){
-					//add param to schema string
-					String param = projectVars.get(i).getName();
-					
-					schema = schema + param;
-					
-					//as long as it isn't the last param, add comma
-					if(i != projectVars.size()-1){
-						schema=schema+",";
+				ElementWalker.walk(sepaQuery.getQueryPattern(),
+					    // For each element...
+					    new ElementVisitorBase() {
+					        // ...when it's a block of triples...
+					        public void visit(ElementPathBlock el) {
+					            // ...go through all the triples...
+					            Iterator<TriplePath> triples = el.patternElts();
+					            while (triples.hasNext()) {
+					            	
+					                // Get the next triple
+					            	TriplePath triple = triples.next() ;
+					            	// System.out.println(triple) ;
+					            	
+					            	// Split into subject, rdf-predicate and object
+					            	Node subjectNode = triple.getSubject() ;
+					            	Node objectNode = triple.getObject() ;
+					            	Node predicateNode = triple.getPredicate();
+					            	
+					            	// Parse the rdf-predicate into the namespace (prefix) and value
+					            	String nameSpace = predicateNode.getNameSpace(); 
+					            	String localName = predicateNode.getLocalName() ;
+					            		
+					            	// The rdf predicate becomes a CHAIN parameter
+					       
+					            	chainParameters.add(predicateNode.getLocalName()) ;
+					            	
+					            }
+					        }
+					    }
+					);
+				
+				
+				
+				int size = chainParameters.size() ;
+				
+				if (size > 0) {
+					for(int i = 1 ; i < size ; i++) {
+						schema = schema + chainParameters.get(i-1) + ",";
 					}
+					schema = schema + chainParameters.get(size-1) ;
 				}
-				
 				//add final bracket
 				schema=schema+")";
+				
+				System.out.println("Chain schema "+schema);				
+				
+			
 				
 			}catch(Exception e){
 				//invalid query, return null
@@ -149,46 +186,65 @@ public class Schema_From_Query {
 				//create query object
 				Query dbpediaQuery = QueryFactory.create(query);
 				
-				//get the predicate of the schema
-				//get query pattern to get predicate value
-				String queryPattern = dbpediaQuery.getQueryPattern().toString();
+				// Temp structure for elements of a CHAIn schema
+				ArrayList<String> chainParameters = new ArrayList<String>();
+				ArrayList<String> chainPredicates = new ArrayList<String>() ;
 				
-				//then get the variables that will make up
-				//parameters in our schema
-				List<Var> projectVars = dbpediaQuery.getProjectVars();
-				
-				//then get the first value from this list and set as predicate
-				String[] patternArr = queryPattern.split("\n")[0].split("/");
-				predicate = patternArr[patternArr.length-1];
-				System.out.println("Predicate " + predicate) ;
-				
-				if(projectVars.size() > 1){
-					predicate = predicate.trim().substring(0,predicate.length()-3);
-				}else{
-					predicate = predicate.trim().substring(0,predicate.length()-2);
-				}
+				ElementWalker.walk(dbpediaQuery.getQueryPattern(),
+					    // For each element...
+					    new ElementVisitorBase() {
+					        // ...when it's a block of triples...
+					        public void visit(ElementPathBlock el) {
+					            // ...go through all the triples...
+					            Iterator<TriplePath> triples = el.patternElts();
+					            while (triples.hasNext()) {
+					            	
+					                // Get the next triple
+					            	TriplePath triple = triples.next() ;
+					            	// System.out.println(triple) ;
+					            	
+					            	// Split into subject, rdf-predicate and object
+					            	Node subjectNode = triple.getSubject() ;
+					            	Node objectNode = triple.getObject() ;
+					            	Node predicateNode = triple.getPredicate();
+					            	
+					            	// Parse the rdf-predicate into the namespace (prefix) and value
+					            	String nameSpace = predicateNode.getNameSpace(); 
+					            	String localName = predicateNode.getLocalName() ;
+					            	
+					            	// If it's an rdf:type then its object value becomes the CHAIN predicate 
+					            	if (nameSpace.equals("http://www.w3.org/1999/02/22-rdf-syntax-ns#") &&
+					            			localName.equals("type")) {
+					            		chainPredicates.add(objectNode.getLocalName()) ;
+					            	}
+					            	// If it's anything else then the rdf predicate becomes a CHAIN parameter
+					            	else {
+					            		chainParameters.add(predicateNode.getLocalName()) ;
+					            	}
+					            			
+					            	
+					            	
+					            }
+					        }
+					    }
+					);
 				
 				
 				//start schema string
-				schema = predicate + "(";
+				schema = chainPredicates.get(0) + "(";
 				
-						
-				//loop for each project variable apart from first which is id
-				//and add as parameter to schema
-				for(int i = 1 ; i < projectVars.size() ; i++){
-					//add param to schema string
-					String param = projectVars.get(i).getName();
-							
-					schema = schema + param;
-							
-					//as long as it isn't the last param, add comma
-					if(i != projectVars.size()-1){
-						schema=schema+",";
+				int size = chainParameters.size() ;
+				
+				if (size > 0) {
+					for(int i = 1 ; i < size ; i++) {
+						schema = schema + chainParameters.get(i-1) + ",";
 					}
+					schema = schema + chainParameters.get(size-1) ;
 				}
-						
-				//add final bracket
-				schema=schema+")";
+				
+				schema = schema + ")" ;
+				
+				System.out.println("Chain schema "+schema);
 				
 			}catch(Exception e){
 				//invalid query, returning null
@@ -209,20 +265,21 @@ public class Schema_From_Query {
 		return res;
 	}
 	
-	//create tree structure from schema string that has just
-	//been created based on the query
-	public Node createTreeFromSchemaString(String schemaStr){
-		Node root;
+	// Create tree structure from schema string that has just
+	// been created based on the query
+	// Not a recursive parser: this assumes a flat schema structure.
+	public NodeCHAIN createTreeFromSchemaString(String schemaStr){
+		NodeCHAIN root;
 		
 		String[] schemaArr = schemaStr.split("[,)(]");
 		
 		//first element is predicate
 		//therefore root of our tree
-		root = new Node(schemaArr[0]);
+		root = new NodeCHAIN(schemaArr[0]);
 		
 		//then we need to add children to our root node
 		for(int i = 1 ; i < schemaArr.length ; i++){
-			root.addChild(new Node(schemaArr[i]));
+			root.addChild(new NodeCHAIN(schemaArr[i]));
 		}
 		
 		return root;

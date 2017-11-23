@@ -107,7 +107,7 @@ public class Create_Query {
 			query = query + "\nSELECT *\n" + "FROM <"+ dbDir + ">\n"+"WHERE { ?id ";
 			
 			//then start getting different parts of data to search for
-			List<Node> schemaChildren = matchDetails.getRepairedSchemaTree().getChildren();
+			List<NodeCHAIN> schemaChildren = matchDetails.getRepairedSchemaTree().getChildren();
 			
 			if(schemaChildren.size()>0){
 				query=query+ dataMatching(schemaChildren,ontologies);
@@ -170,7 +170,7 @@ public class Create_Query {
 			}
 			
 			//then start getting different parts of data to search for
-			List<Node> schemaChildren = matchDetails.getRepairedSchemaTree().getChildren();
+			List<NodeCHAIN> schemaChildren = matchDetails.getRepairedSchemaTree().getChildren();
 			
 			if(schemaChildren.size() > 0){
 				query = query + ";\n";
@@ -241,7 +241,7 @@ public class Create_Query {
 	}
 	
 	//finds which ontology file the keywork relates to
-	public String dataMatching(List<Node> children, ArrayList<Ontology_Struc> ontologies){
+	public String dataMatching(List<NodeCHAIN> children, ArrayList<Ontology_Struc> ontologies){
 		String dataDetails="";
 		
 		for(int i = 0 ; i < children.size() ; i++){

@@ -79,7 +79,7 @@ public class JWI_Caller {
 		String wnhome = "./Wordnet/wn3.1.dict";
 		String path = wnhome + File . separator + "dict";
 		URL url = new URL("file", null , path );
-		System.out.println(url);
+		// System.out.println(url);
 		
 		// construct the dictionary object and open it
 		IDictionary dict = new Dictionary (url);

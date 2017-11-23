@@ -15,13 +15,13 @@ import java.util.*;
  * and also a list of children nodes
  * 
  */
-public class Node {
+public class NodeCHAIN {
 	//FIELDS
 	private String value;
-	private List<Node> children = null;
+	private List<NodeCHAIN> children = null;
 	
 	//CONSTRUCTOR
-	public Node(String val){
+	public NodeCHAIN(String val){
 		value = val;
 		children = new ArrayList<>();
 	}
@@ -29,7 +29,7 @@ public class Node {
 	//PUBLIC METHODS: GETTER & SETTER
 	
 	//adds a child node
-	public void addChild(Node child){
+	public void addChild(NodeCHAIN child){
 		children.add(child);
 	}
 	
@@ -39,7 +39,7 @@ public class Node {
 	}
 	
 	//returns the list of children nodes
-	public List<Node> getChildren(){
+	public List<NodeCHAIN> getChildren(){
 		return children;
 	}
 	
@@ -85,12 +85,12 @@ public class Node {
 	}
 	
 	//prints out the children for the repaired schema
-	public String printChildren(List<Node> childrenList){
+	public String printChildren(List<NodeCHAIN> childrenList){
 		String childrenString="";
 		
 		for(int i = 0 ; i < childrenList.size() ; i++){
 			
-			Node currNode = childrenList.get(i);
+			NodeCHAIN currNode = childrenList.get(i);
 			
 			childrenString = childrenString + currNode.getValue();
 			//System.out.print(currNode.getValue());
@@ -124,7 +124,7 @@ public class Node {
 			}
 			
 			//then check if it is in the list of children
-			Node tmpNode = new Node(currParam);
+			NodeCHAIN tmpNode = new NodeCHAIN(currParam);
 			if(children.contains(tmpNode)){
 				continue;
 			}
@@ -132,8 +132,8 @@ public class Node {
 			//otherwise the parameter before the current one
 			//is the parent so we can add it on
 			int indexOfParent = children.indexOf(paramParts[i-1]);
-			Node tmpParent = children.get(indexOfParent);
-			tmpParent.addChild(new Node(currParam));
+			NodeCHAIN tmpParent = children.get(indexOfParent);
+			tmpParent.addChild(new NodeCHAIN(currParam));
 		}
 		
 	}

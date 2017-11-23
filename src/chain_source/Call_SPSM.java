@@ -1,8 +1,10 @@
 package chain_source;
 
-/* Author Tanya Howden
+/* @author Diana Bental
+ * @author Tanya Howden
+ * 
  * Date September 2017
- * Modified
+ * Modified November 2017
  */
 
 import java.io.*;
@@ -23,6 +25,10 @@ import it.unitn.disi.smatch.data.trees.INode;
 public class Call_SPSM{
 	
 	private String[] targetList;
+	private static int spsmCallCounter = 0;
+	private static int spsmCrashCounter = 0;
+	private static int spsmSuccessCounter = 0;
+	private static int spsmNoMatchCounter = 0;
 	
 	//main method used for testing purposes during dev only
 	public static void main (String[] args){
@@ -96,7 +102,6 @@ public class Call_SPSM{
 			//then write the source schema to file
 			PrintWriter srcWriter = new PrintWriter("inputs/source.txt","UTF-8");
 			srcWriter.write(srcSchema);
-			System.out.println("Calling SPSM with Source Schema: " + srcSchema) ;
 			srcWriter.close();
 			
 			//then save the target schemas to our array
@@ -110,7 +115,6 @@ public class Call_SPSM{
 				//write the current target schema to file
 				PrintWriter targetWriter = new PrintWriter("inputs/target.txt","UTF-8");
 				currTarget = targetList[i].trim();
-				System.out.println("Calling SPSM with Target Schema: " + currTarget) ;
 				targetWriter.write(currTarget);
 				targetWriter.close();
 				
@@ -121,7 +125,9 @@ public class Call_SPSM{
 					continue;
 				}else{
 					//then call SPSM & store results
-					results = makeCallToSPSM(results,currTarget);
+					System.out.println("Calling SPSM with Source Schema: " + srcSchema) ;
+					System.out.println("Calling SPSM with Target Schema: " + currTarget) ;
+					results = callSPSM(results,currTarget);
 				}
 			}
 			
@@ -134,8 +140,10 @@ public class Call_SPSM{
 	}
 	
 	//makes call to SPSM through using .sh file
-	public ArrayList<Match_Struc> makeCallToSPSM(ArrayList<Match_Struc> results, String currTarget){
-		System.out.println("Calling SPSM");
+	// Match one source schema to one target schema
+	// May return multiple matches
+	public ArrayList<Match_Struc> callSPSM(ArrayList<Match_Struc> results, String currTarget){
+		// System.out.println("Calling SPSM");
 		
 		//first clean the files
 		try {
@@ -147,6 +155,7 @@ public class Call_SPSM{
 		
 		//call SPSM by executing the appropriate bash file
 		try {
+			spsmCallCounter++ ;
 			final ProcessBuilder pb = new ProcessBuilder("/bin/sh","call-spsm.sh");
 			pb.directory(new File("spsm/s-match/bin"));
 			
@@ -155,18 +164,19 @@ public class Call_SPSM{
 			final Process p = pb.start();
 			p.waitFor();
 			
-			//recordSerialisedResults(results,currTarget);
+			results = readSerialisedResults(results,currTarget);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return recordSerialisedResults(results,currTarget);
+		// return recordSerialisedResults(results,currTarget);
+		return results ;
 	}
 	
 	//then record the results from the .ser file returned from spsm
 	@SuppressWarnings("unchecked")
-	public ArrayList<Match_Struc> recordSerialisedResults(ArrayList<Match_Struc> results,String targetSchema){
-		System.out.println("Recording Results from SPSM");
+	public ArrayList<Match_Struc> readSerialisedResults(ArrayList<Match_Struc> results,String targetSchema){
+		// System.out.println("Reading Results from SPSM");
 		
 		//get the serialised content from the .ser file
 		//and store it in a IContextMapping object var
@@ -182,24 +192,29 @@ public class Call_SPSM{
 			
 			inStream.close();
 			fIn.close();
+			System.out.println("Successfully read back results.");
 			
 		}catch(Exception e){
 			//e.printStackTrace();
-			System.out.println("Error reading results from SPSM, returning null.");
-			return null;
+			System.out.println("SPSM crash? - error returning results, returning no additional results.");
+			spsmCrashCounter++ ;
+			return results; // DB (instead of returning null)
 		}
 		
-		return readObject(results,targetSchema,mapping);
+		return parseMatchObject(results,targetSchema,mapping);
 	}
 	
-	public ArrayList<Match_Struc> readObject(ArrayList<Match_Struc> results, String targetSchema, IContextMapping<INode> mapping){
+	public ArrayList<Match_Struc> parseMatchObject(ArrayList<Match_Struc> results, String targetSchema, IContextMapping<INode> mapping){
 		//start picking data out of the object for this target
+	
 		Match_Struc newMatch;
 	
 		double similarity = mapping.getSimilarity();
 		newMatch = new Match_Struc(similarity,targetSchema);
 		
 		String[] currMatch;
+		
+		// System.out.println("Parsing the match objects.");
 		
 		//loop through each of the individual matching elements w relations
 		for (IMappingElement<INode> mappingElement : mapping) {
@@ -216,6 +231,11 @@ public class Call_SPSM{
 		//then add this new match to our overall list of results, if there have been matches only
 		if(newMatch.getNumMatches() != 0){
 			results.add(newMatch);
+			System.out.println("Adding a new match.");
+			spsmSuccessCounter++ ;
+		} else{
+			System.out.println("No match to add.");
+			spsmNoMatchCounter++;
 		}
 		
 		return results;
@@ -236,4 +256,14 @@ public class Call_SPSM{
 
         return sb.toString();
     }
+    
+    // Report SPSM performance
+    public static void reportSPSM() {
+    	System.out.println("\n\nSPSM Calls: " + spsmCallCounter);
+    	System.out.println("SPSM Crashes: " + spsmCrashCounter);
+    	System.out.println("SPSM Successful (matching) calls: " + spsmSuccessCounter);
+    	System.out.println("SPSM Non-matching calls: " + spsmNoMatchCounter);
+    }
+    
+
 }

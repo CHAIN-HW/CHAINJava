@@ -3,7 +3,7 @@ import java.util.*;
 
 /* Author Tanya Howden
  * Date September 2017
- * Modified
+ * Modified Diana Bental November 2017
  */
 
 
@@ -48,7 +48,7 @@ public class Best_Match_Results {
 	//start off by taking in the results, threshold value and the number of results wanted
 	//if these values haven't been passed in through params, then ask user to enter in console
 	public ArrayList<Match_Struc> getThresholdAndFilter(ArrayList<Match_Struc> results, Double threshVal, int limNum){
-		System.out.println("Filtering results from SPSM");
+		System.out.println("\nFiltering results from SPSM");
 		
 		Double thresholdVal;
 		int limitNo;
@@ -79,6 +79,8 @@ public class Best_Match_Results {
 				filteredList.add(currMatch);
 			}
 		}
+		
+		displayResults(filteredList) ; //DB
 
 		return sortResultingMatches(filteredList,limitNo);
 	}
@@ -107,11 +109,12 @@ public class Best_Match_Results {
 		if(res.size() == 0){
 			System.out.println("\nNo matches over this threshold value!");
 		}else{
-			System.out.println("\nSuggested match similarity values:\n");
+			System.out.println("\nSuggested match similarity values:");
 			
 			for(int i = 0 ; i < res.size() ; i++){
 				double currSim = res.get(i).getSimValue();
-				System.out.println(currSim);
+				String currSchema = res.get(i).getDatasetSchema();
+				System.out.println("Target: " + currSchema + " " + currSim);
 			}
 		}
 	}

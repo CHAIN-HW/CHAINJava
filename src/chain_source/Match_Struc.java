@@ -27,7 +27,7 @@ public class Match_Struc{
 	private double similarity;         // the similarity score for this SPSM schema match 
 	private String dataset;			   // the target schema for this match
 	private ArrayList<String[]> matches;      // components of this match
-	private Node repairedSchemaTree;   // One repaired schema, as a tree
+	private NodeCHAIN repairedSchemaTree;   // One repaired schema, as a tree
 	private String repairedSchema;     // One repaired schema, as a string
 	private int numMatches;   // The number of matching components (atoms) in the repaired query
 	private String query;     // The query - either the initial query, or created from the repaired schema
@@ -102,7 +102,7 @@ public class Match_Struc{
 		return matches.get(index);
 	}
 	
-	public void setRepairedSchemaTree(Node schemaTree){
+	public void setRepairedSchemaTree(NodeCHAIN schemaTree){
 		repairedSchemaTree = schemaTree;
 	}
 	
@@ -114,7 +114,7 @@ public class Match_Struc{
 		return repairedSchema;
 	}
 	
-	public Node getRepairedSchemaTree(){
+	public NodeCHAIN getRepairedSchemaTree(){
 		return repairedSchemaTree;
 	}
 	

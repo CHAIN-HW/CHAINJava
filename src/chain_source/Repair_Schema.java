@@ -77,7 +77,7 @@ public class Repair_Schema {
 		
 		//start off by going through the list of match details
 		//creating/adding to a tree for that target schema
-		Node targetRoot=null;
+		NodeCHAIN targetRoot=null;
 		
 		for(int i = 0 ; i < matchDetails.size() ; i++){
 				
@@ -99,7 +99,7 @@ public class Repair_Schema {
 	//using relation concept data, modify the tree to make sure
 	//that there are only links to parts of the schema
 	//that we think there is a match and return this
-	public Node modifyRepairedTree(Node root, String concept){
+	public NodeCHAIN modifyRepairedTree(NodeCHAIN root, String concept){
 		
 		//split the concept string
 		//so that we have the different parents/children
@@ -108,12 +108,12 @@ public class Repair_Schema {
 		if(root == null){
 			//if the root is null, then our tree is empty
 			//add the root as the first element in the conceptParts
-			root = new Node(conceptParts[0]);
+			root = new NodeCHAIN(conceptParts[0]);
 		}
 		
 		//keep a note of who the parent is
 		//since we will be working our way down the list
-		Node parent = root;
+		NodeCHAIN parent = root;
 		 
 		//make sure we have more than one element in the list
 		if(conceptParts.length > 1){
@@ -123,7 +123,7 @@ public class Repair_Schema {
 			//i.e. our root!	
 			for(int i = 1 ; i < conceptParts.length ; i++){
 				
-				Node currNode = new Node(conceptParts[i]);
+				NodeCHAIN currNode = new NodeCHAIN(conceptParts[i]);
 				
 				//for each of these, we want to check if this child exists
 				//by looking at its parents list of children
@@ -139,7 +139,7 @@ public class Repair_Schema {
 					//this is already in our structure as a child
 					//so we set it to be the parent
 					int newParentIndex = childrenVals.indexOf(currNode.getValue());
-					Node tmpCurr = parent.getChildren().get(newParentIndex);
+					NodeCHAIN tmpCurr = parent.getChildren().get(newParentIndex);
 					
 					parent = tmpCurr;
 				}

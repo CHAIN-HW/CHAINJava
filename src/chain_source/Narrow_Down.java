@@ -21,7 +21,7 @@ public class Narrow_Down {
 		// Split the query head into a list of words
 		// e.g. waterBodyMeasures to [water, Body, Measures]
 		ArrayList<String> queryWords = StringParser.splitCamelCase(queryHead) ;
-		System.out.println("Query words " + queryWords) ;
+		// System.out.println("Query words " + queryWords) ;
 		
 		// Use WordNet to build  a set of words (or terms) associated with any of the words in the query head
 		Set<String> associatedWords = new HashSet<String>() ;
@@ -35,7 +35,7 @@ public class Narrow_Down {
 			e.printStackTrace();
 		}
 		
-		System.out.println("Associated words " + associatedWords) ;
+		// System.out.println("Associated words " + associatedWords) ;
 		
 		// For each target schema in turn - do any of the words in the head match any of the associaed words?
 		// If so, then add the whole target schema to the list of narrowed schemas.
@@ -43,7 +43,7 @@ public class Narrow_Down {
 		String[] targetList = targetSchemas.split(";");
 		for(String target:targetList) {
 			String targetHead = target.split("\\(")[0];
-			System.out.println("Target head " + targetHead) ;
+			// System.out.println("Target head " + targetHead) ;
 			Set <String> targetWords = new HashSet <String> (StringParser.splitCamelCaseLC(targetHead)) ;
 			// System.out.println("Target words " + targetWords) ;
 			boolean matches = false ;

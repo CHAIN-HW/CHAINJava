@@ -23,6 +23,14 @@ public class StringParser {
 		parsed = splitCamelCase("EclipseRCPExt01") ;
 		parsed = splitCamelCase("Eclipse01RCPExt") ;
 		
+		parsed = splitCamelCaseLC("TitleValue") ;
+		parsed = splitCamelCaseLC("TitleVALUE") ;
+		parsed = splitCamelCaseLC("CAPITALS") ;
+		parsed = splitCamelCaseLC("lowercase") ;
+		parsed = splitCamelCaseLC("EclipseRCPExt") ;
+		parsed = splitCamelCaseLC("EclipseRCPExt01") ;
+		parsed = splitCamelCaseLC("Eclipse01RCPExt") ;
+		
 		parsed = splitSeparators("Split Title_Value") ;
 		parsed = splitSeparators("Title VALUE") ;
 		parsed = splitSeparators("CAPITALS") ;
