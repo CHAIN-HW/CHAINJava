@@ -231,7 +231,8 @@ public class Schema_From_Query {
 				
 				
 				//start schema string
-				schema = chainPredicates.get(0) + "(";
+				predicate = chainPredicates.get(0) ;
+				schema = predicate + "(";
 				
 				int size = chainParameters.size() ;
 				

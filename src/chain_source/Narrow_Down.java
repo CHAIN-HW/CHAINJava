@@ -20,14 +20,16 @@ public class Narrow_Down {
 		
 		// Split the query head into a list of words
 		// e.g. waterBodyMeasures to [water, Body, Measures]
+		// System.out.println("QueryHead:" + queryHead) ;
 		ArrayList<String> queryWords = StringParser.splitCamelCase(queryHead) ;
-		// System.out.println("Query words " + queryWords) ;
+		// System.out.println("Query words:" + queryWords) ;
 		
 		// Use WordNet to build  a set of words (or terms) associated with any of the words in the query head
 		Set<String> associatedWords = new HashSet<String>() ;
 		try {IDictionary dict = JWI_Caller.openDictionary () ; 
 			// One word at a time from the query head
 			for (String qWord : queryWords) {
+				// System.out.println("qWord:"+qWord) ;
 				associatedWords = JWI_Caller.getAssociatedWords(dict, qWord, associatedWords) ;
 			}
 			dict.close();

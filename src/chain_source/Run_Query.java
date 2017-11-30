@@ -10,8 +10,9 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.util.FileManager;
 
 /* Author Tanya Howden
+ * Author Diana Bental
  * Date September 2017
- * Modified
+ * Modified November 2017
  */
 
 
@@ -78,10 +79,14 @@ public class Run_Query {
 		System.out.println("Running sepa query,");
 		System.out.println("\n\nQuery:\t" + query);
 		
-		//create query object
-		Query queryObj = QueryFactory.create(query);
+		
 		
 		try{
+			
+			//create query object
+			// DB - move inside try/catch to catch invalid query
+			Query queryObj = QueryFactory.create(query);
+			
 			//load model locally
 			String dbDir = datasetToUseDir + currMatchStruc.getRepairedSchemaTree().getValue() + ".n3";
 			Model model = FileManager.get().loadModel(dbDir);
