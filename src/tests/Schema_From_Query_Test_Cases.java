@@ -1,5 +1,7 @@
 package tests;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -96,7 +98,9 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "sepa");
 		
 		fOut.write("Expected Result: waterBodyPressures(dataSource, identifiedDate, affectsGroundwater, waterBodyId)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");
+		assertTrue(res.getQuerySchema().contains("waterBodyPressures(")) ;
+		assertTrue(res.getQuerySchema().contains("identifiedDate")) ;
 	}
 	
 	@Test
@@ -123,7 +127,9 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "sepa");
 		
 		fOut.write("Expected Result: water(timePeriod, geo, measure, resource)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");
+		assertTrue(res.getQuerySchema().contains("water(")) ;
+		assertTrue(res.getQuerySchema().contains("timePeriod")) ;
 	}
 	
 	@Test
@@ -150,7 +156,10 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "sepa");
 		
 		fOut.write("Expected Result: waterBodyMeasures(timePeriod, geo, measure, resource)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");
+		
+		assertTrue(res.getQuerySchema().contains("waterBodyMeasures(")) ;
+		assertTrue(res.getQuerySchema().contains("resource")) ;
 	}
 	
 	@Test
@@ -177,7 +186,10 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "sepa");
 		
 		fOut.write("Expected Result: waterBodyPressures(identifiedDate, waterBodyId, assessmentCategory, source)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");
+		
+		assertTrue(res.getQuerySchema().contains("waterBodyPressures(")) ;
+		assertTrue(res.getQuerySchema().contains("waterBodyId")) ;
 	}
 	
 	@Test
@@ -203,7 +215,10 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "sepa");
 		
 		fOut.write("Expected Result: waterBodyMeasures(waterBodyId, secondaryMeasure, dataSource)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");
+		
+		assertTrue(res.getQuerySchema().contains("waterBodyMeasures(")) ;
+		assertTrue(res.getQuerySchema().contains("dataSource")) ;
 	}
 	
 	@Test
@@ -228,7 +243,10 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "sepa");
 		
 		fOut.write("Expected Result: surfaceWaterBodies(riverName, associatedGroundwaterId)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");
+		
+		assertTrue(res.getQuerySchema().contains("surfaceWaterBodies(")) ;
+		assertTrue(res.getQuerySchema().contains("riverName")) ;
 	}
 	
 	@Test
@@ -255,7 +273,10 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "sepa");
 		
 		fOut.write("Expected Result: bathingWaters(catchment, localAuthority, lat, long)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");
+		
+		assertTrue(res.getQuerySchema().contains("bathingWaters(")) ;
+		assertTrue(res.getQuerySchema().contains("catchment")) ;
 	}
 	
 	@Test
@@ -282,7 +303,10 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "sepa");
 		
 		fOut.write("Expected Result: surfaceWaterBodies(altitudeTypology, associatedGroundwaterId, riverName, subBasinDistrict)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");
+		
+		assertTrue(res.getQuerySchema().contains("surfaceWaterBodies(")) ;
+		assertTrue(res.getQuerySchema().contains("altitudeTypology")) ;
 	}
 	
 	@Test
@@ -307,7 +331,10 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "sepa");
 		
 		fOut.write("Expected Result: bathingWaters(bathingWaterId)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");
+		
+		assertTrue(res.getQuerySchema().contains("bathingWaters(bathingWaterId)")) ;
+	
 	}
 	
 	@Test
@@ -332,10 +359,12 @@ public class Schema_From_Query_Test_Cases {
 		
 		fOut.write("Expected Result: null\n");
 		
+		assertTrue(res == null) ;
+		
 		if(res == null){
 			fOut.write("Actual Result: " + res + "\n\n");
 		}else{
-			fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");
+			fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");
 		}
 	}
 	
@@ -362,7 +391,7 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "dbpedia");
 		
 		fOut.write("Expected Result: City(country,populationTotal)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");
 	}
 	
 	@Test
@@ -386,7 +415,10 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "dbpedia");
 		
 		fOut.write("Expected Result: City()\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");
+		
+		assertTrue(res.getQuerySchema().contains("City()")) ;
+		
 	}
 	
 	@Test
@@ -412,7 +444,9 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "dbpedia");
 		
 		fOut.write("Expected Result: Astronaut(nationality)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");	
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");	
+		
+		assertTrue(res.getQuerySchema().contains("Astronaut(nationality)")) ;
 	}
 	
 	@Test
@@ -438,7 +472,9 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "dbpedia");
 		
 		fOut.write("Expected Result: Mountain(elevation)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");		
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");	
+		
+		assertTrue(res.getQuerySchema().contains("Mountain(elevation)")) ;
 	}
 	
 	@Test
@@ -464,7 +500,11 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "dbpedia");
 		
 		fOut.write("Expected Result: Person(occupation,birthPlace)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");		
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");	
+		
+		assertTrue(res.getQuerySchema().contains("Person(")) ;
+		assertTrue(res.getQuerySchema().contains("birthPlace")) ;
+		
 	}
 	
 	@Test
@@ -490,7 +530,10 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "dbpedia");
 		
 		fOut.write("Expected Result: Person(occupation,instrument)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");		
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");		
+		
+		assertTrue(res.getQuerySchema().contains("Person(")) ;
+		assertTrue(res.getQuerySchema().contains("occupation")) ;
 	}
 	
 	@Test
@@ -516,7 +559,9 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "dbpedia");
 		
 		fOut.write("Expected Result: Cave(location)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");		
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");	
+		
+		assertTrue(res.getQuerySchema().contains("Cave(location)")) ;
 	}
 	
 	@Test
@@ -542,7 +587,9 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "dbpedia");
 		
 		fOut.write("Expected Result: FormulaOneRacer(races)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");			
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");	
+		assertTrue(res.getQuerySchema().contains("FormulaOneRacer(races)")) ;
+		
 	}
 	
 	@Test
@@ -568,7 +615,8 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "dbpedia");
 		
 		fOut.write("Expected Result: River(length)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");		
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");	
+		assertTrue(res.getQuerySchema().contains("River(length)")) ;
 	}
 	
 	@Test
@@ -594,7 +642,8 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "dbpedia");
 		
 		fOut.write("Expected Result: Royalty(parent)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");		
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");	
+		assertTrue(res.getQuerySchema().contains("Royalty(parent)")) ;
 	}
 	
 	@Test
@@ -610,7 +659,9 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "dbpedia");
 		
 		fOut.write("Expected Result: \n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");		
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");	
+		
+		assertTrue(res.getQuerySchema().isEmpty()) ;
 	}
 	
 	@Test
@@ -636,7 +687,7 @@ public class Schema_From_Query_Test_Cases {
 		res = schemaCreator.getSchemaFromQuery(query, "dbpedia");
 		
 		fOut.write("Expected Result: River(Mountain)\n");
-		fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");			
+		fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");			
 	}
 	
 	@Test
@@ -662,11 +713,50 @@ public class Schema_From_Query_Test_Cases {
 		
 		fOut.write("Expected Result: null\n");
 		
+		assertTrue(res == null) ;
+		
 		if(res == null){
 			fOut.write("Actual Result: " + res + "\n\n");
 		}else{
-			fOut.write("Actual Result: " + res.getRepairedSchema() + "\n\n");
+			fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");
 		}
+	}
+	
+	@Test
+	public void test2301(){
+		System.out.println("\nRunning test 7.3.01 - data literal testing query");
+		
+		query=	"PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX dc:   <http://purl.org/dc/elements/1.1/> "
+				+ "PREFIX :     <http://example/ns#> "
+				+ "PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#> "
+				+ "SELECT ?book  "
+				+ "WHERE { ?book rdf:type <http://purl.org/dc/elements/1.1/book> ;"
+				+ "              rdf:subject    \"Childrens fiction\" ; "
+				+ "	             dc:title       \"The Wind in the Willows\"@en ; "
+				+ "              dc:author      \"Kenneth Graeme\" ; "
+				+ "              dc:pages      320 ; "
+				+ "              dc:category   25.6 ; "
+				+ "              dc:date       \"2005-01-01T00:00:00Z\"^^xsd:dateTime "
+				+ "}" ;
+		
+		
+		fOut.write("Test 7.3.01 - data literal testing query\n");
+		fOut.write("Creating schema from query,\n"+query + "\n\n");
+		
+		//get results
+		res = schemaCreator.getSchemaFromQuery(query, "dbpedia");
+		
+		fOut.write("Expected Result: book(subject,title,author,pages,category,date)\n");
+		
+		if(res == null){
+			fOut.write("Actual Result: " + res + "\n\n");
+		}else{
+			fOut.write("Actual Result: " + res.getQuerySchema() + "\n\n");
+		}
+		
+		assertTrue(res.getQuerySchema().contains("book(")) ;
+		assertTrue(res.getQuerySchema().contains("date")) ;
 	}
 	
 	@After

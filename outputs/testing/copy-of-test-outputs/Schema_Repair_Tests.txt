@@ -3,15 +3,17 @@ Testing Results for Repair_Schema_Test_Cases.java
 Test 4.1.1
 Calling SPSM with source, auto(brand,name,color) & target, car(year,brand,colour)
 Expected Result: repaired schema == 'car(colour,brand)' 
-Null Results! 
+Actual Result: results.size() == 0
+Empty results returned. 
 
 Test 4.5.6
 Calling SPSM with source, conference(paper(title,review(date(day,month,year),author(name(first,second))))) & target, conference(paper(title,document(date(day,month,year),writer(name(first,second)))))
 Expected Result: repaired schema == 'conference(paper(title,document(date(day,month,year),writer(name(first,second)))))' 
-Actual Result: repaired schema == 'conference(paper(document(writer(name(second,first)),date(year,month,day)),title))' 
+Actual Result: repaired schema == 'conference(paper(document(writer(name(first,second)),date(year,month,day)),title))' 
 
 Test 4.5.7
 Calling SPSM with source, conference(paper(title,review(date(day,month,year),author(name(first,second))))) & target, conference(paper(title,document(category(day,month,year),writer(name(first,second)))))
 Expected Result: repaired schema == 'conference(paper(title,document(writer(name(first,second)))))' 
-Null Results! 
+Actual Result: results.size() == 0
+Empty results returned. 
 

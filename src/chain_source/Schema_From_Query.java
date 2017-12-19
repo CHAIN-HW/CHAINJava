@@ -46,10 +46,12 @@ public class Schema_From_Query {
 		String queryType="dbpedia";
 		
 		Match_Struc res = getSchema.getSchemaFromQuery(query, queryType);
-		System.out.println("Schema created from query: \n\n"+res.getRepairedSchema());
-		System.out.println("Query Schema "+ res.getQuerySchema());
-		System.out.println("Query Schema Head "+ res.getQuerySchemaHead());
-		System.out.println("Dataset Schema "+ res.getDatasetSchema());
+		// System.out.println("Schema created from query: \n\n"+res.getRepairedSchema());
+		// System.out.println("Query Schema "+ res.getQuerySchema());
+		// System.out.println("Query Schema Head "+ res.getQuerySchemaHead());
+		// System.out.println("Dataset Schema "+ res.getDatasetSchema());
+		
+		
 	}
 	
 	//first step to creating schema from query
@@ -58,8 +60,8 @@ public class Schema_From_Query {
 		//result that will be returned
 		//that will contain the query string
 		//schema string and schema tree
-		Match_Struc result = new Match_Struc();
-		
+		Match_Struc result = new Match_Struc();	
+
 		
 		if(queryType.equals("sepa")){
 			result = schemaFromSepaQuery(query, result);
@@ -69,8 +71,9 @@ public class Schema_From_Query {
 			System.out.println("Please choose either a sepa or dbpedia query to parse.");
 			return null;
 		}
-		
+		// System.out.println("Schema_From_Query: " + result) ;
 		return result;
+	
 	}
 	
 	//create the schema for a sepa query that has been passed in as a parameter
@@ -83,6 +86,7 @@ public class Schema_From_Query {
 			try{
 				//create query object
 				Query sepaQuery = QueryFactory.create(query);
+				res.setQuery(sepaQuery.toString());
 				
 				//first get the name of the dataset file
 				//this will be the predicate of our schema
@@ -98,7 +102,6 @@ public class Schema_From_Query {
 				datasetFile = datasetFile.substring(0, datasetFile.length() - 3);
 				
 				predicate = datasetFile ;
-				System.out.println("Predicate " + predicate) ;
 				
 				//add to schema string
 				schema = datasetFile + "(";
@@ -137,8 +140,6 @@ public class Schema_From_Query {
 					    }
 					);
 				
-				
-				
 				int size = chainParameters.size() ;
 				
 				if (size > 0) {
@@ -150,7 +151,7 @@ public class Schema_From_Query {
 				//add final bracket
 				schema=schema+")";
 				
-				System.out.println("Chain schema "+schema);				
+				System.out.println("Schema_From_Query: Chain schema "+schema);				
 				
 			
 				
@@ -164,12 +165,12 @@ public class Schema_From_Query {
 		
 		//set string and tree equivalent of schema in our structure
 		//and return
-		System.out.println("Predicate " + predicate) ;
-		res.setRepairedSchema(schema);
-		res.setRepairedSchemaTree(createTreeFromSchemaString(schema));
+		// System.out.println("Schema_From_Query: Predicate " + predicate) ;
+		//res.setRepairedSchema(schema);
+		//res.setRepairedSchemaTree(createTreeFromSchemaString(schema));
 		res.setQuerySchema(schema);
 		res.setQuerySchemaHead(predicate);
-		System.out.println("Schema head in setter " + res.getQuerySchemaHead()) ;
+		// System.out.println("Schema_From_Query: Schema head in setter " + res.getQuerySchemaHead()) ;
 		
 		return res;
 	}
@@ -185,6 +186,7 @@ public class Schema_From_Query {
 				
 				//create query object
 				Query dbpediaQuery = QueryFactory.create(query);
+				res.setQuery(dbpediaQuery.toString());
 				
 				// Temp structure for elements of a CHAIn schema
 				ArrayList<String> chainParameters = new ArrayList<String>();
@@ -257,11 +259,11 @@ public class Schema_From_Query {
 		//set string and tree equivalent of schema in our structure
 		//and return
 		
-		res.setRepairedSchema(schema);
-		res.setRepairedSchemaTree(createTreeFromSchemaString(schema));
+		// res.setRepairedSchema(schema);
+		// res.setRepairedSchemaTree(createTreeFromSchemaString(schema));
 		res.setQuerySchema(schema);
 		res.setQuerySchemaHead(predicate);
-		System.out.println("Schema head in setter " + res.getQuerySchemaHead()) ;
+		// System.out.println("Schema head in setter " + res.getQuerySchemaHead()) ;
 		
 		return res;
 	}

@@ -156,7 +156,7 @@ sepaw:riverName ?riverName ;
 sepaw:subBasinDistrict ?subBasinDistrict .}
 
 Expected Result: surfaceWaterBodies(altitudeTypology, associatedGroundwaterId, riverName, subBasinDistrict)
-Actual Result: surfaceWaterBodies(altitudeTypology,associatedGroundwaterId,riverName,subBasinDistrict)
+Actual Result: surfaceWaterBodies(altitudeTypology,associatedGrounwaterId,riverName,subBasinDistrict)
 
 Test 7.1.9 - sepa query
 Creating schema from query,
@@ -291,6 +291,13 @@ LIMIT 20
 
 Expected Result: Astronaut(nationality)
 Actual Result: Astronaut(nationality)
+
+Test 7.3.01 - data literal testing query
+Creating schema from query,
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX dc:   <http://purl.org/dc/elements/1.1/> PREFIX :     <http://example/ns#> PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#> SELECT ?book  WHERE { ?book rdf:type <http://purl.org/dc/elements/1.1/book> ;              rdf:subject    "Childrens fiction" ; 	             dc:title       "The Wind in the Willows"@en ;               dc:author      "Kenneth Graeme" ;               dc:pages      320 ;               dc:category   25.6 ;               dc:date       "2005-01-01T00:00:00Z"^^xsd:dateTime }
+
+Expected Result: book(subject,title,author,pages,category,date)
+Actual Result: book(subject,title,author,pages,category,date)
 
 Test 7.2.4 - dbpedia query
 Creating schema from query,

@@ -12,11 +12,12 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
-WHERE { ?id sepaw:identifiedDate ?identifiedDate ;
-sepaw:waterBodyId ?waterBodyId ;
-sepaw:dataSource ?dataSource ;
-sepaw:affectsGroundwater ?affectsGroundwater
-.}
+WHERE {  
+ ?id sepaw:waterBodyId ?waterBodyId ;
+ sepaw:affectsGroundwater ?affectsGroundwater ;
+ sepaw:identifiedDate ?identifiedDate ;
+ sepaw:dataSource ?dataSource
+}
 
 Query HAS run successfully.
 
@@ -32,15 +33,15 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyTemperatures.n3>
-WHERE { ?id sepaw:identifiedDate ?identifiedDate ;
-sepaw:waterBodyId ?waterBodyId ;
-sepaw:dataSource ?dataSource ;
-sepaw:affectsGroundwater ?affectsGroundwater
-.}
+WHERE {  
+ ?id sepaw:affectsGroundwater ?affectsGroundwater ;
+ sepaw:dataSource ?dataSource ;
+ sepaw:identifiedDate ?identifiedDate ;
+ sepaw:waterBodyId ?waterBodyId
+}
 
-Query HAS run successfully but NO data has been returned.
 
-Test 6.1.2 - sepa query
+Query has NOT run successfullyTest 6.1.2 - sepa query
 Trying to run query: 
 
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
@@ -52,15 +53,15 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/water.n3>
-WHERE { ?id sepaw:resource ?resource ;
-sepaw:measure ?measure ;
-geo:geo ?geo ;
-sepaw:timePeriod ?timePeriod
-.}
+WHERE {  
+ ?id sepaw:timePeriod ?timePeriod ;
+ sepaw:resource ?resource ;
+ geo:geo ?geo ;
+ sepaw:measure ?measure
+}
 
-Query HAS run successfully but NO data has been returned.
 
-Test 6.1.3 - sepa query
+Query has NOT run successfullyTest 6.1.3 - sepa query
 Trying to run query: 
 
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
@@ -72,11 +73,12 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
-WHERE { ?id sepaw:resource ?resource ;
-sepaw:measure ?measure ;
-geo:geo ?geo ;
-sepaw:timePeriod ?timePeriod
-.}
+WHERE {  
+ ?id sepaw:resource ?resource ;
+ sepaw:timePeriod ?timePeriod ;
+ sepaw:measure ?measure ;
+ geo:geo ?geo
+}
 
 Query HAS run successfully but NO data has been returned.
 
@@ -92,11 +94,12 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
-WHERE { ?id sepaw:identifiedDate ?identifiedDate ;
-sepaw:source ?source ;
-sepaw:assessmentCategory ?assessmentCategory ;
-sepaw:waterBodyId ?waterBodyId
-.}
+WHERE {  
+ ?id sepaw:identifiedDate ?identifiedDate ;
+ sepaw:assessmentCategory ?assessmentCategory ;
+ sepaw:waterBodyId ?waterBodyId ;
+ sepaw:source ?source
+}
 
 Query HAS run successfully.
 
@@ -112,10 +115,11 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
-WHERE { ?id sepaw:secondaryMeasure ?secondaryMeasure ;
-sepaw:waterBodyId ?waterBodyId ;
-sepaw:dataSource ?dataSource
-.}
+WHERE {  
+ ?id sepaw:waterBodyId ?waterBodyId ;
+ sepaw:secondaryMeasure ?secondaryMeasure ;
+ sepaw:dataSource ?dataSource
+}
 
 Query HAS run successfully.
 
@@ -131,9 +135,10 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
-WHERE { ?id sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
-sepaw:riverName ?riverName
-.}
+WHERE {  
+ ?id sepaw:riverName ?riverName ;
+ sepaw:associatedGroundwaterId ?associatedGroundwaterId
+}
 
 Query HAS run successfully.
 
@@ -149,11 +154,12 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
-WHERE { ?id sepaloc:catchment ?catchment ;
-geo:lat ?lat ;
-geo:long ?long ;
-sepaloc:localAuthority ?localAuthority
-.}
+WHERE {  
+ ?id geo:long ?long ;
+ sepaloc:catchment ?catchment ;
+ geo:lat ?lat ;
+ sepaloc:localAuthority ?localAuthority
+}
 
 Query HAS run successfully but NO data has been returned.
 
@@ -169,11 +175,12 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
-WHERE { ?id sepaw:subBasinDistrict ?subBasinDistrict ;
-sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
-sepaw:riverName ?riverName ;
-sepaw:altitudeTypology ?altitudeTypology
-.}
+WHERE {  
+ ?id sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
+ sepaw:riverName ?riverName ;
+ sepaw:subBasinDistrict ?subBasinDistrict ;
+ sepaw:altitudeTypology ?altitudeTypology
+}
 
 Query HAS run successfully.
 
@@ -189,8 +196,9 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
-WHERE { ?id sepaw:bathingWaterId ?bathingWaterId
-.}
+WHERE {  
+ ?id sepaw:bathingWaterId ?bathingWaterId
+}
 
 Query HAS run successfully.
 
@@ -204,11 +212,10 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX yago: <http://dbpedia.org/class/yago/>
 
-SELECT DISTINCT*
+SELECT DISTINCT *
 WHERE { ?id rdf:type dbo:City;
-dbo:country ?country ;
-dbo:populationTotal ?populationTotal
-.}
+ dbo:country ?country ;
+ dbo:populationTotal ?populationTotal}
 LIMIT 20
 
 Query HAS run successfully.
@@ -223,10 +230,9 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX yago: <http://dbpedia.org/class/yago/>
 
-SELECT DISTINCT*
+SELECT DISTINCT *
 WHERE { ?id rdf:type dbo:Royalty;
-dbo:parent ?parent
-.}
+ dbo:parent ?parent}
 LIMIT 20
 
 Query HAS run successfully.
@@ -273,10 +279,9 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX yago: <http://dbpedia.org/class/yago/>
 
-SELECT DISTINCT*
+SELECT DISTINCT *
 WHERE { ?id rdf:type dbo:River;
-dbo:Mountain ?Mountain
-.}
+ dbo:Mountain ?Mountain}
 LIMIT 20
 
 Query HAS run successfully but NO data has been returned.
@@ -307,12 +312,11 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX yago: <http://dbpedia.org/class/yago/>
 
-SELECT DISTINCT*
+SELECT DISTINCT *
 WHERE { ?id rdf:type dbo:River;
-dbo:manufacturer ?manufacturer ;
-dbo:assembly ?assembly ;
-dbo:place ?place
-.}
+ dbo:place ?place ;
+ dbo:assembly ?assembly ;
+ dbo:manufacturer ?manufacturer}
 LIMIT 20
 
 Query HAS run successfully but NO data has been returned.
@@ -327,8 +331,8 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX yago: <http://dbpedia.org/class/yago/>
 
-SELECT DISTINCT*
-WHERE { ?id rdf:type dbo:Country.}
+SELECT DISTINCT *
+WHERE { ?id rdf:type dbo:Country}
 LIMIT 20
 
 Query HAS run successfully.
@@ -343,10 +347,9 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX yago: <http://dbpedia.org/class/yago/>
 
-SELECT DISTINCT*
+SELECT DISTINCT *
 WHERE { ?id rdf:type dbo:Astronaut;
-dbo:nationality ?nationality
-.}
+ dbo:nationality ?nationality}
 LIMIT 20
 
 Query HAS run successfully.
@@ -361,10 +364,9 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX yago: <http://dbpedia.org/class/yago/>
 
-SELECT DISTINCT*
+SELECT DISTINCT *
 WHERE { ?id rdf:type dbo:Mountain;
-dbo:elevation ?elevation
-.}
+ dbo:elevation ?elevation}
 LIMIT 20
 
 Query HAS run successfully.
@@ -379,11 +381,10 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX yago: <http://dbpedia.org/class/yago/>
 
-SELECT DISTINCT*
+SELECT DISTINCT *
 WHERE { ?id rdf:type foaf:Person;
-dbo:birthPlace ?birthPlace ;
-dbo:occupation ?occupation
-.}
+ dbo:occupation ?occupation ;
+ dbo:birthPlace ?birthPlace}
 LIMIT 20
 
 Query HAS run successfully.
@@ -398,11 +399,10 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX yago: <http://dbpedia.org/class/yago/>
 
-SELECT DISTINCT*
+SELECT DISTINCT *
 WHERE { ?id rdf:type foaf:Person;
-dbo:instrument ?instrument ;
-dbo:occupation ?occupation
-.}
+ dbo:occupation ?occupation ;
+ dbo:instrument ?instrument}
 LIMIT 20
 
 Query HAS run successfully.
@@ -417,10 +417,9 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX yago: <http://dbpedia.org/class/yago/>
 
-SELECT DISTINCT*
+SELECT DISTINCT *
 WHERE { ?id rdf:type dbo:Cave;
-dbo:location ?location
-.}
+ dbo:location ?location}
 LIMIT 20
 
 Query HAS run successfully.
@@ -435,10 +434,9 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX yago: <http://dbpedia.org/class/yago/>
 
-SELECT DISTINCT*
+SELECT DISTINCT *
 WHERE { ?id rdf:type dbo:FormulaOneRacer;
-dbo:races ?races
-.}
+ dbo:races ?races}
 LIMIT 20
 
 Query HAS run successfully.
@@ -453,10 +451,26 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX yago: <http://dbpedia.org/class/yago/>
 
-SELECT DISTINCT*
+SELECT DISTINCT *
 WHERE { ?id rdf:type dbo:River;
-dbo:length ?length
-.}
+ dbo:length ?length}
+LIMIT 20
+
+Query HAS run successfully.
+
+Test 6.3.3 - dbpedia query
+Trying to run query: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT *
+WHERE { ?id rdf:type dbo:FormulaOneRacer;
+ dbo:races "202"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger>}
 LIMIT 20
 
 Query HAS run successfully.

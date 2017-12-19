@@ -1,5 +1,8 @@
 package tests;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import java.io.File;
 
 import java.io.FileWriter;
@@ -16,6 +19,7 @@ import org.junit.runners.MethodSorters;
 import chain_source.Call_SPSM;
 import chain_source.Create_Query;
 import chain_source.Match_Struc;
+import chain_source.Query_Data;
 import chain_source.Repair_Schema;
 
 /* Author Tanya Howden
@@ -32,7 +36,311 @@ import chain_source.Repair_Schema;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Create_Query_Test_Cases {
+	
+	private static String Q5_1_1 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+			+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+			+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+			+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+			+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+			+ "SELECT *  \n"
+			+ "FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>\n"
+			+ "WHERE {\n ?id sepaw:dataSource ?dataSource;\n"
+			+ "sepaw:identifiedDate  ?identifiedDate  ;\n"
+			+ "sepaw:affectsGroundwater ?affectsGroundwater ;\n"
+			+ "sepaw:waterBodyId ?waterBodyId .}" ;
+	
+	private static String T5_1_1 = "sepaw:affectsGroundwater ?affectsGroundwater" ;
+	
+	private static String Q5_1_2 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+			+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+			+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+			+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+			+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+			+ "SELECT *  \n"
+			+ "FROM <queryData/sepa/sepa_datafiles/water.n3>\n"
+			+ "WHERE { ?id sepaw:timePeriod ?timePeriod;\n"
+			+ "geo:geo ?geo  ;\n"
+			+ "sepaw:measure ?measure ;\n"
+			+ "sepaw:resource ?resource .}" ;
+	
+	private static String T5_1_2 = "geo:geo ?geo" ;
+	
+	private static String Q5_1_3 = 	 "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+     + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+     + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+     + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+     + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+     + "SELECT *  \n"
+     + "FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>\n"
+     + "WHERE { ?id sepaw:timePeriod ?timePeriod;\n"
+     + "geo:geo ?geo  ;\n"
+     + "sepaw:measure ?measure ;\n"
+     + "sepaw:resource ?resource .}" ;
+	
+	private static String T5_1_3 = "sepaw:measure ?measure" ;
 
+	private static String Q5_1_4 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+          	+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+          	+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+          	+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+          	+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+          	+ "SELECT *  \n"
+          	+ "FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>\n"
+          	+ "WHERE { ?id sepaw:identifiedDate ?identifiedDate;\n"
+          	+ "sepaw:waterBodyId ?waterBodyId  ;\n"
+          	+ "sepaw:assessmentCategory ?assessmentCategory ;\n"
+          	+ "sepaw:source ?source .}" ;
+	
+	private static String T5_1_4 = "sepaw:identifiedDate ?identifiedDate" ;
+	
+	private static String Q5_1_5 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+	          + "SELECT *  \n"
+	          + "FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>\n"
+	          + "WHERE { ?id sepaw:waterBodyId ?waterBodyId;\n"
+	          + "sepaw:secondaryMeasure ?secondaryMeasure  ;\n"
+	          + "sepaw:dataSource ?dataSource .}" ;
+	
+	private static String T5_1_5 = "sepaw:dataSource ?dataSource" ;
+	
+	private static String Q5_1_6 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+	          + "SELECT *  \n"
+	          + "FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>\n"
+	          + "WHERE { ?id sepaw:riverName ?riverName;\n"
+	          + "sepaw:associatedGroundwaterId ?associatedGroundwaterId .}" ;
+	
+	private static String T5_1_6 = "FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>" ;
+	
+	private static String Q5_1_7 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+	          + "SELECT *  \n"
+	          + "FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>\n"
+	          + "WHERE { ?id sepaloc:catchment ?catchment;\n"
+	          + "sepaloc:localAuthority ?localAuthority  ;\n"
+	          + "geo:lat ?lat ;\n"
+	          + "geo:long ?long .}" ;
+	
+	private static String T5_1_7 = "?id" ;
+	
+	
+	private static String Q5_1_8 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+	          + "SELECT *  \n"
+	          + "FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>\n"
+	          + "WHERE { ?id sepaw:altitudeTypology ?altitudeTypology;\n"
+	          + "sepaw:associatedGrounwaterId ?associatedGroundwaterId  ;\n"
+	          + "sepaw:riverName ?riverName ;\n"
+	          + "sepaw:subBasinDistrict ?subBasinDistrict .}" ;
+	
+	private static String T5_1_8 = "sepaw:riverName ?riverName" ;
+	
+	private static String Q5_1_9 = 	"PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+	          + "SELECT *  \n"
+	          + "FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>\n"
+	          + "WHERE { ?id sepaw:bathingWaterId ?bathingWaterId;\n"
+	          + ".}" ;
+	
+	private static String T5_1_9 = "sepaw:bathingWaterId ?bathingWaterId" ;
+	
+	private static String Q5_2_1 =	"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+			+ "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+			+ "PREFIX  res: <http://dbpedia.org/resource/> \n"
+			+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+			+ "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+			+ "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+			+ "SELECT DISTINCT *  \n"
+			+ "WHERE { ?id rdf:type dbo:City ;\n"
+			+ "dbo:country ?country ;\n"
+			+ "dbo:populationTotal ?populationTotal .}\n"
+			+ "LIMIT 20" ;
+	
+	private static String T5_2_1 = "dbo:populationTotal ?populationTotal" ;
+	
+	private static String Q5_2_2 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+			+ "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+			+ "PREFIX  res: <http://dbpedia.org/resource/> \n"
+			+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+			+ "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+			+ "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+			+ "SELECT DISTINCT *  \n"
+			+ "WHERE { ?id rdf:type dbo:City .}\n"
+			+ "LIMIT 20" ;
+	
+	private static String T5_2_2 = "?id rdf:type dbo:City" ;
+	
+	private static String Q5_2_3 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type Astronaut ;\n"
+	          + "dbo:nationality ?nationality ;\n"
+	          + ".}\n"
+	          + "LIMIT 20";
+	private static String T5_2_3 = "dbo:nationality ?nationality" ;
+	
+	private static String Q5_2_4 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:Mountain ;\n"
+	          + "dbo:elevation ?elevation ;\n"
+	          + ".}\n"
+	          + "LIMIT 20" ;
+	private static String T5_2_4 = "SELECT DISTINCT *" ;
+	
+	private static String Q5_2_5 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:Person ;\n"
+	          + "dbo:occupation ?occupation ;\n"
+	          + "dbo:birthPlace ?birthPlace .}\n"
+	          + "LIMIT 20" ;
+	
+	private static String T5_2_5 = "dbp: <http://dbpedia.org/property/>" ;
+	
+	private static String Q5_2_6 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:Person ;\n"
+	          + "dbo:occupation ?occupation ;\n"
+	          + "dbo:instrument ?instrument .}\n"
+	          + "LIMIT 20" ;
+	private static String T5_2_6 = "dbo:instrument ?instrument" ;
+	
+	
+	private static String Q5_2_7 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:Cave ;\n"
+	          + "dbo:location ?location ;\n"
+	          + ".}\n"
+	          + "LIMIT 20" ;
+	private static String T5_2_7 = "rdf:type dbo:Cave" ;
+	
+	private static String Q5_2_8 =  "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:FormulaOneRacer ;\n"
+	          + "dbo:races ?races ;\n"
+	          + ".}\n"
+	          + "LIMIT 20" ;
+	private static String T5_2_8 = "dbo:races ?races" ;
+	
+	private static String Q5_2_9 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:River ;\n"
+	          + "dbo:length ?length ;\n"
+	          + ".}\n"
+	          + "LIMIT 20" ;
+	private static String T5_2_9 = "dbo:length ?length" ;
+	
+	private static String Q5_2_10 =  "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:Royalty ;\n"
+	          + "dbo:parent ?parent ;\n"
+	          + ".}\n"
+	          + "LIMIT 20" ;
+	private static String T5_2_10 = "dbo:parent ?parent" ;
+	
+	private static String Q5_2_11 = "" ;
+	private static String T5_2_11 = "" ;
+			
+	private static String Q5_2_12 = "" ;
+	private static String T5_2_12 = "" ;
+	
+	private static String Q5_2_13 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:River;\n"
+	          + "dbo:Mountain ?Mountain ;\n"
+	          + ".}\n"
+	          + "LIMIT 20" ;
+	private static String T5_2_13 = "dbo:Mountain ?Mountain" ;
+	
+
+	private static String Q5_3_1 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+          	+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+          	+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+          	+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+          	+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+          	+ "SELECT *  \n"
+          	+ "FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>\n"
+          	+ "WHERE { ?id sepaw:identifiedDate \"2009-09-03\";\n"
+          	+ "sepaw:waterBodyId sepaidw:100053  ;\n"
+          	+ "sepaw:assessmentCategory ?assessmentCategory ;\n"
+          	+ "sepaw:source \"SEPA\" .}" ;
+	private static String T5_3_1 = "sepaw:identifiedDate \"2009-09-03\"" ;
+	
+	
+	
+	private static String Q5_3_3 =  "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:FormulaOneRacer ;\n"
+	          + "dbo:races \"202\"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> ;\n"
+	          + ".}\n"
+	          + "LIMIT 20" ;
+	private static String T5_3_3 = "dbo:races \"202\"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger>" ;
+	
+	
+	
 	private Call_SPSM spsmCall;
 	private Repair_Schema getRepairedSchema;
 	private Create_Query createQuery;
@@ -88,48 +396,7 @@ public class Create_Query_Test_Cases {
 		
 		source="waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
 		target="waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-		
-		fOut.write("Test 5.1.1 - sepa query\n");
-		
-		if(finalRes!=null){
-			if(finalRes.size() == 0){	
-				//then we have no results so end test
-				fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-				fOut.write("Empty results returned. \n\n");
-			}else{
-				Match_Struc current = finalRes.get(0);
-					
-				fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-				fOut.write("Expected Result:\n\n" + 
-					
-						"PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
-						+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
-						+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
-						+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-						+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
-						+ "SELECT *  \n"
-						+ "FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>\n"
-						+ "WHERE { ?id sepaw:dataSource ?dataSource;\n"
-						+ "sepaw:identifiedDate  ?identifiedDate  ;\n"
-						+ "sepaw:affectsGroundwater ?affectsGroundwater ;\n"
-						+ "sepaw:waterBodyId ?waterBodyId .}"
-						+ "\n\n");
-				
-				fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-			}
-		}else{
-			fOut.write("Null Results! \n\n");
-		}
+		testSepa("5.1.1", source,  target, Q5_1_1, T5_1_1) ;
 	}
 	
 	@Test //Sepa
@@ -138,48 +405,7 @@ public class Create_Query_Test_Cases {
 		
 		source="water(timePeriod, geo, measure, resource)";
 		target="water(timePeriod, geo, measure, resource)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/",0);
-		
-		fOut.write("Test 5.1.2 - sepa query\n");
-		
-		if(finalRes!=null){
-			if(finalRes.size() == 0){	
-				//then we have no results so end test
-				fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-				fOut.write("Empty results returned. \n\n");
-			}else{
-				Match_Struc current = finalRes.get(0);
-					
-				fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-				fOut.write("Expected Result:\n\n" + 
-					
-						"PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
-						+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
-						+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
-						+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-						+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
-						+ "SELECT *  \n"
-						+ "FROM <queryData/sepa/sepa_datafiles/water.n3>\n"
-						+ "WHERE { ?id sepaw:timePeriod ?timePeriod;\n"
-						+ "geo:geo ?geo  ;\n"
-						+ "sepaw:measure ?measure ;\n"
-						+ "sepaw:resource ?resource .}"
-						+ "\n\n");
-				
-				fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-			}
-		}else{
-			fOut.write("Null Results! \n\n");
-		}
+		testSepa("5.1.2", source,  target, Q5_1_2, T5_1_2) ;
 	}
 
 	@Test //Sepa
@@ -188,48 +414,7 @@ public class Create_Query_Test_Cases {
 		
 	  source="waterBodyMeasures(timePeriod, geo, measure, resource)";
 	  target="waterBodyMeasures(timePeriod, geo, measure, resource)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
-	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-	  
-	  fOut.write("Test 5.1.3 - sepa query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){	
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
-	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
-	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
-	          + "SELECT *  \n"
-	          + "FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>\n"
-	          + "WHERE { ?id sepaw:timePeriod ?timePeriod;\n"
-	          + "geo:geo ?geo  ;\n"
-	          + "sepaw:measure ?measure ;\n"
-	          + "sepaw:resource ?resource .}"
-	          + "\n\n");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
+	  testSepa("5.1.3", source,  target, Q5_1_3, T5_1_3) ;
 	}
 	
 	@Test //Sepa
@@ -238,48 +423,7 @@ public class Create_Query_Test_Cases {
 		
 		source="waterBodyPressures(identifiedDate,waterBodyId,assessmentCategory,source)";
 		target="waterBodyPressures(identifiedDate,waterBodyId,assessmentCategory,source)";
-		finalRes = new ArrayList<Match_Struc>();
-	  
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-	  
-		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-	  
-		fOut.write("Test 5.1.4 - sepa query\n");
-	  
-		if(finalRes!=null){
-			if(finalRes.size() == 0){	
-				//then we have no results so end test
-				fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-				fOut.write("Empty results returned. \n\n");
-			}else{
-				Match_Struc current = finalRes.get(0);
-	        
-				fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-				fOut.write("Expected Result:\n\n" + 
-	        
-	          	"PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
-	          	+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
-	          	+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
-	          	+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          	+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
-	          	+ "SELECT *  \n"
-	          	+ "FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>\n"
-	          	+ "WHERE { ?id sepaw:identifiedDate ?identifiedDate;\n"
-	          	+ "sepaw:waterBodyId ?waterBodyId  ;\n"
-	          	+ "sepaw:assessmentCategory ?assessmentCategory ;\n"
-	          	+ "sepaw:source ?source .}"
-	          	+ "\n\n");
-	      
-				fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-			}
-		}else{
-			fOut.write("Null Results! \n\n");
-		}
+		testSepa("5.1.4", source,  target, Q5_1_4, T5_1_4) ;
 	}
 	
 	@Test //Sepa
@@ -288,47 +432,7 @@ public class Create_Query_Test_Cases {
 		
 	  source="waterBodyMeasures(waterBodyId,secondaryMeasure,dataSource)";
 	  target="waterBodyMeasures(waterBodyId,secondaryMeasure,dataSource)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
-	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-	  
-	  fOut.write("Test 5.1.5 - sepa query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){	
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
-	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
-	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
-	          + "SELECT *  \n"
-	          + "FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>\n"
-	          + "WHERE { ?id sepaw:waterBodyId ?waterBodyId;\n"
-	          + "sepaw:secondaryMeasure ?secondaryMeasure  ;\n"
-	          + "sepaw:dataSource ?dataSource .}"
-	          + "\n\n");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
+	  testSepa("5.1.5", source,  target, Q5_1_5, T5_1_5) ;
 	}
 	
 	@Test //Sepa
@@ -337,46 +441,7 @@ public class Create_Query_Test_Cases {
 		
 	  source="surfaceWaterBodies(riverName,associatedGroundwaterId)";
 	  target="surfaceWaterBodies(riverName,associatedGroundwaterId)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
-	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-	  
-	  fOut.write("Test 5.1.6 - sepa query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){	
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
-	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
-	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
-	          + "SELECT *  \n"
-	          + "FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>\n"
-	          + "WHERE { ?id sepaw:riverName ?riverName;\n"
-	          + "sepaw:associatedGroundwaterId ?associatedGroundwaterId .}"
-	          + "\n\n");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
+	  testSepa("5.1.6", source,  target, Q5_1_6, T5_1_6) ;
 	}
 	
 	@Test //Sepa
@@ -385,146 +450,23 @@ public class Create_Query_Test_Cases {
 		
 	  source="bathingWaters(catchment, localAuthority, lat, long)";
 	  target="bathingWaters(catchment, localAuthority, lat, long)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
-	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-	  
-	  fOut.write("Test 5.1.7 - sepa query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){	
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
-	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
-	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
-	          + "SELECT *  \n"
-	          + "FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>\n"
-	          + "WHERE { ?id sepaloc:catchment ?catchment;\n"
-	          + "sepaloc:localAuthority ?localAuthority  ;\n"
-	          + "geo:lat ?lat ;\n"
-	          + "geo:long ?long .}"
-	          + "\n\n");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
+	  testSepa("5.1.7", source,  target, Q5_1_7, T5_1_7) ;
 	}
 	
 	@Test //Sepa
 	public void test18(){
-	  System.out.println("\nRunning test 5.1.8 - sepa query");
-		
+	  System.out.println("\nRunning test 5.1.8 - sepa query");	
 	  source="surfaceWaterBodies(subBasinDistrict,riverName,altitudeTypology,associatedGroundwaterId)";
 	  target="surfaceWaterBodies(subBasinDistrict,riverName,altitudeTypology,associatedGroundwaterId)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
-	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/",0);
-	  
-	  fOut.write("Test 5.1.8 - sepa query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){	
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
-	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
-	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
-	          + "SELECT *  \n"
-	          + "FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>\n"
-	          + "WHERE { ?id sepaw:altitudeTypology ?altitudeTypology;\n"
-	          + "sepaw:associatedGrounwaterId ?associatedGroundwaterId  ;\n"
-	          + "sepaw:riverName ?riverName ;\n"
-	          + "sepaw:subBasinDistrict ?subBasinDistrict .}"
-	          + "\n\n");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
+	  testSepa("5.1.8", source,  target, Q5_1_8, T5_1_8) ;
 	}
 	
 	@Test //Sepa
 	public void test19(){
-	  System.out.println("\nRunning test 5.1.9 - sepa query");
-		
+	  System.out.println("\nRunning test 5.1.9 - sepa query");		
 	  source="bathingWaters(bathingWaterId)";
 	  target="bathingWaters(bathingWaterId)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
-	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-	  
-	  fOut.write("Test 5.1.9 - sepa query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){	
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
-	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
-	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
-	          + "SELECT *  \n"
-	          + "FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>\n"
-	          + "WHERE { ?id sepaw:bathingWaterId ?bathingWaterId;\n"
-	          + ".}"
-	          + "\n\n");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
+	  testSepa("5.1.9", source,  target, Q5_1_9, T5_1_9) ;
 	}
 	
 	@Test //Dbpedia
@@ -533,94 +475,16 @@ public class Create_Query_Test_Cases {
 		
 		source="City(country,populationTotal)";
 		target="City(country,populationTotal)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
-		
-		fOut.write("Test 5.2.1 - dbpedia query\n");
-		
-		if(finalRes!=null){
-			if(finalRes.size() == 0){
-				//then we have no results so end test
-				fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-				fOut.write("Empty results returned. \n\n");
-			}else{
-				Match_Struc current = finalRes.get(0);
-					
-				fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-				fOut.write("Expected Result:\n\n" + 
-					
-						"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
-						+ "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
-						+ "PREFIX  res: <http://dbpedia.org/resource/> \n"
-						+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-						+ "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
-						+ "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
-						+ "SELECT DISTINCT *  \n"
-						+ "WHERE { ?id rdf:type dbo:City ;\n"
-						+ "dbo:country ?country ;\n"
-						+ "dbo:populationTotal ?populationTotal .}\n"
-						+ "LIMIT 20\n\n");
-				
-				fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-			}
-		}else{
-			fOut.write("Null Results! \n\n");
-		}
+		testDBP("5.2.1", source,  target, Q5_2_1, T5_2_1) ;
 	}
 	
 	@Test //Dbpedia
 	public void test22(){
 		System.out.println("\nRunning test 5.2.2 - dbpedia query");
 		
-		source="Country";
-		target="Country";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
-		
-		fOut.write("Test 5.2.2 - dbpedia query\n");
-		
-		if(finalRes!=null){
-			if(finalRes.size() == 0){
-				//then we have no results so end test
-				fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-				fOut.write("Empty results returned. \n\n");
-			}else{
-				Match_Struc current = finalRes.get(0);
-					
-				fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-				fOut.write("Expected Result:\n\n" + 
-					
-						"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
-						+ "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
-						+ "PREFIX  res: <http://dbpedia.org/resource/> \n"
-						+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-						+ "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
-						+ "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
-						+ "SELECT DISTINCT *  \n"
-						+ "WHERE { ?id rdf:type dbo:City .}\n"
-						+ "LIMIT 20\n\n");
-				
-				fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-			}
-		}else{
-			fOut.write("Null Results! \n\n");
-		}
+		source="City";
+		target="City";
+		testDBP("5.2.2", source,  target, Q5_2_2, T5_2_2) ;
 	}
 	
 	@Test //Dbpedia
@@ -629,47 +493,7 @@ public class Create_Query_Test_Cases {
 		
 	  source="Astronaut(nationality)";
 	  target="Astronaut(nationality)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
-	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
-	  
-	  fOut.write("Test 5.2.3 - dbpedia query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
-	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
-	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
-	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
-	          + "SELECT DISTINCT *  \n"
-	          + "WHERE { ?id rdf:type Astronaut ;\n"
-	          + "dbo:nationality ?nationality ;\n"
-	          + ".}\n"
-	          + "LIMIT 20\n\n");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
+	  testDBP("5.2.3", source,  target, Q5_2_3, T5_2_3) ;
 	}
 	
 	@Test //Dbpedia
@@ -678,47 +502,8 @@ public class Create_Query_Test_Cases {
 		
 	  source="Mountain(elevation)";
 	  target="Mountain(elevation)";
-	  finalRes = new ArrayList<Match_Struc>();
+	  testDBP("5.2.4", source,  target, Q5_2_4, T5_2_4) ;
 	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
-	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
-	  
-	  fOut.write("Test 5.2.4 - dbpedia query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
-	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
-	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
-	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
-	          + "SELECT DISTINCT *  \n"
-	          + "WHERE { ?id rdf:type dbo:Mountain ;\n"
-	          + "dbo:elevation ?elevation ;\n"
-	          + ".}\n"
-	          + "LIMIT 20\n\n");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
 	}
 	
 	@Test //Dbpedia
@@ -727,47 +512,7 @@ public class Create_Query_Test_Cases {
 		
 	  source="Person(occupation, birthPlace)";
 	  target="Person(occupation, birthPlace)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
-	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
-	  
-	  fOut.write("Test 5.2.5 - dbpedia query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
-	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
-	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
-	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
-	          + "SELECT DISTINCT *  \n"
-	          + "WHERE { ?id rdf:type dbo:Person ;\n"
-	          + "dbo:occupation ?occupation ;\n"
-	          + "dbo:birthPlace ?birthPlace .}\n"
-	          + "LIMIT 20\n\n");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
+	  testDBP("5.2.5", source,  target, Q5_2_5, T5_2_5) ;
 	}
 	
 	@Test //Dbpedia
@@ -776,48 +521,8 @@ public class Create_Query_Test_Cases {
 	  
 	  source="Person(occupation, instrument)";
 	  target="Person(occupation, instrument)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
+	  testDBP("5.2.6", source,  target, Q5_2_6, T5_2_6) ;
 	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
-	  
-	  fOut.write("Test 5.2.6 - dbpedia query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
-	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
-	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
-	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
-	          + "SELECT DISTINCT *  \n"
-	          + "WHERE { ?id rdf:type dbo:Person ;\n"
-	          + "dbo:occupation ?occupation ;\n"
-	          + "dbo:instrument ?instrument .}\n"
-	          + "LIMIT 20\n\n"); 
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
-	}
 	
 	@Test //Dbpedia
 	public void test27(){
@@ -825,48 +530,8 @@ public class Create_Query_Test_Cases {
 		
 	  source="Cave(location)";
 	  target="Cave(location)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
+	  testDBP("5.2.7", source,  target, Q5_2_7, T5_2_7) ;
 	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
-	  
-	  fOut.write("Test 5.2.7 - dbpedia query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
-	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
-	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
-	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
-	          + "SELECT DISTINCT *  \n"
-	          + "WHERE { ?id rdf:type dbo:Cave ;\n"
-	          + "dbo:location ?location ;\n"
-	          + ".}\n"
-	          + "LIMIT 20\n\n");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
-	}
 	
 	@Test //Dbpedia
 	public void test28(){
@@ -874,47 +539,7 @@ public class Create_Query_Test_Cases {
 		
 	  source="FormulaOneRacer(races)";
 	  target="FormulaOneRacer(races)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
-	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
-	  
-	  fOut.write("Test 5.2.8 - dbpedia query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
-	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
-	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
-	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
-	          + "SELECT DISTINCT *  \n"
-	          + "WHERE { ?id rdf:type dbo:FormulaOneRacer ;\n"
-	          + "dbo:races ?races ;\n"
-	          + ".}\n"
-	          + "LIMIT 20\n\n");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
+	  testDBP("5.2.8", source,  target, Q5_2_8, T5_2_8) ;
 	}
 	
 	@Test //Dbpedia
@@ -923,47 +548,7 @@ public class Create_Query_Test_Cases {
 		
 	  source="River(length)";
 	  target="River(length)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
-	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
-	  
-	  fOut.write("Test 5.2.9 - dbpedia query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
-	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
-	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
-	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
-	          + "SELECT DISTINCT *  \n"
-	          + "WHERE { ?id rdf:type dbo:River ;\n"
-	          + "dbo:length ?length ;\n"
-	          + ".}\n"
-	          + "LIMIT 20\n\n");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
+	  testDBP("5.2.9", source,  target, Q5_2_9, T5_2_9) ;
 	}
 	
 	@Test //Dbpedia
@@ -972,47 +557,7 @@ public class Create_Query_Test_Cases {
 		
 	  source="Royalty(parent)";
 	  target="Royalty(parent)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
-	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
-	  
-	  fOut.write("Test 5.2.10 - dbpedia query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
-	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
-	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
-	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
-	          + "SELECT DISTINCT *  \n"
-	          + "WHERE { ?id rdf:type dbo:Royalty ;\n"
-	          + "dbo:parent ?parent ;\n"
-	          + ".}\n"
-	          + "LIMIT 20\n\n");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
+	  testDBP("5.2.10", source,  target, Q5_2_10, T5_2_10) ;
 	}
 	
 	@Test //Dbpedia
@@ -1021,38 +566,8 @@ public class Create_Query_Test_Cases {
 		
 	  source="river(length)";
 	  target="river(length)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
+	  testDBP("5.2.11", source,  target, Q5_2_11, T5_2_11) ;
 	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
-	  
-	  fOut.write("Test 5.2.11 - dbpedia query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
-	}
 	
 	@Test //Dbpedia
 	public void test212(){
@@ -1060,37 +575,7 @@ public class Create_Query_Test_Cases {
 		
 	  source="Stream(length)";
 	  target="Stream(length)";
-	  finalRes = new ArrayList<Match_Struc>();
-	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
-	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
-	  
-	  fOut.write("Test 5.2.12 - dbpedia query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
+	  testDBP("5.2.12", source,  target, Q5_2_12, T5_2_12) ;
 	}
 	
 	@Test //Dbpedia
@@ -1099,47 +584,123 @@ public class Create_Query_Test_Cases {
 		
 	  source="River(Mountain(elevation))";
 	  target="River(Mountain(elevation))";
-	  finalRes = new ArrayList<Match_Struc>();
+	  testDBP("5.2.13", source,  target, Q5_2_13, T5_2_13) ;
+	}
+	
+	@Test //Sepa
+	public void test301(){
+		System.out.println("\nRunning test 5.3.1 - sepa query");
+		
+		source="waterBodyPressures(source,identifiedDate,assessmentCategory,waterBodyId)";
+		target="waterBodyPressures(source,identifiedDate,assessmentCategory,waterBodyId)";
+		testSepa("5.3.1", source,  target, Q5_3_1, T5_3_1) ;
+	}
+	
+	@Test //Sepa
+	public void test302(){
+		System.out.println("\nRunning test 5.3.2 - sepa query");
+		// The query and target schemas are slightly different; and there is an additional
+		// property in the schema that was not in the original query
+		
+		source="waterBodyPressures(source,identifiedDate,assessmentCategory,affectsGroundwater,waterBodyId)";
+		target="waterBodyPressures(dataSource,identifiedDate,assessmentCategory,affectsGroundwater,waterBodyId)";	  
+		testSepa("5.3.2", source,  target, Q5_3_1, T5_3_1) ;
+		
+
+	}
+	
+	@Test //Dbpedia
+	public void test303(){
+	  System.out.println("\nRunning test 5.3.3 - dbpedia query");
+	  source="FormulaOneRacer(races)";
+	  target="FormulaOneRacer(races)";	  
+	  testDBP("5.3.3", source,  target, Q5_3_3, T5_3_3) ;
 	  
-	  //call appropriate methods
-	  finalRes=spsmCall.getSchemas(finalRes, source, target);
-	  
-	  if(finalRes!=null && finalRes.size()!=0){
-	    finalRes = getRepairedSchema.prepare(finalRes);
-	  }
-	  
-	  finalRes = createQuery.createQueryPrep(finalRes, "dbpedia",null,20);
-	  
-	  fOut.write("Test 5.2.13 - dbpedia query\n");
-	  
-	  if(finalRes!=null){
-	    if(finalRes.size() == 0){
-	      //then we have no results so end test
-	      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
-	      fOut.write("Empty results returned. \n\n");
-	    }else{
-	      Match_Struc current = finalRes.get(0);
-	        
-	      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
-	      fOut.write("Expected Result:\n\n" + 
-	        
-	          "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
-	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
-	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
-	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
-	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
-	          + "SELECT DISTINCT *  \n"
-	          + "WHERE { ?id rdf:type dbo:River;\n"
-	          + "dbo:Mountain ?Mountain ;\n"
-	          + ".}\n"
-	          + "LIMIT 20\n\n");
-	      
-	      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
-	    }
-	  }else{
-	    fOut.write("Null Results! \n\n");
-	  }
+	}
+	
+	private void testSepa(String testID, String source, String target, String query, String testStr) {
+		finalRes = new ArrayList<Match_Struc>();
+		
+		//call appropriate methods
+		finalRes=spsmCall.callSPSM(finalRes, source, target);
+		
+		if(finalRes!=null && finalRes.size()!=0){
+			finalRes = getRepairedSchema.repairSchemas(finalRes);
+		}
+		
+		
+		Query_Data queryData = new Query_Data(query) ;
+		
+		finalRes = createQuery.createQueries(finalRes, queryData, "sepa","queryData/sepa/sepa_datafiles/","queryData/sepa/sepa_ontology.json", 0);
+		
+		fOut.write("Test " +  testID + " - sepa query\n");
+		
+		
+		
+		if(finalRes!=null){
+			if(finalRes.size() == 0){	
+				//then we have no results so end test
+			
+				fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
+				fOut.write("Empty results returned. \n\n");
+				fail() ; // We expect all tests to return more than zero matches
+			}else{
+				Match_Struc current = finalRes.get(0);
+			
+				fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
+				fOut.write("Expected Result:\n\n" + query 
+						+ "\n\n");
+				
+				fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
+				assertTrue(current.getQuery().contains(testStr)) ;
+			}
+		}else{
+			fOut.write("Null Results! \n\n");
+			fail() ; // We expect all tests to return something
+		}
+		
+	}
+
+
+	
+	private void testDBP(String testID, String source, String target, String query, String testStr) {
+		  finalRes = new ArrayList<Match_Struc>();
+		  
+		  //call appropriate methods
+		  finalRes=spsmCall.callSPSM(finalRes, source, target);
+		  
+		  if(finalRes!=null && finalRes.size()!=0){
+		    finalRes = getRepairedSchema.repairSchemas(finalRes);
+		  }
+		  
+		  Query_Data queryData = new Query_Data(query) ;
+		  finalRes = createQuery.createQueries(finalRes, queryData, "dbpedia",null,"queryData/dbpedia/dbpedia_ontology.json",20);
+		  
+		  fOut.write("Test " + testID + " - dbpedia query\n");
+		  
+		  if(finalRes!=null){
+		    if(finalRes.size() == 0){
+		      //then we have no results so end test
+		    	
+		      fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
+		      fOut.write("Empty results returned. \n\n");
+		      fail() ; // We expect all tests to return more than zero matches
+		    }else{
+		      Match_Struc current = finalRes.get(0);
+		      	
+		      fOut.write("Creating query from schema, "+current.getDatasetSchema() + "\n");
+		      fOut.write("Expected Result:\n\n" + query
+		        
+		         
+		          + "\n\n");
+		      
+		      fOut.write("Actual Result: \n\n" + current.getQuery() + "\n\n");
+		      assertTrue(current.getQuery().contains(testStr)) ;
+		    }
+		  }else{
+		    fOut.write("Null Results! \n\n");
+		    fail() ; // We expect all tests to return something
+		  }
 	}
 	
 	@After

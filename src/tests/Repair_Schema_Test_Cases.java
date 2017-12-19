@@ -87,10 +87,10 @@ public class Repair_Schema_Test_Cases {
 		finalRes = new ArrayList<Match_Struc>();
 		
 		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
+		finalRes=spsmCall.callSPSM(finalRes, source, target);
 		
 		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
+			finalRes = getRepairedSchema.repairSchemas(finalRes);
 		}
 		
 		fOut.write("Test 4.1.1\n");
@@ -122,10 +122,10 @@ public class Repair_Schema_Test_Cases {
 		finalRes = new ArrayList<Match_Struc>();
 		
 		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
+		finalRes=spsmCall.callSPSM(finalRes, source, target);
 	
 		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
+			finalRes = getRepairedSchema.repairSchemas(finalRes);
 		}
 		
 		fOut.write("Test 4.5.6\n");
@@ -158,10 +158,10 @@ public class Repair_Schema_Test_Cases {
 		finalRes = new ArrayList<Match_Struc>();
 		
 		//call appropriate methods
-		finalRes = spsmCall.getSchemas(finalRes, source, target);
+		finalRes = spsmCall.callSPSM(finalRes, source, target);
 	
 		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
+			finalRes = getRepairedSchema.repairSchemas(finalRes);
 		}
 		
 		fOut.write("Test 4.5.7\n");

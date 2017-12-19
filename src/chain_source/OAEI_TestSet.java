@@ -284,7 +284,7 @@ public ArrayList<Match_Struc> startRepair(String sourceSchema, String targetSche
 		ArrayList<Match_Struc> results = new ArrayList<Match_Struc>();
 		
 		try {
-			results = spsm.getSchemas(results, current.getQuerySchema(), targetSchemas);
+			results = spsm.callSPSM(results, current.getQuerySchema(), targetSchemas);
 		
 			if(results == null){
 				System.out.println("getSchemas returned null.");
@@ -299,7 +299,7 @@ public ArrayList<Match_Struc> startRepair(String sourceSchema, String targetSche
 				results = filterRes.getThresholdAndFilter(results, similarityThreshold, maxMatchResults);
 			
 				//return repaired schema
-				results = repairSchema.prepare(results);
+				results = repairSchema.repairSchemas(results);
 			}
 		} catch(Exception e){
 			e.printStackTrace();

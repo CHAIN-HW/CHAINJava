@@ -1,5 +1,7 @@
 package tests;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -12,9 +14,12 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import com.hp.hpl.jena.query.ResultSet;
+
 import chain_source.Call_SPSM;
 import chain_source.Create_Query;
 import chain_source.Match_Struc;
+import chain_source.Query_Data;
 import chain_source.Repair_Schema;
 import chain_source.Run_Query;
 
@@ -32,7 +37,260 @@ import chain_source.Run_Query;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Run_Query_Test_Cases {
+	
+	private static final int EXCEPTION = 1 ;
+	private static final int WITHRESULTS = 2 ;
+	private static final int NORESULTS = 3 ;
+	private static final int FAILURE = 4 ;
+	
+	private static String Q6_1_1 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+			+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+			+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+			+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+			+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+			+ "SELECT *  \n"
+			+ "FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>\n"
+			+ "WHERE {\n ?id sepaw:dataSource ?dataSource;\n"
+			+ "sepaw:identifiedDate  ?identifiedDate  ;\n"
+			+ "sepaw:affectsGroundwater ?affectsGroundwater ;\n"
+			+ "sepaw:waterBodyId ?waterBodyId .}" ;
 
+	private static String Q6_1_2 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+			+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+			+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+			+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+			+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+			+ "SELECT *  \n"
+			+ "FROM <queryData/sepa/sepa_datafiles/water.n3>\n"
+			+ "WHERE { ?id sepaw:timePeriod ?timePeriod;\n"
+			+ "geo:geo ?geo  ;\n"
+			+ "sepaw:measure ?measure ;\n"
+			+ "sepaw:resource ?resource .}" ;
+	
+	private static String Q6_1_3 = 	 "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+     + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+     + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+     + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+     + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+     + "SELECT *  \n"
+     + "FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>\n"
+     + "WHERE { ?id sepaw:timePeriod ?timePeriod;\n"
+     + "geo:geo ?geo  ;\n"
+     + "sepaw:measure ?measure ;\n"
+     + "sepaw:resource ?resource .}" ;
+
+	private static String Q6_1_4 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+          	+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+          	+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+          	+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+          	+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+          	+ "SELECT *  \n"
+          	+ "FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>\n"
+          	+ "WHERE { ?id sepaw:identifiedDate ?identifiedDate;\n"
+          	+ "sepaw:waterBodyId ?waterBodyId  ;\n"
+          	+ "sepaw:assessmentCategory ?assessmentCategory ;\n"
+          	+ "sepaw:source ?source .}" ;
+	
+	private static String Q6_1_5 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+	          + "SELECT *  \n"
+	          + "FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>\n"
+	          + "WHERE { ?id sepaw:waterBodyId ?waterBodyId;\n"
+	          + "sepaw:secondaryMeasure ?secondaryMeasure  ;\n"
+	          + "sepaw:dataSource ?dataSource .}" ;
+	
+	private static String Q6_1_6 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+	          + "SELECT *  \n"
+	          + "FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>\n"
+	          + "WHERE { ?id sepaw:riverName ?riverName;\n"
+	          + "sepaw:associatedGroundwaterId ?associatedGroundwaterId .}" ;
+	
+	private static String Q6_1_7 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+	          + "SELECT *  \n"
+	          + "FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>\n"
+	          + "WHERE { ?id sepaloc:catchment ?catchment;\n"
+	          + "sepaloc:localAuthority ?localAuthority  ;\n"
+	          + "geo:lat ?lat ;\n"
+	          + "geo:long ?long .}" ;
+	
+	private static String Q6_1_8 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+	          + "SELECT *  \n"
+	          + "FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>\n"
+	          + "WHERE { ?id sepaw:altitudeTypology ?altitudeTypology;\n"
+	          + "sepaw:associatedGrounwaterId ?associatedGroundwaterId  ;\n"
+	          + "sepaw:riverName ?riverName ;\n"
+	          + "sepaw:subBasinDistrict ?subBasinDistrict .}" ;
+	
+	private static String Q6_1_9 = 	"PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+	          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+	          + "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+	          + "SELECT *  \n"
+	          + "FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>\n"
+	          + "WHERE { ?id sepaw:bathingWaterId ?bathingWaterId;\n"
+	          + ".}" ;
+	
+	private static String Q6_2_1 =	"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+			+ "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+			+ "PREFIX  res: <http://dbpedia.org/resource/> \n"
+			+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+			+ "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+			+ "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+			+ "SELECT DISTINCT *  \n"
+			+ "WHERE { ?id rdf:type dbo:City ;\n"
+			+ "dbo:country ?country ;\n"
+			+ "dbo:populationTotal ?populationTotal .}\n"
+			+ "LIMIT 20" ;
+	
+	private static String Q6_2_2 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+			+ "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+			+ "PREFIX  res: <http://dbpedia.org/resource/> \n"
+			+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+			+ "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+			+ "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+			+ "SELECT DISTINCT *  \n"
+			+ "WHERE { ?id rdf:type dbo:City .}\n"
+			+ "LIMIT 20" ;
+	
+	private static String Q6_2_3 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type Astronaut ;\n"
+	          + "dbo:nationality ?nationality ;\n"
+	          + ".}\n"
+	          + "LIMIT 20";
+	
+	private static String Q6_2_4 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:Mountain ;\n"
+	          + "dbo:elevation ?elevation ;\n"
+	          + ".}\n"
+	          + "LIMIT 20" ;
+	
+	private static String Q6_2_5 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:Person ;\n"
+	          + "dbo:occupation ?occupation ;\n"
+	          + "dbo:birthPlace ?birthPlace .}\n"
+	          + "LIMIT 20" ;
+	
+	private static String Q6_2_6 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:Person ;\n"
+	          + "dbo:occupation ?occupation ;\n"
+	          + "dbo:instrument ?instrument .}\n"
+	          + "LIMIT 20" ;
+	
+	private static String Q6_2_7 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:Cave ;\n"
+	          + "dbo:location ?location ;\n"
+	          + ".}\n"
+	          + "LIMIT 20" ;
+	
+	private static String Q6_2_8 =  "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:FormulaOneRacer ;\n"
+	          + "dbo:races ?races ;\n"
+	          + ".}\n"
+	          + "LIMIT 20" ;
+	
+	private static String Q6_2_9 = "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:River ;\n"
+	          + "dbo:length ?length ;\n"
+	          + ".}\n"
+	          + "LIMIT 20" ;
+	
+	private static String Q6_2_10 =  "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:Royalty ;\n"
+	          + "dbo:parent ?parent ;\n"
+	          + ".}\n"
+	          + "LIMIT 20" ;
+	
+	private static String Q6_2_11 =  "" ;
+	
+	private static String Q6_3_1 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+          	+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+          	+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+          	+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+          	+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+          	+ "SELECT *  \n"
+          	+ "FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>\n"
+          	+ "WHERE { ?id sepaw:identifiedDate \"2009-09-03\";\n"
+          	+ "sepaw:waterBodyId sepaidw:100053  ;\n"
+          	+ "sepaw:assessmentCategory ?assessmentCategory ;\n"
+          	+ "sepaw:source \"SEPA\" .}" ;
+	
+	private static String Q6_3_3 =  "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:FormulaOneRacer ;\n"
+	          + "dbo:races \"202\"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> ;\n"
+	          + ".}\n"
+	          + "LIMIT 20" ;
+	
+	
 	private Call_SPSM spsmCall;
 	private Repair_Schema getRepairedSchema;
 	private Create_Query createQuery;
@@ -86,35 +344,11 @@ public class Run_Query_Test_Cases {
 	
 	@Test
 	public void test11(){
-		System.out.println("\nRunning test 6.1.1 - sepa query");
-		
+		System.out.println("\nRunning test 6.1.1 - sepa query");	
 		source="waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
 		target="waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
-		finalRes = new ArrayList<Match_Struc>();
+		testSepa("6.1.1", source, target, Q6_1_1, WITHRESULTS) ;
 		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.1.1 - sepa query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "sepa", "queryData/sepa/sepa_datafiles/"))==true){
-				fOut.write("\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
 	}
 	
 	@Test
@@ -123,31 +357,8 @@ public class Run_Query_Test_Cases {
 		
 		source="water(timePeriod, geo, measure, resource)";
 		target="water(timePeriod, geo, measure, resource)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.1.2 - sepa query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "sepa", "queryData/sepa/sepa_datafiles/"))==true){
-				fOut.write("\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		testSepa("6.1.2", source, target, Q6_1_2, FAILURE) ; //Failure due to no file
+
 	}
 	
 	@Test
@@ -156,31 +367,8 @@ public class Run_Query_Test_Cases {
 		
 		source="waterBodyMeasures(timePeriod, geo, measure, resource)";
 		target="waterBodyMeasures(timePeriod, geo, measure, resource)";
-		finalRes = new ArrayList<Match_Struc>();
+		testSepa("6.1.3", source, target, Q6_1_3, NORESULTS) ;
 		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.1.3 - sepa query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "sepa", "queryData/sepa/sepa_datafiles/"))==true){
-				fOut.write("\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
 	}
 	
 	@Test
@@ -189,31 +377,7 @@ public class Run_Query_Test_Cases {
 		
 		source="waterBodyPressures(identifiedDate,waterBodyId,assessmentCategory,source)";
 		target="waterBodyPressures(identifiedDate,waterBodyId,assessmentCategory,source)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.1.4 - sepa query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "sepa", "queryData/sepa/sepa_datafiles/"))==true){
-				fOut.write("\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		testSepa("6.1.4", source, target, Q6_1_4, WITHRESULTS) ;
 	}
 	
 	@Test
@@ -222,31 +386,7 @@ public class Run_Query_Test_Cases {
 		
 		source="waterBodyMeasures(waterBodyId,secondaryMeasure,dataSource)";
 		target="waterBodyMeasures(waterBodyId,secondaryMeasure,dataSource)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.1.5 - sepa query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "sepa", "queryData/sepa/sepa_datafiles/"))==true){
-				fOut.write("\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		testSepa("6.1.5", source, target, Q6_1_5, WITHRESULTS) ;
 	}
 	
 	@Test
@@ -255,31 +395,7 @@ public class Run_Query_Test_Cases {
 		
 		source="surfaceWaterBodies(riverName,associatedGroundwaterId)";
 		target="surfaceWaterBodies(riverName,associatedGroundwaterId)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.1.6 - sepa query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "sepa", "queryData/sepa/sepa_datafiles/"))==true){
-				fOut.write("\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		testSepa("6.1.6", source, target, Q6_1_6, WITHRESULTS) ;
 	}
 	
 	@Test
@@ -288,31 +404,7 @@ public class Run_Query_Test_Cases {
 		
 		source="bathingWaters(catchment, localAuthority, lat, long)";
 		target="bathingWaters(catchment, localAuthority, lat, long)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.1.7 - sepa query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "sepa", "queryData/sepa/sepa_datafiles/"))==true){
-				fOut.write("\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		testSepa("6.1.7", source, target, Q6_1_7, NORESULTS) ;
 	}
 	
 	@Test
@@ -321,31 +413,7 @@ public class Run_Query_Test_Cases {
 		
 		source="surfaceWaterBodies(subBasinDistrict,riverName,altitudeTypology,associatedGroundwaterId)";
 		target="surfaceWaterBodies(subBasinDistrict,riverName,altitudeTypology,associatedGroundwaterId)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.1.8 - sepa query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "sepa", "queryData/sepa/sepa_datafiles/"))==true){
-				fOut.write("\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		testSepa("6.1.8", source, target, Q6_1_8, WITHRESULTS) ;
 	}
 	
 	@Test
@@ -354,31 +422,7 @@ public class Run_Query_Test_Cases {
 		
 		source="bathingWaters(bathingWaterId)";
 		target="bathingWaters(bathingWaterId)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.1.9 - sepa query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "sepa", "queryData/sepa/sepa_datafiles/"))==true){
-				fOut.write("\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		testSepa("6.1.9", source, target, Q6_1_9, WITHRESULTS) ;
 	}
 	
 	@Test
@@ -387,64 +431,15 @@ public class Run_Query_Test_Cases {
 		
 		source="waterBodyTemperatures(dataSource, identifiedDate, affectsGroundwater,waterBodyId)";
 		target="waterBodyTemperatures(dataSource, identifiedDate, affectsGroundwater,waterBodyId)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "sepa","queryData/sepa/sepa_datafiles/", 0);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.1.10 - sepa query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "sepa", "queryData/sepa/sepa_datafiles/"))==true){
-				fOut.write("\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		testSepa("6.1.10", source, target, Q6_1_9, FAILURE) ;
 	}
 	
 	@Test
 	public void test21(){
-		System.out.println("\nRunning test 6.2.1 - dbpedia query");
-		
+		System.out.println("\nRunning test 6.2.1 - dbpedia query");		
 		source="City(country,populationTotal)";
 		target="City(country,populationTotal)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.2.1 - dbpedia query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		testDBP("6.2.1", source, target, Q6_2_1, WITHRESULTS) ;
 	}
 	
 	@Test
@@ -452,329 +447,87 @@ public class Run_Query_Test_Cases {
 		System.out.println("\nRunning test 6.2.2 - dbpedia query");
 		
 		source="Country";
-		target="Country";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.2.2 - dbpedia query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		target="Country";		
+		testDBP("6.2.2", source, target, Q6_2_2, WITHRESULTS) ; //Parsing error
 	}
 	
 	@Test
 	public void test23(){
-		System.out.println("\nRunning test 6.2.3 - dbpedia query");
-		
+		System.out.println("\nRunning test 6.2.3 - dbpedia query");		
 		source="Astronaut(nationality)";
 		target="Astronaut(nationality)";
-		finalRes = new ArrayList<Match_Struc>();
+		testDBP("6.2.3", source, target, Q6_2_3, WITHRESULTS) ;  //Parsing error - not clear why???
 		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.2.3 - dbpedia query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
 	}
 	
 	@Test
 	public void test24(){
-		System.out.println("\nRunning test 6.2.4 - dbpedia query");
-		
+		System.out.println("\nRunning test 6.2.4 - dbpedia query");	
 		source="Mountain(elevation)";
-		target="Mountain(elevation)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.2.4 - dbpedia query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		target="Mountain(elevation)";	
+		testDBP("6.2.4", source, target, Q6_2_4, WITHRESULTS) ;
+
 	}
 	
 	@Test
 	public void test25(){
-		System.out.println("\nRunning test 6.2.5 - dbpedia query");
-		
+		System.out.println("\nRunning test 6.2.5 - dbpedia query");		
 		source="Person(occupation, birthPlace)";
 		target="Person(occupation, birthPlace)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.2.5 - dbpedia query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		testDBP("6.2.5", source, target, Q6_2_5, WITHRESULTS) ;	
 	}
 	
 	@Test
 	public void test26(){
-		System.out.println("\nRunning test 6.2.6 - dbpedia query");
-		
+		System.out.println("\nRunning test 6.2.6 - dbpedia query");		
 		source="Person(occupation, instrument)";
-		target="Person(occupation, instrument)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.2.6 - dbpedia query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		target="Person(occupation, instrument)";		
+		testDBP("6.2.6", source, target, Q6_2_6, WITHRESULTS) ;
+
 	}
 	
 	@Test
 	public void test27(){
-		System.out.println("\nRunning test 6.2.7 - dbpedia query");
-		
+		System.out.println("\nRunning test 6.2.7 - dbpedia query");		
 		source="Cave(location)";
-		target="Cave(location)";
-		finalRes = new ArrayList<Match_Struc>();
+		target="Cave(location)";		
+		testDBP("6.2.7", source, target, Q6_2_7, WITHRESULTS) ;
 		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.2.7 - dbpedia query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
 	}
 	
 	@Test
 	public void test28(){
-		System.out.println("\nRunning test 6.2.8 - dbpedia query");
-		
+		System.out.println("\nRunning test 6.2.8 - dbpedia query");	
 		source="FormulaOneRacer(races)";
-		target="FormulaOneRacer(races)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.2.8 - dbpedia query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}	
+		target="FormulaOneRacer(races)";	
+		testDBP("6.2.8", source, target, Q6_2_8, WITHRESULTS) ;
+
 	}
 	
 	@Test
 	public void test29(){
-		System.out.println("\nRunning test 6.2.9 - dbpedia query");
-		
+		System.out.println("\nRunning test 6.2.9 - dbpedia query");		
 		source="River(length)";
-		target="River(length)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.2.9 - dbpedia query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		target="River(length)";		
+		testDBP("6.2.9", source, target, Q6_2_9, WITHRESULTS) ;
+
 	}
 	
 	@Test
 	public void test210(){
-		System.out.println("\nRunning test 6.2.10 - dbpedia query");
-		
+		System.out.println("\nRunning test 6.2.10 - dbpedia query");		
 		source="Royalty(parent)";
-		target="Royalty(parent)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.2.10 - dbpedia query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		target="Royalty(parent)";		
+		testDBP("6.2.10", source, target, Q6_2_10, WITHRESULTS) ;
+
 	}
 	
 	@Test
 	public void test211(){
-		System.out.println("\nRunning test 6.2.11 - dbpedia query");
-		
+		System.out.println("\nRunning test 6.2.11 - dbpedia query");		
 		source="river(length)";
-		target="river(length)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.2.11 - dbpedia query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		target="river(length)";		
+		testDBP("6.2.11", source, target, Q6_2_11, EXCEPTION) ; // expect parse error due to empty query
 	}
 	
 	@Test
@@ -783,31 +536,9 @@ public class Run_Query_Test_Cases {
 		
 		source="Stream(length)";
 		target="Stream(length)";
-		finalRes = new ArrayList<Match_Struc>();
 		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.2.12 - dbpedia query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		testDBP("6.2.12", source, target, Q6_2_11, EXCEPTION) ; // expect parse error due to empty query
+
 	}
 	
 	@Test
@@ -816,99 +547,116 @@ public class Run_Query_Test_Cases {
 		
 		source="River(Mountain(elevation))";
 		target="River(Mountain(elevation))";
-		finalRes = new ArrayList<Match_Struc>();
 		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.2.13 - dbpedia query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		testDBP("6.2.13", source, target, Q6_2_9, NORESULTS) ; // Expect no match for Mountain
+
 	}
 	
 	@Test
 	public void test214(){
-		System.out.println("\nRunning test 6.2.14 - dbpedia query");
-		
+		System.out.println("\nRunning test 6.2.14 - dbpedia query");	
 		source="Brokentype(brokenproperty)";
-		target="Brokentype(brokenproperty)";
-		finalRes = new ArrayList<Match_Struc>();
-		
-		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
-		
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
-		}
-		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
-		Match_Struc current = finalRes.get(0);
-		
-		fOut.write("Test 6.2.14 - dbpedia query\n");
-		fOut.write("Trying to run query: \n\n" + current.getQuery());
-		
-		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
-		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
-			fOut.write(e.toString()+"\n\n");
-		}
+		target="Brokentype(brokenproperty)";		
+		testDBP("6.2.14", source, target, Q6_2_11, EXCEPTION) ; // Empty query 
+
 	}
 	
 	@Test
 	public void test215(){
-		System.out.println("\nRunning test 6.2.15 - dbpedia query");
-		
+		System.out.println("\nRunning test 6.2.15 - dbpedia query");		
 		source="River(assembly, manufacturer, place)";
-		target="River(assembly, manufacturer, place)";
+		target="River(assembly, manufacturer, place)";		
+		testDBP("6.2.15", source, target, Q6_2_9, NORESULTS) ;
+		
+	}
+	
+	@Test
+	public void test303(){
+		System.out.println("\nRunning test 6.3.3 - dbpedia query");		
+		source="FormulaOneRacer(races)";
+		target="FormulaOneRacer(races)";		
+		testDBP("6.3.3", source, target, Q6_3_3, WITHRESULTS) ; // Query with data
+	}
+	
+	private void testSepa(String testID, String source, String target, String query, int ExpectedResult) {
 		finalRes = new ArrayList<Match_Struc>();
 		
 		//call appropriate methods
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
+		finalRes=spsmCall.callSPSM(finalRes, source, target);
 		
 		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
+			finalRes = getRepairedSchema.repairSchemas(finalRes);
 		}
 		
-		finalRes = createQuery.createQueryPrep(finalRes, "dbpedia", null, 20);
+		Query_Data queryData = new Query_Data(query) ;
+		System.out.println(queryData) ;
+		finalRes = createQuery.createQueries(finalRes, queryData, "sepa","queryData/sepa/sepa_datafiles/", "queryData/sepa/sepa_ontology.json",0);
+		// Run the first query only
 		Match_Struc current = finalRes.get(0);
 		
-		fOut.write("Test 6.2.15 - dbpedia query\n");
+		fOut.write("Test " + testID + " - sepa query\n");
 		fOut.write("Trying to run query: \n\n" + current.getQuery());
 		
 		try{
-			if((run.runQuery(current, "dbpedia", null))==true){
-				fOut.write("\n\nQuery HAS run successfully.\n\n");
-			}else{
-				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
-			}
+			ResultSet result = run.runQuery(current, "sepa", "queryData/sepa/sepa_datafiles/") ;
+			if((result != null) && result.hasNext() ){
+				// System.out.println("Result: match");
+				fOut.write("\nQuery HAS run successfully.\n\n");
+				assertTrue(ExpectedResult == WITHRESULTS) ;
+			}else if(result != null) {
+				fOut.write("\nQuery HAS run successfully but NO data has been returned.\n\n");
+				assertTrue(ExpectedResult == NORESULTS) ;
+				// System.out.println("Result: empty");
+			} else {
+				fOut.write("\n\nQuery has NOT run successfully") ;
+				// System.out.println("Result: failure");
+				assertTrue(ExpectedResult == FAILURE) ;
+				}
 		}catch(Exception e){
-			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
+			fOut.write("\nQuery has NOT run successfully with error message,\n");
 			fOut.write(e.toString()+"\n\n");
+			// System.out.println("Result: exception");
+			assertTrue(ExpectedResult == EXCEPTION) ;
 		}
 	}
 	
+	private void testDBP(String testID, String source, String target, String query, int ExpectedResult) {
+		finalRes = new ArrayList<Match_Struc>();		
+		finalRes=spsmCall.callSPSM(finalRes, source, target);
+		
+		if(finalRes!=null && finalRes.size()!=0){
+			finalRes = getRepairedSchema.repairSchemas(finalRes);
+		}
+		
+		Query_Data queryData = new Query_Data(query) ;
+		System.out.println(queryData) ;
+		finalRes = createQuery.createQueries(finalRes, queryData, "dbpedia", null, "queryData/dbpedia/dbpedia_ontology.json",20);
+		// Run the first query only
+		Match_Struc current = finalRes.get(0);
+		
+		fOut.write("Test " + testID + " - dbpedia query\n");
+		fOut.write("Trying to run query: \n\n" + current.getQuery());
+		
+		try{
+			ResultSet result = run.runQuery(current, "dbpedia", null) ;
+			if((result != null) && result.hasNext() ){
+				fOut.write("\n\nQuery HAS run successfully.\n\n");
+				assertTrue(ExpectedResult == WITHRESULTS) ;
+			}else if(result != null) {
+				fOut.write("\n\nQuery HAS run successfully but NO data has been returned.\n\n");
+				assertTrue(ExpectedResult == NORESULTS) ;
+			} else {
+				fOut.write("\n\nQuery has NOT run successfully") ;
+				assertTrue(ExpectedResult == FAILURE) ;
+				}
+		}catch(Exception e){
+			fOut.write("\n\nQuery has NOT run successfully with error message,\n");
+			fOut.write(e.toString()+"\n\n");
+			assertTrue(ExpectedResult == EXCEPTION) ;
+		}
+		
+		
+	}
 	
 	@After
 	public void cleanUp(){

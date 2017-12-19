@@ -1,6 +1,6 @@
 Testing Results for Run_CHAIn_Test_Cases.java
 
-Test 8.1
+Test 8.0.6
 Running CHAIn with initial query,
 
 PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
@@ -9,18 +9,16 @@ PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/>
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
 SELECT *  
-FROM <queryData/sepa/sepa_datafiles/waterBodyPressurestest.n3>
-WHERE { ?id sepaw:dataSource ?dataSource;
-sepaw:identifiedDate  ?identifiedDate  ;
-sepaw:affectsGroundwater ?affectsGroundwater ;
-sepaw:waterBodyId ?waterBodyId .}
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE { ?id sepaw:identifiedDate "2008-04-01";
+sepaw:waterBodyId sepaidw:20308xxx  ;
+sepaw:assessmentCategory ?assessmentCategory ;
+sepaw:source "Lake" .}Query has NOT run successfully the first time.
 
-Query has NOT run successfully the first time.
-
-Calling SPSM has returned 1 match(es).
+Calling SPSM to try and create new query
 Now running the new queries that have been created...
 
-Target Schema, waterBodyPressures(dataSource, identifiedDate, affectsGroundwater, waterBodyId), has created the following query:
+Target Schema, waterBodyPressures(identifiedDate,waterBodyId,assessmentCategory,source), has created the following query:
 
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
@@ -31,164 +29,17 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
-WHERE { ?id sepaw:affectsGroundwater ?affectsGroundwater ;
-sepaw:dataSource ?dataSource ;
-sepaw:identifiedDate ?identifiedDate ;
-sepaw:waterBodyId ?waterBodyId
-.}
+WHERE {  
+ ?id sepaw:waterBodyId <http://data.sepa.org.uk/id/Water/20308xxx> ;
+ sepaw:assessmentCategory ?assessmentCategory ;
+ sepaw:source "Lake" ;
+ sepaw:identifiedDate "2008-04-01"
+}
 LIMIT 10
 
-This new query has run successfully!!
+This new query has run with no results.
 
 
-Test 8.2
-Running CHAIn with initial query,
-
-PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
-PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
-PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
-PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
-SELECT *  
-FROM <queryData/sepa/sepa_datafiles/water.n3>
-WHERE { ?id sepaw:timePeriod ?timePeriod;
-random:geo ?geo  ;
-sepaw:measure ?measure ;
-sepaw:resource ?resource .}
-
-Invalid query, terminating...
-
-Test 8.3
-Running CHAIn with initial query,
-
-PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
-PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
-PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
-PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
-SELECT *  
-FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
-WHERE { ?id sepaw:river ?river;
-sepaw:associatedGroundwaterId ?associatedGroundwaterId .}
-
-Query has NOT run successfully the first time.
-
-Calling SPSM to try and create new query
-There have been 0 matches returned from SPSM, terminating...
-
-Test 8.4
-Running CHAIn with initial query,
-
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
-PREFIX  dbp: <http://dbpedia.org/property/>   
-PREFIX  res: <http://dbpedia.org/resource/> 
-PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
-PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
-
-SELECT DISTINCT *  
-WHERE { ?id rdf:type dbo:City ;
-dbo:country ?country ;
-dbo:population ?population .}
-LIMIT 10
-
-Query has NOT run successfully the first time.
-
-Calling SPSM has returned 1 match(es).
-Now running the new queries that have been created...
-
-Target Schema, City(country,populationTotal), has created the following query:
-
-PREFIX dbo: <http://dbpedia.org/ontology/>
-PREFIX dbp: <http://dbpedia.org/property/>
-PREFIX res: <http://dbpedia.org/resource/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX yago: <http://dbpedia.org/class/yago/>
-
-SELECT DISTINCT*
-WHERE { ?id rdf:type dbo:City;
-dbo:country ?country ;
-dbo:populationTotal ?populationTotal
-.}
-LIMIT 10
-
-This new query has run successfully!!
-
-
-Test 8.5
-Running CHAIn with initial query,
-
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
-PREFIX  dbp: <http://dbpedia.org/property/>   
-PREFIX  res: <http://dbpedia.org/resource/> 
-PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
-PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
-
-SELECT DISTINCT *  
-WHERE { ?id rdf:type dbo:River ;
-dbo:length ?length ;
-.}
-LIMIT 10
-
-Query has run successfully first time.
-
- CHAIn has finished running.
-
-
-Test 8.6
-Running CHAIn with initial query,
-
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
-PREFIX  dbp: <http://dbpedia.org/property/>   
-PREFIX  res: <http://dbpedia.org/resource/> 
-PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
-PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
-
-SELECT DISTINCT *  
-WHERE { ?id rdf:type dbo:River ;
-dbo:lengthTest ?lengthTest ;
-.}
-LIMIT 10
-
-Query has NOT run successfully the first time.
-
-Calling SPSM has returned 2 match(es).
-Now running the new queries that have been created...
-
-Target Schema, River(length), has created the following query:
-
-PREFIX dbo: <http://dbpedia.org/ontology/>
-PREFIX dbp: <http://dbpedia.org/property/>
-PREFIX res: <http://dbpedia.org/resource/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX yago: <http://dbpedia.org/class/yago/>
-
-SELECT DISTINCT*
-WHERE { ?id rdf:type dbo:River;
-dbo:length ?length
-.}
-LIMIT 10
-
-This new query has run successfully!!
-
-
-Target Schema, River(size), has created the following query:
-
-PREFIX dbo: <http://dbpedia.org/ontology/>
-PREFIX dbp: <http://dbpedia.org/property/>
-PREFIX res: <http://dbpedia.org/resource/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX yago: <http://dbpedia.org/class/yago/>
-
-SELECT DISTINCT*
-WHERE { ?id rdf:type dbo:River;
-LIMIT 10
-
-This new query has NOT run successfully!!
+Attempting data repair.
 
 

@@ -5,8 +5,10 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 /* Author Tanya Howden
+ * Author Diana Bental
  * Date September 2017
- * Modified
+ * Modified December 2017
+ * - added subsequent tasks
  */
 
 /*
@@ -20,6 +22,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 
 @SuiteClasses({ 
+	Schema_From_Query_Test_Cases.class,
+	JWI_Caller_Test_Cases.class,
 	Create_Query_Test_Cases.class, 
 	Repair_Schema_Test_Cases.class,
 		Run_Query_Test_Cases.class 

@@ -75,7 +75,7 @@ public class SPSM_Test_Cases {
 		source=""; 
 		target="";
 		
-		results = methodCaller.getSchemas(results, source, target);
+		results = methodCaller.callSPSM(results, source, target);
 		
 		fOut.write("Test 1.1.1\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -96,7 +96,7 @@ public class SPSM_Test_Cases {
 		source="author(name)";
 		target="";
 		
-		results = methodCaller.getSchemas(results,source,target);
+		results = methodCaller.callSPSM(results,source,target);
 		
 		fOut.write("Test 1.2.1\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -117,7 +117,7 @@ public class SPSM_Test_Cases {
 		source="";
 		target="author(name)";
 		
-		results = methodCaller.getSchemas(results,source,target);
+		results = methodCaller.callSPSM(results,source,target);
 		
 		fOut.write("Test 1.2.2\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -139,7 +139,7 @@ public class SPSM_Test_Cases {
 		source="author(name)";
 		target="author(name)";
 		
-		results = methodCaller.getSchemas(results,source,target);
+		results = methodCaller.callSPSM(results,source,target);
 		
 		fOut.write("Test 1.2.3\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -151,7 +151,7 @@ public class SPSM_Test_Cases {
 			if(results.size() > 0){
 				Match_Struc res = results.get(0);
 				
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}			 
@@ -166,7 +166,7 @@ public class SPSM_Test_Cases {
 		source="author(name)";
 		target="document(title,author) ; author(name,document) ; reviewAuthor(firstname,lastname,review)";
 		
-		results = methodCaller.getSchemas(results, source, target);
+		results = methodCaller.callSPSM(results, source, target);
 		
 		int[] answer = {2,2};
 		double[] simValues = {1.0,0.75};
@@ -183,7 +183,7 @@ public class SPSM_Test_Cases {
 					
 					fOut.write("Target: "+currRes.getDatasetSchema()+"\n");
 					fOut.write("Expected Result: similarity == "+simValues[i]+" & numMatches == "+answer[i]+"\n");
-					fOut.write("Actual Result: similarity == "+currRes.getSimValue()+" & numMatches == "+currRes.getNumMatches()+"\n\n"); 
+					fOut.write("Actual Result: similarity == "+currRes.getSimValue()+" & numMatches == "+currRes.getNumMatchComponents()+"\n\n"); 
 				}
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
@@ -199,7 +199,7 @@ public class SPSM_Test_Cases {
 		source="author(name)";
 		target="document(title,author) ; conferenceMember(name)";
 		
-		results = methodCaller.getSchemas(results,source,target);
+		results = methodCaller.callSPSM(results,source,target);
 		
 		fOut.write("Test 1.3.1\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -219,7 +219,7 @@ public class SPSM_Test_Cases {
 		source="author(name)";
 		target="author(name) ; document(title,author)";
 		
-		results = methodCaller.getSchemas(results, source, target);
+		results = methodCaller.callSPSM(results, source, target);
 		
 		fOut.write("Test 1.3.2\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -232,7 +232,7 @@ public class SPSM_Test_Cases {
 				
 				fOut.write("Target: "+currRes.getDatasetSchema()+"\n");
 				fOut.write("Expected Result: similarity == 1.0"+" & numMatches == 2 \n");
-				fOut.write("Actual Result: similarity == "+currRes.getSimValue()+" & numMatches == "+currRes.getNumMatches()+"\n\n"); 
+				fOut.write("Actual Result: similarity == "+currRes.getSimValue()+" & numMatches == "+currRes.getNumMatchComponents()+"\n\n"); 
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}
@@ -246,7 +246,7 @@ public class SPSM_Test_Cases {
 		source="author(name)";
 		target="author(name) ; document(title,author) ; paperWriter(firstname,surname,paper) ; reviewAuthor(firstname,lastname,review)";
 		
-		results = methodCaller.getSchemas(results,source,target);
+		results = methodCaller.callSPSM(results,source,target);
 		
 		fOut.write("Test 1.3.3\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -263,7 +263,7 @@ public class SPSM_Test_Cases {
 					
 					fOut.write("Target: "+currRes.getDatasetSchema()+"\n");
 					fOut.write("Expected Result: similarity == "+simVals[i]+" & numMatches == "+answer[i]+"\n");
-					fOut.write("Actual Result: similarity == "+currRes.getSimValue()+" & numMatches == "+currRes.getNumMatches()+"\n\n");
+					fOut.write("Actual Result: similarity == "+currRes.getSimValue()+" & numMatches == "+currRes.getNumMatchComponents()+"\n\n");
 				}
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
@@ -278,7 +278,7 @@ public class SPSM_Test_Cases {
 		source="author";
 		target="writer";
 		
-		results = methodCaller.getSchemas(results,source,target);
+		results = methodCaller.callSPSM(results,source,target);
 		
 		fOut.write("Test 1.4.1\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -290,7 +290,7 @@ public class SPSM_Test_Cases {
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 1.0"+" & numMatches == 1 \n");
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}
@@ -304,7 +304,7 @@ public class SPSM_Test_Cases {
 		source="author";
 		target="document";
 		
-		results = methodCaller.getSchemas(results, source, target);
+		results = methodCaller.callSPSM(results, source, target);
 		
 		fOut.write("Test 1.4.2\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -324,7 +324,7 @@ public class SPSM_Test_Cases {
 		source="author(name)";
 		target="document(name)";
 		
-		results = methodCaller.getSchemas(results, source, target);
+		results = methodCaller.callSPSM(results, source, target);
 		
 		fOut.write("Test 1.4.3\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -344,7 +344,7 @@ public class SPSM_Test_Cases {
 		source="author(name)";
 		target="reviewWriter(review,name)";
 		
-		results = methodCaller.getSchemas(results, source, target);
+		results = methodCaller.callSPSM(results, source, target);
 		
 		fOut.write("Test 1.4.4\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -356,7 +356,7 @@ public class SPSM_Test_Cases {
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}	
@@ -370,7 +370,7 @@ public class SPSM_Test_Cases {
 		source="reviewWriter(document,date,name)";
 		target="author(name,email,coAuthors,writePaper,submitPapers,review)";
 		
-		results = methodCaller.getSchemas(results,source,target);
+		results = methodCaller.callSPSM(results,source,target);
 		
 		fOut.write("Test 1.4.5\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -383,7 +383,7 @@ public class SPSM_Test_Cases {
 				
 				fOut.write("Target: "+res.getDatasetSchema()+"\n");
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 3 \n");
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}
@@ -397,7 +397,7 @@ public class SPSM_Test_Cases {
 		source="review(date(day,month,year))";
 		target="document(date(day,month,year))";
 		
-		results = methodCaller.getSchemas(results,source,target);
+		results = methodCaller.callSPSM(results,source,target);
 		
 		fOut.write("Test 1.5.1\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -409,7 +409,7 @@ public class SPSM_Test_Cases {
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 1.0"+" & numMatches == 5 \n");
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");			
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");			
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}
@@ -423,7 +423,7 @@ public class SPSM_Test_Cases {
 		source = "review(publication(day,month,year))";
 		target= "review(date(day,month,year))";
 		
-		results = methodCaller.getSchemas(results, source, target);
+		results = methodCaller.callSPSM(results, source, target);
 		
 		fOut.write("Test 1.5.2\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -435,7 +435,7 @@ public class SPSM_Test_Cases {
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.6"+" & numMatches == 5 \n");
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}
@@ -449,7 +449,7 @@ public class SPSM_Test_Cases {
 		source="review(publication(day,month,year))";
 		target= "document(date(day,month,year))";
 		
-		results = methodCaller.getSchemas(results, source, target);
+		results = methodCaller.callSPSM(results, source, target);
 		
 		fOut.write("Test 1.5.3\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -469,7 +469,7 @@ public class SPSM_Test_Cases {
 		source="review(category(day,month,year))";
 		target="review(date(day,month,year))";
 		
-		results = methodCaller.getSchemas(results, source, target);
+		results = methodCaller.callSPSM(results, source, target);
 		
 		fOut.write("Test 1.5.4\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -480,7 +480,7 @@ public class SPSM_Test_Cases {
 		}else{
 			if(results.size() > 0){
 				Match_Struc res = results.get(0);
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}			
@@ -494,7 +494,7 @@ public class SPSM_Test_Cases {
 		source="review(category(day,month,year))";
 		target="document(date(day,month,year))";
 		
-		results = methodCaller.getSchemas(results,source,target);			
+		results = methodCaller.callSPSM(results,source,target);			
 		
 		fOut.write("Test 1.5.5\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -506,7 +506,7 @@ public class SPSM_Test_Cases {
 				Match_Struc res = results.get(0);
 
 				fOut.write("Expected Result: similarity == 0.9999999999999998"+" & numMatches == 1 \n");
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}			
@@ -520,7 +520,7 @@ public class SPSM_Test_Cases {
 		source="conference(paper(title,review(date(day,month,year),author(name(first,second)))))";
 		target="conference(paper(title,document(date(day,month,year),writer(name(first,second)))))";
 		
-		results = methodCaller.getSchemas(results, source, target);
+		results = methodCaller.callSPSM(results, source, target);
 		
 		fOut.write("Test 1.5.6\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -531,7 +531,7 @@ public class SPSM_Test_Cases {
 			if(results.size()>0){
 				Match_Struc res = results.get(0);
 				fOut.write("Expected Result: similarity == 0.625"+" & numMatches == 12 \n");
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}
@@ -545,7 +545,7 @@ public class SPSM_Test_Cases {
 		source="conference(paper(title,review(date(day,month,year),author(name(first,second)))))";
 		target="conference(paper(title,document(category(day,month,year),writer(name(first,second)))))";
 		
-		results = methodCaller.getSchemas(results,source,target);
+		results = methodCaller.callSPSM(results,source,target);
 		
 		fOut.write("Test 1.5.7\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -557,7 +557,7 @@ public class SPSM_Test_Cases {
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.45833333333333337"+" & numMatches == 8 \n");
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}
@@ -571,7 +571,7 @@ public class SPSM_Test_Cases {
 		source="conference(paper(title,review(date(day,month,year),author(name(first,second)))))";
 		target="event(paper(title,document(category(day,month,year),writer(name(first,second)))))";
 		
-		results = methodCaller.getSchemas(results,source,target);
+		results = methodCaller.callSPSM(results,source,target);
 		
 		fOut.write("Test 1.5.8\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");		
@@ -591,7 +591,7 @@ public class SPSM_Test_Cases {
 		source="conferenceDocument(nameOfAuthor)";
 		target="conferenceReview(authorName)";
 		
-		results = methodCaller.getSchemas(results,source,target);
+		results = methodCaller.callSPSM(results,source,target);
 		
 		fOut.write("Test 1.6.1\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -603,7 +603,7 @@ public class SPSM_Test_Cases {
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches ==2 \n");
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}
@@ -617,7 +617,7 @@ public class SPSM_Test_Cases {
 		source="conference_document(name_of_author)";
 		target="conference_review(author_name)";
 		
-		results = methodCaller.getSchemas(results, source, target);
+		results = methodCaller.callSPSM(results, source, target);
 		
 		fOut.write("Test 1.6.2\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -629,7 +629,7 @@ public class SPSM_Test_Cases {
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}
@@ -644,7 +644,7 @@ public class SPSM_Test_Cases {
 		source="conference_document(name_of_author)";
 		target="ConferenceReview(authorName)";
 		
-		results = methodCaller.getSchemas(results, source, target);
+		results = methodCaller.callSPSM(results, source, target);
 		
 		fOut.write("Test 1.6.3\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -656,7 +656,7 @@ public class SPSM_Test_Cases {
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}
@@ -670,7 +670,7 @@ public class SPSM_Test_Cases {
 		source="conference document(name of author)";
 		target="conference review(author name)";
 		
-		results = methodCaller.getSchemas(results,source,target);
+		results = methodCaller.callSPSM(results,source,target);
 		
 		fOut.write("Test 1.6.4\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -682,7 +682,7 @@ public class SPSM_Test_Cases {
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}
@@ -696,7 +696,7 @@ public class SPSM_Test_Cases {
 		source="conference document(nameOfAuthor)";
 		target="conference review(authorName)";
 		
-		results = methodCaller.getSchemas(results,source,target);
+		results = methodCaller.callSPSM(results,source,target);
 	
 		fOut.write("Test 1.6.5\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -708,7 +708,7 @@ public class SPSM_Test_Cases {
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}
@@ -722,7 +722,7 @@ public class SPSM_Test_Cases {
 		source="conferencedocument(nameofauthor)";
 		target="conference review(authorname)";
 		
-		results = methodCaller.getSchemas(results, source, target);
+		results = methodCaller.callSPSM(results, source, target);
 		
 		fOut.write("Test 1.6.6\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
@@ -734,7 +734,7 @@ public class SPSM_Test_Cases {
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
-				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatches()+"\n\n");
+				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
 			}
@@ -748,7 +748,7 @@ public class SPSM_Test_Cases {
 		source="auto(brand,name,color)";
 		target="car(year,brand,colour)";
 		
-		results = methodCaller.getSchemas(results, source, target);
+		results = methodCaller.callSPSM(results, source, target);
 		
 		fOut.write("Test 1.6.7\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");

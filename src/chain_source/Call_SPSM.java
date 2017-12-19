@@ -40,7 +40,7 @@ public class Call_SPSM{
 		
 		//source="author(name)";
 		//target="document(title,author) ; author(name,document) ; reviewAuthor(firstname,lastname,review)";
-		result = classInst.getSchemas(result,source,target);
+		result = classInst.callSPSM(result,source,target);
 		
 		//then lets see if we can read the results from our new structure
 		//and print them out to the console for the user
@@ -56,12 +56,12 @@ public class Call_SPSM{
 				Match_Struc currMatch = result.get(i);
 				System.out.println("\nResult Number "+(i+1)+": "+currMatch.getDatasetSchema());
 				System.out.println("Has a similarity of "+currMatch.getSimValue());
-				System.out.println("And " + currMatch.getNumMatches() + " matche(s)");
+				System.out.println("And " + currMatch.getNumMatchComponents() + " matche(s)");
 
-				if(currMatch.getNumMatches() > 0){
+				if(currMatch.getNumMatchComponents() > 0){
 					System.out.println("These matches are: ");
 
-					ArrayList<String[]> indivMatches = currMatch.getMatches();
+					ArrayList<String[]> indivMatches = currMatch.getMatchComponents();
 					for(int j = 0 ; j < indivMatches.size() ; j++){
 						String[] currIndivMatch = indivMatches.get(j);
 						System.out.println(currIndivMatch[0] + "," + currIndivMatch[1] + "," + currIndivMatch[2]);
@@ -71,12 +71,13 @@ public class Call_SPSM{
 		}	
 	}
 	
-	//get the schemas from the user, either through the console or as a parameter
-	//when this method gets called
-	public ArrayList<Match_Struc> getSchemas(ArrayList<Match_Struc> results, String srcSchema, String targetSchema){
+	// Call SPSM on the source schema and one or more target schemas.
+	// If the schemas are not passed as a parameter then get them from the user
+	
+	public ArrayList<Match_Struc> callSPSM(ArrayList<Match_Struc> results, String srcSchema, String targetSchemas){
 		//if we haven't been passed the schemas as params
 		//then get them through the command line
-		if(srcSchema==null && targetSchema==null){
+		if(srcSchema==null && targetSchemas==null){
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			
 			try{
@@ -88,7 +89,7 @@ public class Call_SPSM{
 				//then get target schema(s)
 				//separated by a ; for now for easy manipulation
 				System.out.println("Please enter target schema(s) seperated by a ';' : ");
-				while((targetSchema=reader.readLine()).equals("")){
+				while((targetSchemas=reader.readLine()).equals("")){
 				}
 				
 				reader.close();
@@ -106,19 +107,19 @@ public class Call_SPSM{
 			
 			//then save the target schemas to our array
 			//by splitting string at ';'
-			targetList = targetSchema.split(";");
+			targetList = targetSchemas.split(";");
 			
 			//then for each of the target schemas
 			//we want to call SPSM and store the results
-			String currTarget="";
+			String targetSchema="";
 			for(int i = 0 ; i < targetList.length ; i++){
 				//write the current target schema to file
 				PrintWriter targetWriter = new PrintWriter("inputs/target.txt","UTF-8");
-				currTarget = targetList[i].trim();
-				targetWriter.write(currTarget);
+				targetSchema = targetList[i].trim();
+				targetWriter.write(targetSchema);
 				targetWriter.close();
 				
-				if(srcSchema.equals("") || currTarget.equals("")){
+				if(srcSchema.equals("") || targetSchema.equals("")){
 					//if we have either an empty source or target
 					//then move on because that will not return any
 					//results
@@ -126,8 +127,8 @@ public class Call_SPSM{
 				}else{
 					//then call SPSM & store results
 					System.out.println("Calling SPSM with Source Schema: " + srcSchema) ;
-					System.out.println("Calling SPSM with Target Schema: " + currTarget) ;
-					results = callSPSM(results,currTarget);
+					System.out.println("Calling SPSM with Target Schema: " + targetSchema) ;
+					results = callSPSMOnce(results,targetSchema);
 				}
 			}
 			
@@ -142,7 +143,7 @@ public class Call_SPSM{
 	//makes call to SPSM through using .sh file
 	// Match one source schema to one target schema
 	// May return multiple matches
-	public ArrayList<Match_Struc> callSPSM(ArrayList<Match_Struc> results, String currTarget){
+	public ArrayList<Match_Struc> callSPSMOnce(ArrayList<Match_Struc> results, String currTarget){
 		// System.out.println("Calling SPSM");
 		
 		//first clean the files
@@ -169,7 +170,9 @@ public class Call_SPSM{
 			e.printStackTrace();
 		}
 		
-		// return recordSerialisedResults(results,currTarget);
+		// System.out.println("Call_SPSM.java: Reporting the match structures created by SPSM") ;
+		// System.out.println(results) ;
+	
 		return results ;
 	}
 	
@@ -192,11 +195,11 @@ public class Call_SPSM{
 			
 			inStream.close();
 			fIn.close();
-			System.out.println("Successfully read back results.");
+			// System.out.println("Successfully read back results.");
 			
 		}catch(Exception e){
 			//e.printStackTrace();
-			System.out.println("SPSM crash? - error returning results, returning no additional results.");
+			System.out.println("SPSM crash? - error reading back results from  SPSM, returning no additional results.");
 			spsmCrashCounter++ ;
 			return results; // DB (instead of returning null)
 		}
@@ -229,12 +232,12 @@ public class Call_SPSM{
 		}
 		
 		//then add this new match to our overall list of results, if there have been matches only
-		if(newMatch.getNumMatches() != 0){
+		if(newMatch.getNumMatchComponents() != 0){
 			results.add(newMatch);
-			System.out.println("Adding a new match.");
+			// System.out.println("Adding a new match.");
 			spsmSuccessCounter++ ;
 		} else{
-			System.out.println("No match to add.");
+			// System.out.println("No match to add.");
 			spsmNoMatchCounter++;
 		}
 		

@@ -26,6 +26,8 @@ public class Repair_Schema {
 		ArrayList<Match_Struc> finalRes;
 		String target, source;
 		
+		// Calls spsm with source and target schemas (as a test harness) and then performs the repair
+		// using the results from SPSM.
 		spsmCall = new Call_SPSM();
 		queryCreator = new Repair_Schema();
 	
@@ -34,10 +36,10 @@ public class Repair_Schema {
 		
 		finalRes = new ArrayList<Match_Struc>();
 		
-		finalRes = spsmCall.getSchemas(finalRes, source, target);
+		finalRes = spsmCall.callSPSM(finalRes, source, target);
 		
 		if(finalRes != null && finalRes.size() != 0){
-			finalRes = queryCreator.prepare(finalRes);	
+			finalRes = queryCreator.repairSchemas(finalRes);	
 			
 			//then check what we have stored as our repaired schemas
 			//testing purposes only!!
@@ -53,7 +55,7 @@ public class Repair_Schema {
 	
 	//take in the ArrayList of objects and start processing the 
 	//repaired schema for each one in the list
-	public ArrayList<Match_Struc> prepare(ArrayList<Match_Struc> matchRes){
+	public ArrayList<Match_Struc> repairSchemas(ArrayList<Match_Struc> matchRes){
 		System.out.println("Repairing Target Schemas");
 		
 		//for each of the targets, create a tree and create repaired schema
@@ -73,7 +75,7 @@ public class Repair_Schema {
 	//between source and target schemas
 	public Match_Struc repairSchema(Match_Struc matchStructure){
 		
-		ArrayList<String[]> matchDetails = matchStructure.getMatches();
+		ArrayList<String[]> matchDetails = matchStructure.getMatchComponents();
 		
 		//start off by going through the list of match details
 		//creating/adding to a tree for that target schema
@@ -91,6 +93,7 @@ public class Repair_Schema {
 		//after we have been through all details, we add to structure
 		matchStructure.setRepairedSchemaTree(targetRoot);
 		matchStructure.setRepairedSchema(targetRoot.printTree());
+		System.out.println("Create Repaired Schema: " +  matchStructure.getRepairedSchema());
 		
 		//return the updated match structure
 		return matchStructure;

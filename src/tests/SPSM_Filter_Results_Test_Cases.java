@@ -81,7 +81,7 @@ public class SPSM_Filter_Results_Test_Cases {
 		target = "author(name) ; document(title,author) ; paperWriter(firstname,surname,paper) ; reviewAuthor(firstname,lastname,review)";
 		finalRes = new ArrayList<Match_Struc>();
 		
-		finalRes= spsmCall.getSchemas(finalRes, source, target);
+		finalRes= spsmCall.callSPSM(finalRes, source, target);
 		
 		assertEquals(3,finalRes.size());
 
@@ -110,7 +110,7 @@ public class SPSM_Filter_Results_Test_Cases {
 		target="author(name)";
 		finalRes = new ArrayList<Match_Struc>();
 		
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
+		finalRes=spsmCall.callSPSM(finalRes, source, target);
 		
 		assertEquals(1,finalRes.size());
 
@@ -139,7 +139,7 @@ public class SPSM_Filter_Results_Test_Cases {
 		target="document(title,author)";
 		finalRes = new ArrayList<Match_Struc>();
 		
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
+		finalRes=spsmCall.callSPSM(finalRes, source, target);
 		finalRes = filterResCall.getThresholdAndFilter(finalRes, 0.0, 0);
 		
 		fOut.write("Test 3."+counter+" - fail single call\n");
@@ -165,7 +165,7 @@ public class SPSM_Filter_Results_Test_Cases {
 		target = "author(name) ; document(title,author) ; paperWriter(firstname,surname,paper) ; reviewAuthor(firstname,lastname,review)";
 		finalRes = new ArrayList<Match_Struc>();
 		
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
+		finalRes=spsmCall.callSPSM(finalRes, source, target);
 		finalRes = filterResCall.getThresholdAndFilter(finalRes, 0.0, 2);
 		
 		fOut.write("Test 3."+counter+" - success with limit\n");
@@ -191,7 +191,7 @@ public class SPSM_Filter_Results_Test_Cases {
 		target="document(title,author)";
 		finalRes = new ArrayList<Match_Struc>();
 		
-		finalRes=spsmCall.getSchemas(finalRes, source, target);
+		finalRes=spsmCall.callSPSM(finalRes, source, target);
 		finalRes = filterResCall.getThresholdAndFilter(finalRes,0.0,2);
 		
 		fOut.write("Test 3."+counter+" - fail with limit\n");

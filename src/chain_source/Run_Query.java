@@ -5,6 +5,7 @@ import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.ResultSet;
+import com.hp.hpl.jena.query.ResultSetFactory;
 import com.hp.hpl.jena.query.ResultSetFormatter;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.util.FileManager;
@@ -26,60 +27,108 @@ import com.hp.hpl.jena.util.FileManager;
  * 
  */
 public class Run_Query {
-
 	//main method, used for testing the class
 	public static void main (String[] args){
 		Run_Query run = new Run_Query();
 		Create_Query queryCreator = new Create_Query();
 		Call_SPSM spsmCall = new Call_SPSM();
-		Repair_Schema getRepairedSchema = new Repair_Schema();
+		Repair_Schema getRepairedSchemas = new Repair_Schema();
 
-		String source="waterBodyPressurestest(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
-		String target="waterBodyPressurestest(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
+		// Example of creating and running a Sepa query
+		String source="waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
+		String target="waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
+		String queryType = "sepa";
+		String dataLocation = "queryData/sepa/sepa_datafiles/" ;
+		String ontologyPath = "queryData/sepa/sepa_ontology.json" ;
+		int  maxValues = 0 ;
+		String query = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+				+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+				+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+				+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+				+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+				+ "SELECT *  \n"
+				+ "FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>\n"
+				+ "WHERE {\n ?id sepaw:dataSource ?dataSource;\n"
+				+ "sepaw:identifiedDate  ?identifiedDate  ;\n"
+				+ "sepaw:affectsGroundwater ?affectsGroundwater ;\n"
+				+ "sepaw:waterBodyId ?waterBodyId .}" ;
 		
-		//String source="City(country,populationTotal)";
-		//String target="City(country,populationTotal)";
+		// Example of creating and running a dbpedia query
+//		String source="City(country,populationTotal)";
+//		String target="City(country,populationTotal)";
+//		String queryType = "dbpedia"; 
+//		String dataLocation = null ;
+//		String ontologyPath = "queryData/dbpedia/dbpedia_ontology.json" ;
+//		int  maxValues = 30 ;
+//		String query =	"PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+//				+ "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+//				+ "PREFIX  res: <http://dbpedia.org/resource/> \n"
+//				+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+//				+ "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+//				+ "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+//				+ "SELECT DISTINCT *  \n"
+//				+ "WHERE { ?id rdf:type dbo:City ;\n"
+//				+ "dbo:country ?country ;\n"
+//				+ "dbo:populationTotal ?populationTotal .}\n"
+//				+ "LIMIT 20" ;
+		
+		// extract data from the original query, erady to build it into the new query
+		Query_Data queryData = new Query_Data(query) ;
+		System.out.println(queryData) ;
 		
 		ArrayList<Match_Struc> finalRes = new ArrayList<Match_Struc>();
+	
 		
-		spsmCall.getSchemas(finalRes, source, target);
-
-		if(finalRes!=null && finalRes.size()!=0){
-			finalRes = getRepairedSchema.prepare(finalRes);
+		// Extract the schemas from the source query and call SPSM
+		
+		spsmCall.callSPSM(finalRes, source, target);
+		
+		for (Match_Struc f:finalRes) {
+			System.out.println("Match_Struc:" + f);
 		}
 		
-		finalRes = queryCreator.createQueryPrep(finalRes, "sepa", "queryData/sepa/sepa_datafiles/",0);
-		//finalRes = queryCreator.createQueryPrep(finalRes, "dbpedia", null, 30);
+
+		if(finalRes!=null && finalRes.size()!=0){
+			finalRes = getRepairedSchemas.repairSchemas(finalRes);
+		}
 		
+		for (Match_Struc f:finalRes) {
+			System.out.println("Match_Struc:" + f);
+		}
+		
+		finalRes = queryCreator.createQueries(finalRes, queryData, queryType, dataLocation, ontologyPath, maxValues);
+		
+				
 		//select first element in list and run that query
-		Match_Struc current = finalRes.get(0);
-		run.runQuery(current, "sepa", "queryData/sepa/sepa_datafiles/");
-		//run.runQuery(current, "dbpedia", null);
+		Match_Struc first = finalRes.get(0);
+		run.runQuery(first, queryType, dataLocation);
+		
+		
 	}
 	
 	
-	public boolean runQuery(Match_Struc current, String queryType, String datasetDir){
+	public ResultSet runQuery(Match_Struc current, String queryType, String datasetDir){
 			
-		System.out.println("Repaired schema: "+current.getRepairedSchema());
-		System.out.println("Similarity == "+current.getSimValue()+" & size of matched structure == "+current.getNumMatches()+"\n"); 
-	
+		if (current.getRepairedSchema() != null && !current.getRepairedSchema().isEmpty()) {
+			System.out.println("Repaired schema: "+current.getRepairedSchema());
+			System.out.println("Similarity == "+current.getSimValue()+" & size of matched structure == "+current.getNumMatchComponents()+"\n"); 
+		}
+		
 		if(queryType.equals("dbpedia")){
 			return runDbpediaQuery(current.getQuery(),current);
 		}else if(queryType.equals("sepa")){
 			return runSepaQuery(current.getQuery(),datasetDir,current);
 		}else{
 			System.out.println("Please choose either 'dbpedia' or 'sepa'");
-			return false;
+			return null;
 		}
 		
 	}
 	
 	//runs a sepa query
-	public boolean runSepaQuery(String query, String datasetToUseDir, Match_Struc currMatchStruc){
+	public ResultSet runSepaQuery(String query, String datasetToUseDir, Match_Struc currMatchStruc){
 		System.out.println("Running sepa query,");
-		System.out.println("\n\nQuery:\t" + query);
-		
-		
+		System.out.println("\n\nQuery:\t" + query);	
 		
 		try{
 			
@@ -92,28 +141,31 @@ public class Run_Query {
 			Model model = FileManager.get().loadModel(dbDir);
 		
 			//query execution factory
-			QueryExecution queryExec = QueryExecutionFactory.create(queryObj, model);
+			QueryExecution qexec = QueryExecutionFactory.create(queryObj, model);
 		
 			
 			System.out.println("\nResults:\n");
 			//execute and print results to console
-			ResultSet results = queryExec.execSelect();
+			// Use a factory so that its possible to keep and copy the results after printing them
+			ResultSet results = ResultSetFactory.copyResults(qexec.execSelect());
 			
-			if (results == null || !results.hasNext()) {
-			    return false;
+			if (results == null) {
+			    return null;
 			} else {
-				ResultSetFormatter.out(System.out, results);
+				// Need to create a copy because ResultSetFormatter is destructive
+				ResultSetFormatter.out(System.out, ResultSetFactory.copyResults(results));
+				return results;
 			}
 		}catch(Exception e){
+			e.printStackTrace();
 			System.out.println("Run_Query.java: QUERY ERROR!");
-			return false;
+			return null;
 		}
 		
-		return true;
 	}
 	
 	//runs a dbpedia query
-	public boolean runDbpediaQuery(String query, Match_Struc currMatchStruc){
+	public ResultSet runDbpediaQuery(String query, Match_Struc currMatchStruc){
 		System.out.println("\n\nRunning dbpedia query,");
 		System.out.println("\nQuery:\t"+query);
 
@@ -125,20 +177,25 @@ public class Run_Query {
 			System.out.println("\nResults:\n");
 			
 			//execute and print results to console
-			ResultSet results = qexec.execSelect();
+			// Use a factory so that its possible to keep and copy the results after printing them
+			ResultSet results = ResultSetFactory.copyResults(qexec.execSelect());
 			
-			if (results == null || !results.hasNext()) {
-			    return false;
+//			if (results == null || !results.hasNext()) {
+			if (results == null) {
+			    return null;
 			} else {
-				ResultSetFormatter.out(System.out, results);
+				// Need to create a copy because ResultSetFormatter is destructive
+				ResultSetFormatter.out(System.out, ResultSetFactory.copyResults(results));
+				// ResultSetFormatter.out(System.out, results);
+				return results;
 			}
 			
 		}catch(Exception e){
-			//e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("Run_Query.java: QUERY ERROR!");
-			return false;
+			return null;
 		}
 		
-		return true;
+		
 	}
 }

@@ -25,21 +25,21 @@ public class Match_Struc{
 	
 	//fields
 	private double similarity;         // the similarity score for this SPSM schema match 
-	private String dataset;			   // the target schema for this match
-	private ArrayList<String[]> matches;      // components of this match
+	private String datasetSchema;      // the target schema for this match
+	private ArrayList<String[]> matchComponents;   // components of this match
 	private NodeCHAIN repairedSchemaTree;   // One repaired schema, as a tree
 	private String repairedSchema;     // One repaired schema, as a string
-	private int numMatches;   // The number of matching components (atoms) in the repaired query
-	private String query;     // The query - either the initial query, or created from the repaired schema
+	private int numMatchComponents;   // The number of matching components (atoms) in the repaired query
+	private String query;     // The query - either the initial query, or null if the original schema wont parse, or created from the repaired schema
 	private String querySchema; // The original query schema
 	private String querySchemaHead; // The head of the original query schema
 	
 	//constructor
 	public Match_Struc(double sim, String targetSchema){
 		similarity=sim;
-		dataset=targetSchema;
-		matches=new ArrayList<String[]>();
-		numMatches=0;
+		datasetSchema=targetSchema;
+		matchComponents=new ArrayList<String[]>();
+		numMatchComponents=0;
 		repairedSchemaTree=null;
 		repairedSchema="";
 		query="";
@@ -50,9 +50,9 @@ public class Match_Struc{
 	//constructor 
 	public Match_Struc(){
 		similarity=0;
-		dataset="";
-		matches=new ArrayList<String[]>();
-		numMatches=0;
+		datasetSchema="";
+		matchComponents=new ArrayList<String[]>();
+		numMatchComponents=0;
 		repairedSchemaTree=null;
 		repairedSchema="";
 		query="";
@@ -66,12 +66,12 @@ public class Match_Struc{
 	}
 	
 	public void setDatasetSchema(String targetSchema){
-		dataset=targetSchema;
+		datasetSchema=targetSchema;
 	}
 	
 	public void addMatch(String[] match){
-		matches.add(match); 
-		numMatches++;
+		matchComponents.add(match); 
+		numMatchComponents++;
 	}
 	
 	public void setQuerySchema(String qSchema){
@@ -82,8 +82,42 @@ public class Match_Struc{
 		querySchemaHead = qSchemaHead;
 	}
 	
-	public int getNumMatches(){
-		return numMatches;
+	public int getNumMatchComponents(){
+		return numMatchComponents;
+	}
+	
+	public String getTarget(String Source){
+		String Target = "";
+		for (String[] m: matchComponents) {
+			String[] SourcesString = m[0].split(",") ;
+			String[] TargetsString = m[2].split(",") ;
+			for(int i= 0; i < SourcesString.length; i++ ) {
+				if (SourcesString[i].equals(Source))
+				{
+					Target = TargetsString[i] ;
+					return Target ;
+				}
+			}
+			
+		}
+		return Target;		
+	}
+	
+	public String getSource(String Target){
+		String Source = "";
+		for (String[] m: matchComponents) {
+			String[] SourcesString = m[0].split(",") ;
+			String[] TargetsString = m[2].split(",") ;
+			for(int i= 0; i < TargetsString.length; i++ ) {
+				if (TargetsString[i].equals(Target))
+				{
+					Source = SourcesString[i] ;
+					return Source ;
+				}
+			}
+			
+		}
+		return Source;		
 	}
 	
 	public double getSimValue(){
@@ -91,15 +125,15 @@ public class Match_Struc{
 	}
 	
 	public String getDatasetSchema(){
-		return dataset;
+		return datasetSchema;
 	}
 	
-	public ArrayList<String[]> getMatches(){
-		return matches;
+	public ArrayList<String[]> getMatchComponents(){
+		return matchComponents;
 	}
 	
 	public String[] getMatchAtIndex(int index){
-		return matches.get(index);
+		return matchComponents.get(index);
 	}
 	
 	public void setRepairedSchemaTree(NodeCHAIN schemaTree){
@@ -118,6 +152,15 @@ public class Match_Struc{
 		return repairedSchemaTree;
 	}
 	
+	public String getRepairedPredicate(){
+		return getRepairedSchemaTree().getValue();
+	}
+	
+	// Paramaters are just the names of the children
+	public ArrayList<String> getRepairedParams(){
+		return getRepairedSchemaTree().getChildrenValues();
+	}
+	
 	public void setQuery(String matchQuery){
 		query=matchQuery;
 	}
@@ -133,4 +176,35 @@ public class Match_Struc{
 	public String getQuerySchemaHead(){
 		return querySchemaHead;
 	}
+	
+	
+	public String toString() {
+		String matchesStr = new String () ;
+		matchesStr = "";
+		for (String[] m: matchComponents) {
+			matchesStr += "(" ;
+			matchesStr += m[0] ;
+			matchesStr += ")" ;
+			matchesStr += m[1] ;
+			matchesStr += "(" ;
+			matchesStr += m[2] ;
+			matchesStr += ")" ;
+			matchesStr += "\n" ;
+		}
+		
+		return("Match_Struc: \n" 
+				+ "similarity: " + similarity + "\n"
+				+ "dataset: " + datasetSchema + "\n"
+				+ "matchComponents: " + matchesStr + "\n"
+				+ "repairedSchemaTree: " + repairedSchemaTree + "\n"
+				+ "repairedSchema: " + repairedSchema + "\n"
+				+ "numMatchComponents: " + numMatchComponents + "\n"
+				+ "query: " + query + "\n"
+				+ "querySchema: " + querySchema + "\n"
+				+ "querySchemaHead: " + querySchemaHead  + "\n"
+				) ;
+	}
+
+
+
 }

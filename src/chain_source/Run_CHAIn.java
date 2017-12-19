@@ -2,9 +2,12 @@ package chain_source;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import com.hp.hpl.jena.query.ResultSet;
+
 /* Author Tanya Howden
  * Date September 2017
- * Modified
+ * Modified Diana Bental
+ * Date December 2017
  */
 
 /*
@@ -17,6 +20,17 @@ import java.util.ArrayList;
  * 
  */
 public class Run_CHAIn {
+	
+	// Return Status
+	private static final int UNKNOWNSTATUS = 0 ;
+	private static final int INITIALQUERYSUCCESS = 5 ;
+	private static final int INVALIDQUERY = 6 ;
+	private static final int SPSMFAILURE = 7 ;
+	private static final int NOMATCHESFROMSPSM = 8 ;
+	private static final int REPAIREDQUERYRUNERROR = 9 ;
+	private static final int REPAIREDQUERYRESULTS = 10 ;
+	private static final int REPAIREDQUERYNORESULTS = 11 ;
+	private static final int DATAREPAIREDWITHRESULTS = 12 ;
 
 	private Schema_From_Query getSchema = new Schema_From_Query();
 	private Call_SPSM spsm = new Call_SPSM();
@@ -27,7 +41,7 @@ public class Run_CHAIn {
 	
 	//main method for testing during implementation
 	public static void main(String[] args){
-		Run_CHAIn runCHAIn = new Run_CHAIn();
+		Run_CHAIn run_CHAIn = new Run_CHAIn();
 		
 		//need to pass in the query
 		//and also target schemas for dataset
@@ -46,6 +60,8 @@ public class Run_CHAIn {
 					+ "\n\n";
 		String queryType="sepa";
 		double simThresholdVal = 0.3;
+		String dataDir = "queryData/sepa/sepa_datafiles/";
+		String ontologyPath = "queryData/sepa/sepa_ontology.json";
 		
 		//note if there are several schemas here they are separated with ';'
 		//-- Two target schemas
@@ -60,82 +76,136 @@ public class Run_CHAIn {
 		String targetSchemas="places(dataSource, identifiedDate, affectsGroundwater, waterBodyId) ; waterBodyPressures(dataSource, identifiedDate, affectsGroundwater, waterBodyId)" ;
 		
 		
-		runCHAIn.startCHAIn(query, queryType, targetSchemas, 10, simThresholdVal, 5, null);
+		run_CHAIn.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, simThresholdVal, 5, null);
 	}
 	
-	public void startCHAIn(String query, String queryType, String targetSchemas, int queryLim, double simThresholdVal, int resLimit, PrintWriter fOut){
+	public int runCHAIn(String query, String queryType, String targetSchemas, String dataDir, String ontologyPath, int queryLim, double simThresholdVal, int resLimit, PrintWriter fOut){
 		
-		//first step is trying to run the query
+		int result_status = UNKNOWNSTATUS; 
+		
+		//first step is trying to run the initial query
 		Match_Struc current = new Match_Struc();
 		current.setQuery(query);	
-		boolean queryRunStatus = runQuery.runQuery(current, queryType, "queryData/sepa/sepa_datafiles/");
+		ResultSet queryRunResults = runQuery.runQuery(current, queryType, dataDir);
 		
-		if(queryRunStatus == true){
+		if((queryRunResults != null) && (queryRunResults.hasNext())){
 			//query has run successfully!
 			//no need to repair
-			System.out.println("Query has run successfully!");
+			System.out.println("Query has run successfully first time. CHAIn has finished running.");
 			
-			if(fOut!=null){
+			if(fOut!=null ){
 				fOut.write("Query has run successfully first time.\n\n CHAIn has finished running.\n\n\n");
+				return INITIALQUERYSUCCESS ;
 			}
 			
 		}else{
 			//has not run successfully, need to call SPSM & start repair work
-			System.out.println("Query has not run successfully");
+			System.out.println("Query has not run successfully.");
 			System.out.println("CHAIn will now try to repair this query.\n");
+			
+			if(fOut!=null){
+				fOut.write("Query has NOT run successfully the first time.\n\nCalling SPSM to try and create new query\n");
+			}
 			
 			current = getSchema.getSchemaFromQuery(query, queryType);
 			
 			if(current==null){
 				//then we have an invalid query
 				//terminate chain with appropriate message
-				fOut.write("Invalid SPARQL query, please enter a valid query, terminating...\n\n");
-				System.out.println("Terminating.");
+				if(fOut!=null){
+					fOut.write("Invalid SPARQL query, please enter a valid query, terminating...\n\n");
+				}
+				System.out.println("Invalid SPARQL query, Terminating.");
 				
-				return;
+				return INVALIDQUERY;
 			}
 			
-			ArrayList<Match_Struc> results = startRepair(current, targetSchemas, queryType, "queryData/sepa/sepa_datafiles/", queryLim, simThresholdVal, resLimit);
+			// Parse the query and store useful information about names, prefixes, literals
+			Query_Data queryData = new Query_Data(query) ;
 			
-			if(results == null || results.size() == 0){
-				//no results returned from spsm
-				System.out.println("\nTerminating.");
-				
+			ArrayList<Match_Struc> repairedQueries = createRepairedQueries(current, queryData, targetSchemas, queryType, dataDir, ontologyPath, queryLim, simThresholdVal, resLimit);
+			
+			if(repairedQueries == null) {
+				System.out.println("\nSPSM Failure. Terminating.");
 				if(fOut!=null){
-					fOut.write("Query has NOT run successfully the first time.\n\nCalling SPSM to try and create new query\n");
+					fOut.write("\nSPSM Failure. Terminating.\n\n");
+				}
+				return SPSMFAILURE ;
+				
+			} else if (repairedQueries.size() == 0){
+				//no results returned from spsm
+				System.out.println("\nNo results from SPSM. Terminating.");
+				if(fOut!=null){
 					fOut.write("There have been 0 matches returned from SPSM, terminating...\n\n");
 				}
+				return NOMATCHESFROMSPSM ;
 			}else{
-				
+				System.out.println("Now running the new queries that have been created...");
 				if(fOut!=null){
-					fOut.write("Query has NOT run successfully the first time.\n\nCalling SPSM has returned " + results.size() + " match(es).\n");
 					fOut.write("Now running the new queries that have been created...\n\n");
 				}
 				
-				boolean successRun;
-				for(int i = 0 ; i < results.size() ; i++){
+				ResultSet resultsFromARepairedQuery;
+				
+				// Print all the match structures with their repaired queries
+				// for (Match_Struc r:repairedQueries) {
+				// 	System.out.println("Match_Struc:" + r);
+				// }
+				
+				for(int i = 0 ; i < repairedQueries.size() ; i++){
 					//try running new queries
-					Match_Struc curr = results.get(i);
-					successRun = runRepairedQueries(curr, queryType, "queryData/sepa/sepa_datafiles/");
-					
-					
+					Match_Struc curr = repairedQueries.get(i);
 					if(fOut!=null){
 						fOut.write("Target Schema, " + curr.getDatasetSchema() + ", has created the following query:\n\n"+curr.getQuery()+"\n\n");
-						if(successRun){
-							fOut.write("This new query has run successfully!!\n\n\n");
-						}else{
-							fOut.write("This new query has NOT run successfully!!\n\n\n");
-						}
 					}
-					
+						
+					resultsFromARepairedQuery = runRepairedQueries(curr, queryType, dataDir);
+					if(resultsFromARepairedQuery == null){
+						System.out.println("This new query has NOT run successfully.");
+						fOut.write("This new query has NOT run successfully.\n\n\n");
+						return REPAIREDQUERYRUNERROR ;
+					} else if (!resultsFromARepairedQuery.hasNext()){
+						System.out.println("This new query has run with no results.");
+						fOut.write("This new query has run with no results.\n\n\n");
+						
+						resultsFromARepairedQuery = dataRepair(queryType, curr, queryData, dataDir, queryLim, ontologyPath, fOut) ;
+						
+						if (!resultsFromARepairedQuery.hasNext() && result_status != REPAIREDQUERYRESULTS){
+							result_status = REPAIREDQUERYNORESULTS ;
+							
+						} else if (result_status != REPAIREDQUERYRESULTS) {
+							result_status = DATAREPAIREDWITHRESULTS ;
+						}
+						// if (result_status != REPAIREDQUERYRESULTS) {
+						// 	result_status = REPAIREDQUERYNORESULTS ;
+						// }
+					} else {			
+						System.out.println("This new query has run successfully with results.");
+						fOut.write("This new query has run successfully.");
+						result_status = REPAIREDQUERYRESULTS ;
+					}
 				}
-				
 			}
-			
 		}
+		return result_status; 
 	}
 	
-	public ArrayList<Match_Struc> startRepair(Match_Struc current, String targetSchemas, String queryType, String dataset, int queryLim, double simThresholdVal, int resLimit){
+	public ResultSet dataRepair(String queryType, Match_Struc curr, Query_Data queryData, String dataDir, int queryLim, String ontologyPath, PrintWriter fOut) {
+		
+		System.out.println("Attempting data repair.");
+		fOut.write("Attempting data repair.\n\n\n");
+		
+		ArrayList<Ontology_Struc> ontologies = createQuery.make_ontologies(ontologyPath) ;
+		// Make the new (open) query
+		String newQuery = createQuery.createOpenQuery(queryType, curr, queryData, dataDir, 
+				queryLim, ontologies) ;
+		// System.out.println("Run_CHAIn: "+ newQuery);
+		curr.setQuery(newQuery);
+		// Then run it
+		return runQuery.runQuery(curr, queryType, dataDir);		
+	}
+		
+	public ArrayList<Match_Struc> createRepairedQueries(Match_Struc current, Query_Data queryData, String targetSchemas, String queryType, String dataset, String ontFile, int queryLim, double simThresholdVal, int resLimit){
 		
 		//Narrow down the target schemas by filtering them against the associated words in the source schema
 		System.out.println("All Target Schemas: " + targetSchemas);
@@ -146,41 +216,42 @@ public class Run_CHAIn {
 		
 		//start off by calling SPSM with schema created from query
 		//and target schemas passed in originally
-		ArrayList<Match_Struc> results = new ArrayList<Match_Struc>();
-		results = spsm.getSchemas(results, current.getRepairedSchema(), targetSchemas);
+		ArrayList<Match_Struc> matches = new ArrayList<Match_Struc>();
+		matches = spsm.callSPSM(matches, current.getQuerySchema(), targetSchemas);
 		
-		if(results == null){
+		if(matches == null){
 			System.out.println("Null Results due to SPSM Error.");
 			return null;
-		}else if(results.size()==0){
+		}else if(matches.size()==0){
 			//there are no results from spsm
 			System.out.println("There are no matches returned from SPSM.");
 		}else{
 			//spsm has returned something
 			//filter results
-			results = filterRes.getThresholdAndFilter(results, simThresholdVal, resLimit);
+			matches = filterRes.getThresholdAndFilter(matches, simThresholdVal, resLimit);
 			
 			//return repaired schema
-			results = repairSchema.prepare(results);
+			matches = repairSchema.repairSchemas(matches);
 			
 			//then create a query from the repaired schema
-			results = createQuery.createQueryPrep(results, queryType, dataset, queryLim);
+			matches = createQuery.createQueries(matches, queryData, queryType, dataset, ontFile, queryLim);
 		}
 		
-		return results;
+		return matches;
 	}
 	
-	public boolean runRepairedQueries(Match_Struc res, String queryType, String dataset){
+	public ResultSet runRepairedQueries(Match_Struc matchStructure, String queryType, String dataset){
 		
 		try{
 			//running new queries
 			System.out.println("\nRunning New Query\n");
-			runQuery.runQuery(res, queryType, dataset);	
+			ResultSet result = runQuery.runQuery(matchStructure, queryType, dataset);	
+			return result ;
 		}catch(Exception e){
-			return false;
+			System.out.println("Error running query");
+			return null;
 		}
 		
-		return true;
 	}
 	
 }

@@ -1,5 +1,7 @@
 package tests;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -26,6 +28,16 @@ import chain_source.Run_CHAIn;
  * 
  */
 public class Run_CHAIn_Test_Cases {
+	
+	private static final int UNKNOWNSTATUS = 0 ;
+	private static final int INITIALQUERYSUCCESS = 5 ;
+	private static final int INVALIDQUERY = 6 ;
+	private static final int SPSMFAILURE = 7 ;
+	private static final int NOMATCHESFROMSPSM = 8 ;
+	private static final int REPAIREDQUERYRUNERROR = 9 ;
+	private static final int REPAIREDQUERYRESULTS = 10 ;
+	private static final int REPAIREDQUERYNORESULTS = 11 ;
+	private static final int DATAREPAIREDWITHRESULTS = 12 ;
 
 	private String query, queryType, targetSchemas;
 	private Run_CHAIn chain = new Run_CHAIn();
@@ -75,8 +87,8 @@ public class Run_CHAIn_Test_Cases {
 	@Test
 	//basic sepa query that fails to return results
 	//produces 1 new query that runs successfully
-	public void test1(){
-		System.out.println("\nRunning test 8.1\n");
+	public void test8_0_1(){
+		System.out.println("\nRunning test 8.0.1\n");
 		
 		query="PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
 				+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
@@ -93,17 +105,20 @@ public class Run_CHAIn_Test_Cases {
 		
 		queryType="sepa";
 		targetSchemas="waterBodyPressures(dataSource, identifiedDate, affectsGroundwater, waterBodyId)";
+		String dataDir = "queryData/sepa/sepa_datafiles/";
+		String ontologyPath = "queryData/sepa/sepa_ontology.json";
 		
-		fOut.write("Test 8.1\n");
+		fOut.write("Test 8.0.1\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
-		chain.startCHAIn(query, queryType, targetSchemas, 10, 0.5, 5, fOut);
+		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
+		assertTrue(status == REPAIREDQUERYRESULTS); 
 	}
 	
 	@Test
 	//invalid query
-	public void test2(){
-		System.out.println("\nRunning test 8.2\n");
+	public void test8_0_2(){
+		System.out.println("\nRunning test 8.0.2\n");
 		
 		query="PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
 				+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
@@ -113,26 +128,29 @@ public class Run_CHAIn_Test_Cases {
 				+ "SELECT *  \n"
 				+ "FROM <queryData/sepa/sepa_datafiles/water.n3>\n"
 				+ "WHERE { ?id sepaw:timePeriod ?timePeriod;\n"
-				+ "random:geo ?geo  ;\n"
+				+ "random:geo ?geo  ;\n"   // The invalid bit - an undefined prefix
 				+ "sepaw:measure ?measure ;\n"
 				+ "sepaw:resource ?resource .}"
 				+ "\n\n";
 		
 		queryType="sepa";
 		targetSchemas="water(timePeriod,geo,measure,resource)";
+		String dataDir = "queryData/sepa/sepa_datafiles/";
+		String ontologyPath = "queryData/sepa/sepa_ontology.json";
 		
-		fOut.write("Test 8.2\n");
+		fOut.write("Test 8.0.2\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
-		chain.startCHAIn(query, queryType, targetSchemas, 10, 0.5, 5, fOut);
+		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
+		assertTrue(status == INVALIDQUERY); 
 	}
 	
 	@Test
 	//basic sepa query that returns no results
 	//fixing results in 0 matches from spsm
 	//so no new queries are created
-	public void test3(){
-		System.out.println("\nRunning test 8.3\n");
+	public void test8_0_3(){
+		System.out.println("\nRunning test 8.0.3\n");
 		
 		query= "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
 		          + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
@@ -147,52 +165,149 @@ public class Run_CHAIn_Test_Cases {
 		
 		queryType="sepa";
 		targetSchemas="water(timePeriod,geo,measure,resource)";
+		String dataDir = "queryData/sepa/sepa_datafiles/";
+		String ontologyPath = "queryData/sepa/sepa_ontology.json";
 		
-		fOut.write("Test 8.3\n");
+		fOut.write("Test 8.0.3\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
-		chain.startCHAIn(query, queryType, targetSchemas, 10, 0.5, 5, fOut);
+		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
+		assertTrue(status == NOMATCHESFROMSPSM) ;
+	
 	}
+
+	@Test
+	// Sepa query that should run first time - but doesn't because we aren't set up to run directly
+	// from a local data file that's named in a query.
+	public void test8_0_4(){
+		System.out.println("\nRunning test 8.0.4\n");
+		
+		query="PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+				+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+				+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+				+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+				+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+				+ "SELECT *  \n"
+				+ "FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>\n"
+				+ "WHERE { ?id sepaw:dataSource ?dataSource;\n"
+				+ "sepaw:identifiedDate  ?identifiedDate  ;\n"
+				+ "sepaw:affectsGroundwater ?affectsGroundwater ;\n"
+				+ "sepaw:waterBodyId ?waterBodyId .}"
+				+ "LIMIT 10 \n\n";
+		
+		queryType="sepa";
+		targetSchemas="waterBodyPressures(dataSource, identifiedDate, affectsGroundwater, waterBodyId)";
+		String dataDir = "queryData/sepa/sepa_datafiles/";
+		String ontologyPath = "queryData/sepa/sepa_ontology.json";
+		
+		fOut.write("Test 8.0.4\n");
+		fOut.write("Running CHAIn with initial query,\n\n"+query);
+		
+		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
+		assertTrue(status == REPAIREDQUERYRESULTS); 
+	}
+	
+	@Test
+	// Sepa query with data in it
+	public void test8_0_5(){
+		System.out.println("\nRunning test 8.0.5\n");
+		
+		query="PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+	          	+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+	          	+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+	          	+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          	+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+	          	+ "SELECT *  \n"
+	          	+ "FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>\n"
+	          	+ "WHERE { ?id sepaw:identifiedDate \"2008-04-01\";\n"
+	          	+ "sepaw:waterBodyId sepaidw:20304  ;\n"
+	          	+ "sepaw:assessmentCategory ?assessmentCategory ;\n"
+	          	+ "sepaw:source \"Lake\" .}" ;
+		
+		queryType="sepa";
+		targetSchemas="waterBodyPressures(identifiedDate,waterBodyId,assessmentCategory,source)";
+		String dataDir = "queryData/sepa/sepa_datafiles/";
+		String ontologyPath = "queryData/sepa/sepa_ontology.json";
+		
+		fOut.write("Test 8.0.5\n");
+		fOut.write("Running CHAIn with initial query,\n\n"+query);
+		
+		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
+		assertTrue(status == REPAIREDQUERYRESULTS); 
+	}
+	
+	@Test
+	// Sepa query with non-matching data in it - requires data repair
+	public void test8_0_6(){
+		System.out.println("\nRunning test 8.0.6\n");
+		
+		query="PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+	          	+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+	          	+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+	          	+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          	+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+	          	+ "SELECT *  \n"
+	          	+ "FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>\n"
+	          	+ "WHERE { ?id sepaw:identifiedDate \"2008-04-01\";\n"
+	          	+ "sepaw:waterBodyId sepaidw:20308xxx  ;\n" // wont match
+	          	+ "sepaw:assessmentCategory ?assessmentCategory ;\n"
+	          	+ "sepaw:source \"Lake\" .}" ;
+		
+		queryType="sepa";
+		targetSchemas="waterBodyPressures(identifiedDate,waterBodyId,assessmentCategory,source)";
+		String dataDir = "queryData/sepa/sepa_datafiles/";
+		String ontologyPath = "queryData/sepa/sepa_ontology.json";
+		
+		fOut.write("Test 8.0.6\n");
+		fOut.write("Running CHAIn with initial query,\n\n"+query);
+		
+		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
+		assertTrue(status == DATAREPAIREDWITHRESULTS); 
+	}
+	
 	
 	@Test
 	//basic dbpedia query that returns no results
 	//repair work by chain returns 1 new query that 
-	//runs successfully
-	public void test4(){
-		System.out.println("\nRunning test 8.4\n");
+	//runs successfully with results.
+	public void test8_1_1(){
+		System.out.println("\nRunning test 8.1.1\n");
 		
 		query= "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 				+ "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
 				+ "PREFIX  res: <http://dbpedia.org/resource/> \n"
 				+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
 				+ "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
-				+ "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+				+ "PREFIX yago: <hhtp://dbpedia.org/class/yago/> \n\n"
 				+ "SELECT DISTINCT *  \n"
 				+ "WHERE { ?id rdf:type dbo:City ;\n"
 				+ "dbo:country ?country ;\n"
-				+ "dbo:population ?population .}\n"
+				+ "dbo:population ?population .}\n" // this term doesn't match anything
 				+ "LIMIT 10\n\n";
 		
 		queryType="dbpedia";
 		targetSchemas="City(country,populationTotal)";
+		String dataDir = null;
+		String ontologyPath = "queryData/dbpedia/dbpedia_ontology.json";
 		
-		fOut.write("Test 8.4\n");
+		fOut.write("Test 8.1.1\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
-		chain.startCHAIn(query, queryType, targetSchemas, 10, 0.5, 5, fOut);
+		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
+		assertTrue(status == REPAIREDQUERYRESULTS) ;
 	}
 	
 	@Test
-	//basic dbpedia query that already runs successfully
-	public void test5(){
-		System.out.println("\nRunning test 8.5\n");
+	//basic dbpedia query that should already run successfully (but needs to be repaired in reality)
+	public void test8_1_2(){
+		System.out.println("\nRunning test 8.1.2\n");
 		
 		query= "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
 		          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
 		          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
 		          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
-		          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+		          + "PREFIX yago: <hhtp://dbpedia.org/class/yago/> \n\n"
 		          + "SELECT DISTINCT *  \n"
 		          + "WHERE { ?id rdf:type dbo:River ;\n"
 		          + "dbo:length ?length ;\n"
@@ -201,26 +316,33 @@ public class Run_CHAIn_Test_Cases {
 		
 		queryType="dbpedia";
 		targetSchemas="River(length)";
+		String dataDir = null;
+		String ontologyPath = "queryData/dbpedia/dbpedia_ontology.json";
 		
-		fOut.write("Test 8.5\n");
+		fOut.write("Test 8.1.2\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
-		chain.startCHAIn(query, queryType, targetSchemas, 10, 0.5, 5, fOut);
+		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
+		assertTrue(status == REPAIREDQUERYRESULTS) ;
+		
+		// This should really be an INITIALQUERYSUCCESS - it isn;t because we aen't set up to do ARQ queries from a local database unless we
+		// already have the file name stored  separately. Which we don't until after we've done the query repair process.
 	}
 	
 	@Test
-	//query doesn't run successfully first time
-	//repair work creates 2 new queries
-	//only one of these new queries runs successfully
-	public void test6(){
-		System.out.println("\nRunning test 8.6\n");
+	//Query doesn't run successfully first time - erturns no results.
+	//Repair work creates 2 new queries
+	//Both run successfully(?)
+	// Possibly the second should not be created as it uses a term that is not in the ontology
+	public void test8_1_3(){
+		System.out.println("\nRunning test 8.1.3\n");
 		
 		query= "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
 		          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
 		          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
 		          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
-		          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+		          + "PREFIX yago: <hhtp://dbpedia.org/class/yago/> \n\n"
 		          + "SELECT DISTINCT *  \n"
 		          + "WHERE { ?id rdf:type dbo:River ;\n"
 		          + "dbo:lengthTest ?lengthTest ;\n"
@@ -229,13 +351,141 @@ public class Run_CHAIn_Test_Cases {
 		
 		queryType="dbpedia";
 		targetSchemas="River(length) ; River(size)";
+		String dataDir = null;
+		String ontologyPath = "queryData/dbpedia/dbpedia_ontology.json";
 		
-		fOut.write("Test 8.6\n");
+		fOut.write("Test 8.1.3\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
-		chain.startCHAIn(query, queryType, targetSchemas, 10, 0.5, 5, fOut);
+		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
+		// System.out.println("Status: " + status);
+		assertTrue(status == REPAIREDQUERYRESULTS) ;
 	}
 	
+	@Test
+	//query doesn't run successfully first time
+	//repair work creates 2 new queries
+	//both run successfully
+	public void test8_1_4(){
+		System.out.println("\nRunning test 8.1.4\n");
+		
+		query= "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+		          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+		          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+		          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+		          + "PREFIX yago: <hhtp://dbpedia.org/class/yago/> \n\n"
+		          + "SELECT DISTINCT *  \n"
+		          + "WHERE { ?id rdf:type dbo:River ;\n"
+		          + "dbo:lengthTest \"99300.0\"^^<http://www.w3.org/2001/XMLSchema#double> ;\n"
+		          + ".}\n"
+		          + "LIMIT 10\n\n";
+		
+		queryType="dbpedia";
+		targetSchemas="River(length) ; River(size)";
+		String dataDir = null;
+		String ontologyPath = "queryData/dbpedia/dbpedia_ontology.json";
+		
+		fOut.write("Test 8.1.4\n");
+		fOut.write("Running CHAIn with initial query,\n\n"+query);
+		
+		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
+		assertTrue(status == REPAIREDQUERYRESULTS) ;
+	}
+	
+	@Test
+	//query doesn't run successfully first time
+	//repair work creates 2 new queries
+	//Both run successfully
+	public void test8_1_5(){
+		System.out.println("\nRunning test 8.1.5\n");
+		
+		query= "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+		          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+		          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+		          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+		          + "PREFIX yago: <hhtp://dbpedia.org/class/yago/> \n\n"
+		          + "SELECT DISTINCT *  \n"
+		          + "WHERE { ?id rdf:type dbo:River ;\n"
+		          + "dbo:lengthTest 99300.0 ;\n"
+		          + ".}\n"
+		          + "LIMIT 10\n\n";
+		
+		queryType="dbpedia";
+		targetSchemas="River(length) ; River(size)";
+		String dataDir = null;
+		String ontologyPath = "queryData/dbpedia/dbpedia_ontology.json";
+		
+		fOut.write("Test 8.1.5\n");
+		fOut.write("Running CHAIn with initial query,\n\n"+query);
+		
+		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
+		assertTrue(status == REPAIREDQUERYRESULTS) ;
+	}
+	
+	@Test
+	//query doesn't run successfully first time
+	//repair work creates 2 new queries
+	//Only one returns data.
+	public void test8_1_6(){
+		System.out.println("\nRunning test 8.1.6\n");
+		
+		query= "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+		          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+		          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+		          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+		          + "PREFIX yago: <hhtp://dbpedia.org/class/yago/> \n\n"
+		          + "SELECT DISTINCT *  \n"
+		          + "WHERE { ?id rdf:type dbo:River ;\n"
+		          + "dbo:lengthTest \"99300.0\" ;\n"
+		          + ".}\n"
+		          + "LIMIT 10\n\n";
+		
+		queryType="dbpedia";
+		targetSchemas="River(length) ; River(size)";
+		String dataDir = null;
+		String ontologyPath = "queryData/dbpedia/dbpedia_ontology.json";
+		
+		fOut.write("Test 8.1.6\n");
+		fOut.write("Running CHAIn with initial query,\n\n"+query);
+		
+		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
+		assertTrue(status == REPAIREDQUERYRESULTS) ;
+	}
+	
+	@Test
+	//query doesn't run successfully first time
+	//repair work creates 2 new queries
+	//Both run successfully
+	public void test8_1_7(){
+		System.out.println("\nRunning test 8.1.7\n");
+		
+		query= "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+		          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+		          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+		          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+		          + "PREFIX yago: <hhtp://dbpedia.org/class/yago/> \n\n"
+		          + "PREFIX w3: <http://www.w3.org/2001/XMLSchema#> \n\n"
+		          + "SELECT DISTINCT *  \n"
+		          + "WHERE { ?id rdf:type dbo:River ;\n"
+		          + "dbo:lengthTest \"99300.0\"^^w3:double ;\n"
+		          + ".}\n"
+		          + "LIMIT 10\n\n";
+		
+		queryType="dbpedia";
+		targetSchemas="River(length) ; River(size)";
+		String dataDir = null;
+		String ontologyPath = "queryData/dbpedia/dbpedia_ontology.json";
+		
+		fOut.write("Test 8.1.7\n");
+		fOut.write("Running CHAIn with initial query,\n\n"+query);
+		
+		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
+		assertTrue(status == REPAIREDQUERYRESULTS) ;
+	}
 	
 	@After
 	public void cleanUp(){

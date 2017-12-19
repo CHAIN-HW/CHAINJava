@@ -138,4 +138,29 @@ public class NodeCHAIN {
 		
 	}
 	
+	public String toString() {
+		String nodeString = "" ;
+		nodeString += getValue() ;
+		
+		List<NodeCHAIN> children = getChildren() ;
+		
+		if(children == null || children.isEmpty()) {
+			return nodeString ;						
+		}else {
+			nodeString += "(" ;
+			int size = children.size(); 
+			for (int i = 0; i < size -1; i++ ) {
+				NodeCHAIN child = children.get(i) ;
+				String childString = child.toString() ;
+				nodeString += childString ;
+				nodeString += "," ;				
+			}
+			NodeCHAIN child = children.get(size-1) ;
+			String childString = child.toString() ;
+			nodeString += childString ;		
+			nodeString += ")" ;			
+		}		
+		return nodeString ;
+	}
+	
 }
