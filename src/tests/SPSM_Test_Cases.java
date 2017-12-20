@@ -1,5 +1,7 @@
 package tests;
 
+import static org.junit.Assert.*;
+
 import java.io.*;
 import java.util.*;
 
@@ -10,8 +12,10 @@ import chain_source.Call_SPSM;
 import chain_source.Match_Struc;
 
 /* Author Tanya Howden
+ * Author Diana Bental
  * Date September 2017
- * Modified
+ * Modified December 2017
+ * added assertions
  */
 
 /*
@@ -69,7 +73,7 @@ public class SPSM_Test_Cases {
 
 	@Test
 	//no source or target
-	public void test11() {
+	public void test1_1_1() {
 		System.out.println("\nRunning test 1.1.1");
 		
 		source=""; 
@@ -86,11 +90,13 @@ public class SPSM_Test_Cases {
 			fOut.write("Expected Result: results.size() == 0 \n");
 			fOut.write("Actual Result: results.size() == "+results.size()+"\n\n");
 		}
+		
+		assertTrue(results.size() == 0) ;
 	}
 	
 	@Test
 	//no target but one source
-	public void test21(){
+	public void test1_2_1(){
 		System.out.println("\nRunning test 1.2.1");
 		
 		source="author(name)";
@@ -107,11 +113,13 @@ public class SPSM_Test_Cases {
 			fOut.write("Expected Result: results.size() == 0 \n");
 			fOut.write("Actual Result: results.size() == "+results.size()+"\n\n"); 
 		}
+		
+		assertTrue(results.size() == 0) ;
 	}
 	
 	@Test
 	//no source but one target
-	public void test22(){
+	public void test1_2_2(){
 		System.out.println("\nRunning test 1.2.2");
 		
 		source="";
@@ -129,11 +137,13 @@ public class SPSM_Test_Cases {
 			fOut.write("Expected Result: results.size() == 0 \n");
 			fOut.write("Actual Result: results.size() == "+results.size()+"\n\n"); 
 		}
+		
+		assertTrue(results.size() == 0) ;
 	}
 	
 	@Test
 	//one source and one target
-	public void test23(){
+	public void test1_2_3(){
 		System.out.println("\nRunning test 1.2.3");
 		
 		source="author(name)";
@@ -147,20 +157,25 @@ public class SPSM_Test_Cases {
 		
 		if(results == null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
 			if(results.size() > 0){
-				Match_Struc res = results.get(0);
-				
+				Match_Struc res = results.get(0);			
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
+				assertTrue(res.getSimValue() == 1.0) ;
+				assertTrue(res.getNumMatchComponents() == 2) ;
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail() ;
+				
 			}			 
 		}
+		assertTrue(results.size() == 1) ;
 	}
 	
 	@Test
 	//one source w multiple targets
-	public void test24(){
+	public void test1_2_4(){
 		System.out.println("\nRunning test 1.2.4");
 		
 		source="author(name)";
@@ -170,16 +185,26 @@ public class SPSM_Test_Cases {
 		
 		int[] answer = {2,2};
 		double[] simValues = {1.0,0.75};
+		String[] schemas = {"author(name,document)", "reviewAuthor(firstname,lastname,review)"} ;
 		
 		fOut.write("Test 1.2.4\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
 		
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			assertTrue(results.size() == 2) ;
 			if(results.size() > 0){
+				// System.out.println(results.size()); 
 				for(int i = 0 ; i < results.size() ; i++){
 					Match_Struc currRes = results.get(i);
+					// System.out.println("Target: "+currRes.getDatasetSchema()+"\n");
+					// System.out.println("Expected Result: similarity == "+simValues[i]+" & numMatches == "+answer[i]+"\n");
+					// System.out.println("Actual Result: similarity == "+currRes.getSimValue()+" & numMatches == "+currRes.getNumMatchComponents()+"\n\n");
+					assertTrue(currRes.getDatasetSchema().contains(schemas[i]));
+					assertTrue(currRes.getSimValue() == simValues[i]) ;
+					assertTrue(currRes.getNumMatchComponents() == answer[i]) ;
 					
 					fOut.write("Target: "+currRes.getDatasetSchema()+"\n");
 					fOut.write("Expected Result: similarity == "+simValues[i]+" & numMatches == "+answer[i]+"\n");
@@ -187,13 +212,14 @@ public class SPSM_Test_Cases {
 				}
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail() ;
 			}
 		}
 	}
 	
 	@Test
 	//one source w two targets
-	public void test31(){
+	public void test1_3_1(){
 		System.out.println("\nRunning test 1.3.1");
 		
 		source="author(name)";
@@ -206,14 +232,16 @@ public class SPSM_Test_Cases {
 		
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
 			fOut.write("Expected Result: results.size() == 0 \n");
 			fOut.write("Actual Result: results.size() == "+results.size()+"\n\n");
 		}
+		assertTrue(results.size() == 0) ;
 	}
 	
 	@Test
-	public void test32(){
+	public void test1_3_2(){
 		System.out.println("\nRunning test 1.3.2");
 		
 		source="author(name)";
@@ -226,21 +254,32 @@ public class SPSM_Test_Cases {
 		
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			// System.out.println(results.size());
+			assertTrue(results.size() == 1) ;
 			if(results.size() > 0){
 				Match_Struc currRes = results.get(0);
+				// System.out.println("Target: "+currRes.getDatasetSchema()+"\n");
+				// System.out.println("Expected Result: similarity == 1.0"+" & numMatches == 2 \n");
+				// System.out.println("Actual Result: similarity == "+currRes.getSimValue()+" & numMatches == "+currRes.getNumMatchComponents()+"\n\n"); 
+				
 				
 				fOut.write("Target: "+currRes.getDatasetSchema()+"\n");
 				fOut.write("Expected Result: similarity == 1.0"+" & numMatches == 2 \n");
 				fOut.write("Actual Result: similarity == "+currRes.getSimValue()+" & numMatches == "+currRes.getNumMatchComponents()+"\n\n"); 
+				assertTrue(currRes.getDatasetSchema().contains("author(name)")) ;
+				assertTrue(currRes.getSimValue() == 1.0) ;
+				assertTrue(currRes.getNumMatchComponents() == 2) ;
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail() ;
 			}
 		}
 	}
 	
 	@Test
-	public void test33(){
+	public void test1_3_3(){
 		System.out.println("\nRunning test 1.3.3");
 		
 		source="author(name)";
@@ -253,13 +292,21 @@ public class SPSM_Test_Cases {
 		
 		int[] answer={2,2,2};
 		double[] simVals = {1.0,0.5,0.75};
+		String[] schemas = {"author(name)", "paperWriter(firstname,surname,paper)",
+				"reviewAuthor(firstname,lastname,review)"} ;
 		
 		if(results == null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			assertTrue(results.size() == 3) ;
 			if(results.size()>0){
 				for(int i = 0 ; i < results.size() ; i++){
 					Match_Struc currRes = results.get(i);
+					// System.out.println("Target: "+currRes.getDatasetSchema()+"\n");
+					assertTrue(currRes.getDatasetSchema().contains(schemas[i]));
+					assertTrue(currRes.getSimValue() == simVals[i]) ;
+					assertTrue(currRes.getNumMatchComponents() == answer[i]) ;
 					
 					fOut.write("Target: "+currRes.getDatasetSchema()+"\n");
 					fOut.write("Expected Result: similarity == "+simVals[i]+" & numMatches == "+answer[i]+"\n");
@@ -267,12 +314,13 @@ public class SPSM_Test_Cases {
 				}
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail() ;
 			}
 		}
 	}
 	
 	@Test
-	public void test41(){
+	public void test1_4_1(){
 		System.out.println("\nRunning test 1.4.1");
 		
 		source="author";
@@ -285,20 +333,27 @@ public class SPSM_Test_Cases {
 	
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
+				
 				Match_Struc res = results.get(0);
+				
+				assertTrue(res.getSimValue() == 1.0) ;
+				assertTrue(res.getNumMatchComponents() == 1) ;
 				
 				fOut.write("Expected Result: similarity == 1.0"+" & numMatches == 1 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail();
 			}
 		}
 	}
 	
 	@Test
-	public void test42(){
+	public void test1_4_2(){
 		System.out.println("\nRunning test 1.4.2");
 		
 		source="author";
@@ -311,14 +366,16 @@ public class SPSM_Test_Cases {
 		
 		if(results == null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{			
 			fOut.write("Expected Result: results.size() == 0 \n");
 			fOut.write("Actual Result: results.size() == "+results.size()+"\n\n");
+			assertTrue(results.size() == 0) ;
 		}
 	}
 	
 	@Test
-	public void test43(){
+	public void test1_4_3(){
 		System.out.println("\nRunning test 1.4.3");
 		
 		source="author(name)";
@@ -331,14 +388,16 @@ public class SPSM_Test_Cases {
 		
 		if(results == null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
 			fOut.write("Expected Result: results.size() == 0 \n");
 			fOut.write("Actual Result: results.size() == "+results.size()+"\n\n"); 
+			assertTrue(results.size() == 0) ;
 		}
 	}
 	
 	@Test
-	public void test44(){
+	public void test1_4_4(){
 		System.out.println("\nRunning test 1.4.4");
 		
 		source="author(name)";
@@ -351,20 +410,27 @@ public class SPSM_Test_Cases {
 		
 		if(results == null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			assertTrue(results.size() == 1) ;
 			if(results.size() > 0){
 				Match_Struc res = results.get(0);
+				
+				assertTrue(res.getSimValue() == 0.5) ;
+				assertTrue(res.getNumMatchComponents() == 2) ;
+				assertTrue(res.getDatasetSchema().contains(target)) ;
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail() ;
 			}	
 		}
 	}
 	
 	@Test
-	public void test45(){
+	public void test1_4_5(){
 		System.out.println("\nRunning test 1.4.5");
 		
 		source="reviewWriter(document,date,name)";
@@ -377,21 +443,28 @@ public class SPSM_Test_Cases {
 		
 		if(results == null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			assertTrue(results.size() == 1) ;
 			if(results.size() > 0){
 				Match_Struc res = results.get(0);
+				
+				assertTrue(res.getSimValue() == 0.5) ;
+				assertTrue(res.getNumMatchComponents() == 3) ;
+				assertTrue(res.getDatasetSchema().contains(target)) ;
 				
 				fOut.write("Target: "+res.getDatasetSchema()+"\n");
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 3 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail() ;
 			}
 		}
 	}
 	
 	@Test
-	public void test51(){
+	public void test1_5_1(){
 		System.out.println("\nRunning test 1.5.1");
 		
 		source="review(date(day,month,year))";
@@ -402,22 +475,36 @@ public class SPSM_Test_Cases {
 		fOut.write("Test 1.5.1\n");
 		fOut.write("Calling SPSM with source, "+source + " & target(s), " +target+"\n");
 		
+		
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			System.out.println("Null results") ;
+			fail("Null results") ;
 		}else{
+			// System.out.println(results.size()) ;
+			assertTrue(results.size() == 1) ;
 			if(results.size() > 0){
-				Match_Struc res = results.get(0);
+				Match_Struc res = results.get(0);			
 				
-				fOut.write("Expected Result: similarity == 1.0"+" & numMatches == 5 \n");
+				// System.out.println("Expected Result: similarity == 0.5"+" & numMatches == 5 \n");
+				// System.out.println("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");	
+				// System.out.println(res.getDatasetSchema());
+				assertTrue(res.getSimValue() == 0.5) ;
+				assertTrue(res.getNumMatchComponents() == 5) ;
+				assertTrue(res.getDatasetSchema().contains(target)) ;
+				
+				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 5 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");			
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail("Empty results") ;
+				System.out.println("Empty results") ;
 			}
 		}
 	}
 	
 	@Test
-	public void test52(){
+	public void test1_5_2(){
 		System.out.println("\nRunning test 1.5.2");
 		
 		source = "review(publication(day,month,year))";
@@ -430,20 +517,26 @@ public class SPSM_Test_Cases {
 		
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			assertTrue(results.size() == 1) ;
 			if(results.size() > 0){
 				Match_Struc res = results.get(0);
+				assertTrue(res.getSimValue() == 0.6) ;
+				assertTrue(res.getNumMatchComponents() == 5) ;
+				assertTrue(res.getDatasetSchema().contains(target)) ;
 				
 				fOut.write("Expected Result: similarity == 0.6"+" & numMatches == 5 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail();
 			}
 		}
 	}
 	
 	@Test
-	public void test53(){
+	public void test1_5_3(){
 		System.out.println("\nRunning test 1.5.3");
 		
 		source="review(publication(day,month,year))";
@@ -456,14 +549,16 @@ public class SPSM_Test_Cases {
 		
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			assertTrue(results.size() == 0) ;
 			fOut.write("Expected Result: results.size() == 0 \n");
 			fOut.write("Actual Result: results.size() == "+results.size()+"\n\n"); 
 		}
 	}
 	
 	@Test
-	public void test54(){
+	public void test1_5_4(){
 		System.out.println("\nRunning test 1.5.4");
 		
 		source="review(category(day,month,year))";
@@ -477,18 +572,25 @@ public class SPSM_Test_Cases {
 		
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			assertTrue(results.size() == 1) ;
 			if(results.size() > 0){
 				Match_Struc res = results.get(0);
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
+				assertTrue((res.getSimValue() < 0.2) && (res.getSimValue() > 0.199)) ;
+				assertTrue(res.getNumMatchComponents() == 1) ;
+				assertTrue(res.getDatasetSchema().contains(target)) ;
+				
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail();
 			}			
 		}
 	}
 	
 	@Test
-	public void test55(){
+	public void test1_5_5(){
 		System.out.println("\nRunning test 1.5.5");
 		
 		source="review(category(day,month,year))";
@@ -501,20 +603,27 @@ public class SPSM_Test_Cases {
 		
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
 				Match_Struc res = results.get(0);
+				
+				assertTrue((res.getSimValue() < 1.0) && (res.getSimValue() > 0.99)) ;
+				assertTrue(res.getNumMatchComponents() == 1) ;
+				assertTrue(res.getDatasetSchema().contains(target)) ;
 
 				fOut.write("Expected Result: similarity == 0.9999999999999998"+" & numMatches == 1 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail();
 			}			
 		}
 	}
 	
 	@Test
-	public void test56(){
+	public void test1_5_6(){
 		System.out.println("\nRunning test 1.5.6");
 		
 		source="conference(paper(title,review(date(day,month,year),author(name(first,second)))))";
@@ -527,19 +636,25 @@ public class SPSM_Test_Cases {
 		
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail();
 		}else{
+			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
 				Match_Struc res = results.get(0);
 				fOut.write("Expected Result: similarity == 0.625"+" & numMatches == 12 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
+				assertTrue(res.getSimValue() == 0.625) ;
+				assertTrue(res.getNumMatchComponents() == 11) ;
+				assertTrue(res.getDatasetSchema().contains(target)) ;
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail() ;
 			}
 		}
 	}
 	
 	@Test
-	public void test57(){
+	public void test1_5_7(){
 		System.out.println("\nRunning test 1.5.7");
 		
 		source="conference(paper(title,review(date(day,month,year),author(name(first,second)))))";
@@ -552,20 +667,27 @@ public class SPSM_Test_Cases {
 	
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail();
 		}else{
+			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.45833333333333337"+" & numMatches == 8 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
+			
+				assertTrue((res.getSimValue() < 0.46) && (res.getSimValue() > 0.458)) ;
+				assertTrue(res.getNumMatchComponents() == 1) ;
+				assertTrue(res.getDatasetSchema().contains(target)) ;
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail();
 			}
 		}
 	}
 	
 	@Test
-	public void test58(){
+	public void test1_5_8(){
 		System.out.println("\nRunning test 1.5.8");
 		
 		source="conference(paper(title,review(date(day,month,year),author(name(first,second)))))";
@@ -578,14 +700,16 @@ public class SPSM_Test_Cases {
 	
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{			
 			fOut.write("Expected Result: results.size() == 0 \n");
-			fOut.write("Actual Result: results.size() == "+results.size()+"\n\n"); 
+			fOut.write("Actual Result: results.size() == "+results.size()+"\n\n");
+			assertTrue(results.size() == 0) ;
 		}
 	}
 	
 	@Test
-	public void test61(){
+	public void test1_6_1(){
 		System.out.println("\nRunning test 1.6.1");
 		
 		source="conferenceDocument(nameOfAuthor)";
@@ -598,20 +722,27 @@ public class SPSM_Test_Cases {
 				
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
 				Match_Struc res = results.get(0);
+				
+				assertTrue(res.getSimValue() == 0.5) ;
+				assertTrue(res.getNumMatchComponents() == 2) ;
+				assertTrue(res.getDatasetSchema().contains(target)) ;
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches ==2 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail() ;
 			}
 		}
 	}
 	
 	@Test 
-	public void test62(){
+	public void test1_6_2(){
 		System.out.println("\nRunning test 1.6.2");
 		
 		source="conference_document(name_of_author)";
@@ -624,21 +755,27 @@ public class SPSM_Test_Cases {
 				
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
+				assertTrue(res.getSimValue() == 0.5) ;
+				assertTrue(res.getNumMatchComponents() == 2) ;
+				assertTrue(res.getDatasetSchema().contains(target)) ;
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail() ;
 			}
 			
 		}
 	}
 	
 	@Test
-	public void test63(){
+	public void test1_6_3(){
 		System.out.println("\nRunning test 1.6.3");
 		
 		source="conference_document(name_of_author)";
@@ -651,20 +788,26 @@ public class SPSM_Test_Cases {
 			
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
+				assertTrue(res.getSimValue() == 0.5) ;
+				assertTrue(res.getNumMatchComponents() == 2) ;
+				assertTrue(res.getDatasetSchema().contains(target)) ;
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail() ;
 			}
 		}
 	}
 	
 	@Test
-	public void test64(){
+	public void test1_6_4(){
 		System.out.println("\nRunning test 1.6.4");
 		
 		source="conference document(name of author)";
@@ -677,20 +820,26 @@ public class SPSM_Test_Cases {
 				
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
+				assertTrue(res.getSimValue() == 0.5) ;
+				assertTrue(res.getNumMatchComponents() == 2) ;
+				assertTrue(res.getDatasetSchema().contains(target)) ;
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail() ;
 			}
 		}
 	}
 	
 	@Test
-	public void test65(){
+	public void test1_6_5(){
 		System.out.println("\nRunning test 1.6.5");
 		
 		source="conference document(nameOfAuthor)";
@@ -703,20 +852,26 @@ public class SPSM_Test_Cases {
 		
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
+			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
+				assertTrue(res.getSimValue() == 0.5) ;
+				assertTrue(res.getNumMatchComponents() == 2) ;
+				assertTrue(res.getDatasetSchema().contains(target)) ;
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail();
 			}
 		}
 	}
 	
 	@Test
-	public void test66(){
+	public void test1_6_6(){
 		System.out.println("\nRunning test 1.6.6");
 		
 		source="conferencedocument(nameofauthor)";
@@ -729,20 +884,26 @@ public class SPSM_Test_Cases {
 		
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}else{
 			if(results.size() >0){
+				assertTrue(results.size() == 1) ;
 				Match_Struc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
+				assertTrue(res.getSimValue() == 0.5) ;
+				assertTrue(res.getNumMatchComponents() == 2) ;
+				assertTrue(res.getDatasetSchema().contains(target)) ;
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
+				fail() ;
 			}
 		}
 	}
 	
 	@Test
-	public void test67(){
+	public void test1_6_8(){
 		System.out.println("\nRunning test 1.6.8");
 		
 		source="auto(brand,name,color)";
@@ -755,9 +916,12 @@ public class SPSM_Test_Cases {
 		
 		if(results==null){
 			fOut.write("Null Results! \n\n");
+			fail();
 		}else{
-			fOut.write("Expected Result: results == null \n");
-			fOut.write("Actual Result: results == "+results+"\n\n"); 
+			assertTrue(results.size() == 0) ;
+			fOut.write("Expected Result: SPSM crashes, results.size() == 0 \n");
+			fOut.write("Actual Result: results.size() == "+results.size()+"\n\n"); 
+			
 		}
 	}
 	

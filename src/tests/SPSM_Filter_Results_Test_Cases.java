@@ -14,8 +14,11 @@ import chain_source.Call_SPSM;
 import chain_source.Match_Struc;
 
 /* Author Tanya Howden
+ * Author Diana Bental
  * Date September 2017
+ * Date December 2017
  * Modified
+ * add assertions
  */
 
 /*
@@ -99,6 +102,8 @@ public class SPSM_Filter_Results_Test_Cases {
 			fOut.write("Null Results! \n\n");
 		}
 		
+		assertEquals(2,finalRes.size());
+		
 		counter++;
 	}
 	
@@ -128,6 +133,8 @@ public class SPSM_Filter_Results_Test_Cases {
 			fOut.write("Null Results! \n\n");
 		}
 		
+		assertEquals(1,finalRes.size());
+		
 		counter++;
 	}
 	
@@ -140,6 +147,9 @@ public class SPSM_Filter_Results_Test_Cases {
 		finalRes = new ArrayList<Match_Struc>();
 		
 		finalRes=spsmCall.callSPSM(finalRes, source, target);
+		
+		assertEquals(0,finalRes.size());
+		
 		finalRes = filterResCall.getThresholdAndFilter(finalRes, 0.0, 0);
 		
 		fOut.write("Test 3."+counter+" - fail single call\n");
@@ -153,6 +163,7 @@ public class SPSM_Filter_Results_Test_Cases {
 		}else{
 
 		}
+		assertEquals(0,finalRes.size());
 		
 		counter++;
 	}
@@ -166,6 +177,9 @@ public class SPSM_Filter_Results_Test_Cases {
 		finalRes = new ArrayList<Match_Struc>();
 		
 		finalRes=spsmCall.callSPSM(finalRes, source, target);
+		
+		assertEquals(3,finalRes.size());
+		
 		finalRes = filterResCall.getThresholdAndFilter(finalRes, 0.0, 2);
 		
 		fOut.write("Test 3."+counter+" - success with limit\n");
@@ -180,6 +194,8 @@ public class SPSM_Filter_Results_Test_Cases {
 			fOut.write("Null Results! \n\n");
 		}
 		
+		assertEquals(2,finalRes.size());
+		
 		counter++;
 	}
 	
@@ -192,6 +208,9 @@ public class SPSM_Filter_Results_Test_Cases {
 		finalRes = new ArrayList<Match_Struc>();
 		
 		finalRes=spsmCall.callSPSM(finalRes, source, target);
+		
+		assertEquals(0,finalRes.size());
+		
 		finalRes = filterResCall.getThresholdAndFilter(finalRes,0.0,2);
 		
 		fOut.write("Test 3."+counter+" - fail with limit\n");
@@ -206,6 +225,7 @@ public class SPSM_Filter_Results_Test_Cases {
 			fOut.write("Null Results! \n\n");
 		}
 		
+		assertEquals(0,finalRes.size());
 		counter++;
 	}
 	

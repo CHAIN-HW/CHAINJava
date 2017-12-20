@@ -1,5 +1,7 @@
 package tests;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -17,8 +19,10 @@ import chain_source.Match_Struc;
 import chain_source.Repair_Schema;
 
 /* Author Tanya Howden
+ * Author Diana Bental
  * Date September 2017
- * Modified
+ * Date December 2017
+ * Modified added assertions
  */
 
 /*
@@ -98,6 +102,8 @@ public class Repair_Schema_Test_Cases {
 		
 		fOut.write("Expected Result: repaired schema == 'car(colour,brand)' \n");
 		
+		assertTrue(finalRes.size() ==0) ; // SPSM crashes, returns an empty result
+		
 		if(finalRes!=null){
 			if(finalRes.size() == 0){
 				//then we have no results so end test
@@ -133,20 +139,31 @@ public class Repair_Schema_Test_Cases {
 		
 		fOut.write("Expected Result: repaired schema == 'conference(paper(title,document(date(day,month,year),writer(name(first,second)))))' \n");
 		
+		
+		assertTrue(finalRes.get(0).getRepairedSchema().contains("conference(")) ;
 		if(finalRes!=null){
 			if(finalRes.size() == 0){
 				//then we have no results so end test
 				fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
 				fOut.write("Empty results returned. \n\n");
+				fail() ;
+				
 			}else{
 				//we can test repaired schema
 				Match_Struc result = finalRes.get(0);
-				
 				fOut.write("Actual Result: repaired schema == '" + result.getRepairedSchema() + "' \n\n");
+				assertTrue(result.getRepairedSchema().contains("conference(")) ;
+				assertTrue(result.getRepairedSchema().contains("writer(")) ;
+				assertTrue(result.getRepairedSchema().contains("date(")) ;
+				assertTrue(result.getRepairedSchema().contains("title")) ;
+				assertTrue(result.getRepairedSchema().contains("month")) ;
 			}
 		}else{
+			fail() ;
 			fOut.write("Null Results! \n\n");
 		}
+		
+		
 	}
 	
 	@Test
@@ -168,6 +185,9 @@ public class Repair_Schema_Test_Cases {
 		fOut.write("Calling SPSM with source, "+source+" & target, "+target+"\n");
 		
 		fOut.write("Expected Result: repaired schema == 'conference(paper(title,document(writer(name(first,second)))))' \n");
+		
+		assertTrue(finalRes.size() ==0) ; // SPSM crashes, returns an empty result
+		
 		
 		if(finalRes!=null){
 			if(finalRes.size() == 0){

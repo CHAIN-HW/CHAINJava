@@ -77,11 +77,9 @@ Actual Result: similarity == 0.5 & numMatches == 2
 
 Test 1.4.5
 Calling SPSM with source, reviewWriter(document,date,name) & target(s), author(name,email,coAuthors,writePaper,submitPapers,review)
-Empty Results - zero matches! 
-
 Test 1.5.1
 Calling SPSM with source, review(date(day,month,year)) & target(s), document(date(day,month,year))
-Expected Result: similarity == 1.0 & numMatches == 5 
+Expected Result: similarity == 0.5 & numMatches == 5 
 Actual Result: similarity == 0.5 & numMatches == 5
 
 Test 1.5.2
@@ -97,12 +95,8 @@ Actual Result: results.size() == 0
 Test 1.5.4
 Calling SPSM with source, review(category(day,month,year)) & target(s), review(date(day,month,year))
 Expected Result: similarity == 0.19999999999999996 & numMatches == 1 
-Empty Results - zero matches! 
-
 Test 1.5.5
 Calling SPSM with source, review(category(day,month,year)) & target(s), document(date(day,month,year))
-Empty Results - zero matches! 
-
 Test 1.5.6
 Calling SPSM with source, conference(paper(title,review(date(day,month,year),author(name(first,second))))) & target(s), conference(paper(title,document(date(day,month,year),writer(name(first,second)))))
 Expected Result: similarity == 0.625 & numMatches == 12 
@@ -110,8 +104,6 @@ Actual Result: similarity == 0.625 & numMatches == 12
 
 Test 1.5.7
 Calling SPSM with source, conference(paper(title,review(date(day,month,year),author(name(first,second))))) & target(s), conference(paper(title,document(category(day,month,year),writer(name(first,second)))))
-Empty Results - zero matches! 
-
 Test 1.5.8
 Calling SPSM with source, conference(paper(title,review(date(day,month,year),author(name(first,second))))) & target(s), event(paper(title,document(category(day,month,year),writer(name(first,second)))))
 Expected Result: results.size() == 0 
@@ -149,6 +141,6 @@ Actual Result: similarity == 0.5 & numMatches == 2
 
 Test 1.6.7
 Calling SPSM with source, auto(brand,name,color) & target(s), car(year,brand,colour)
-Expected Result: results == null 
-Actual Result: results == []
+Expected Result: SPSM crashes, results.size() == 0 
+Actual Result: results.size() == 0
 

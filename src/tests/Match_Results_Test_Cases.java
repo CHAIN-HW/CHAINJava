@@ -1,5 +1,7 @@
 package tests;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -83,6 +85,8 @@ public class Match_Results_Test_Cases {
 		fOut.write("Expected Result: results.size() == 0 \n");
 		fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n\n");
 		
+		assertTrue(finalRes.size() == 0) ;
+		
 		counter++;
 	}
 	
@@ -101,6 +105,8 @@ public class Match_Results_Test_Cases {
 		fOut.write("Expected Result: results.size() == 1 \n");
 		fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n\n");
 		
+		assertTrue(finalRes.size() == 1) ;
+		
 		counter++;
 	}
 	
@@ -118,6 +124,8 @@ public class Match_Results_Test_Cases {
 		
 		fOut.write("Expected Result: results.size() == 0 \n");
 		fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n\n");
+		
+		assertTrue(finalRes.size() == 0) ;
 		
 		counter++;
 	}
@@ -141,6 +149,7 @@ public class Match_Results_Test_Cases {
 		fOut.write("Expected Result: results.size() == 2 \n");
 		fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n\n");
 		
+		assertTrue(finalRes.size() == 2) ;
 		counter++;
 	}
 	
@@ -163,6 +172,7 @@ public class Match_Results_Test_Cases {
 		fOut.write("Expected Result: results.size() == 4 \n");
 		fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n\n");
 		
+		assertTrue(finalRes.size() == 4) ;
 		counter++;
 	}
 	
@@ -184,7 +194,7 @@ public class Match_Results_Test_Cases {
 		
 		fOut.write("Expected Result: results.size() == 0 \n");
 		fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n\n");
-		
+		assertTrue(finalRes.size() == 0) ;
 		counter++;
 	}
 	
@@ -206,7 +216,7 @@ public class Match_Results_Test_Cases {
 		
 		fOut.write("Expected Result: results.size() == 3 \n");
 		fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n\n");
-		
+		assertTrue(finalRes.size() == 3) ;
 		counter++;
 	}
 	
@@ -228,7 +238,7 @@ public class Match_Results_Test_Cases {
 		
 		fOut.write("Expected Result: results.size() == 4 \n");
 		fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n\n");
-		
+		assertTrue(finalRes.size() == 4) ;
 		counter++;
 	}
 	
@@ -250,7 +260,7 @@ public class Match_Results_Test_Cases {
 		
 		fOut.write("Expected Result: results.size() == 0 \n");
 		fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n\n");
-		
+		assertTrue(finalRes.size() == 0) ;
 		counter++;
 	}
 	
