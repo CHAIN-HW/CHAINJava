@@ -256,7 +256,7 @@ public class Query_Data {
 
 	// Given a SPARQL query pick out from the heading the Prefix mappings
 	// and return a hashmap prefix -> iri
-	public void parsePrefixMapsFromQuery(Query q) {
+	private void parsePrefixMapsFromQuery(Query q) {
 		// Use Jena to standardise the query format so we can parse it
 		String queryString = q.toString(); // and then back to a string
 

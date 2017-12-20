@@ -290,6 +290,18 @@ public class Run_Query_Test_Cases {
 	          + ".}\n"
 	          + "LIMIT 20" ;
 	
+	private static String Q6_3_4 =  "PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
+	          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
+	          + "PREFIX  res: <http://dbpedia.org/resource/> \n"
+	          + "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+	          + "PREFIX  foaf: <http://xlmns.com/foaf/0.1/> \n"
+	          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
+	          + "SELECT DISTINCT *  \n"
+	          + "WHERE { ?id rdf:type dbo:FormulaOneRacer ;\n"
+	          + "dbo:races \"202\" ;\n"
+	          + ".}\n"
+	          + "LIMIT 20" ;
+	
 	
 	private Call_SPSM spsmCall;
 	private Repair_Schema getRepairedSchema;
@@ -578,6 +590,15 @@ public class Run_Query_Test_Cases {
 		testDBP("6.3.3", source, target, Q6_3_3, WITHRESULTS) ; // Query with data
 	}
 	
+	@Test
+	public void test304(){
+		System.out.println("\nRunning test 6.3.4 - dbpedia query");		
+		source="FormulaOneRacer(races)";
+		target="FormulaOneRacer(races)";		
+		testDBP("6.3.3", source, target, Q6_3_4, NORESULTS) ; // Query with data
+	}
+	
+
 	private void testSepa(String testID, String source, String target, String query, int ExpectedResult) {
 		finalRes = new ArrayList<Match_Struc>();
 		

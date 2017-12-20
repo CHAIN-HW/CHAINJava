@@ -605,11 +605,16 @@ public class SPSM_Test_Cases {
 			fOut.write("Null Results! \n\n");
 			fail() ;
 		}else{
+			// System.out.println(results.size());
 			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
 				Match_Struc res = results.get(0);
 				
-				assertTrue((res.getSimValue() < 1.0) && (res.getSimValue() > 0.99)) ;
+				// System.out.println("Target: "+res.getDatasetSchema()+"\n");
+				// System.out.println("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n"); 
+				
+				
+				assertTrue((res.getSimValue() < 0.1) && (res.getSimValue() > 0.099)) ;
 				assertTrue(res.getNumMatchComponents() == 1) ;
 				assertTrue(res.getDatasetSchema().contains(target)) ;
 
@@ -644,7 +649,7 @@ public class SPSM_Test_Cases {
 				fOut.write("Expected Result: similarity == 0.625"+" & numMatches == 12 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 				assertTrue(res.getSimValue() == 0.625) ;
-				assertTrue(res.getNumMatchComponents() == 11) ;
+				assertTrue(res.getNumMatchComponents() == 12) ;
 				assertTrue(res.getDatasetSchema().contains(target)) ;
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
@@ -671,13 +676,13 @@ public class SPSM_Test_Cases {
 		}else{
 			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
-				Match_Struc res = results.get(0);
+				Match_Struc res = results.get(0);		
 				
 				fOut.write("Expected Result: similarity == 0.45833333333333337"+" & numMatches == 8 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 			
 				assertTrue((res.getSimValue() < 0.46) && (res.getSimValue() > 0.458)) ;
-				assertTrue(res.getNumMatchComponents() == 1) ;
+				assertTrue(res.getNumMatchComponents() == 8) ;
 				assertTrue(res.getDatasetSchema().contains(target)) ;
 			}else{
 				fOut.write("Empty Results - zero matches! \n\n");
@@ -918,8 +923,16 @@ public class SPSM_Test_Cases {
 			fOut.write("Null Results! \n\n");
 			fail();
 		}else{
-			assertTrue(results.size() == 0) ;
-			fOut.write("Expected Result: SPSM crashes, results.size() == 0 \n");
+			assertTrue(results.size() == 1) ;
+			Match_Struc res = results.get(0);
+			
+			assertTrue(res.getSimValue() == 0.75) ;
+			assertTrue(res.getNumMatchComponents() == 3) ;
+			assertTrue(res.getDatasetSchema().contains(target)) ;
+			
+			// System.out.println("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
+			
+			fOut.write("Expected Result: results.size() == 1 \n");
 			fOut.write("Actual Result: results.size() == "+results.size()+"\n\n"); 
 			
 		}
