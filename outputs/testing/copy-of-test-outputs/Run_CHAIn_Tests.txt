@@ -1,45 +1,23 @@
 Testing Results for Run_CHAIn_Test_Cases.java
 
-Test 8.0.6
+Test 8.1.2
 Running CHAIn with initial query,
 
-PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
-PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
-PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+PREFIX  dbp: <http://dbpedia.org/property/>   
+PREFIX  res: <http://dbpedia.org/resource/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
-SELECT *  
-FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
-WHERE { ?id sepaw:identifiedDate "2008-04-01";
-sepaw:waterBodyId sepaidw:20308xxx  ;
-sepaw:assessmentCategory ?assessmentCategory ;
-sepaw:source "Lake" .}Query has NOT run successfully the first time.
+PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
+PREFIX yago: <hhtp://dbpedia.org/class/yago/> 
 
-Calling SPSM to try and create new query
-Now running the new queries that have been created...
-
-Target Schema, waterBodyPressures(identifiedDate,waterBodyId,assessmentCategory,source), has created the following query:
-
-PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
-PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
-PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
-PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
-
-SELECT *
-FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
-WHERE {  
- ?id sepaw:waterBodyId <http://data.sepa.org.uk/id/Water/20308xxx> ;
- sepaw:assessmentCategory ?assessmentCategory ;
- sepaw:source "Lake" ;
- sepaw:identifiedDate "2008-04-01"
-}
+SELECT DISTINCT *  
+WHERE { ?id rdf:type dbo:River ;
+dbo:length ?length ;
+.}
 LIMIT 10
 
-This new query has run with no results.
+Query has run successfully first time.
 
-
-Attempting data repair.
+ CHAIn has finished running.
 
 

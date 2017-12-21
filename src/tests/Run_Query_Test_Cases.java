@@ -24,8 +24,10 @@ import chain_source.Repair_Schema;
 import chain_source.Run_Query;
 
 /* Author Tanya Howden
+ * Author Diana Bental
  * Date September 2017
- * Modified
+ * Modified December 2017
+ * Additional tests
  */
 
 /*
@@ -595,7 +597,7 @@ public class Run_Query_Test_Cases {
 		System.out.println("\nRunning test 6.3.4 - dbpedia query");		
 		source="FormulaOneRacer(races)";
 		target="FormulaOneRacer(races)";		
-		testDBP("6.3.3", source, target, Q6_3_4, NORESULTS) ; // Query with data
+		testDBP("6.3.4", source, target, Q6_3_4, NORESULTS) ; // Query with data
 	}
 	
 
@@ -678,6 +680,7 @@ public class Run_Query_Test_Cases {
 		
 		
 	}
+	
 	
 	@After
 	public void cleanUp(){

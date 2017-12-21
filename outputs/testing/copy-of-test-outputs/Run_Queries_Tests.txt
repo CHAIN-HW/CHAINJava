@@ -13,10 +13,10 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
 WHERE {  
- ?id sepaw:waterBodyId ?waterBodyId ;
+ ?id sepaw:dataSource ?dataSource ;
  sepaw:affectsGroundwater ?affectsGroundwater ;
  sepaw:identifiedDate ?identifiedDate ;
- sepaw:dataSource ?dataSource
+ sepaw:waterBodyId ?waterBodyId
 }
 
 Query HAS run successfully.
@@ -34,10 +34,10 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyTemperatures.n3>
 WHERE {  
- ?id sepaw:affectsGroundwater ?affectsGroundwater ;
- sepaw:dataSource ?dataSource ;
- sepaw:identifiedDate ?identifiedDate ;
- sepaw:waterBodyId ?waterBodyId
+ ?id sepaw:identifiedDate ?identifiedDate ;
+ sepaw:affectsGroundwater ?affectsGroundwater ;
+ sepaw:waterBodyId ?waterBodyId ;
+ sepaw:dataSource ?dataSource
 }
 
 
@@ -55,9 +55,9 @@ SELECT *
 FROM <queryData/sepa/sepa_datafiles/water.n3>
 WHERE {  
  ?id sepaw:timePeriod ?timePeriod ;
- sepaw:resource ?resource ;
+ sepaw:measure ?measure ;
  geo:geo ?geo ;
- sepaw:measure ?measure
+ sepaw:resource ?resource
 }
 
 
@@ -74,10 +74,10 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
 WHERE {  
- ?id sepaw:resource ?resource ;
- sepaw:timePeriod ?timePeriod ;
+ ?id sepaw:timePeriod ?timePeriod ;
+ geo:geo ?geo ;
  sepaw:measure ?measure ;
- geo:geo ?geo
+ sepaw:resource ?resource
 }
 
 Query HAS run successfully but NO data has been returned.
@@ -96,9 +96,9 @@ SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
 WHERE {  
  ?id sepaw:identifiedDate ?identifiedDate ;
+ sepaw:source ?source ;
  sepaw:assessmentCategory ?assessmentCategory ;
- sepaw:waterBodyId ?waterBodyId ;
- sepaw:source ?source
+ sepaw:waterBodyId ?waterBodyId
 }
 
 Query HAS run successfully.
@@ -116,9 +116,9 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
 WHERE {  
- ?id sepaw:waterBodyId ?waterBodyId ;
- sepaw:secondaryMeasure ?secondaryMeasure ;
- sepaw:dataSource ?dataSource
+ ?id sepaw:secondaryMeasure ?secondaryMeasure ;
+ sepaw:dataSource ?dataSource ;
+ sepaw:waterBodyId ?waterBodyId
 }
 
 Query HAS run successfully.
@@ -156,9 +156,9 @@ SELECT *
 FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
 WHERE {  
  ?id geo:long ?long ;
- sepaloc:catchment ?catchment ;
  geo:lat ?lat ;
- sepaloc:localAuthority ?localAuthority
+ sepaloc:localAuthority ?localAuthority ;
+ sepaloc:catchment ?catchment
 }
 
 Query HAS run successfully but NO data has been returned.
@@ -176,9 +176,9 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
 WHERE {  
- ?id sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
+ ?id sepaw:subBasinDistrict ?subBasinDistrict ;
  sepaw:riverName ?riverName ;
- sepaw:subBasinDistrict ?subBasinDistrict ;
+ sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
  sepaw:altitudeTypology ?altitudeTypology
 }
 
@@ -383,8 +383,8 @@ PREFIX yago: <http://dbpedia.org/class/yago/>
 
 SELECT DISTINCT *
 WHERE { ?id rdf:type foaf:Person;
- dbo:occupation ?occupation ;
- dbo:birthPlace ?birthPlace}
+ dbo:birthPlace ?birthPlace ;
+ dbo:occupation ?occupation}
 LIMIT 20
 
 Query HAS run successfully.
@@ -474,4 +474,21 @@ WHERE { ?id rdf:type dbo:FormulaOneRacer;
 LIMIT 20
 
 Query HAS run successfully.
+
+Test 6.3.4 - dbpedia query
+Trying to run query: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT *
+WHERE { ?id rdf:type dbo:FormulaOneRacer;
+ dbo:races "202"}
+LIMIT 20
+
+Query HAS run successfully but NO data has been returned.
 

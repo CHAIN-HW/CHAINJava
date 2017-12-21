@@ -298,7 +298,7 @@ public class Run_CHAIn_Test_Cases {
 	}
 	
 	@Test
-	//basic dbpedia query that should already run successfully (but needs to be repaired in reality)
+	//basic dbpedia query that  already runs successfully and does not require repair.
 	public void test8_1_2(){
 		System.out.println("\nRunning test 8.1.2\n");
 		
@@ -323,14 +323,11 @@ public class Run_CHAIn_Test_Cases {
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
 		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
-		assertTrue(status == REPAIREDQUERYRESULTS) ;
-		
-		// This should really be an INITIALQUERYSUCCESS - it isn;t because we aen't set up to do ARQ queries from a local database unless we
-		// already have the file name stored  separately. Which we don't until after we've done the query repair process.
+		assertTrue(status == INITIALQUERYSUCCESS) ;
 	}
 	
 	@Test
-	//Query doesn't run successfully first time - erturns no results.
+	//Query doesn't run successfully first time - returns no results.
 	//Repair work creates 2 new queries
 	//Both run successfully(?)
 	// Possibly the second should not be created as it uses a term that is not in the ontology

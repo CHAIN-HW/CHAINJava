@@ -25,7 +25,7 @@ import chain_source.Match_Struc;
  */
 public class Match_Results_Test_Cases {
 
-	private Best_Match_Results methodCall;
+	private Best_Match_Results bestMatchResults;
 	private ArrayList<Match_Struc> finalRes;
 	private static int counter;
 	
@@ -56,7 +56,7 @@ public class Match_Results_Test_Cases {
 	
 	@Before
 	public void setup(){
-		methodCall = new Best_Match_Results();
+		bestMatchResults = new Best_Match_Results();
 		finalRes = new ArrayList<Match_Struc>();
 		
 		try{
@@ -77,7 +77,7 @@ public class Match_Results_Test_Cases {
 		System.out.println("\nRunning test emptyMatches");
 		
 		ArrayList<Match_Struc> res = new ArrayList<Match_Struc>();
-		finalRes = methodCall.getThresholdAndFilter(res, 0.2, 0);
+		finalRes = bestMatchResults.getThresholdAndFilter(res, 0.2, 0);
 		
 		fOut.write("Test 2."+counter+" - empty matches\n");
 		fOut.write("Calling with threshold: "+0.2+" & limit: "+0+" on an empty list of matches \n");
@@ -97,7 +97,7 @@ public class Match_Results_Test_Cases {
 		ArrayList<Match_Struc> res = new ArrayList<Match_Struc>();
 		res.add(new Match_Struc(0.2,"author(name,document)"));
 		
-		finalRes = methodCall.getThresholdAndFilter(res, 0.1, 0);
+		finalRes = bestMatchResults.getThresholdAndFilter(res, 0.1, 0);
 		
 		fOut.write("Test 2."+counter+" - single success match\n");
 		fOut.write("Calling with threshold: "+0.1+" & limit: "+0+" on a single match \n");
@@ -117,7 +117,7 @@ public class Match_Results_Test_Cases {
 		ArrayList<Match_Struc> res = new ArrayList<Match_Struc>();
 		res.add(new Match_Struc(0.2,"author(name,document)"));
 		
-		finalRes = methodCall.getThresholdAndFilter(res, 0.5, 0 );
+		finalRes = bestMatchResults.getThresholdAndFilter(res, 0.5, 0 );
 		
 		fOut.write("Test 2."+counter+" - single fail match\n");
 		fOut.write("Calling with threshold: "+0.5+" & limit: "+0+" on a single match \n");
@@ -141,7 +141,7 @@ public class Match_Results_Test_Cases {
 		res.add(new Match_Struc(0.9,"author(name,document)"));
 		res.add(new Match_Struc(0.5,"author(name,document)"));
 		
-		finalRes = methodCall.getThresholdAndFilter(res, 0.6, 0);
+		finalRes = bestMatchResults.getThresholdAndFilter(res, 0.6, 0);
 		
 		fOut.write("Test 2."+counter+" - multiple successes match\n");
 		fOut.write("Calling with threshold: "+0.6+" & limit: "+0+" on multiple matches \n");
@@ -164,7 +164,7 @@ public class Match_Results_Test_Cases {
 		res.add(new Match_Struc(0.9,"author(name,document)"));
 		res.add(new Match_Struc(0.5,"author(name,document)"));
 		
-		finalRes = methodCall.getThresholdAndFilter(res, 0.2, 0);
+		finalRes = bestMatchResults.getThresholdAndFilter(res, 0.2, 0);
 		
 		fOut.write("Test 2."+counter+" - multiple successes match\n");
 		fOut.write("Calling with threshold: "+0.2+" & limit: "+0+" on multiple matches \n");
@@ -187,7 +187,7 @@ public class Match_Results_Test_Cases {
 		res.add(new Match_Struc(0.9,"author(name,document)"));
 		res.add(new Match_Struc(0.5,"author(name,document)"));
 		
-		finalRes = methodCall.getThresholdAndFilter(res, 1.0, 0);
+		finalRes = bestMatchResults.getThresholdAndFilter(res, 1.0, 0);
 		
 		fOut.write("Test 2."+counter+" - multiple fail matches\n");
 		fOut.write("Calling with threshold: "+1.0+" & limit: "+0+" on multiple matches \n");
@@ -209,7 +209,7 @@ public class Match_Results_Test_Cases {
 		res.add(new Match_Struc(0.9,"author(name,document)"));
 		res.add(new Match_Struc(0.5,"author(name,document)"));
 		
-		finalRes = methodCall.getThresholdAndFilter(res, 0.2, 3);
+		finalRes = bestMatchResults.getThresholdAndFilter(res, 0.2, 3);
 		
 		fOut.write("Test 2."+counter+" - success with limit\n");
 		fOut.write("Calling with threshold: "+0.2+" & limit: "+3+" on multiple matches \n");
@@ -231,7 +231,7 @@ public class Match_Results_Test_Cases {
 		res.add(new Match_Struc(0.9,"author(name,document)"));
 		res.add(new Match_Struc(0.5,"author(name,document)"));
 		
-		finalRes = methodCall.getThresholdAndFilter(res, 0.2, 5);
+		finalRes = bestMatchResults.getThresholdAndFilter(res, 0.2, 5);
 		
 		fOut.write("Test 2."+counter+" - success with large limit\n");
 		fOut.write("Calling with threshold: "+0.2+" & limit: "+5+" on multiple matches \n");
@@ -253,7 +253,7 @@ public class Match_Results_Test_Cases {
 		res.add(new Match_Struc(0.9,"author(name,document)"));
 		res.add(new Match_Struc(0.5,"author(name,document)"));
 		
-		finalRes = methodCall.getThresholdAndFilter(res, 1.0, 5);
+		finalRes = bestMatchResults.getThresholdAndFilter(res, 1.0, 5);
 		
 		fOut.write("Test 2."+counter+" - fail with limit\n");
 		fOut.write("Calling with threshold: "+1.0+" & limit: "+5+" on multiple matches \n");

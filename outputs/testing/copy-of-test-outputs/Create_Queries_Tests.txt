@@ -29,10 +29,10 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
 WHERE {  
- ?id sepaw:affectsGroundwater ?affectsGroundwater ;
- sepaw:dataSource ?dataSource ;
+ ?id sepaw:waterBodyId ?waterBodyId ;
+ sepaw:affectsGroundwater ?affectsGroundwater ;
  sepaw:identifiedDate ?identifiedDate ;
- sepaw:waterBodyId ?waterBodyId
+ sepaw:dataSource ?dataSource
 }
 
 
@@ -64,10 +64,10 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/water.n3>
 WHERE {  
- ?id sepaw:timePeriod ?timePeriod ;
- sepaw:resource ?resource ;
- geo:geo ?geo ;
- sepaw:measure ?measure
+ ?id sepaw:resource ?resource ;
+ sepaw:timePeriod ?timePeriod ;
+ sepaw:measure ?measure ;
+ geo:geo ?geo
 }
 
 
@@ -99,10 +99,10 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
 WHERE {  
- ?id sepaw:resource ?resource ;
+ ?id sepaw:timePeriod ?timePeriod ;
+ sepaw:measure ?measure ;
  geo:geo ?geo ;
- sepaw:timePeriod ?timePeriod ;
- sepaw:measure ?measure
+ sepaw:resource ?resource
 }
 
 
@@ -134,9 +134,9 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
 WHERE {  
- ?id sepaw:source ?source ;
+ ?id sepaw:waterBodyId ?waterBodyId ;
+ sepaw:source ?source ;
  sepaw:identifiedDate ?identifiedDate ;
- sepaw:waterBodyId ?waterBodyId ;
  sepaw:assessmentCategory ?assessmentCategory
 }
 
@@ -168,9 +168,9 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
 WHERE {  
- ?id sepaw:dataSource ?dataSource ;
- sepaw:secondaryMeasure ?secondaryMeasure ;
- sepaw:waterBodyId ?waterBodyId
+ ?id sepaw:secondaryMeasure ?secondaryMeasure ;
+ sepaw:waterBodyId ?waterBodyId ;
+ sepaw:dataSource ?dataSource
 }
 
 
@@ -234,9 +234,9 @@ SELECT *
 FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
 WHERE {  
  ?id geo:lat ?lat ;
- sepaloc:localAuthority ?localAuthority ;
+ sepaloc:catchment ?catchment ;
  geo:long ?long ;
- sepaloc:catchment ?catchment
+ sepaloc:localAuthority ?localAuthority
 }
 
 
@@ -268,9 +268,9 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
 WHERE {  
- ?id sepaw:altitudeTypology ?altitudeTypology ;
+ ?id sepaw:riverName ?riverName ;
  sepaw:subBasinDistrict ?subBasinDistrict ;
- sepaw:riverName ?riverName ;
+ sepaw:altitudeTypology ?altitudeTypology ;
  sepaw:associatedGroundwaterId ?associatedGroundwaterId
 }
 
@@ -333,8 +333,8 @@ PREFIX yago: <http://dbpedia.org/class/yago/>
 
 SELECT DISTINCT *
 WHERE { ?id rdf:type dbo:City;
- dbo:country ?country ;
- dbo:populationTotal ?populationTotal}
+ dbo:populationTotal ?populationTotal ;
+ dbo:country ?country}
 LIMIT 20
 
 Test 5.2.10 - dbpedia query
@@ -537,8 +537,8 @@ PREFIX yago: <http://dbpedia.org/class/yago/>
 
 SELECT DISTINCT *
 WHERE { ?id rdf:type foaf:Person;
- dbo:occupation ?occupation ;
- dbo:birthPlace ?birthPlace}
+ dbo:birthPlace ?birthPlace ;
+ dbo:occupation ?occupation}
 LIMIT 20
 
 Test 5.2.6 - dbpedia query
@@ -569,8 +569,8 @@ PREFIX yago: <http://dbpedia.org/class/yago/>
 
 SELECT DISTINCT *
 WHERE { ?id rdf:type foaf:Person;
- dbo:instrument ?instrument ;
- dbo:occupation ?occupation}
+ dbo:occupation ?occupation ;
+ dbo:instrument ?instrument}
 LIMIT 20
 
 Test 5.2.7 - dbpedia query
@@ -694,8 +694,8 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
 WHERE {  
- ?id sepaw:waterBodyId <http://data.sepa.org.uk/id/Water/100053> ;
- sepaw:source "SEPA" ;
+ ?id sepaw:source "SEPA" ;
+ sepaw:waterBodyId <http://data.sepa.org.uk/id/Water/100053> ;
  sepaw:assessmentCategory ?assessmentCategory ;
  sepaw:identifiedDate "2009-09-03"
 }
@@ -729,11 +729,11 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
 WHERE {  
- ?id sepaw:identifiedDate "2009-09-03" ;
- sepaw:waterBodyId <http://data.sepa.org.uk/id/Water/100053> ;
+ ?id sepaw:waterBodyId <http://data.sepa.org.uk/id/Water/100053> ;
  sepaw:affectsGroundwater ?affectsGroundwater ;
+ sepaw:assessmentCategory ?assessmentCategory ;
  sepaw:dataSource "SEPA" ;
- sepaw:assessmentCategory ?assessmentCategory
+ sepaw:identifiedDate "2009-09-03"
 }
 
 

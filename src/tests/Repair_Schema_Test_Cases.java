@@ -102,20 +102,28 @@ public class Repair_Schema_Test_Cases {
 		
 		fOut.write("Expected Result: repaired schema == 'car(colour,brand)' \n");
 		
-		assertTrue(finalRes.size() ==0) ; // SPSM crashes, returns an empty result
+		assertTrue(finalRes.size() == 1) ; // SPSM is now working Dec2017
+		
+		// System.out.println(finalRes.size());
 		
 		if(finalRes!=null){
 			if(finalRes.size() == 0){
 				//then we have no results so end test
 				fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
 				fOut.write("Empty results returned. \n\n");
+				fail();
 			}else{
 				//we can test repaired schema
-				String rSchema = finalRes.get(0).getRepairedSchema();
-				fOut.write("Actual Result: repaired schema == '" + rSchema + "' \n\n");
+				String repairedSchema = finalRes.get(0).getRepairedSchema();
+				System.out.println("Expected Result: repaired schema == 'car(colour,brand)'");
+				System.out.println("Actual Result: repaired schema == '" + repairedSchema + "' \n");
+				fOut.write("Actual Result: repaired schema == '" + repairedSchema + "' \n\n");
+				// System.out.println(finalRes.get(0)) ; // Print the whole match structure
+				assertTrue(repairedSchema.contains("car(colour,brand)")) ;	
 			}
 		}else{
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}
 	}
 	
@@ -137,10 +145,12 @@ public class Repair_Schema_Test_Cases {
 		fOut.write("Test 4.5.6\n");
 		fOut.write("Calling SPSM with source, "+source+" & target, "+target+"\n");
 		
+		System.out.println("Expected Result: repaired schema == 'conference(paper(title,document(date(day,month,year),writer(name(first,second)))))'");
 		fOut.write("Expected Result: repaired schema == 'conference(paper(title,document(date(day,month,year),writer(name(first,second)))))' \n");
 		
-		
+		assertTrue(finalRes.size() == 1);
 		assertTrue(finalRes.get(0).getRepairedSchema().contains("conference(")) ;
+		
 		if(finalRes!=null){
 			if(finalRes.size() == 0){
 				//then we have no results so end test
@@ -149,9 +159,11 @@ public class Repair_Schema_Test_Cases {
 				fail() ;
 				
 			}else{
+				// System.out.println(finalRes.size()) ;
 				//we can test repaired schema
 				Match_Struc result = finalRes.get(0);
 				fOut.write("Actual Result: repaired schema == '" + result.getRepairedSchema() + "' \n\n");
+				System.out.println("Actual Result: repaired schema == '" + result.getRepairedSchema());
 				assertTrue(result.getRepairedSchema().contains("conference(")) ;
 				assertTrue(result.getRepairedSchema().contains("writer(")) ;
 				assertTrue(result.getRepairedSchema().contains("date(")) ;
@@ -185,8 +197,9 @@ public class Repair_Schema_Test_Cases {
 		fOut.write("Calling SPSM with source, "+source+" & target, "+target+"\n");
 		
 		fOut.write("Expected Result: repaired schema == 'conference(paper(title,document(writer(name(first,second)))))' \n");
+		System.out.println("Expected Result: repaired schema == 'conference(paper(title,document(writer(name(first,second)))))' \n");
 		
-		assertTrue(finalRes.size() ==0) ; // SPSM crashes, returns an empty result
+		assertTrue(finalRes.size() == 1) ; // SPSM is expected to run correctly - Dec2017
 		
 		
 		if(finalRes!=null){
@@ -194,13 +207,17 @@ public class Repair_Schema_Test_Cases {
 				//then we have no results so end test
 				fOut.write("Actual Result: results.size() == "+finalRes.size()+"\n");
 				fOut.write("Empty results returned. \n\n");
+				fail() ;
 			}else{
 				//we can test repaired schema
 				String rSchema = finalRes.get(0).getRepairedSchema();
 				fOut.write("Actual Result: repaired schema == '" + rSchema + "' \n\n");
+				System.out.println("Actual Result: repaired schema == '" + rSchema + "' \n\n");
+				assertTrue(rSchema.contains("conference(paper(document(writer(name(second,first))),title))"));
 			}
 		}else{
 			fOut.write("Null Results! \n\n");
+			fail() ;
 		}
 	}
 	
