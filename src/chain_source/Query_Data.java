@@ -7,6 +7,7 @@ package chain_source;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,6 +32,7 @@ public class Query_Data {
 												// .. ]
 	public ArrayList<Node> literalObjectValues; // e.g. ["Bob", "cat", 320,
 												// 25.6, 2005-01-01T00:00:00Z,
+												// "202"^^http://www.w3.org/2001/XMLSchema#nonNegativeInteger,
 												// ...]
 	public HashMap<String, String> prefixToURIMaps; // e.g.
 													// {"rdf"="http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -41,14 +43,19 @@ public class Query_Data {
 															// ....}
 	public HashMap<String, Node> localPropertyNameToLiteralObjectMaps; // {"date"="2005-01-01T00:00:00Z",
 																		// pages="320",
-																		// subject="Childrens
-																		// fiction",
+																		// subject="Childrens fiction",
+																		// 
 																		// ...}
 	public HashMap<String, String> localPropertyNameToURIObjectMaps; // {"City"="http://dbpedia.org/resource/London",
 																		// ...}
+	public HashMap<String, String> localPropertyNameToVariableMaps; // {"City" = "x", "pages"="count", "date"="d"}
+	
 	public HashMap<String, String> resolvedURItoPrefixAndLocalNameMaps; // e.g.
 																		// {"http://dbpedia.org/ontology/City"="dbo:City"}
-	public String originalQuery;
+	
+	public HashSet<String> localPropertyNames ; // {"location", "elevation" "type"}
+	
+	public String originalQuery; 
 
 	public Query_Data() {
 
@@ -59,6 +66,8 @@ public class Query_Data {
 		localPropertyNameToLiteralObjectMaps = new HashMap<String, Node>();
 		localPropertyNameToURIObjectMaps = new HashMap<String, String>();
 		resolvedURItoPrefixAndLocalNameMaps = new HashMap<String, String>();
+		localPropertyNameToVariableMaps = new HashMap<String, String>();
+		localPropertyNames = new HashSet<String>() ;
 		originalQuery = "";
 
 	}
@@ -72,6 +81,8 @@ public class Query_Data {
 		localPropertyNameToLiteralObjectMaps = new HashMap<String, Node>();
 		localPropertyNameToURIObjectMaps = new HashMap<String, String>();
 		resolvedURItoPrefixAndLocalNameMaps = new HashMap<String, String>();
+		localPropertyNames = new HashSet<String>() ;
+		localPropertyNameToVariableMaps = new HashMap<String, String>();
 		originalQuery = "";
 
 		// Create the query in a standard format
@@ -182,10 +193,22 @@ public class Query_Data {
 							Node sparqlSubject = triple.getSubject();
 							Node sparqlPredicate = triple.getPredicate();
 							Node sparqlObject = triple.getObject();
+							
+							if (sparqlPredicate.isURI()) {
+								String localPredName = sparqlPredicate.getLocalName();
+								localPropertyNames.add(localPredName);
+								}
 
 							// System.out.println(sparqlSubject) ;
 							// System.out.println(sparqlPredicate) ;
 							// System.out.println(sparqlObject) ;
+							
+							if (sparqlObject.isVariable()) {
+								if (sparqlPredicate.isURI()) {
+									String localPredName = sparqlPredicate.getLocalName();
+									localPropertyNameToVariableMaps.put(localPredName, sparqlObject.toString()) ;
+								}
+							}
 
 							if (sparqlObject.isLiteral()) {
 								LiteralLabel thing = sparqlObject.getLiteral();
@@ -291,7 +314,9 @@ public class Query_Data {
 				+ literalObjectValues + "\n    prefixToURIMaps: " + prefixToURIMaps + "\n    localNameToPrefixMaps: "
 				+ localNameToPrefixMaps + "\n    localPropertyNameToURIObjectMaps: " + localPropertyNameToURIObjectMaps
 				+ "\n    localPropertyNameToLiteralObjectMaps: " + localPropertyNameToLiteralObjectMaps
-				+ "\n    resolvedURItoPrefixAndLocalNameMaps: " + resolvedURItoPrefixAndLocalNameMaps;
+				+ "\n    resolvedURItoPrefixAndLocalNameMaps: " + resolvedURItoPrefixAndLocalNameMaps
+				+ "\n    localPropertyNameToVariableMaps: " + localPropertyNameToVariableMaps
+				+ "\n    localPropertyNames: " + localPropertyNames;
 
 	}
 

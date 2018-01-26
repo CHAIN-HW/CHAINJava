@@ -34,10 +34,10 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyTemperatures.n3>
 WHERE {  
- ?id sepaw:identifiedDate ?identifiedDate ;
- sepaw:affectsGroundwater ?affectsGroundwater ;
+ ?id sepaw:affectsGroundwater ?affectsGroundwater ;
+ sepaw:dataSource ?dataSource ;
  sepaw:waterBodyId ?waterBodyId ;
- sepaw:dataSource ?dataSource
+ sepaw:identifiedDate ?identifiedDate
 }
 
 
@@ -55,9 +55,9 @@ SELECT *
 FROM <queryData/sepa/sepa_datafiles/water.n3>
 WHERE {  
  ?id sepaw:timePeriod ?timePeriod ;
- sepaw:measure ?measure ;
+ sepaw:resource ?resource ;
  geo:geo ?geo ;
- sepaw:resource ?resource
+ sepaw:measure ?measure
 }
 
 
@@ -74,8 +74,8 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
 WHERE {  
- ?id sepaw:timePeriod ?timePeriod ;
- geo:geo ?geo ;
+ ?id geo:geo ?geo ;
+ sepaw:timePeriod ?timePeriod ;
  sepaw:measure ?measure ;
  sepaw:resource ?resource
 }
@@ -95,10 +95,10 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
 WHERE {  
- ?id sepaw:identifiedDate ?identifiedDate ;
- sepaw:source ?source ;
+ ?id sepaw:source ?source ;
+ sepaw:waterBodyId ?waterBodyId ;
  sepaw:assessmentCategory ?assessmentCategory ;
- sepaw:waterBodyId ?waterBodyId
+ sepaw:identifiedDate ?identifiedDate
 }
 
 Query HAS run successfully.
@@ -155,10 +155,10 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
 WHERE {  
- ?id geo:long ?long ;
+ ?id sepaloc:localAuthority ?localAuthority ;
  geo:lat ?lat ;
- sepaloc:localAuthority ?localAuthority ;
- sepaloc:catchment ?catchment
+ sepaloc:catchment ?catchment ;
+ geo:long ?long
 }
 
 Query HAS run successfully but NO data has been returned.
@@ -176,9 +176,9 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
 WHERE {  
- ?id sepaw:subBasinDistrict ?subBasinDistrict ;
- sepaw:riverName ?riverName ;
+ ?id sepaw:riverName ?riverName ;
  sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
+ sepaw:subBasinDistrict ?subBasinDistrict ;
  sepaw:altitudeTypology ?altitudeTypology
 }
 
@@ -383,8 +383,8 @@ PREFIX yago: <http://dbpedia.org/class/yago/>
 
 SELECT DISTINCT *
 WHERE { ?id rdf:type foaf:Person;
- dbo:birthPlace ?birthPlace ;
- dbo:occupation ?occupation}
+ dbo:occupation ?occupation ;
+ dbo:birthPlace ?birthPlace}
 LIMIT 20
 
 Query HAS run successfully.

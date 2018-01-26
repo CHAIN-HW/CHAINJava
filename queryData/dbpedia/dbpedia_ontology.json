@@ -7,7 +7,7 @@
 {
   "name":"dbp",
   "link":"<http://dbpedia.org/property/>",
-  "properties":"length,admittancedate,birthName,leaderParty,mission"
+  "properties":"length,admittancedate,birthName,leaderParty"
 },
 {
   "name":"res",

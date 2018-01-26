@@ -1,10 +1,8 @@
 Testing Results for Create_Query_Test_Cases.java
 
 Test 5.1.1 - sepa query
-Creating query from schema, waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)
-Expected Result:
 
-PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
 PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
 PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -17,7 +15,20 @@ sepaw:identifiedDate  ?identifiedDate  ;
 sepaw:affectsGroundwater ?affectsGroundwater ;
 sepaw:waterBodyId ?waterBodyId .}
 
-Actual Result: 
+Schema: waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)
+
+Query_Data: 
+    uriObjectValues: []
+    literalObjectValues: []
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {identifiedDate=sepaw, affectsGroundwater=sepaw, waterBodyId=sepaw, dataSource=sepaw}
+    localPropertyNameToURIObjectMaps: {}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {}
+    localPropertyNameToVariableMaps: {identifiedDate=?identifiedDate, affectsGroundwater=?affectsGroundwater, waterBodyId=?waterBodyId, dataSource=?dataSource}
+    localPropertyNames: [identifiedDate, affectsGroundwater, waterBodyId, dataSource]
+
+Result: 
 
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
@@ -29,18 +40,16 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
 WHERE {  
- ?id sepaw:waterBodyId ?waterBodyId ;
- sepaw:affectsGroundwater ?affectsGroundwater ;
+ ?id sepaw:affectsGroundwater ?affectsGroundwater ;
+ sepaw:waterBodyId ?waterBodyId ;
  sepaw:identifiedDate ?identifiedDate ;
  sepaw:dataSource ?dataSource
 }
 
 
 Test 5.1.2 - sepa query
-Creating query from schema, water(timePeriod, geo, measure, resource)
-Expected Result:
 
-PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
 PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
 PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -52,7 +61,20 @@ geo:geo ?geo  ;
 sepaw:measure ?measure ;
 sepaw:resource ?resource .}
 
-Actual Result: 
+Schema: water(timePeriod, geo, measure, resource)
+
+Query_Data: 
+    uriObjectValues: []
+    literalObjectValues: []
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {geo=geo, measure=sepaw, resource=sepaw, timePeriod=sepaw}
+    localPropertyNameToURIObjectMaps: {}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {}
+    localPropertyNameToVariableMaps: {geo=?geo, measure=?measure, resource=?resource, timePeriod=?timePeriod}
+    localPropertyNames: [geo, measure, resource, timePeriod]
+
+Result: 
 
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
@@ -64,53 +86,62 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/water.n3>
 WHERE {  
- ?id sepaw:resource ?resource ;
+ ?id sepaw:measure ?measure ;
  sepaw:timePeriod ?timePeriod ;
- sepaw:measure ?measure ;
- geo:geo ?geo
-}
-
-
-Test 5.1.3 - sepa query
-Creating query from schema, waterBodyMeasures(timePeriod, geo, measure, resource)
-Expected Result:
-
-PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
-PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
-PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
-PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
-SELECT *  
-FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
-WHERE { ?id sepaw:timePeriod ?timePeriod;
-geo:geo ?geo  ;
-sepaw:measure ?measure ;
-sepaw:resource ?resource .}
-
-Actual Result: 
-
-PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
-PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
-PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
-PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
-
-SELECT *
-FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
-WHERE {  
- ?id sepaw:timePeriod ?timePeriod ;
- sepaw:measure ?measure ;
  geo:geo ?geo ;
  sepaw:resource ?resource
 }
 
 
-Test 5.1.4 - sepa query
-Creating query from schema, waterBodyPressures(identifiedDate,waterBodyId,assessmentCategory,source)
-Expected Result:
+Test 5.1.3 - sepa query
 
-PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
+WHERE { ?id sepaw:timePeriod ?timePeriod;
+geo:geo ?geo  ;
+sepaw:measure ?measure ;
+sepaw:resource ?resource .}
+
+Schema: waterBodyMeasures(timePeriod, geo, measure, resource)
+
+Query_Data: 
+    uriObjectValues: []
+    literalObjectValues: []
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {geo=geo, measure=sepaw, resource=sepaw, timePeriod=sepaw}
+    localPropertyNameToURIObjectMaps: {}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {}
+    localPropertyNameToVariableMaps: {geo=?geo, measure=?measure, resource=?resource, timePeriod=?timePeriod}
+    localPropertyNames: [geo, measure, resource, timePeriod]
+
+Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
+WHERE {  
+ ?id geo:geo ?geo ;
+ sepaw:measure ?measure ;
+ sepaw:resource ?resource ;
+ sepaw:timePeriod ?timePeriod
+}
+
+
+Test 5.1.4 - sepa query
+
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
 PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
 PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -122,7 +153,20 @@ sepaw:waterBodyId ?waterBodyId  ;
 sepaw:assessmentCategory ?assessmentCategory ;
 sepaw:source ?source .}
 
-Actual Result: 
+Schema: waterBodyPressures(identifiedDate,waterBodyId,assessmentCategory,source)
+
+Query_Data: 
+    uriObjectValues: []
+    literalObjectValues: []
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {identifiedDate=sepaw, assessmentCategory=sepaw, waterBodyId=sepaw, source=sepaw}
+    localPropertyNameToURIObjectMaps: {}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {}
+    localPropertyNameToVariableMaps: {identifiedDate=?identifiedDate, assessmentCategory=?assessmentCategory, waterBodyId=?waterBodyId, source=?source}
+    localPropertyNames: [identifiedDate, assessmentCategory, waterBodyId, source]
+
+Result: 
 
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
@@ -134,18 +178,16 @@ PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
 SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
 WHERE {  
- ?id sepaw:waterBodyId ?waterBodyId ;
- sepaw:source ?source ;
+ ?id sepaw:assessmentCategory ?assessmentCategory ;
  sepaw:identifiedDate ?identifiedDate ;
- sepaw:assessmentCategory ?assessmentCategory
+ sepaw:source ?source ;
+ sepaw:waterBodyId ?waterBodyId
 }
 
 
 Test 5.1.5 - sepa query
-Creating query from schema, waterBodyMeasures(waterBodyId,secondaryMeasure,dataSource)
-Expected Result:
 
-PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
 PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
 PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -156,7 +198,20 @@ WHERE { ?id sepaw:waterBodyId ?waterBodyId;
 sepaw:secondaryMeasure ?secondaryMeasure  ;
 sepaw:dataSource ?dataSource .}
 
-Actual Result: 
+Schema: waterBodyMeasures(waterBodyId,secondaryMeasure,dataSource)
+
+Query_Data: 
+    uriObjectValues: []
+    literalObjectValues: []
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {secondaryMeasure=sepaw, waterBodyId=sepaw, dataSource=sepaw}
+    localPropertyNameToURIObjectMaps: {}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {}
+    localPropertyNameToVariableMaps: {secondaryMeasure=?secondaryMeasure, waterBodyId=?waterBodyId, dataSource=?dataSource}
+    localPropertyNames: [secondaryMeasure, waterBodyId, dataSource]
+
+Result: 
 
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
@@ -169,16 +224,14 @@ SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyMeasures.n3>
 WHERE {  
  ?id sepaw:secondaryMeasure ?secondaryMeasure ;
- sepaw:waterBodyId ?waterBodyId ;
- sepaw:dataSource ?dataSource
+ sepaw:dataSource ?dataSource ;
+ sepaw:waterBodyId ?waterBodyId
 }
 
 
 Test 5.1.6 - sepa query
-Creating query from schema, surfaceWaterBodies(riverName,associatedGroundwaterId)
-Expected Result:
 
-PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
 PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
 PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -188,75 +241,20 @@ FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
 WHERE { ?id sepaw:riverName ?riverName;
 sepaw:associatedGroundwaterId ?associatedGroundwaterId .}
 
-Actual Result: 
+Schema: surfaceWaterBodies(riverName,associatedGroundwaterId)
 
-PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
-PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
-PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
-PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+Query_Data: 
+    uriObjectValues: []
+    literalObjectValues: []
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {riverName=sepaw, associatedGroundwaterId=sepaw}
+    localPropertyNameToURIObjectMaps: {}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {}
+    localPropertyNameToVariableMaps: {riverName=?riverName, associatedGroundwaterId=?associatedGroundwaterId}
+    localPropertyNames: [riverName, associatedGroundwaterId]
 
-SELECT *
-FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
-WHERE {  
- ?id sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
- sepaw:riverName ?riverName
-}
-
-
-Test 5.1.7 - sepa query
-Creating query from schema, bathingWaters(catchment, localAuthority, lat, long)
-Expected Result:
-
-PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
-PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
-PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
-PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
-SELECT *  
-FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
-WHERE { ?id sepaloc:catchment ?catchment;
-sepaloc:localAuthority ?localAuthority  ;
-geo:lat ?lat ;
-geo:long ?long .}
-
-Actual Result: 
-
-PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
-PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
-PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
-PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
-
-SELECT *
-FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
-WHERE {  
- ?id geo:lat ?lat ;
- sepaloc:catchment ?catchment ;
- geo:long ?long ;
- sepaloc:localAuthority ?localAuthority
-}
-
-
-Test 5.1.8 - sepa query
-Creating query from schema, surfaceWaterBodies(subBasinDistrict,riverName,altitudeTypology,associatedGroundwaterId)
-Expected Result:
-
-PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
-PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
-PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
-PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
-SELECT *  
-FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
-WHERE { ?id sepaw:altitudeTypology ?altitudeTypology;
-sepaw:associatedGrounwaterId ?associatedGroundwaterId  ;
-sepaw:riverName ?riverName ;
-sepaw:subBasinDistrict ?subBasinDistrict .}
-
-Actual Result: 
+Result: 
 
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
@@ -269,17 +267,105 @@ SELECT *
 FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
 WHERE {  
  ?id sepaw:riverName ?riverName ;
- sepaw:subBasinDistrict ?subBasinDistrict ;
- sepaw:altitudeTypology ?altitudeTypology ;
  sepaw:associatedGroundwaterId ?associatedGroundwaterId
 }
 
 
-Test 5.1.9 - sepa query
-Creating query from schema, bathingWaters(bathingWaterId)
-Expected Result:
+Test 5.1.7 - sepa query
 
-PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
+WHERE { ?id sepaloc:catchment ?catchment;
+sepaloc:localAuthority ?localAuthority  ;
+geo:lat ?lat ;
+geo:long ?long .}
+
+Schema: bathingWaters(catchment, localAuthority, lat, long)
+
+Query_Data: 
+    uriObjectValues: []
+    literalObjectValues: []
+    prefixToURIMaps: {}
+    localNameToPrefixMaps: {}
+    localPropertyNameToURIObjectMaps: {}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {}
+    localPropertyNameToVariableMaps: {}
+    localPropertyNames: []
+
+Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
+WHERE {  
+ ?id geo:long ?long ;
+ sepaloc:localAuthority ?localAuthority ;
+ geo:lat ?lat ;
+ sepaloc:catchment ?catchment
+}
+
+
+Test 5.1.8 - sepa query
+
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
+WHERE { ?id sepaw:altitudeTypology ?altitudeTypology;
+sepaw:associatedGrounwaterId ?associatedGroundwaterId  ;
+sepaw:riverName ?riverName ;
+sepaw:subBasinDistrict ?subBasinDistrict .}
+
+Schema: surfaceWaterBodies(subBasinDistrict,riverName,altitudeTypology,associatedGroundwaterId)
+
+Query_Data: 
+    uriObjectValues: []
+    literalObjectValues: []
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {altitudeTypology=sepaw, subBasinDistrict=sepaw, associatedGrounwaterId=sepaw, riverName=sepaw}
+    localPropertyNameToURIObjectMaps: {}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {}
+    localPropertyNameToVariableMaps: {altitudeTypology=?altitudeTypology, subBasinDistrict=?subBasinDistrict, associatedGrounwaterId=?associatedGroundwaterId, riverName=?riverName}
+    localPropertyNames: [altitudeTypology, subBasinDistrict, associatedGrounwaterId, riverName]
+
+Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
+WHERE {  
+ ?id sepaw:altitudeTypology ?altitudeTypology ;
+ sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
+ sepaw:subBasinDistrict ?subBasinDistrict ;
+ sepaw:riverName ?riverName
+}
+
+
+Test 5.1.9 - sepa query
+
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
 PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
 PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -289,7 +375,20 @@ FROM <queryData/sepa/sepa_datafiles/bathingWaters.n3>
 WHERE { ?id sepaw:bathingWaterId ?bathingWaterId;
 .}
 
-Actual Result: 
+Schema: bathingWaters(bathingWaterId)
+
+Query_Data: 
+    uriObjectValues: []
+    literalObjectValues: []
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {bathingWaterId=sepaw}
+    localPropertyNameToURIObjectMaps: {}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {}
+    localPropertyNameToVariableMaps: {bathingWaterId=?bathingWaterId}
+    localPropertyNames: [bathingWaterId]
+
+Result: 
 
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
@@ -306,10 +405,8 @@ WHERE {
 
 
 Test 5.2.1 - dbpedia query
-Creating query from schema, City(country,populationTotal)
-Expected Result:
 
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+Query PREFIX  dbo:  <http://dbpedia.org/ontology/> 
 PREFIX  dbp: <http://dbpedia.org/property/>   
 PREFIX  res: <http://dbpedia.org/resource/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -322,7 +419,20 @@ dbo:country ?country ;
 dbo:populationTotal ?populationTotal .}
 LIMIT 20
 
-Actual Result: 
+Schema: City(country,populationTotal)
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/City]
+    literalObjectValues: []
+    prefixToURIMaps: {dbo=http://dbpedia.org/ontology/, res=http://dbpedia.org/resource/, dbp=http://dbpedia.org/property/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, yago=hhtp://dbpedia.org/class/yaho/, foaf=http://xlmns.com/foaf/0.1/}
+    localNameToPrefixMaps: {country=dbo, populationTotal=dbo, City=dbo, type=rdf}
+    localPropertyNameToURIObjectMaps: {type=http://dbpedia.org/ontology/City}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/City=dbo:City}
+    localPropertyNameToVariableMaps: {country=?country, populationTotal=?populationTotal}
+    localPropertyNames: [country, populationTotal, type]
+
+Result: 
 
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX dbp: <http://dbpedia.org/property/>
@@ -338,10 +448,8 @@ WHERE { ?id rdf:type dbo:City;
 LIMIT 20
 
 Test 5.2.10 - dbpedia query
-Creating query from schema, Royalty(parent)
-Expected Result:
 
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+Query PREFIX  dbo:  <http://dbpedia.org/ontology/> 
 PREFIX  dbp: <http://dbpedia.org/property/>   
 PREFIX  res: <http://dbpedia.org/resource/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -354,7 +462,20 @@ dbo:parent ?parent ;
 .}
 LIMIT 20
 
-Actual Result: 
+Schema: Royalty(parent)
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/Royalty]
+    literalObjectValues: []
+    prefixToURIMaps: {dbo=http://dbpedia.org/ontology/, res=http://dbpedia.org/resource/, dbp=http://dbpedia.org/property/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, yago=hhtp://dbpedia.org/class/yaho/, foaf=http://xlmns.com/foaf/0.1/}
+    localNameToPrefixMaps: {parent=dbo, Royalty=dbo, type=rdf}
+    localPropertyNameToURIObjectMaps: {type=http://dbpedia.org/ontology/Royalty}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/Royalty=dbo:Royalty}
+    localPropertyNameToVariableMaps: {parent=?parent}
+    localPropertyNames: [parent, type]
+
+Result: 
 
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX dbp: <http://dbpedia.org/property/>
@@ -369,30 +490,50 @@ WHERE { ?id rdf:type dbo:Royalty;
 LIMIT 20
 
 Test 5.2.11 - dbpedia query
-Creating query from schema, river(length)
-Expected Result:
 
+Query 
 
+Schema: river(length)
 
-Actual Result: 
+Query_Data: 
+    uriObjectValues: []
+    literalObjectValues: []
+    prefixToURIMaps: {}
+    localNameToPrefixMaps: {}
+    localPropertyNameToURIObjectMaps: {}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {}
+    localPropertyNameToVariableMaps: {}
+    localPropertyNames: []
+
+Result: 
 
 
 
 Test 5.2.12 - dbpedia query
-Creating query from schema, Stream(length)
-Expected Result:
 
+Query 
 
+Schema: Stream(length)
 
-Actual Result: 
+Query_Data: 
+    uriObjectValues: []
+    literalObjectValues: []
+    prefixToURIMaps: {}
+    localNameToPrefixMaps: {}
+    localPropertyNameToURIObjectMaps: {}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {}
+    localPropertyNameToVariableMaps: {}
+    localPropertyNames: []
+
+Result: 
 
 
 
 Test 5.2.13 - dbpedia query
-Creating query from schema, River(Mountain(elevation))
-Expected Result:
 
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+Query PREFIX  dbo:  <http://dbpedia.org/ontology/> 
 PREFIX  dbp: <http://dbpedia.org/property/>   
 PREFIX  res: <http://dbpedia.org/resource/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -405,7 +546,20 @@ dbo:Mountain ?Mountain ;
 .}
 LIMIT 20
 
-Actual Result: 
+Schema: River(Mountain(elevation))
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/River]
+    literalObjectValues: []
+    prefixToURIMaps: {dbo=http://dbpedia.org/ontology/, res=http://dbpedia.org/resource/, dbp=http://dbpedia.org/property/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, yago=hhtp://dbpedia.org/class/yaho/, foaf=http://xlmns.com/foaf/0.1/}
+    localNameToPrefixMaps: {Mountain=dbo, River=dbo, type=rdf}
+    localPropertyNameToURIObjectMaps: {type=http://dbpedia.org/ontology/River}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/River=dbo:River}
+    localPropertyNameToVariableMaps: {Mountain=?Mountain}
+    localPropertyNames: [Mountain, type]
+
+Result: 
 
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX dbp: <http://dbpedia.org/property/>
@@ -420,10 +574,8 @@ WHERE { ?id rdf:type dbo:River;
 LIMIT 20
 
 Test 5.2.2 - dbpedia query
-Creating query from schema, City
-Expected Result:
 
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+Query PREFIX  dbo:  <http://dbpedia.org/ontology/> 
 PREFIX  dbp: <http://dbpedia.org/property/>   
 PREFIX  res: <http://dbpedia.org/resource/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -434,7 +586,20 @@ SELECT DISTINCT *
 WHERE { ?id rdf:type dbo:City .}
 LIMIT 20
 
-Actual Result: 
+Schema: City
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/City]
+    literalObjectValues: []
+    prefixToURIMaps: {dbo=http://dbpedia.org/ontology/, res=http://dbpedia.org/resource/, dbp=http://dbpedia.org/property/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, yago=hhtp://dbpedia.org/class/yaho/, foaf=http://xlmns.com/foaf/0.1/}
+    localNameToPrefixMaps: {City=dbo, type=rdf}
+    localPropertyNameToURIObjectMaps: {type=http://dbpedia.org/ontology/City}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/City=dbo:City}
+    localPropertyNameToVariableMaps: {}
+    localPropertyNames: [type]
+
+Result: 
 
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX dbp: <http://dbpedia.org/property/>
@@ -448,10 +613,8 @@ WHERE { ?id rdf:type dbo:City}
 LIMIT 20
 
 Test 5.2.3 - dbpedia query
-Creating query from schema, Astronaut(nationality)
-Expected Result:
 
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+Query PREFIX  dbo:  <http://dbpedia.org/ontology/> 
 PREFIX  dbp: <http://dbpedia.org/property/>   
 PREFIX  res: <http://dbpedia.org/resource/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -464,7 +627,20 @@ dbo:nationality ?nationality ;
 .}
 LIMIT 20
 
-Actual Result: 
+Schema: Astronaut(nationality)
+
+Query_Data: 
+    uriObjectValues: []
+    literalObjectValues: []
+    prefixToURIMaps: {}
+    localNameToPrefixMaps: {}
+    localPropertyNameToURIObjectMaps: {}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {}
+    localPropertyNameToVariableMaps: {}
+    localPropertyNames: []
+
+Result: 
 
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX dbp: <http://dbpedia.org/property/>
@@ -479,10 +655,8 @@ WHERE { ?id rdf:type dbo:Astronaut;
 LIMIT 20
 
 Test 5.2.4 - dbpedia query
-Creating query from schema, Mountain(elevation)
-Expected Result:
 
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+Query PREFIX  dbo:  <http://dbpedia.org/ontology/> 
 PREFIX  dbp: <http://dbpedia.org/property/>   
 PREFIX  res: <http://dbpedia.org/resource/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -495,7 +669,20 @@ dbo:elevation ?elevation ;
 .}
 LIMIT 20
 
-Actual Result: 
+Schema: Mountain(elevation)
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/Mountain]
+    literalObjectValues: []
+    prefixToURIMaps: {dbo=http://dbpedia.org/ontology/, res=http://dbpedia.org/resource/, dbp=http://dbpedia.org/property/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, yago=hhtp://dbpedia.org/class/yaho/, foaf=http://xlmns.com/foaf/0.1/}
+    localNameToPrefixMaps: {elevation=dbo, Mountain=dbo, type=rdf}
+    localPropertyNameToURIObjectMaps: {type=http://dbpedia.org/ontology/Mountain}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/Mountain=dbo:Mountain}
+    localPropertyNameToVariableMaps: {elevation=?elevation}
+    localPropertyNames: [elevation, type]
+
+Result: 
 
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX dbp: <http://dbpedia.org/property/>
@@ -510,10 +697,8 @@ WHERE { ?id rdf:type dbo:Mountain;
 LIMIT 20
 
 Test 5.2.5 - dbpedia query
-Creating query from schema, Person(occupation, birthPlace)
-Expected Result:
 
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+Query PREFIX  dbo:  <http://dbpedia.org/ontology/> 
 PREFIX  dbp: <http://dbpedia.org/property/>   
 PREFIX  res: <http://dbpedia.org/resource/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -526,7 +711,20 @@ dbo:occupation ?occupation ;
 dbo:birthPlace ?birthPlace .}
 LIMIT 20
 
-Actual Result: 
+Schema: Person(occupation, birthPlace)
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/Person]
+    literalObjectValues: []
+    prefixToURIMaps: {dbo=http://dbpedia.org/ontology/, res=http://dbpedia.org/resource/, dbp=http://dbpedia.org/property/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, yago=hhtp://dbpedia.org/class/yaho/, foaf=http://xlmns.com/foaf/0.1/}
+    localNameToPrefixMaps: {birthPlace=dbo, occupation=dbo, type=rdf, Person=dbo}
+    localPropertyNameToURIObjectMaps: {type=http://dbpedia.org/ontology/Person}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/Person=dbo:Person}
+    localPropertyNameToVariableMaps: {birthPlace=?birthPlace, occupation=?occupation}
+    localPropertyNames: [birthPlace, occupation, type]
+
+Result: 
 
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX dbp: <http://dbpedia.org/property/>
@@ -537,15 +735,13 @@ PREFIX yago: <http://dbpedia.org/class/yago/>
 
 SELECT DISTINCT *
 WHERE { ?id rdf:type foaf:Person;
- dbo:birthPlace ?birthPlace ;
- dbo:occupation ?occupation}
+ dbo:occupation ?occupation ;
+ dbo:birthPlace ?birthPlace}
 LIMIT 20
 
 Test 5.2.6 - dbpedia query
-Creating query from schema, Person(occupation, instrument)
-Expected Result:
 
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+Query PREFIX  dbo:  <http://dbpedia.org/ontology/> 
 PREFIX  dbp: <http://dbpedia.org/property/>   
 PREFIX  res: <http://dbpedia.org/resource/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -558,7 +754,20 @@ dbo:occupation ?occupation ;
 dbo:instrument ?instrument .}
 LIMIT 20
 
-Actual Result: 
+Schema: Person(occupation, instrument)
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/Person]
+    literalObjectValues: []
+    prefixToURIMaps: {dbo=http://dbpedia.org/ontology/, res=http://dbpedia.org/resource/, dbp=http://dbpedia.org/property/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, yago=hhtp://dbpedia.org/class/yaho/, foaf=http://xlmns.com/foaf/0.1/}
+    localNameToPrefixMaps: {occupation=dbo, instrument=dbo, type=rdf, Person=dbo}
+    localPropertyNameToURIObjectMaps: {type=http://dbpedia.org/ontology/Person}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/Person=dbo:Person}
+    localPropertyNameToVariableMaps: {occupation=?occupation, instrument=?instrument}
+    localPropertyNames: [occupation, instrument, type]
+
+Result: 
 
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX dbp: <http://dbpedia.org/property/>
@@ -569,15 +778,13 @@ PREFIX yago: <http://dbpedia.org/class/yago/>
 
 SELECT DISTINCT *
 WHERE { ?id rdf:type foaf:Person;
- dbo:occupation ?occupation ;
- dbo:instrument ?instrument}
+ dbo:instrument ?instrument ;
+ dbo:occupation ?occupation}
 LIMIT 20
 
 Test 5.2.7 - dbpedia query
-Creating query from schema, Cave(location)
-Expected Result:
 
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+Query PREFIX  dbo:  <http://dbpedia.org/ontology/> 
 PREFIX  dbp: <http://dbpedia.org/property/>   
 PREFIX  res: <http://dbpedia.org/resource/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -590,7 +797,20 @@ dbo:location ?location ;
 .}
 LIMIT 20
 
-Actual Result: 
+Schema: Cave(location)
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/Cave]
+    literalObjectValues: []
+    prefixToURIMaps: {dbo=http://dbpedia.org/ontology/, res=http://dbpedia.org/resource/, dbp=http://dbpedia.org/property/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, yago=hhtp://dbpedia.org/class/yaho/, foaf=http://xlmns.com/foaf/0.1/}
+    localNameToPrefixMaps: {Cave=dbo, location=dbo, type=rdf}
+    localPropertyNameToURIObjectMaps: {type=http://dbpedia.org/ontology/Cave}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/Cave=dbo:Cave}
+    localPropertyNameToVariableMaps: {location=?location}
+    localPropertyNames: [location, type]
+
+Result: 
 
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX dbp: <http://dbpedia.org/property/>
@@ -605,10 +825,8 @@ WHERE { ?id rdf:type dbo:Cave;
 LIMIT 20
 
 Test 5.2.8 - dbpedia query
-Creating query from schema, FormulaOneRacer(races)
-Expected Result:
 
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+Query PREFIX  dbo:  <http://dbpedia.org/ontology/> 
 PREFIX  dbp: <http://dbpedia.org/property/>   
 PREFIX  res: <http://dbpedia.org/resource/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -621,7 +839,20 @@ dbo:races ?races ;
 .}
 LIMIT 20
 
-Actual Result: 
+Schema: FormulaOneRacer(races)
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/FormulaOneRacer]
+    literalObjectValues: []
+    prefixToURIMaps: {dbo=http://dbpedia.org/ontology/, res=http://dbpedia.org/resource/, dbp=http://dbpedia.org/property/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, yago=hhtp://dbpedia.org/class/yaho/, foaf=http://xlmns.com/foaf/0.1/}
+    localNameToPrefixMaps: {races=dbo, FormulaOneRacer=dbo, type=rdf}
+    localPropertyNameToURIObjectMaps: {type=http://dbpedia.org/ontology/FormulaOneRacer}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/FormulaOneRacer=dbo:FormulaOneRacer}
+    localPropertyNameToVariableMaps: {races=?races}
+    localPropertyNames: [races, type]
+
+Result: 
 
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX dbp: <http://dbpedia.org/property/>
@@ -636,10 +867,8 @@ WHERE { ?id rdf:type dbo:FormulaOneRacer;
 LIMIT 20
 
 Test 5.2.9 - dbpedia query
-Creating query from schema, River(length)
-Expected Result:
 
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+Query PREFIX  dbo:  <http://dbpedia.org/ontology/> 
 PREFIX  dbp: <http://dbpedia.org/property/>   
 PREFIX  res: <http://dbpedia.org/resource/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -652,7 +881,20 @@ dbo:length ?length ;
 .}
 LIMIT 20
 
-Actual Result: 
+Schema: River(length)
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/River]
+    literalObjectValues: []
+    prefixToURIMaps: {dbo=http://dbpedia.org/ontology/, res=http://dbpedia.org/resource/, dbp=http://dbpedia.org/property/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, yago=hhtp://dbpedia.org/class/yaho/, foaf=http://xlmns.com/foaf/0.1/}
+    localNameToPrefixMaps: {length=dbo, River=dbo, type=rdf}
+    localPropertyNameToURIObjectMaps: {type=http://dbpedia.org/ontology/River}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/River=dbo:River}
+    localPropertyNameToVariableMaps: {length=?length}
+    localPropertyNames: [length, type]
+
+Result: 
 
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX dbp: <http://dbpedia.org/property/>
@@ -667,10 +909,8 @@ WHERE { ?id rdf:type dbo:River;
 LIMIT 20
 
 Test 5.3.1 - sepa query
-Creating query from schema, waterBodyPressures(source,identifiedDate,assessmentCategory,waterBodyId)
-Expected Result:
 
-PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
 PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
 PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -682,42 +922,20 @@ sepaw:waterBodyId sepaidw:100053  ;
 sepaw:assessmentCategory ?assessmentCategory ;
 sepaw:source "SEPA" .}
 
-Actual Result: 
+Schema: waterBodyPressures(source,identifiedDate,assessmentCategory,waterBodyId)
 
-PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
-PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
-PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
-PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+Query_Data: 
+    uriObjectValues: [http://data.sepa.org.uk/id/Water/100053]
+    literalObjectValues: ["2009-09-03", "SEPA"]
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {identifiedDate=sepaw, 100053=sepaidw, assessmentCategory=sepaw, waterBodyId=sepaw, source=sepaw}
+    localPropertyNameToURIObjectMaps: {waterBodyId=http://data.sepa.org.uk/id/Water/100053}
+    localPropertyNameToLiteralObjectMaps: {identifiedDate="2009-09-03", source="SEPA"}
+    resolvedURItoPrefixAndLocalNameMaps: {http://data.sepa.org.uk/id/Water/100053=sepaidw:100053}
+    localPropertyNameToVariableMaps: {assessmentCategory=?assessmentCategory}
+    localPropertyNames: [identifiedDate, assessmentCategory, waterBodyId, source]
 
-SELECT *
-FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
-WHERE {  
- ?id sepaw:source "SEPA" ;
- sepaw:waterBodyId <http://data.sepa.org.uk/id/Water/100053> ;
- sepaw:assessmentCategory ?assessmentCategory ;
- sepaw:identifiedDate "2009-09-03"
-}
-
-
-Test 5.3.2 - sepa query
-Creating query from schema, waterBodyPressures(dataSource,identifiedDate,assessmentCategory,affectsGroundwater,waterBodyId)
-Expected Result:
-
-PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
-PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
-PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
-PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
-SELECT *  
-FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
-WHERE { ?id sepaw:identifiedDate "2009-09-03";
-sepaw:waterBodyId sepaidw:100053  ;
-sepaw:assessmentCategory ?assessmentCategory ;
-sepaw:source "SEPA" .}
-
-Actual Result: 
+Result: 
 
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
@@ -730,18 +948,62 @@ SELECT *
 FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
 WHERE {  
  ?id sepaw:waterBodyId <http://data.sepa.org.uk/id/Water/100053> ;
- sepaw:affectsGroundwater ?affectsGroundwater ;
+ sepaw:source "SEPA" ;
  sepaw:assessmentCategory ?assessmentCategory ;
- sepaw:dataSource "SEPA" ;
  sepaw:identifiedDate "2009-09-03"
 }
 
 
-Test 5.3.3 - dbpedia query
-Creating query from schema, FormulaOneRacer(races)
-Expected Result:
+Test 5.3.2 - sepa query
 
-PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE { ?id sepaw:identifiedDate "2009-09-03";
+sepaw:waterBodyId sepaidw:100053  ;
+sepaw:assessmentCategory ?assessmentCategory ;
+sepaw:source "SEPA" .}
+
+Schema: waterBodyPressures(source,identifiedDate,assessmentCategory,affectsGroundwater,waterBodyId)
+
+Query_Data: 
+    uriObjectValues: [http://data.sepa.org.uk/id/Water/100053]
+    literalObjectValues: ["2009-09-03", "SEPA"]
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {identifiedDate=sepaw, 100053=sepaidw, assessmentCategory=sepaw, waterBodyId=sepaw, source=sepaw}
+    localPropertyNameToURIObjectMaps: {waterBodyId=http://data.sepa.org.uk/id/Water/100053}
+    localPropertyNameToLiteralObjectMaps: {identifiedDate="2009-09-03", source="SEPA"}
+    resolvedURItoPrefixAndLocalNameMaps: {http://data.sepa.org.uk/id/Water/100053=sepaidw:100053}
+    localPropertyNameToVariableMaps: {assessmentCategory=?assessmentCategory}
+    localPropertyNames: [identifiedDate, assessmentCategory, waterBodyId, source]
+
+Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE {  
+ ?id sepaw:identifiedDate "2009-09-03" ;
+ sepaw:affectsGroundwater ?affectsGroundwater ;
+ sepaw:assessmentCategory ?assessmentCategory ;
+ sepaw:source "SEPA" ;
+ sepaw:waterBodyId <http://data.sepa.org.uk/id/Water/100053>
+}
+
+
+Test 5.3.3 - dbpedia query
+
+Query PREFIX  dbo:  <http://dbpedia.org/ontology/> 
 PREFIX  dbp: <http://dbpedia.org/property/>   
 PREFIX  res: <http://dbpedia.org/resource/> 
 PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -754,7 +1016,20 @@ dbo:races "202"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> ;
 .}
 LIMIT 20
 
-Actual Result: 
+Schema: FormulaOneRacer(races)
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/FormulaOneRacer]
+    literalObjectValues: ["202"^^http://www.w3.org/2001/XMLSchema#nonNegativeInteger]
+    prefixToURIMaps: {dbo=http://dbpedia.org/ontology/, res=http://dbpedia.org/resource/, dbp=http://dbpedia.org/property/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, yago=hhtp://dbpedia.org/class/yaho/, foaf=http://xlmns.com/foaf/0.1/}
+    localNameToPrefixMaps: {races=dbo, FormulaOneRacer=dbo, type=rdf}
+    localPropertyNameToURIObjectMaps: {type=http://dbpedia.org/ontology/FormulaOneRacer}
+    localPropertyNameToLiteralObjectMaps: {races="202"^^http://www.w3.org/2001/XMLSchema#nonNegativeInteger}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/FormulaOneRacer=dbo:FormulaOneRacer}
+    localPropertyNameToVariableMaps: {}
+    localPropertyNames: [races, type]
+
+Result: 
 
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX dbp: <http://dbpedia.org/property/>
@@ -767,4 +1042,549 @@ SELECT DISTINCT *
 WHERE { ?id rdf:type dbo:FormulaOneRacer;
  dbo:races "202"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger>}
 LIMIT 20
+
+Test Open Query Creation 5.3.4 - sepa query
+
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE { ?id sepaw:identifiedDate "2009-09-03";
+sepaw:waterBodyId sepaidw:100053  ;
+sepaw:assessmentCategory ?assessmentCategory ;
+sepaw:source "SEPA" .}
+
+Schema: waterBodyPressures(source,identifiedDate,assessmentCategory,waterBodyId)
+
+Query_Data: 
+    uriObjectValues: [http://data.sepa.org.uk/id/Water/100053]
+    literalObjectValues: ["2009-09-03", "SEPA"]
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {identifiedDate=sepaw, 100053=sepaidw, assessmentCategory=sepaw, waterBodyId=sepaw, source=sepaw}
+    localPropertyNameToURIObjectMaps: {waterBodyId=http://data.sepa.org.uk/id/Water/100053}
+    localPropertyNameToLiteralObjectMaps: {identifiedDate="2009-09-03", source="SEPA"}
+    resolvedURItoPrefixAndLocalNameMaps: {http://data.sepa.org.uk/id/Water/100053=sepaidw:100053}
+    localPropertyNameToVariableMaps: {assessmentCategory=?assessmentCategory}
+    localPropertyNames: [identifiedDate, assessmentCategory, waterBodyId, source]
+
+Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE {  
+ ?id sepaw:identifiedDate ?identifiedDate ;
+ sepaw:waterBodyId ?waterBodyId ;
+ sepaw:assessmentCategory ?assessmentCategory ;
+ sepaw:source ?source
+}
+
+
+Test Open Query Creation 5.3.5 - dbpedia query
+
+Query PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+PREFIX  dbp: <http://dbpedia.org/property/>   
+PREFIX  res: <http://dbpedia.org/resource/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
+PREFIX yago: <hhtp://dbpedia.org/class/yaho/> 
+
+SELECT DISTINCT *  
+WHERE { ?id rdf:type dbo:FormulaOneRacer ;
+dbo:races "202"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> ;
+.}
+LIMIT 20
+
+Schema: FormulaOneRacer(races)
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/FormulaOneRacer]
+    literalObjectValues: ["202"^^http://www.w3.org/2001/XMLSchema#nonNegativeInteger]
+    prefixToURIMaps: {dbo=http://dbpedia.org/ontology/, res=http://dbpedia.org/resource/, dbp=http://dbpedia.org/property/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, yago=hhtp://dbpedia.org/class/yaho/, foaf=http://xlmns.com/foaf/0.1/}
+    localNameToPrefixMaps: {races=dbo, FormulaOneRacer=dbo, type=rdf}
+    localPropertyNameToURIObjectMaps: {type=http://dbpedia.org/ontology/FormulaOneRacer}
+    localPropertyNameToLiteralObjectMaps: {races="202"^^http://www.w3.org/2001/XMLSchema#nonNegativeInteger}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/FormulaOneRacer=dbo:FormulaOneRacer}
+    localPropertyNameToVariableMaps: {}
+    localPropertyNames: [races, type]
+
+Result: 
+
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX res: <http://dbpedia.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX yago: <http://dbpedia.org/class/yago/>
+
+SELECT DISTINCT *
+WHERE { ?id rdf:type dbo:FormulaOneRacer;
+ dbo:races ?races}
+LIMIT 20
+
+Test 5.3.6 - sepa query
+
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE { ?id sepaw:identifiedDate "2008-04-01";
+sepaw:waterBodyId sepaidw:20304  ;
+sepaw:assessmentCategory ?assessmentCategory ;
+sepaw:source "Lake" .}
+
+Schema: waterBodyPressures(source,identifiedDate,assessmentCategory,waterBodyId)
+
+Query_Data: 
+    uriObjectValues: [http://data.sepa.org.uk/id/Water/20304]
+    literalObjectValues: ["2008-04-01", "Lake"]
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {identifiedDate=sepaw, assessmentCategory=sepaw, waterBodyId=sepaw, source=sepaw, 20304=sepaidw}
+    localPropertyNameToURIObjectMaps: {waterBodyId=http://data.sepa.org.uk/id/Water/20304}
+    localPropertyNameToLiteralObjectMaps: {identifiedDate="2008-04-01", source="Lake"}
+    resolvedURItoPrefixAndLocalNameMaps: {http://data.sepa.org.uk/id/Water/20304=sepaidw:20304}
+    localPropertyNameToVariableMaps: {assessmentCategory=?assessmentCategory}
+    localPropertyNames: [identifiedDate, assessmentCategory, waterBodyId, source]
+
+Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE {  
+ ?id sepaw:identifiedDate "2008-04-01" ;
+ sepaw:waterBodyId <http://data.sepa.org.uk/id/Water/20304> ;
+ sepaw:source "Lake" ;
+ sepaw:assessmentCategory ?assessmentCategory
+}
+
+
+Test Open Query Creation 5.3.7 - sepa query
+
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE { ?id sepaw:identifiedDate "2008-04-01";
+sepaw:waterBodyId sepaidw:20304  ;
+sepaw:assessmentCategory ?assessmentCategory ;
+sepaw:source "Lake" .}
+
+Schema: waterBodyPressures(source,identifiedDate,assessmentCategory,waterBodyId)
+
+Query_Data: 
+    uriObjectValues: [http://data.sepa.org.uk/id/Water/20304]
+    literalObjectValues: ["2008-04-01", "Lake"]
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {identifiedDate=sepaw, assessmentCategory=sepaw, waterBodyId=sepaw, source=sepaw, 20304=sepaidw}
+    localPropertyNameToURIObjectMaps: {waterBodyId=http://data.sepa.org.uk/id/Water/20304}
+    localPropertyNameToLiteralObjectMaps: {identifiedDate="2008-04-01", source="Lake"}
+    resolvedURItoPrefixAndLocalNameMaps: {http://data.sepa.org.uk/id/Water/20304=sepaidw:20304}
+    localPropertyNameToVariableMaps: {assessmentCategory=?assessmentCategory}
+    localPropertyNames: [identifiedDate, assessmentCategory, waterBodyId, source]
+
+Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE {  
+ ?id sepaw:identifiedDate ?identifiedDate ;
+ sepaw:assessmentCategory ?assessmentCategory ;
+ sepaw:source ?source ;
+ sepaw:waterBodyId ?waterBodyId
+}
+
+
+Test 5.3.8 - sepa query
+
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE { ?id sepaw:identifiedDate "2008-04-01";
+sepaw:waterBodyId sepaidw:20308xxx  ;
+sepaw:assessmentCategory ?assessmentCategory ;
+sepaw:source "Lake" .}
+
+Schema: waterBodyPressures(source,identifiedDate,assessmentCategory,waterBodyId)
+
+Query_Data: 
+    uriObjectValues: [http://data.sepa.org.uk/id/Water/20308xxx]
+    literalObjectValues: ["2008-04-01", "Lake"]
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {identifiedDate=sepaw, assessmentCategory=sepaw, 20308xxx=sepaidw, waterBodyId=sepaw, source=sepaw}
+    localPropertyNameToURIObjectMaps: {waterBodyId=http://data.sepa.org.uk/id/Water/20308xxx}
+    localPropertyNameToLiteralObjectMaps: {identifiedDate="2008-04-01", source="Lake"}
+    resolvedURItoPrefixAndLocalNameMaps: {http://data.sepa.org.uk/id/Water/20308xxx=sepaidw:20308xxx}
+    localPropertyNameToVariableMaps: {assessmentCategory=?assessmentCategory}
+    localPropertyNames: [identifiedDate, assessmentCategory, waterBodyId, source]
+
+Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE {  
+ ?id sepaw:assessmentCategory ?assessmentCategory ;
+ sepaw:waterBodyId <http://data.sepa.org.uk/id/Water/20308xxx> ;
+ sepaw:source "Lake" ;
+ sepaw:identifiedDate "2008-04-01"
+}
+
+
+Test Open Query Creation 5.3.9 - sepa query
+
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE { ?id sepaw:identifiedDate "2008-04-01";
+sepaw:waterBodyId sepaidw:20308xxx  ;
+sepaw:assessmentCategory ?assessmentCategory ;
+sepaw:source "Lake" .}
+
+Schema: waterBodyPressures(source,identifiedDate,assessmentCategory,waterBodyId)
+
+Query_Data: 
+    uriObjectValues: [http://data.sepa.org.uk/id/Water/20308xxx]
+    literalObjectValues: ["2008-04-01", "Lake"]
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {identifiedDate=sepaw, assessmentCategory=sepaw, 20308xxx=sepaidw, waterBodyId=sepaw, source=sepaw}
+    localPropertyNameToURIObjectMaps: {waterBodyId=http://data.sepa.org.uk/id/Water/20308xxx}
+    localPropertyNameToLiteralObjectMaps: {identifiedDate="2008-04-01", source="Lake"}
+    resolvedURItoPrefixAndLocalNameMaps: {http://data.sepa.org.uk/id/Water/20308xxx=sepaidw:20308xxx}
+    localPropertyNameToVariableMaps: {assessmentCategory=?assessmentCategory}
+    localPropertyNames: [identifiedDate, assessmentCategory, waterBodyId, source]
+
+Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE {  
+ ?id sepaw:identifiedDate ?identifiedDate ;
+ sepaw:waterBodyId ?waterBodyId ;
+ sepaw:assessmentCategory ?assessmentCategory ;
+ sepaw:source ?source
+}
+
+
+Test Query Repair 5.4.1 - sepa query
+
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE { ?id sepaw:identifiedDate "2008-04-01";
+sepaw:waterBodyId sepaidw:20304  ;
+sepaw:assessmentCategory ?assessmentCategory ;
+sepaw:source "Lake" .}
+
+Schema: waterBodyPressures(source,identifiedDate,assessmentCategory,waterBodyId)
+
+Query_Data: 
+    uriObjectValues: [http://data.sepa.org.uk/id/Water/20304]
+    literalObjectValues: ["2008-04-01", "Lake"]
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {identifiedDate=sepaw, assessmentCategory=sepaw, waterBodyId=sepaw, source=sepaw, 20304=sepaidw}
+    localPropertyNameToURIObjectMaps: {waterBodyId=http://data.sepa.org.uk/id/Water/20304}
+    localPropertyNameToLiteralObjectMaps: {identifiedDate="2008-04-01", source="Lake"}
+    resolvedURItoPrefixAndLocalNameMaps: {http://data.sepa.org.uk/id/Water/20304=sepaidw:20304}
+    localPropertyNameToVariableMaps: {assessmentCategory=?assessmentCategory}
+    localPropertyNames: [identifiedDate, assessmentCategory, waterBodyId, source]
+
+Result: 
+
+PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#>
+PREFIX  sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/>
+
+SELECT  *
+FROM <queryData/sepa/sepa_datafiles/waterBodyPressures.n3>
+WHERE
+  { ?id sepaw:identifiedDate "2008-04-01" .
+    ?id sepaw:waterBodyId sepaidw:20304 .
+    ?id sepaw:assessmentCategory ?assessmentCategory .
+    ?id sepaw:source "Lake"
+  }
+
+
+Test Query Repair 5.4.2 - dbpedia query
+
+Query PREFIX  dbo:  <http://dbpedia.org/ontology/> 
+PREFIX dbp: <http://dbpedia.org/property/>   
+PREFIX res: <http://dbpedia.org/resource/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  foaf: <http://xlmns.com/foaf/0.1/> 
+PREFIX yago: <hhtp://dbpedia.org/class/yago/> 
+
+SELECT DISTINCT *  
+WHERE { ?id rdf:type dbo:River;
+dbp:Mountain ?Mountain ;
+dbp:location dbo:USA ; 
+dbp:explorer dbo:Livingston; 
+dbp:elevation 1000 ;
+.}
+LIMIT 20
+
+Schema: River(elevation,location,Mountain)
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/River, http://dbpedia.org/ontology/USA, http://dbpedia.org/ontology/Livingston]
+    literalObjectValues: ["1000"^^http://www.w3.org/2001/XMLSchema#integer]
+    prefixToURIMaps: {dbo=http://dbpedia.org/ontology/, res=http://dbpedia.org/resource/, dbp=http://dbpedia.org/property/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, yago=hhtp://dbpedia.org/class/yago/, foaf=http://xlmns.com/foaf/0.1/}
+    localNameToPrefixMaps: {elevation=dbp, USA=dbo, Mountain=dbp, Livingston=dbo, explorer=dbp, River=dbo, location=dbp, type=rdf}
+    localPropertyNameToURIObjectMaps: {explorer=http://dbpedia.org/ontology/Livingston, location=http://dbpedia.org/ontology/USA, type=http://dbpedia.org/ontology/River}
+    localPropertyNameToLiteralObjectMaps: {elevation="1000"^^http://www.w3.org/2001/XMLSchema#integer}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/USA=dbo:USA, http://dbpedia.org/ontology/Livingston=dbo:Livingston, http://dbpedia.org/ontology/River=dbo:River}
+    localPropertyNameToVariableMaps: {Mountain=?Mountain}
+    localPropertyNames: [elevation, Mountain, explorer, location, type]
+
+Result: 
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/>
+PREFIX  res:  <http://dbpedia.org/resource/>
+PREFIX  dbp:  <http://dbpedia.org/property/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  yago: <http://dbpedia.org/class/yago/>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT  *
+WHERE
+  { ?id rdf:type dbo:River .
+    ?id dbo:Mountain ?Mountain .
+    ?id dbo:location dbo:USA .
+    ?id dbo:elevation 1000
+  }
+LIMIT   20
+
+
+Test Query Repair 5.4.3 - dbpedia query
+
+Query PREFIX dbot: <http://dbpedia.org/ontology/>  
+PREFIX res: <http://dbpedia.org/resource/>   
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>   
+SELECT DISTINCT ?uri   
+WHERE {   
+    ?uri rdf:type dbot:City .   
+    ?uri dbot:country res:Germany .   
+    ?uri dbot:populationTotal ?population .   
+    FILTER ( ?population > 250000 ) }   
+
+
+Schema: City(populationTotal,country)
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/City, http://dbpedia.org/resource/Germany]
+    literalObjectValues: []
+    prefixToURIMaps: {res=http://dbpedia.org/resource/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, dbot=http://dbpedia.org/ontology/}
+    localNameToPrefixMaps: {country=dbot, populationTotal=dbot, City=dbot, type=rdf, Germany=res}
+    localPropertyNameToURIObjectMaps: {country=http://dbpedia.org/resource/Germany, type=http://dbpedia.org/ontology/City}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/City=dbot:City, http://dbpedia.org/resource/Germany=res:Germany}
+    localPropertyNameToVariableMaps: {populationTotal=?population}
+    localPropertyNames: [country, populationTotal, type]
+
+Result: 
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/>
+PREFIX  res:  <http://dbpedia.org/resource/>
+PREFIX  dbp:  <http://dbpedia.org/property/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  yago: <http://dbpedia.org/class/yago/>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT  ?uri
+WHERE
+  { ?uri rdf:type dbo:City .
+    ?uri dbo:country res:Germany .
+    ?uri dbo:populationTotal ?population
+    FILTER ( ?population > 250000 )
+  }
+
+
+Test Query Repair 5.4.4 - dbpedia query
+
+Query PREFIX dbot: <http://dbpedia.org/ontology/>  
+PREFIX res: <http://dbpedia.org/resource/>   
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>   
+SELECT DISTINCT ?uri   
+WHERE {   
+    ?uri rdf:type dbot:City .   
+    ?uri dbot:country res:Germany .   
+    ?uri dbot:populationTotal ?population .   
+    FILTER ( ?population > 250000 ) }   
+
+
+Schema: City(country)
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/City, http://dbpedia.org/resource/Germany]
+    literalObjectValues: []
+    prefixToURIMaps: {res=http://dbpedia.org/resource/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, dbot=http://dbpedia.org/ontology/}
+    localNameToPrefixMaps: {country=dbot, populationTotal=dbot, City=dbot, type=rdf, Germany=res}
+    localPropertyNameToURIObjectMaps: {country=http://dbpedia.org/resource/Germany, type=http://dbpedia.org/ontology/City}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/City=dbot:City, http://dbpedia.org/resource/Germany=res:Germany}
+    localPropertyNameToVariableMaps: {populationTotal=?population}
+    localPropertyNames: [country, populationTotal, type]
+
+Result: 
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/>
+PREFIX  res:  <http://dbpedia.org/resource/>
+PREFIX  dbp:  <http://dbpedia.org/property/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  yago: <http://dbpedia.org/class/yago/>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT  ?uri
+WHERE
+  { ?uri rdf:type dbo:City .
+    ?uri dbo:country res:Germany
+  }
+
+
+Test Query Repair 5.4.5 - dbpedia query
+
+Query PREFIX dbo: <http://dbpedia.org/ontology/>  
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  
+SELECT DISTINCT ?uri  
+WHERE {  
+   ?uri rdf:type dbo:Mountain .  
+   ?uri dbo:elevation ?elevation .  
+}  
+ORDER BY DESC(?elevation)  
+OFFSET 1 LIMIT 1  
+
+
+Schema: Mountain(elevation)
+
+Query_Data: 
+    uriObjectValues: [http://dbpedia.org/ontology/Mountain]
+    literalObjectValues: []
+    prefixToURIMaps: {dbo=http://dbpedia.org/ontology/, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#}
+    localNameToPrefixMaps: {elevation=dbo, Mountain=dbo, type=rdf}
+    localPropertyNameToURIObjectMaps: {type=http://dbpedia.org/ontology/Mountain}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {http://dbpedia.org/ontology/Mountain=dbo:Mountain}
+    localPropertyNameToVariableMaps: {elevation=?elevation}
+    localPropertyNames: [elevation, type]
+
+Result: 
+
+PREFIX  dbo:  <http://dbpedia.org/ontology/>
+PREFIX  res:  <http://dbpedia.org/resource/>
+PREFIX  dbp:  <http://dbpedia.org/property/>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  yago: <http://dbpedia.org/class/yago/>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT  ?uri
+WHERE
+  { ?uri rdf:type dbo:Mountain .
+    ?uri dbo:elevation ?elevation
+  }
+ORDER BY DESC(?elevation)
+OFFSET  1
+LIMIT   1
+
+
+Test 5.4.6 - sepa query
+
+Query PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   
+PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> 
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> 
+SELECT *  
+FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
+WHERE { ?id sepaw:altitudeTypology ?altitudeTypology;
+sepaw:associatedGrounwaterId ?associatedGroundwaterId  ;
+sepaw:riverName ?riverName ;
+sepaw:subBasinDistrict ?subBasinDistrict .}
+
+Schema: surfaceWaterBodies(subBasinDistrict,riverName,altitudeTypology,associatedGroundwaterId)
+
+Query_Data: 
+    uriObjectValues: []
+    literalObjectValues: []
+    prefixToURIMaps: {geo=http://www.w3.org/2003/01/geo/wgs84_pos#, sepaw=http://data.sepa.org.uk/ont/Water#, rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#, sepaidw=http://data.sepa.org.uk/id/Water/, sepaidloc=http://data.sepa.org.uk/id/Location/}
+    localNameToPrefixMaps: {altitudeTypology=sepaw, subBasinDistrict=sepaw, associatedGrounwaterId=sepaw, riverName=sepaw}
+    localPropertyNameToURIObjectMaps: {}
+    localPropertyNameToLiteralObjectMaps: {}
+    resolvedURItoPrefixAndLocalNameMaps: {}
+    localPropertyNameToVariableMaps: {altitudeTypology=?altitudeTypology, subBasinDistrict=?subBasinDistrict, associatedGrounwaterId=?associatedGroundwaterId, riverName=?riverName}
+    localPropertyNames: [altitudeTypology, subBasinDistrict, associatedGrounwaterId, riverName]
+
+Result: 
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX sepaidw: <http://data.sepa.org.uk/id/Water/>
+PREFIX sepaidloc: <http://data.sepa.org.uk/id/Location/>
+PREFIX sepaloc: <http://data.sepa.org.uk/ont/Location#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sepaw: <http://data.sepa.org.uk/ont/Water#>
+
+SELECT *
+FROM <queryData/sepa/sepa_datafiles/surfaceWaterBodies.n3>
+WHERE {  
+ ?id sepaw:associatedGroundwaterId ?associatedGroundwaterId ;
+ sepaw:subBasinDistrict ?subBasinDistrict ;
+ sepaw:riverName ?riverName ;
+ sepaw:altitudeTypology ?altitudeTypology
+}
+
 

@@ -26,6 +26,13 @@ import com.hp.hpl.jena.graph.Node;
  * Modified December 2017
  */
 /*
+ * Creates a (repaired) query directly from a (repaired) schema,
+ * plus information about data bindings previously extracted from 
+ * the original query.
+ * 
+ * This query may be created without either any data bindings,
+ * or with all the original data bindings
+ * 
  * Responsible for using the repaired schema
  * to create either a sepa or dbpedia query, this 
  * query is added as a field onto the Match_Struc
@@ -61,10 +68,10 @@ public class Create_Query {
 //		          + "sepaw:associatedGrounwaterId ?associatedGroundwaterId  ;\n"
 //		          + "sepaw:riverName ?riverName ;\n"
 //		          + "sepaw:subBasinDistrict ?subBasinDistrict .}" ;
+//		
 		
-		
-		String source="River(Mountain(elevation))";
-		String target="River(Mountain(elevation))";
+		String source="River(Mountain,elevation)";
+		String target="River(Mountain,elevation)";
 		String qtype = "dbpedia" ;
 		String dataDirectory = null ;
 		String ontologyPath = "queryData/dbpedia/dbpedia_ontology.json" ;
@@ -77,7 +84,7 @@ public class Create_Query {
 		          + "PREFIX yago: <hhtp://dbpedia.org/class/yaho/> \n\n"
 		          + "SELECT DISTINCT *  \n"
 		          + "WHERE { ?id rdf:type dbo:Mountain ;\n"
-		          + "dbo:elevation ?elevation ;\n"
+		          + "dbo:elevation 10000 ;\n"
 		          + ".}\n"
 		          + "LIMIT 20" ;
 		
@@ -91,9 +98,9 @@ public class Create_Query {
 			finalRes = getRepairedSchema.repairSchemas(finalRes);
 		}
 		
-
-		
+	
 		finalRes = queryCreator.createQueries(finalRes, queryData , qtype, dataDirectory, ontologyPath, WITHDATA, maxResults);
+//		finalRes = queryCreator.createQueries(finalRes, queryData , qtype, dataDirectory, ontologyPath, NODATA, maxResults);
 		
 		System.out.println("\nQuery created is: \n\n" + finalRes.get(0).getQuery());
 	}
@@ -142,7 +149,7 @@ public class Create_Query {
 	}
 	
 	// Read the ontology file and make the (target) ontology structure
-	ArrayList<Ontology_Struc> make_ontologies(String ontologyFilePath) {
+	public static ArrayList<Ontology_Struc> make_ontologies(String ontologyFilePath) {
 		ArrayList<Ontology_Struc> ontologies = new ArrayList<Ontology_Struc>();
 		try{
 			String jsonTxt = new String(Files.readAllBytes(Paths.get(ontologyFilePath)), StandardCharsets.UTF_8);
@@ -281,7 +288,7 @@ public class Create_Query {
 	}
 
 	// Make the ontology structure for the target
-	public ArrayList<Ontology_Struc> makeOntologyStructures(JSONArray jsonArr, ArrayList<Ontology_Struc> ontologies){
+	public static ArrayList<Ontology_Struc> makeOntologyStructures(JSONArray jsonArr, ArrayList<Ontology_Struc> ontologies){
 		String name,link,propString;
 		String[] properties;
 		
@@ -315,7 +322,7 @@ public class Create_Query {
 	}
 	
 	//writes the prefixes and links onto query string
-	public String writePrefixHeaders(ArrayList<Ontology_Struc> ontologies){
+	public static String writePrefixHeaders(ArrayList<Ontology_Struc> ontologies){
 		String finalStr="";
 		
 		for(int i = 0 ; i < ontologies.size() ; i++){

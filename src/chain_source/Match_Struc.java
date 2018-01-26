@@ -1,5 +1,8 @@
 package chain_source;
  import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
  
  /* Author Tanya Howden
   * Date September 2017
@@ -176,6 +179,23 @@ public class Match_Struc{
 	public String getQuerySchemaHead(){
 		return querySchemaHead;
 	}
+	
+	public HashMap <String, String> getMatches() {
+		HashMap <String, String> matches = new HashMap <String, String>();
+		for (String[] m: matchComponents) {
+			String source = m[0] ;
+			String target = m[2] ;
+			String[] sources = source.split(",");
+			String[] targets = target.split(",");
+			for(int i = 0; i < sources.length; i++) {
+				matches.put(sources[i],targets[i]) ;
+			}
+		}
+		
+		return matches ;
+	}
+	
+
 	
 	
 	public String toString() {

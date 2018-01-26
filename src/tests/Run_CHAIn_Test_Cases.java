@@ -108,7 +108,7 @@ public class Run_CHAIn_Test_Cases {
 		String dataDir = "queryData/sepa/sepa_datafiles/";
 		String ontologyPath = "queryData/sepa/sepa_ontology.json";
 		
-		fOut.write("Test 8.0.1\n");
+		fOut.write("\n\nTest 8.0.1\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
 		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
@@ -138,7 +138,7 @@ public class Run_CHAIn_Test_Cases {
 		String dataDir = "queryData/sepa/sepa_datafiles/";
 		String ontologyPath = "queryData/sepa/sepa_ontology.json";
 		
-		fOut.write("Test 8.0.2\n");
+		fOut.write("\n\nTest 8.0.2\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
 		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
@@ -168,7 +168,7 @@ public class Run_CHAIn_Test_Cases {
 		String dataDir = "queryData/sepa/sepa_datafiles/";
 		String ontologyPath = "queryData/sepa/sepa_ontology.json";
 		
-		fOut.write("Test 8.0.3\n");
+		fOut.write("\n\nTest 8.0.3\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
 		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
@@ -200,7 +200,7 @@ public class Run_CHAIn_Test_Cases {
 		String dataDir = "queryData/sepa/sepa_datafiles/";
 		String ontologyPath = "queryData/sepa/sepa_ontology.json";
 		
-		fOut.write("Test 8.0.4\n");
+		fOut.write("\n\nTest 8.0.4\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
 		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
@@ -229,7 +229,7 @@ public class Run_CHAIn_Test_Cases {
 		String dataDir = "queryData/sepa/sepa_datafiles/";
 		String ontologyPath = "queryData/sepa/sepa_ontology.json";
 		
-		fOut.write("Test 8.0.5\n");
+		fOut.write("\n\nTest 8.0.5\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
 		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
@@ -258,7 +258,7 @@ public class Run_CHAIn_Test_Cases {
 		String dataDir = "queryData/sepa/sepa_datafiles/";
 		String ontologyPath = "queryData/sepa/sepa_ontology.json";
 		
-		fOut.write("Test 8.0.6\n");
+		fOut.write("\n\nTest 8.0.6\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
 		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
@@ -290,7 +290,7 @@ public class Run_CHAIn_Test_Cases {
 		String dataDir = null;
 		String ontologyPath = "queryData/dbpedia/dbpedia_ontology.json";
 		
-		fOut.write("Test 8.1.1\n");
+		fOut.write("\n\nTest 8.1.1\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
 		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
@@ -319,7 +319,7 @@ public class Run_CHAIn_Test_Cases {
 		String dataDir = null;
 		String ontologyPath = "queryData/dbpedia/dbpedia_ontology.json";
 		
-		fOut.write("Test 8.1.2\n");
+		fOut.write("\n\nTest 8.1.2\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
 		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
@@ -414,7 +414,7 @@ public class Run_CHAIn_Test_Cases {
 		String dataDir = null;
 		String ontologyPath = "queryData/dbpedia/dbpedia_ontology.json";
 		
-		fOut.write("Test 8.1.5\n");
+		fOut.write("\n\nTest 8.1.5\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
 		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
@@ -477,7 +477,7 @@ public class Run_CHAIn_Test_Cases {
 		String dataDir = null;
 		String ontologyPath = "queryData/dbpedia/dbpedia_ontology.json";
 		
-		fOut.write("Test 8.1.7\n");
+		fOut.write("\n\nTest 8.1.7\n");
 		fOut.write("Running CHAIn with initial query,\n\n"+query);
 		
 		int status = chain.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, 0.5, 5, fOut);
