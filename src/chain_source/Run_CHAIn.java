@@ -166,7 +166,9 @@ public class Run_CHAIn {
 						return REPAIREDQUERYRUNERROR ;
 					} else if (!resultsFromARepairedQuery.hasNext()){
 						System.out.println("This new query has run with no results.");
-						fOut.write("This new query has run with no results.\n\n\n");
+						if(fOut!=null ){
+							fOut.write("This new query has run with no results.\n\n\n");
+						}
 						
 						resultsFromARepairedQuery = dataRepair(queryType, curr, queryData, dataDir, queryLim, ontologyPath, fOut) ;
 						
@@ -181,7 +183,9 @@ public class Run_CHAIn {
 						// }
 					} else {			
 						System.out.println("This new query has run successfully with results.");
-						fOut.write("This new query has run successfully.");
+						if(fOut!=null ){
+							fOut.write("This new query has run successfully.");
+						}
 						result_status = REPAIREDQUERYRESULTS ;
 					}
 				}
