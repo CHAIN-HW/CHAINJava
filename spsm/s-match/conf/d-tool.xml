@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+    <!--
+        Default dataset tool configuration file.
+    -->
+
+    <!-- enable ${name} properties resolution -->
+    <context:property-placeholder properties-ref="properties"/>
+    <util:properties id="properties">
+        <prop key="tokenizerModel">../data/opennlp/models/en/en-token.bin</prop>
+        <prop key="postaggerModel">../data/opennlp/models/en/en-pos-perceptron.bin</prop>
+    </util:properties>
+
+    <bean id="contextLoader" class="it.unitn.disi.annotation.loaders.context.NLPXMLContextLoader"/>
+    <bean id="contextRenderer" class="it.unitn.disi.annotation.renderers.context.NLPXMLContextRenderer"/>
+
+    <bean id="pipeline" class="it.unitn.disi.annotation.pipelines.BaseContextPipeline">
+        <constructor-arg name="pipelineComponents">
+            <list><ref bean="nlpComponent"/></list>
+        </constructor-arg>
+    </bean>
+    <bean id="nlpComponent" class="it.unitn.disi.annotation.pipelines.PipelineContextPipelineComponent">
+        <constructor-arg name="pipeline" ref="labelPipeline"/>
+    </bean>
+    <bean id="labelPipeline" class="it.unitn.disi.nlptools.pipelines.LabelPipeline">
+        <constructor-arg name="pipelineComponents">
+            <list>
+                <ref bean="tokenizer"/>
+                <ref bean="postagger"/>
+            </list>
+        </constructor-arg>
+    </bean>
+    <bean id="tokenizer" class="it.unitn.disi.nlptools.components.tokenizers.OpenNLPTokenizer">
+        <constructor-arg name="modelFileName" value="${tokenizerModel}"/>
+    </bean>
+    <bean id="postagger" class="it.unitn.disi.nlptools.components.postaggers.OpenNLPPOSTagger">
+        <constructor-arg name="modelFileName" value="${postaggerModel}"/>
+    </bean>
+
+</beans>

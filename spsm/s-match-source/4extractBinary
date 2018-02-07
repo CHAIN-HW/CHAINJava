@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export SMATCH_BINARY=s-match-2.0.0-SNAPSHOT
+
+unzip s-match-utils/target/$SMATCH_BINARY.zip -d ../
+
+rm -rf ../s-match
+mv ../$SMATCH_BINARY ../s-match

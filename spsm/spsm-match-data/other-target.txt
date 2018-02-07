@@ -1,0 +1,6 @@
+1. car(year,brand, colour)
+
+2. reading(reporter_ID,node,date,water_level)
+2. measurement(area,wind_speed,direction)
+
+

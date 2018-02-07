@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+    <import resource="s-match-synchronous.xml"/>
+ 
+    <bean id="treeMatcher" class="it.unitn.disi.smatch.matchers.structure.tree.spsm.SPSMTreeMatcher">
+        <constructor-arg name="nodeMatcher" ref="nodeMatcher"/>
+        <constructor-arg name="mappingFactory" ref="mappingFactory"/>
+        <constructor-arg name="spsmFilter" ref="spsmFilter"/>
+    </bean>
+    <bean id="spsmFilter" class="it.unitn.disi.smatch.filters.AsymmetricSPSMMappingFilter">
+        <constructor-arg name="mappingFactory" ref="mappingFactory"/>
+    </bean>
+
+</beans>
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+    <!-- enable ${name} properties resolution -->
+    <context:property-placeholder/>
+
+    <bean id="matchManager" class="it.unitn.disi.smatch.MatchManager">
+        <constructor-arg name="contextLoader" ref="contextLoader"/>
+        <constructor-arg name="contextRenderer" ref="contextRenderer"/>
+        <constructor-arg name="mappingLoader"><null/></constructor-arg>
+        <constructor-arg name="mappingRenderer"><null/></constructor-arg>
+        <constructor-arg name="mappingFilter"><null/></constructor-arg>
+        <constructor-arg name="mappingFactory" ref="mappingFactory"/>
+        <constructor-arg name="contextPreprocessor"><null/></constructor-arg>
+        <constructor-arg name="contextClassifier"><null/></constructor-arg>
+        <constructor-arg name="elementMatcher"><null/></constructor-arg>
+        <constructor-arg name="treeMatcher"><null/></constructor-arg>
+    </bean>
+
+    <bean id="contextLoader" class="it.unitn.disi.smatch.loaders.context.FileFunctionLoader"/>
+
+    <bean id="contextRenderer" class="it.unitn.disi.smatch.renderers.context.SimpleXMLContextRenderer"/>
+
+    <bean id="mappingFactory" class="it.unitn.disi.smatch.data.mappings.MatrixMapping">
+        <constructor-arg name="factory" ref="matchMatrixFactory"/>
+    </bean>
+    <bean id="matchMatrixFactory" class="it.unitn.disi.smatch.data.matrices.MatchMatrix"/>
+
+</beans>
