@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+    <!-- enable ${name} properties resolution -->
+    <context:property-placeholder/>
+
+    <bean id="matchManager" class="it.unitn.disi.smatch.MatchManager">
+        <constructor-arg name="contextLoader" ref="contextLoader"/>
+        <constructor-arg name="contextRenderer"><null/></constructor-arg>
+        <constructor-arg name="mappingLoader" ref="mappingLoader"/>
+        <constructor-arg name="mappingRenderer" ref="mappingRenderer"/>
+        <constructor-arg name="mappingFilter" ref="mappingFilter"/>
+        <constructor-arg name="mappingFactory" ref="mappingFactory"/>
+        <constructor-arg name="contextPreprocessor"><null/></constructor-arg>
+        <constructor-arg name="contextClassifier"><null/></constructor-arg>
+        <constructor-arg name="elementMatcher"><null/></constructor-arg>
+        <constructor-arg name="treeMatcher"><null/></constructor-arg>
+    </bean>
+
+    <bean id="contextLoader" class="it.unitn.disi.smatch.loaders.context.SimpleXMLContextLoader">
+        <constructor-arg name="linguisticOracle" ref="linguisticOracle"/>
+    </bean>
+
+    <bean id="mappingLoader" class="it.unitn.disi.smatch.loaders.mapping.PlainMappingLoader">
+        <constructor-arg name="mappingFactory" ref="mappingFactory"/>
+    </bean>
+
+    <bean id="mappingRenderer" class="it.unitn.disi.smatch.renderers.mapping.PlainMappingRenderer"/>
+
+    <bean id="mappingFactory" class="it.unitn.disi.smatch.data.mappings.MatrixMapping">
+        <constructor-arg name="factory" ref="matchMatrixFactory"/>
+    </bean>
+    <bean id="matchMatrixFactory" class="it.unitn.disi.smatch.data.matrices.MatchMatrix"/>
+
+    <bean id="linguisticOracle" class="it.unitn.disi.smatch.oracles.wordnet.WordNet"/>
+
+    <bean id="mappingFilter" class="it.unitn.disi.smatch.filters.RedundantMappingFilterEQ">
+        <constructor-arg name="mappingFactory" ref="mappingFactory"/>
+    </bean>
+
+</beans>

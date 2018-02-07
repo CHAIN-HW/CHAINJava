@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?><context>
+  <node id="n0" preprocessed="true">
+    <name>waterBodyPressures</name>
+    <label-formula>n0_0</label-formula>
+    <node-formula>n0_0</node-formula>
+    <tokens>
+      <token id="0">
+        <text>waterbodypressures</text>
+        <lemma>waterbodypressures</lemma>
+        <senses/>
+      </token>
+    </tokens>
+    <children>
+      <node id="n1" parent-id="n0" preprocessed="true">
+        <name>activity</name>
+        <label-formula>n1_0</label-formula>
+        <node-formula>n1_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>activity</text>
+            <lemma>activity</lemma>
+            <senses>
+              <sense id="n#408356"/>
+              <sense id="n#14030430"/>
+              <sense id="n#13461236"/>
+              <sense id="n#14554805"/>
+              <sense id="n#13540166"/>
+              <sense id="n#4642461"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+      <node id="n2" parent-id="n0" preprocessed="true">
+        <name>activityCode</name>
+        <label-formula>n2_0 &amp; n2_1</label-formula>
+        <node-formula>(n2_0 &amp; n2_1) &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>activitycode</text>
+            <lemma>activitycode</lemma>
+            <senses>
+              <sense id="n#408356"/>
+              <sense id="n#14030430"/>
+              <sense id="n#13461236"/>
+              <sense id="n#14554805"/>
+              <sense id="n#13540166"/>
+              <sense id="n#4642461"/>
+            </senses>
+          </token>
+          <token id="1">
+            <text>code</text>
+            <lemma>code</lemma>
+            <senses>
+              <sense id="n#6680062"/>
+              <sense id="n#6365341"/>
+              <sense id="n#6367301"/>
+              <sense id="v#1592644"/>
+              <sense id="v#996121"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+      <node id="n3" parent-id="n0" preprocessed="true">
+        <name>affectsGroundwater</name>
+        <label-formula>n3_0</label-formula>
+        <node-formula>n3_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>affectsgroundwater</text>
+            <lemma>affectsgroundwater</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n4" parent-id="n0" preprocessed="true">
+        <name>assessmentCategory</name>
+        <label-formula>n4_0 &amp; n4_1</label-formula>
+        <node-formula>(n4_0 &amp; n4_1) &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>assessmentcategory</text>
+            <lemma>assessmentcategory</lemma>
+            <senses>
+              <sense id="n#5741528"/>
+              <sense id="n#13424319"/>
+              <sense id="n#5153302"/>
+              <sense id="n#875745"/>
+            </senses>
+          </token>
+          <token id="1">
+            <text>category</text>
+            <lemma>category</lemma>
+            <senses>
+              <sense id="n#8014145"/>
+              <sense id="n#5847274"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+      <node id="n5" parent-id="n0" preprocessed="true">
+        <name>assessmentParameter</name>
+        <label-formula>n5_0 &amp; n5_1</label-formula>
+        <node-formula>(n5_0 &amp; n5_1) &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>assessmentparameter</text>
+            <lemma>assessmentparameter</lemma>
+            <senses>
+              <sense id="n#5741528"/>
+              <sense id="n#13424319"/>
+              <sense id="n#5153302"/>
+              <sense id="n#875745"/>
+            </senses>
+          </token>
+          <token id="1">
+            <text>parameter</text>
+            <lemma>parameter</lemma>
+            <senses>
+              <sense id="n#5867655"/>
+              <sense id="n#7342905"/>
+              <sense id="n#6367706"/>
+              <sense id="n#5867861"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+      <node id="n6" parent-id="n0" preprocessed="true">
+        <name>atGepCurClassYear</name>
+        <label-formula>n6_0</label-formula>
+        <node-formula>n6_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>atgepcurclassyear</text>
+            <lemma>atgepcurclassyear</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n7" parent-id="n0" preprocessed="true">
+        <name>atGepCurrentPeriod</name>
+        <label-formula>n7_0</label-formula>
+        <node-formula>n7_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>atgepcurrentperiod</text>
+            <lemma>atgepcurrentperiod</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n8" parent-id="n0" preprocessed="true">
+        <name>atGepNextPeriod</name>
+        <label-formula>n8_0</label-formula>
+        <node-formula>n8_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>atgepnextperiod</text>
+            <lemma>atgepnextperiod</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n9" parent-id="n0" preprocessed="true">
+        <name>atGepPeriodAfterNext</name>
+        <label-formula>n9_0</label-formula>
+        <node-formula>n9_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>atgepperiodafternext</text>
+            <lemma>atgepperiodafternext</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n10" parent-id="n0" preprocessed="true">
+        <name>atGepSysdate</name>
+        <label-formula>n10_0</label-formula>
+        <node-formula>n10_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>atgepsysdate</text>
+            <lemma>atgepsysdate</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n11" parent-id="n0" preprocessed="true">
+        <name>comments</name>
+        <label-formula>n11_0</label-formula>
+        <node-formula>n11_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>comments</text>
+            <lemma>comment</lemma>
+            <senses>
+              <sense id="n#6777755"/>
+              <sense id="n#6775422"/>
+              <sense id="n#7237830"/>
+              <sense id="v#1060446"/>
+              <sense id="v#1035061"/>
+              <sense id="v#963361"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+      <node id="n12" parent-id="n0" preprocessed="true">
+        <name>dataSource</name>
+        <label-formula>n12_0 &amp; n12_1</label-formula>
+        <node-formula>(n12_0 &amp; n12_1) &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>datasource</text>
+            <lemma>datasource</lemma>
+            <senses>
+              <sense id="n#8479331"/>
+            </senses>
+          </token>
+          <token id="1">
+            <text>source</text>
+            <lemma>source</lemma>
+            <senses>
+              <sense id="n#8524579"/>
+              <sense id="n#6687867"/>
+              <sense id="n#5843082"/>
+              <sense id="n#4270724"/>
+              <sense id="n#10225604"/>
+              <sense id="n#10145714"/>
+              <sense id="n#13580156"/>
+              <sense id="n#9430745"/>
+              <sense id="n#7273332"/>
+              <sense id="v#2243318"/>
+              <sense id="v#668640"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+      <node id="n13" parent-id="n0" preprocessed="true">
+        <name>eiAfterConfidence</name>
+        <label-formula>n13_0</label-formula>
+        <node-formula>n13_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>eiafterconfidence</text>
+            <lemma>eiafterconfidence</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n14" parent-id="n0" preprocessed="true">
+        <name>eiCurrentConfidence</name>
+        <label-formula>n14_0</label-formula>
+        <node-formula>n14_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>eicurrentconfidence</text>
+            <lemma>eicurrentconfidence</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n15" parent-id="n0" preprocessed="true">
+        <name>eiCurrentFailReason</name>
+        <label-formula>n15_0</label-formula>
+        <node-formula>n15_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>eicurrentfailreason</text>
+            <lemma>eicurrentfailreason</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n16" parent-id="n0" preprocessed="true">
+        <name>eiNextConfidence</name>
+        <label-formula>n16_0</label-formula>
+        <node-formula>n16_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>einextconfidence</text>
+            <lemma>einextconfidence</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n17" parent-id="n0" preprocessed="true">
+        <name>eiNextFailReason</name>
+        <label-formula>n17_0</label-formula>
+        <node-formula>n17_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>einextfailreason</text>
+            <lemma>einextfailreason</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n18" parent-id="n0" preprocessed="true">
+        <name>envImprovementAfterNext</name>
+        <label-formula>n18_0</label-formula>
+        <node-formula>n18_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>envimprovementafternext</text>
+            <lemma>envimprovementafternext</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n19" parent-id="n0" preprocessed="true">
+        <name>envImprovementCurrent</name>
+        <label-formula>n19_0</label-formula>
+        <node-formula>n19_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>envimprovementcurrent</text>
+            <lemma>envimprovementcurrent</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n20" parent-id="n0" preprocessed="true">
+        <name>envImprovementNext</name>
+        <label-formula>n20_0</label-formula>
+        <node-formula>n20_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>envimprovementnext</text>
+            <lemma>envimprovementnext</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n21" parent-id="n0" preprocessed="true">
+        <name>hmawbDesignationInd</name>
+        <label-formula>n21_0</label-formula>
+        <node-formula>n21_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>hmawbdesignationind</text>
+            <lemma>hmawbdesignationind</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n22" parent-id="n0" preprocessed="true">
+        <name>identifiedDate</name>
+        <label-formula>n22_0 &amp; n22_1</label-formula>
+        <node-formula>(n22_0 &amp; n22_1) &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>identifieddate</text>
+            <lemma>identifieddate</lemma>
+            <senses>
+              <sense id="v#620568"/>
+              <sense id="v#1028104"/>
+              <sense id="v#693710"/>
+              <sense id="v#716436"/>
+              <sense id="v#654017"/>
+              <sense id="v#620141"/>
+              <sense id="a#1379134"/>
+            </senses>
+          </token>
+          <token id="1">
+            <text>date</text>
+            <lemma>date</lemma>
+            <senses>
+              <sense id="n#15184543"/>
+              <sense id="n#10012076"/>
+              <sense id="n#8401740"/>
+              <sense id="n#15145165"/>
+              <sense id="n#15185626"/>
+              <sense id="n#15184779"/>
+              <sense id="n#7781049"/>
+              <sense id="v#2491462"/>
+              <sense id="v#737394"/>
+              <sense id="v#620873"/>
+              <sense id="v#2491850"/>
+              <sense id="v#736950"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+      <node id="n23" parent-id="n0" preprocessed="true">
+        <name>industrySector</name>
+        <label-formula>n23_0 &amp; n23_1</label-formula>
+        <node-formula>(n23_0 &amp; n23_1) &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>industrysector</text>
+            <lemma>industrysector</lemma>
+            <senses>
+              <sense id="n#8082070"/>
+              <sense id="n#925258"/>
+              <sense id="n#4872345"/>
+            </senses>
+          </token>
+          <token id="1">
+            <text>sector</text>
+            <lemma>sector</lemma>
+            <senses>
+              <sense id="n#13897666"/>
+              <sense id="n#7983333"/>
+              <sense id="n#5861665"/>
+              <sense id="n#13647711"/>
+              <sense id="n#8666233"/>
+              <sense id="n#4172612"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+      <node id="n24" parent-id="n0" preprocessed="true">
+        <name>industrySectorCode</name>
+        <label-formula>n24_0</label-formula>
+        <node-formula>n24_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>industrysectorcode</text>
+            <lemma>industrysectorcode</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n25" parent-id="n0" preprocessed="true">
+        <name>isPrimary</name>
+        <label-formula>n25_0</label-formula>
+        <node-formula>n25_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>isprimary</text>
+            <lemma>isprimary</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n26" parent-id="n0" preprocessed="true">
+        <name>locationCode</name>
+        <label-formula>n26_0 &amp; n26_1</label-formula>
+        <node-formula>(n26_0 &amp; n26_1) &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>locationcode</text>
+            <lemma>locationcode</lemma>
+            <senses>
+              <sense id="n#27365"/>
+              <sense id="n#1053255"/>
+              <sense id="n#156307"/>
+              <sense id="n#3687515"/>
+            </senses>
+          </token>
+          <token id="1">
+            <text>code</text>
+            <lemma>code</lemma>
+            <senses>
+              <sense id="n#6680062"/>
+              <sense id="n#6365341"/>
+              <sense id="n#6367301"/>
+              <sense id="v#1592644"/>
+              <sense id="v#996121"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+      <node id="n27" parent-id="n0" preprocessed="true">
+        <name>pressureId</name>
+        <label-formula>n27_0</label-formula>
+        <node-formula>n27_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>pressureid</text>
+            <lemma>pressureid</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n28" parent-id="n0" preprocessed="true">
+        <name>pressureType</name>
+        <label-formula>n28_0 &amp; n28_1</label-formula>
+        <node-formula>(n28_0 &amp; n28_1) &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>pressuretype</text>
+            <lemma>pressuretype</lemma>
+            <senses>
+              <sense id="n#11515441"/>
+              <sense id="n#5202630"/>
+              <sense id="n#113933"/>
+              <sense id="n#14474815"/>
+              <sense id="n#5732420"/>
+              <sense id="n#14500660"/>
+              <sense id="n#11449572"/>
+              <sense id="v#2510211"/>
+              <sense id="v#2587158"/>
+            </senses>
+          </token>
+          <token id="1">
+            <text>type</text>
+            <lemma>type</lemma>
+            <senses>
+              <sense id="n#5848697"/>
+              <sense id="n#9928518"/>
+              <sense id="n#8128385"/>
+              <sense id="n#6838170"/>
+              <sense id="n#6808825"/>
+              <sense id="n#4511781"/>
+              <sense id="v#1006737"/>
+              <sense id="v#620372"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+      <node id="n29" parent-id="n0" preprocessed="true">
+        <name>protectedAreaId</name>
+        <label-formula>n29_0</label-formula>
+        <node-formula>n29_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>protectedareaid</text>
+            <lemma>protectedareaid</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n30" parent-id="n0" preprocessed="true">
+        <name>purpose</name>
+        <label-formula>n30_0</label-formula>
+        <node-formula>n30_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>purpose</text>
+            <lemma>purpose</lemma>
+            <senses>
+              <sense id="n#5991037"/>
+              <sense id="n#5156572"/>
+              <sense id="n#4871431"/>
+              <sense id="v#710809"/>
+              <sense id="v#701392"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+      <node id="n31" parent-id="n0" preprocessed="true">
+        <name>purposeCode</name>
+        <label-formula>n31_0 &amp; n31_1</label-formula>
+        <node-formula>(n31_0 &amp; n31_1) &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>purposecode</text>
+            <lemma>purposecode</lemma>
+            <senses>
+              <sense id="n#5991037"/>
+              <sense id="n#5156572"/>
+              <sense id="n#4871431"/>
+              <sense id="v#710809"/>
+              <sense id="v#701392"/>
+            </senses>
+          </token>
+          <token id="1">
+            <text>code</text>
+            <lemma>code</lemma>
+            <senses>
+              <sense id="n#6680062"/>
+              <sense id="n#6365341"/>
+              <sense id="n#6367301"/>
+              <sense id="v#1592644"/>
+              <sense id="v#996121"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+      <node id="n32" parent-id="n0" preprocessed="true">
+        <name>swAsset</name>
+        <label-formula>n32_0</label-formula>
+        <node-formula>n32_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>swasset</text>
+            <lemma>swasset</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n33" parent-id="n0" preprocessed="true">
+        <name>swmiSector</name>
+        <label-formula>n33_0</label-formula>
+        <node-formula>n33_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>swmisector</text>
+            <lemma>swmisector</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+      <node id="n34" parent-id="n0" preprocessed="true">
+        <name>waterBodyId</name>
+        <label-formula>n34_0</label-formula>
+        <node-formula>n34_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>waterbodyid</text>
+            <lemma>waterbodyid</lemma>
+            <senses/>
+          </token>
+        </tokens>
+      </node>
+    </children>
+  </node>
+</context>
