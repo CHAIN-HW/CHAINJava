@@ -42,6 +42,8 @@ hs_err_pid*
 .idea/**/gradle.xml
 .idea/**/libraries
 
+.idea/
+
 # CMake
 cmake-build-debug/
 cmake-build-release/
@@ -74,3 +76,6 @@ fabric.properties
 
 #Ignore Outputs folder
 outputs/
+
+# Ignore SPSM folder created by build scripts
+spsm/

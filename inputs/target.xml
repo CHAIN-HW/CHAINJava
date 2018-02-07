@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><context>
+  <node id="n0">
+    <name>document</name>
+    <children>
+      <node id="n1" parent-id="n0">
+        <name>date</name>
+        <children>
+          <node id="n2" parent-id="n1">
+            <name>day</name>
+          </node>
+          <node id="n3" parent-id="n1">
+            <name>month</name>
+          </node>
+          <node id="n4" parent-id="n1">
+            <name>year</name>
+          </node>
+        </children>
+      </node>
+    </children>
+  </node>
+</context>
