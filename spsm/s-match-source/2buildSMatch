@@ -1,0 +1,3 @@
+#!/bin/bash
+
+for i in s-match-parent s-match-core s-match-io s-match-logic s-match-nlp s-match-nlp-annotation s-match-nlp-opennlp s-match-spsm s-match-wordnet s-match-spsm-prolog; do cd $i && mvn clean install clean -Dmaven.test.skip && cd ..; done

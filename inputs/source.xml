@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?><context>
-  <node id="n0">
-    <name>review</name>
+  <node id="n0" preprocessed="true">
+    <name>Astronaut</name>
+    <label-formula>n0_0</label-formula>
+    <node-formula>n0_0</node-formula>
+    <tokens>
+      <token id="0">
+        <text>astronaut</text>
+        <lemma>astronaut</lemma>
+        <senses>
+          <sense id="n#9837427"/>
+        </senses>
+      </token>
+    </tokens>
     <children>
-      <node id="n1" parent-id="n0">
-        <name>publication</name>
-        <children>
-          <node id="n2" parent-id="n1">
-            <name>day</name>
-          </node>
-          <node id="n3" parent-id="n1">
-            <name>month</name>
-          </node>
-          <node id="n4" parent-id="n1">
-            <name>year</name>
-          </node>
-        </children>
+      <node id="n1" parent-id="n0" preprocessed="true">
+        <name>nationality</name>
+        <label-formula>n1_0</label-formula>
+        <node-formula>n1_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>nationality</text>
+            <lemma>nationality</lemma>
+            <senses>
+              <sense id="n#7966049"/>
+              <sense id="n#13977005"/>
+            </senses>
+          </token>
+        </tokens>
       </node>
     </children>
   </node>

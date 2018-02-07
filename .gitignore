@@ -74,8 +74,5 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-#Ignore Outputs folder
+# Ignore Outputs folder
 outputs/
-
-# Ignore SPSM folder created by build scripts
-spsm/
