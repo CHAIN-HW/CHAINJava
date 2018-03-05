@@ -22,7 +22,7 @@ import org.junit.*;
  * that are over the threshold value that are sorted and we only
  * have n number of results as requested
  */
-public class MatchResultsTestCases {
+public class MatchResultsTestCases extends tests.BaseTest {
 
 	private BestMatchResults bestMatchResults;
 	private ArrayList<MatchStruc> finalRes;
@@ -44,6 +44,7 @@ public class MatchResultsTestCases {
 		counter=1;
 		
 		try{
+
 			testRes = new File("outputs/testing/Filter_Limit_Test.txt");
 			testRes.createNewFile();
 			
@@ -52,7 +53,8 @@ public class MatchResultsTestCases {
 			e.printStackTrace();
 		}
 	}
-	
+
+
 	@Before
 	public void setup(){
 		bestMatchResults = new BestMatchResults();

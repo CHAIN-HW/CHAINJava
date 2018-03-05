@@ -42,7 +42,7 @@ public class RunCHAIn {
 	
 	//main method for testing during implementation
 	public static void main(String[] args){
-		RunCHAIn run_CHAIn = new RunCHAIn();
+		RunCHAIn runCHAIn = new RunCHAIn();
 		
 		//need to pass in the query
 		//and also target schemas for dataset
@@ -77,12 +77,12 @@ public class RunCHAIn {
 		String targetSchemas="places(dataSource, identifiedDate, affectsGroundwater, waterBodyId) ; waterBodyPressures(dataSource, identifiedDate, affectsGroundwater, waterBodyId)" ;
 		
 		
-		run_CHAIn.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, simThresholdVal, 5, null);
+		runCHAIn.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, simThresholdVal, 5, null);
 	}
 	
 	public int runCHAIn(String query, String queryType, String targetSchemas, String dataDir, String ontologyPath, int queryLim, double simThresholdVal, int resLimit, PrintWriter fOut){
 		
-		int result_status = UNKNOWNSTATUS; 
+		int resultStatus = UNKNOWNSTATUS;
 		
 		//first step is trying to run the initial query
 		MatchStruc current = new MatchStruc();
@@ -146,7 +146,7 @@ public class RunCHAIn {
 					fOut.write("Now running the new queries that have been created...\n\n");
 				}
 				
-				ResultSet resultsFromARepairedQuery;
+				ResultSet repairedQueryResult;
 				
 				// Print all the match structures with their repaired queries
 				// for (MatchStruc r:repairedQueries) {
@@ -160,39 +160,39 @@ public class RunCHAIn {
 						fOut.write("Target Schema, " + curr.getDatasetSchema() + ", has created the following query:\n\n"+curr.getQuery()+"\n\n");
 					}
 						
-					resultsFromARepairedQuery = runRepairedQueries(curr, queryType, dataDir);
-					if(resultsFromARepairedQuery == null){
+					repairedQueryResult = runRepairedQueries(curr, queryType, dataDir);
+					if(repairedQueryResult == null){
 						System.out.println("This new query has NOT run successfully.");
 						fOut.write("This new query has NOT run successfully.\n\n\n");
 						return REPAIREDQUERYRUNERROR ;
-					} else if (!resultsFromARepairedQuery.hasNext()){
+					} else if (!repairedQueryResult.hasNext()){
 						System.out.println("This new query has run with no results.");
 						if(fOut!=null ){
 							fOut.write("This new query has run with no results.\n\n\n");
 						}
 						
-						resultsFromARepairedQuery = dataRepair(queryType, curr, queryData, dataDir, queryLim, ontologyPath, fOut) ;
+						repairedQueryResult = dataRepair(queryType, curr, queryData, dataDir, queryLim, ontologyPath, fOut) ;
 						
-						if (!resultsFromARepairedQuery.hasNext() && result_status != REPAIREDQUERYRESULTS){
-							result_status = REPAIREDQUERYNORESULTS ;
+						if (!repairedQueryResult.hasNext() && resultStatus != REPAIREDQUERYRESULTS){
+							resultStatus = REPAIREDQUERYNORESULTS ;
 							
-						} else if (result_status != REPAIREDQUERYRESULTS) {
-							result_status = DATAREPAIREDWITHRESULTS ;
+						} else if (resultStatus != REPAIREDQUERYRESULTS) {
+							resultStatus = DATAREPAIREDWITHRESULTS ;
 						}
-						// if (result_status != REPAIREDQUERYRESULTS) {
-						// 	result_status = REPAIREDQUERYNORESULTS ;
+						// if (resultStatus != REPAIREDQUERYRESULTS) {
+						// 	resultStatus = REPAIREDQUERYNORESULTS ;
 						// }
 					} else {			
 						System.out.println("This new query has run successfully with results.");
 						if(fOut!=null ){
 							fOut.write("This new query has run successfully.");
 						}
-						result_status = REPAIREDQUERYRESULTS ;
+						resultStatus = REPAIREDQUERYRESULTS ;
 					}
 				}
 			}
 		}
-		return result_status; 
+		return resultStatus;
 	}
 	
 	public ResultSet dataRepair(String queryType, MatchStruc curr, QueryData queryData, String dataDir, int queryLim, String ontologyPath, PrintWriter fOut) {

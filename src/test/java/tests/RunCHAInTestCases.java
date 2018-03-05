@@ -26,7 +26,7 @@ import org.junit.Test;
  * more than one target schema for comparison.
  * 
  */
-public class RunCHAInTestCases {
+public class RunCHAInTestCases extends tests.BaseTest  {
 	
 	private static final int UNKNOWNSTATUS = 0 ;
 	private static final int INITIALQUERYSUCCESS = 5 ;

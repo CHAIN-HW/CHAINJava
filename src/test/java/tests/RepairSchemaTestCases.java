@@ -32,7 +32,7 @@ import chain.core.RepairSchema;
  * match data between the source and target schemas
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class RepairSchemaTestCases {
+public class RepairSchemaTestCases extends tests.BaseTest  {
 
 	private CallSPSM spsmCall;
 	private RepairSchema getRepairedSchema;

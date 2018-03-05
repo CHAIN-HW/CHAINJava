@@ -33,7 +33,7 @@ import edu.mit.jwi.IDictionary;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
-public class JWICallerTestCases {
+public class JWICallerTestCases extends tests.BaseTest {
 	private JWICaller JWIcaller ;
 	private IDictionary dict ;
 	

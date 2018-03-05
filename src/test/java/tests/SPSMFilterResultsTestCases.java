@@ -27,7 +27,7 @@ import chain.core.BestMatchResults;
  * to make sure that we get results from SPSM that have been filtered
  * and sorted
  */
-public class SPSMFilterResultsTestCases {
+public class SPSMFilterResultsTestCases extends tests.BaseTest {
 
 	private CallSPSM spsmCall;
 	private BestMatchResults filterResCall;

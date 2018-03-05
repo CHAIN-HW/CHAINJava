@@ -26,7 +26,7 @@ import chain.core.CallSPSM;
  */
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SPSMTestCases {
+public class SPSMTestCases extends tests.BaseTest {
 	private CallSPSM methodCaller;
 	private ArrayList<MatchStruc> results;
 	private String source,target;

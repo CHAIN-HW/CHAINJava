@@ -38,7 +38,7 @@ import chain.core.RepairSchema;
  */
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class RunQueryTestCases {
+public class RunQueryTestCases extends tests.BaseTest {
 	
 	private static final int EXCEPTION = 1 ;
 	private static final int WITHRESULTS = 2 ;
