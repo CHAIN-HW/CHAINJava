@@ -30,7 +30,7 @@ import org.junit.runners.Suite.SuiteClasses;
 		SAQCreateQueryTests.class
 })
 
-public class CHAINTests {
+public class CHAINTests extends tests.BaseTest {
 
 	}
 

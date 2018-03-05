@@ -93,9 +93,9 @@ public static Set <String> getAssociatedWords ( IDictionary dict, String wordStr
 		// ArrayList <String> allWords = new ArrayList<String>();
 			
 		// First stem the word
-		WordnetStemmer wn_stems = new WordnetStemmer(dict) ;
+		WordnetStemmer wordNetStems = new WordnetStemmer(dict) ;
 		List<String> stems = new ArrayList<String>();
-		stems = wn_stems.findStems(wordStr, null) ;
+		stems = wordNetStems.findStems(wordStr, null) ;
 		// System.out.println("Stems " + stems) ;
 			
 		

@@ -26,5 +26,5 @@ import org.junit.runners.Suite.SuiteClasses;
 		SPSMTestCases.class
 })
 
-public class Task1TestSuite {
+public class Task1TestSuite extends tests.BaseTest {
 }

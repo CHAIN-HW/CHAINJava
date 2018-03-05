@@ -88,38 +88,38 @@ public class MatchStruc {
 		return numMatchComponents;
 	}
 	
-	public String getTarget(String Source){
-		String Target = "";
+	public String getTarget(String source){
+		String target = "";
 		for (String[] m: matchComponents) {
-			String[] SourcesString = m[0].split(",") ;
-			String[] TargetsString = m[2].split(",") ;
-			for(int i= 0; i < SourcesString.length; i++ ) {
-				if (SourcesString[i].equals(Source))
+			String[] sourcesString = m[0].split(",") ;
+			String[] targetsString = m[2].split(",") ;
+			for(int i= 0; i < sourcesString.length; i++ ) {
+				if (sourcesString[i].equals(source))
 				{
-					Target = TargetsString[i] ;
-					return Target ;
+					target = targetsString[i] ;
+					return target ;
 				}
 			}
 			
 		}
-		return Target;		
+		return target;
 	}
 	
-	public String getSource(String Target){
-		String Source = "";
+	public String getSource(String target){
+		String source = "";
 		for (String[] m: matchComponents) {
-			String[] SourcesString = m[0].split(",") ;
-			String[] TargetsString = m[2].split(",") ;
-			for(int i= 0; i < TargetsString.length; i++ ) {
-				if (TargetsString[i].equals(Target))
+			String[] sourcesString = m[0].split(",") ;
+			String[] targetsString = m[2].split(",") ;
+			for(int i= 0; i < targetsString.length; i++ ) {
+				if (targetsString[i].equals(target))
 				{
-					Source = SourcesString[i] ;
-					return Source ;
+					source = sourcesString[i] ;
+					return source ;
 				}
 			}
 			
 		}
-		return Source;		
+		return source;
 	}
 	
 	public double getSimValue(){

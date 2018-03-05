@@ -31,7 +31,7 @@ import org.junit.FixMethodOrder;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
-public class SAQCreateQueryTests {
+public class SAQCreateQueryTests extends tests.BaseTest {
 	
 	// 1 SAQ  cosmonauts
 

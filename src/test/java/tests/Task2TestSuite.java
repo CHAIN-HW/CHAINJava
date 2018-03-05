@@ -29,5 +29,5 @@ import org.junit.runners.Suite.SuiteClasses;
 		RunQueryTestCases.class
 })
 
-public class Task2TestSuite {
+public class Task2TestSuite extends tests.BaseTest {
 }

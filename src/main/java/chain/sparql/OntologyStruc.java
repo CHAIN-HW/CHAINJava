@@ -69,9 +69,9 @@ public class OntologyStruc {
 	}
 	
 	// Test if a value is in the ontology
-	public boolean hasValue(String Value) {
+	public boolean hasValue(String value) {
 		if(values.isEmpty()) return false ;
-		return values.contains(Value) ;		
+		return values.contains(value) ;
 	}
 	
 	//Return the value prefixed by the ontology name

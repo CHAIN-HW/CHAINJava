@@ -27,7 +27,7 @@ import org.junit.runners.MethodSorters;
  * 
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SchemaFromQueryTestCases {
+public class SchemaFromQueryTestCases extends tests.BaseTest {
 
 	private SchemaFromQuery schemaCreator;
 	private String query;
