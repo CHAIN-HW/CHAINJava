@@ -76,3 +76,6 @@ fabric.properties
 
 # Ignore Outputs folder
 outputs/
+
+# Ignore Build folder (gradle output)
+/build
