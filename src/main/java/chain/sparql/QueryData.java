@@ -3,7 +3,7 @@
  * Modified
  */
 
-package chain_source;
+package chain.sparql;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ import com.hp.hpl.jena.sparql.syntax.ElementWalker;
 // predicate replacement into the query
 // and data repair
 
-public class Query_Data {
+public class QueryData {
 
 	public ArrayList<String> uriObjectValues; // e.g.
 												// ["http://dbpedia.org/ontology/City",
@@ -57,7 +57,7 @@ public class Query_Data {
 	
 	public String originalQuery; 
 
-	public Query_Data() {
+	public QueryData() {
 
 		uriObjectValues = new ArrayList<String>();
 		literalObjectValues = new ArrayList<Node>();
@@ -72,7 +72,7 @@ public class Query_Data {
 
 	}
 
-	public Query_Data(String query) {
+	public QueryData(String query) {
 
 		uriObjectValues = new ArrayList<String>();
 		literalObjectValues = new ArrayList<Node>();
@@ -118,9 +118,9 @@ public class Query_Data {
 			makeObjUriToPrefixTable();
 			// System.out.println("resolvedURItoPrefixAndLocalNameMaps: " +
 			// resolvedURItoPrefixAndLocalNameMaps) ;
-			// System.out.println("Query_Data:" + this);
+			// System.out.println("QueryData:" + this);
 		} catch (Exception e) {
-			System.out.println("Query_Data.java: Failed to parse the query string.");
+			System.out.println("QueryData.java: Failed to parse the query string.");
 
 		}
 
@@ -310,7 +310,7 @@ public class Query_Data {
 	}
 
 	public String toString() {
-		return "Query_Data: " + "\n    uriObjectValues: " + uriObjectValues + "\n    literalObjectValues: "
+		return "QueryData: " + "\n    uriObjectValues: " + uriObjectValues + "\n    literalObjectValues: "
 				+ literalObjectValues + "\n    prefixToURIMaps: " + prefixToURIMaps + "\n    localNameToPrefixMaps: "
 				+ localNameToPrefixMaps + "\n    localPropertyNameToURIObjectMaps: " + localPropertyNameToURIObjectMaps
 				+ "\n    localPropertyNameToLiteralObjectMaps: " + localPropertyNameToLiteralObjectMaps

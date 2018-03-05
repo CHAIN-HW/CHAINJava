@@ -1,7 +1,7 @@
 /**
  * 
  */
-package chain_source;
+package chain.sparql;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +10,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import chain.core.CallSPSM;
+import chain.core.MatchStruc;
+import chain.core.RepairSchema;
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryFactory;
 
@@ -23,7 +26,7 @@ import com.hp.hpl.jena.query.QueryFactory;
  * plus information about data bindings previously extracted from 
  * the original query.
  */
-public class Repair_Query {
+public class RepairQuery {
 	
 	private static int WITHDATA = 1 ;
 	private static int NODATA = 0 ;  // We can't do queries with no data at present
@@ -34,8 +37,8 @@ public class Repair_Query {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Call_SPSM spsmCall = new Call_SPSM();
-		Repair_Schema getRepairedSchema = new Repair_Schema();
+		CallSPSM spsmCall = new CallSPSM();
+		RepairSchema getRepairedSchema = new RepairSchema();
 		
 //		String source="River(Mountain,explorer,elevation,location)";
 //		String target="River(Mountain,elevation,location)";
@@ -117,13 +120,13 @@ public class Repair_Query {
 		
 		
 		
-		Query_Data queryData = new Query_Data(originalQuery) ;
+		QueryData queryData = new QueryData(originalQuery) ;
 		
 		System.out.println("Original query (Jena formatted)\n" + queryData.originalQuery) ;
 		
 		
 		
-		ArrayList<Match_Struc> finalRes = new ArrayList<Match_Struc>();
+		ArrayList<MatchStruc> finalRes = new ArrayList<MatchStruc>();
 		finalRes = spsmCall.callSPSM(finalRes, source, target);
 
 		if(finalRes!=null && finalRes.size()!=0){
@@ -141,14 +144,14 @@ public class Repair_Query {
 	
 	// Set up a map of old properties (with old prefixes) to new properties (with new prefixes)
 	private static HashMap<String, String> getMatchedProperties(HashMap<String, String> matches,
-			HashMap<String, String> localNameToPrefixMaps, ArrayList<Ontology_Struc> ontologies) {
+			HashMap<String, String> localNameToPrefixMaps, ArrayList<OntologyStruc> ontologies) {
 		
 		HashMap <String, String> resolvedMatches = new HashMap <String, String>() ;
 		for(Map.Entry<String, String> entry : matches.entrySet()){ 
 			String s = entry.getKey() ;
 			String t = entry.getValue() ;
 			String rS = localNameToPrefixMaps.get(s) + ":" + s ;
-			for(Ontology_Struc currentOntology:ontologies) {
+			for(OntologyStruc currentOntology:ontologies) {
 				if(currentOntology.hasValue(t)) {
 					String rT = currentOntology.getName()+ ":" + t; ;
 			
@@ -173,28 +176,28 @@ public class Repair_Query {
 
 	// Create repaired repaired queries for all matches returned by SPSM
 	// This is done with object values instantiated (if possible)
-	public static ArrayList<Match_Struc> repairQueries(ArrayList<Match_Struc> matchRes, Query_Data queryData, String queryType, String datasetDir, String ontologyFilePath, int noResults) {
+	public static ArrayList<MatchStruc> repairQueries(ArrayList<MatchStruc> matchRes, QueryData queryData, String queryType, String datasetDir, String ontologyFilePath, int noResults) {
 			return  repairQueries(matchRes, queryData, queryType, datasetDir,  ontologyFilePath,  WITHDATA,  noResults) ;
 	}
  
-	public static ArrayList<Match_Struc> repairQueries(ArrayList<Match_Struc> matchRes, Query_Data queryData,
-			String queryType, String datasetDir, String ontologyFilePath, int withBindings, int noResults) {
+	public static ArrayList<MatchStruc> repairQueries(ArrayList<MatchStruc> matchRes, QueryData queryData,
+													  String queryType, String datasetDir, String ontologyFilePath, int withBindings, int noResults) {
 		
 		
 		// System.out.println("Original query (Jena formatted)\n" + queryData.originalQuery) ;
 		
 		// Read the ontology file and make the (target) ontology structure
-		ArrayList<Ontology_Struc> ontologies = Create_Query.make_ontologies(ontologyFilePath) ;
+		ArrayList<OntologyStruc> ontologies = CreateQuery.make_ontologies(ontologyFilePath) ;
 		
 		//for each of the match items, we want to create a query
 		if(ontologies != null) {
 			for(int i = 0 ; i < matchRes.size(); i++){
-				Match_Struc matchDetails = matchRes.get(i);
+				MatchStruc matchDetails = matchRes.get(i);
 					
 				//call the appropriate method based
 				//on the type of query
 				String query = repairQuery(matchDetails, queryData, queryType, datasetDir, withBindings, noResults, ontologies) ;
-				// System.out.println("Create_Query: Query created is: "+ query);
+				// System.out.println("CreateQuery: Query created is: "+ query);
 				matchDetails.setQuery(query);
 			}
 		}
@@ -203,8 +206,8 @@ public class Repair_Query {
 
 	}
 
-	public static String repairQuery(Match_Struc matchDetails, Query_Data queryData, String queryType, String datasetDir, int withBindings, 
-			int noResults, ArrayList<Ontology_Struc> ontologies) {
+	public static String repairQuery(MatchStruc matchDetails, QueryData queryData, String queryType, String datasetDir, int withBindings,
+									 int noResults, ArrayList<OntologyStruc> ontologies) {
 		
 		HashMap <String, String> matches = matchDetails.getMatches() ;
 		
@@ -273,7 +276,7 @@ public class Repair_Query {
 		
 		} catch (Exception e) {
 			
-			System.out.println("Repair_Query.java: The repaired query string doesn't parse as correct Sparql.");
+			System.out.println("RepairQuery.java: The repaired query string doesn't parse as correct Sparql.");
 			System.out.println(query) ;
 			query="";
 

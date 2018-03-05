@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import chain.core.CallSPSM;
+import chain.core.MatchStruc;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -14,9 +16,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import chain_source.Call_SPSM;
-import chain_source.Match_Struc;
-import chain_source.Repair_Schema;
+import chain.core.RepairSchema;
 
 /* Author Tanya Howden
  * Author Diana Bental
@@ -32,12 +32,12 @@ import chain_source.Repair_Schema;
  * match data between the source and target schemas
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Repair_Schema_Test_Cases {
+public class RepairSchemaTestCases {
 
-	private Call_SPSM spsmCall;
-	private Repair_Schema getRepairedSchema;
+	private CallSPSM spsmCall;
+	private RepairSchema getRepairedSchema;
 	
-	private ArrayList<Match_Struc> finalRes;
+	private ArrayList<MatchStruc> finalRes;
 	private String target, source;
 	private String test;
 	private int expectedNumMatches ;
@@ -69,14 +69,14 @@ public class Repair_Schema_Test_Cases {
 	
 	@Before
 	public void setup(){
-		spsmCall = new Call_SPSM();
-		getRepairedSchema = new Repair_Schema();
+		spsmCall = new CallSPSM();
+		getRepairedSchema = new RepairSchema();
 		
 		try{
 			fOut = new PrintWriter(new FileWriter(testRes,true));
 			
 			if(alreadyWritten==false){
-				fOut.write("Testing Results for Repair_Schema_Test_Cases.java\n\n");
+				fOut.write("Testing Results for RepairSchemaTestCases.java\n\n");
 				alreadyWritten = true;
 			}
 			
@@ -91,7 +91,7 @@ public class Repair_Schema_Test_Cases {
 		
 		source="auto(brand,name,color)";
 		target="car(year,brand,colour)";
-		finalRes = new ArrayList<Match_Struc>();
+		finalRes = new ArrayList<MatchStruc>();
 		
 		//call appropriate methods
 		finalRes=spsmCall.callSPSM(finalRes, source, target);
@@ -136,7 +136,7 @@ public class Repair_Schema_Test_Cases {
 		
 		source="conference(paper(title,review(date(day,month,year),author(name(first,second)))))";
 		target="conference(paper(title,document(date(day,month,year),writer(name(first,second)))))";
-		finalRes = new ArrayList<Match_Struc>();
+		finalRes = new ArrayList<MatchStruc>();
 		
 		//call appropriate methods
 		finalRes=spsmCall.callSPSM(finalRes, source, target);
@@ -164,7 +164,7 @@ public class Repair_Schema_Test_Cases {
 			}else{
 				// System.out.println(finalRes.size()) ;
 				//we can test repaired schema
-				Match_Struc result = finalRes.get(0);
+				MatchStruc result = finalRes.get(0);
 				fOut.write("Actual Result: repaired schema == '" + result.getRepairedSchema() + "' \n\n");
 				System.out.println("Actual Result: repaired schema == '" + result.getRepairedSchema());
 				assertTrue(result.getRepairedSchema().contains("conference(")) ;
@@ -187,7 +187,7 @@ public class Repair_Schema_Test_Cases {
 		
 		source="conference(paper(title,review(date(day,month,year),author(name(first,second)))))";
 		target="conference(paper(title,document(category(day,month,year),writer(name(first,second)))))";
-		finalRes = new ArrayList<Match_Struc>();
+		finalRes = new ArrayList<MatchStruc>();
 		
 		//call appropriate methods
 		finalRes = spsmCall.callSPSM(finalRes, source, target);
@@ -542,10 +542,10 @@ public class Repair_Schema_Test_Cases {
 		System.out.println("Expected number of repairs: " + expectedNumMatches) ;
 		
 		
-		Call_SPSM spsmCall = new Call_SPSM();
-		Repair_Schema getRepairedSchema = new Repair_Schema();
+		CallSPSM spsmCall = new CallSPSM();
+		RepairSchema getRepairedSchema = new RepairSchema();
 		
-		ArrayList<Match_Struc> finalRes = new ArrayList<Match_Struc>();
+		ArrayList<MatchStruc> finalRes = new ArrayList<MatchStruc>();
 		
 		finalRes=spsmCall.callSPSM(finalRes, source, target);
 		
@@ -575,7 +575,7 @@ public class Repair_Schema_Test_Cases {
 			
 			//we can test repaired schema
 			for(int i = 0 ; i < finalRes.size() ; i++){
-				Match_Struc currRes = finalRes.get(i);
+				MatchStruc currRes = finalRes.get(i);
 				
 				System.out.println("Repaired schema: "+currRes.getRepairedSchema());
 				System.out.println("Similarity == "+currRes.getSimValue()+" & size of matched structure == "+currRes.getNumMatchComponents());

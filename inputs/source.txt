@@ -1,1 +1,1 @@
-Astronaut(nationality)
+author(name)

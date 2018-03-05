@@ -1,7 +1,9 @@
-package chain_source;
+package chain.sparql;
  import java.util.*;
 
-import com.hp.hpl.jena.graph.Node;
+ import chain.core.MatchStruc;
+ import chain.core.NodeCHAIN;
+ import com.hp.hpl.jena.graph.Node;
 
 /* Author Tanya Howden
   * Date September 2017
@@ -12,8 +14,7 @@ import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.sparql.core.TriplePath;
-import com.hp.hpl.jena.sparql.core.Var;
-import com.hp.hpl.jena.sparql.syntax.ElementPathBlock;
+ import com.hp.hpl.jena.sparql.syntax.ElementPathBlock;
 import com.hp.hpl.jena.sparql.syntax.ElementVisitorBase;
 import com.hp.hpl.jena.sparql.syntax.ElementWalker;
 
@@ -25,11 +26,11 @@ import com.hp.hpl.jena.sparql.syntax.ElementWalker;
  * This class is tested in Schema_From_Query_Test_Cases.java
  * 
  */
-public class Schema_From_Query {
+public class SchemaFromQuery {
 	
 	//main method used for testing implementation
 	public static void main(String [] args){
-		Schema_From_Query getSchema = new Schema_From_Query();
+		SchemaFromQuery getSchema = new SchemaFromQuery();
 		
 		String query="PREFIX  dbo:  <http://dbpedia.org/ontology/> \n"
 		          + "PREFIX  dbp: <http://dbpedia.org/property/>   \n"
@@ -45,7 +46,7 @@ public class Schema_From_Query {
 		
 		String queryType="dbpedia";
 		
-		Match_Struc res = getSchema.getSchemaFromQuery(query, queryType);
+		MatchStruc res = getSchema.getSchemaFromQuery(query, queryType);
 		// System.out.println("Schema created from query: \n\n"+res.getRepairedSchema());
 		// System.out.println("Query Schema "+ res.getQuerySchema());
 		// System.out.println("Query Schema Head "+ res.getQuerySchemaHead());
@@ -56,11 +57,11 @@ public class Schema_From_Query {
 	
 	//first step to creating schema from query
 	//works out next step based on type of query that is getting passed in
-	public Match_Struc getSchemaFromQuery(String query, String queryType){ 
+	public MatchStruc getSchemaFromQuery(String query, String queryType){
 		//result that will be returned
 		//that will contain the query string
 		//schema string and schema tree
-		Match_Struc result = new Match_Struc();	
+		MatchStruc result = new MatchStruc();
 
 		
 		if(queryType.equals("sepa")){
@@ -71,13 +72,13 @@ public class Schema_From_Query {
 			System.out.println("Please choose either a sepa or dbpedia query to parse.");
 			return null;
 		}
-		// System.out.println("Schema_From_Query: " + result) ;
+		// System.out.println("SchemaFromQuery: " + result) ;
 		return result;
 	
 	}
 	
 	//create the schema for a sepa query that has been passed in as a parameter
-	public Match_Struc schemaFromSepaQuery(String query, Match_Struc res){
+	public MatchStruc schemaFromSepaQuery(String query, MatchStruc res){
 		String schema="";
 		String predicate = "" ;
 		
@@ -151,7 +152,7 @@ public class Schema_From_Query {
 				//add final bracket
 				schema=schema+")";
 				
-				System.out.println("Schema_From_Query: Chain schema "+schema);				
+				System.out.println("SchemaFromQuery: Chain schema "+schema);
 				
 			
 				
@@ -165,18 +166,18 @@ public class Schema_From_Query {
 		
 		//set string and tree equivalent of schema in our structure
 		//and return
-		// System.out.println("Schema_From_Query: Predicate " + predicate) ;
+		// System.out.println("SchemaFromQuery: Predicate " + predicate) ;
 		//res.setRepairedSchema(schema);
 		//res.setRepairedSchemaTree(createTreeFromSchemaString(schema));
 		res.setQuerySchema(schema);
 		res.setQuerySchemaHead(predicate);
-		// System.out.println("Schema_From_Query: Schema head in setter " + res.getQuerySchemaHead()) ;
+		// System.out.println("SchemaFromQuery: Schema head in setter " + res.getQuerySchemaHead()) ;
 		
 		return res;
 	}
 	
 	//create the schema for a dbpedia query that has been passed in as a parameter
-	public Match_Struc schemaFromDbpediaQuery(String query, Match_Struc res){
+	public MatchStruc schemaFromDbpediaQuery(String query, MatchStruc res){
 		String schema="";
 		String predicate = "";
 		

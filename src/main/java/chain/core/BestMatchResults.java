@@ -1,4 +1,5 @@
-package chain_source;
+package chain.core;
+
 import java.util.*;
 
 /* Author Tanya Howden
@@ -16,38 +17,38 @@ import java.util.*;
  * 
  * This class is tested in Match_Results_Test_Cases.java & SPSM_Filter_Results_Test_Cases.java
  */
-public class Best_Match_Results {
+public class BestMatchResults {
 	
 	//main method used only for testing purposes
 	//allows for SPSM to be called with arguments from console
 	public static void main(String[] args){
-		Best_Match_Results instance = new Best_Match_Results();
+		BestMatchResults instance = new BestMatchResults();
 		
-		ArrayList<Match_Struc> results = new ArrayList<Match_Struc>();
-		results.add(new Match_Struc(1.0,"author(name,document)"));
-		results.add(new Match_Struc(0.1,"author(name,document)"));
-		results.add(new Match_Struc(0.0,"author(name,document)"));
-		results.add(new Match_Struc(0.2,"author(name,document)"));
-		results.add(new Match_Struc(0.7,"author(name,document)"));
-		results.add(new Match_Struc(0.3,"author(name,document)"));
-		results.add(new Match_Struc(0.8,"author(name,document)"));
-		results.add(new Match_Struc(0.6,"author(name,document)"));
-		results.add(new Match_Struc(0.9,"author(name,document)"));
-		results.add(new Match_Struc(0.4,"author(name,document)"));
-		results.add(new Match_Struc(0.5,"author(name,document)"));
+		ArrayList<MatchStruc> results = new ArrayList<MatchStruc>();
+		results.add(new MatchStruc(1.0,"author(name,document)"));
+		results.add(new MatchStruc(0.1,"author(name,document)"));
+		results.add(new MatchStruc(0.0,"author(name,document)"));
+		results.add(new MatchStruc(0.2,"author(name,document)"));
+		results.add(new MatchStruc(0.7,"author(name,document)"));
+		results.add(new MatchStruc(0.3,"author(name,document)"));
+		results.add(new MatchStruc(0.8,"author(name,document)"));
+		results.add(new MatchStruc(0.6,"author(name,document)"));
+		results.add(new MatchStruc(0.9,"author(name,document)"));
+		results.add(new MatchStruc(0.4,"author(name,document)"));
+		results.add(new MatchStruc(0.5,"author(name,document)"));
 		
 		results = instance.getThresholdAndFilter(results,0.3,0);
 		
 		System.out.println("\nResults after filtering:");
 		for(int i = 0 ; i < results.size() ; i++){
-			Match_Struc current = results.get(i);
+			MatchStruc current = results.get(i);
 			System.out.println(current.getDatasetSchema() + " similarity: " + current.getSimValue());
 		}
 	}
 	
 	//start off by taking in the results, threshold value and the number of results wanted
 	//if these values haven't been passed in through params, then ask user to enter in console
-	public ArrayList<Match_Struc> getThresholdAndFilter(ArrayList<Match_Struc> results, Double threshVal, int limNum){
+	public ArrayList<MatchStruc> getThresholdAndFilter(ArrayList<MatchStruc> results, Double threshVal, int limNum){
 		System.out.println("\nFiltering results from SPSM");
 		
 		Double thresholdVal;
@@ -70,9 +71,9 @@ public class Best_Match_Results {
 		}
 		
 		//strip out any results that are lower than the threshold value
-		ArrayList<Match_Struc> filteredList = new ArrayList<Match_Struc>();
+		ArrayList<MatchStruc> filteredList = new ArrayList<MatchStruc>();
 		for(int i = 0 ; i < results.size() ; i++){
-			Match_Struc currMatch = results.get(i);
+			MatchStruc currMatch = results.get(i);
 			double currSim = currMatch.getSimValue();
 			
 			if(currSim >= thresholdVal){
@@ -87,10 +88,10 @@ public class Best_Match_Results {
 	
 	//this method will sort the resulting matches after they have been filtered
 	//to ensure that only those over or equal to the threshold value are left
-	public ArrayList<Match_Struc> sortResultingMatches(ArrayList<Match_Struc> filteredRes,int limitNo){
-		Collections.sort(filteredRes, new Comparator<Match_Struc>(){
+	public ArrayList<MatchStruc> sortResultingMatches(ArrayList<MatchStruc> filteredRes, int limitNo){
+		Collections.sort(filteredRes, new Comparator<MatchStruc>(){
 			@Override
-			public int compare(Match_Struc m1, Match_Struc m2){
+			public int compare(MatchStruc m1, MatchStruc m2){
 				return Double.compare(m2.getSimValue(), m1.getSimValue());
 			}
 		});
@@ -98,14 +99,14 @@ public class Best_Match_Results {
 		//after sorting, cut the size of the results to be the limit
 		//that the user has entered at the start
 		if(limitNo != 0 && filteredRes.size() >= limitNo){
-			filteredRes = new ArrayList<Match_Struc>(filteredRes.subList(0, limitNo));
+			filteredRes = new ArrayList<MatchStruc>(filteredRes.subList(0, limitNo));
 		}
 		
 		return filteredRes;
 	}
 	
 	//used for testing to display and check what is being returned
-	public void displayResults(ArrayList<Match_Struc> res){
+	public void displayResults(ArrayList<MatchStruc> res){
 		if(res.size() == 0){
 			System.out.println("\nNo matches over this threshold value!");
 		}else{

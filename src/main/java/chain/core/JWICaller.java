@@ -1,4 +1,4 @@
-package chain_source;
+package chain.core;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +25,7 @@ import edu.mit.jwi.morph.WordnetStemmer;
 // On a single word
 // And returns an arraylist of all the associated words for every word in the term
 
-public class JWI_Caller {
+public class JWICaller {
 
 	public static void main(String[] args) {
 		
@@ -33,10 +33,10 @@ public class JWI_Caller {
 		Set <String> associatedWords = new HashSet <String>() ;
 		try {IDictionary dict = openDictionary () ; 
 		
-		words = StringParser.splitCamelCase("waterBodyMeasures") ;	
+		words = StringParser.splitCamelCase("waterBodyMeasures") ;
 		associatedWords.clear() ;
 		for(String word: words) {
-			associatedWords = JWI_Caller.getAssociatedWords(dict, word, associatedWords) ;
+			associatedWords = JWICaller.getAssociatedWords(dict, word, associatedWords) ;
 		}
 		System.out.println(associatedWords) ;
 		System.out.println(associatedWords.size()) ; //559
@@ -44,7 +44,7 @@ public class JWI_Caller {
 		words = StringParser.splitCamelCase("waterBodyPressures") ;	
 		associatedWords.clear()  ;		
 		for(String word: words) {
-			associatedWords = JWI_Caller.getAssociatedWords(dict, word, associatedWords) ;
+			associatedWords = JWICaller.getAssociatedWords(dict, word, associatedWords) ;
 		}
 		System.out.println(associatedWords) ;
 		System.out.println(associatedWords.size()) ;  //428
@@ -52,7 +52,7 @@ public class JWI_Caller {
 		words = StringParser.splitCamelCase("conferenceDocument") ;	
 		associatedWords.clear()  ;
 		for(String word: words) {
-			associatedWords = JWI_Caller.getAssociatedWords(dict, word, associatedWords) ;
+			associatedWords = JWICaller.getAssociatedWords(dict, word, associatedWords) ;
 		}
 		System.out.println(associatedWords) ;
 		System.out.println(associatedWords.size()) ; //122
@@ -60,7 +60,7 @@ public class JWI_Caller {
 		words = StringParser.splitCamelCase("conferenceReview") ;	
 		associatedWords.clear()  ;
 		for(String word: words) {
-			associatedWords = JWI_Caller.getAssociatedWords(dict, word, associatedWords) ;
+			associatedWords = JWICaller.getAssociatedWords(dict, word, associatedWords) ;
 		}
 		System.out.println(associatedWords) ;
 		System.out.println(associatedWords.size()) ; //129

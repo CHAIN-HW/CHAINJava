@@ -1,10 +1,9 @@
-package chain_source;
- import java.util.ArrayList;
+package chain.core;
+
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
- 
- /* Author Tanya Howden
+
+/* Author Tanya Howden
   * Date September 2017
   * Modified
   */
@@ -24,7 +23,7 @@ import java.util.Iterator;
 
  * 
  */
-public class Match_Struc{
+public class MatchStruc {
 	
 	//fields
 	private double similarity;         // the similarity score for this SPSM schema match 
@@ -38,7 +37,7 @@ public class Match_Struc{
 	private String querySchemaHead; // The head of the original query schema
 	
 	//constructor
-	public Match_Struc(double sim, String targetSchema){
+	public MatchStruc(double sim, String targetSchema){
 		similarity=sim;
 		datasetSchema=targetSchema;
 		matchComponents=new ArrayList<String[]>();
@@ -51,7 +50,7 @@ public class Match_Struc{
 	}
 	
 	//constructor 
-	public Match_Struc(){
+	public MatchStruc(){
 		similarity=0;
 		datasetSchema="";
 		matchComponents=new ArrayList<String[]>();
@@ -212,7 +211,7 @@ public class Match_Struc{
 			matchesStr += "\n" ;
 		}
 		
-		return("Match_Struc: \n" 
+		return("MatchStruc: \n"
 				+ "similarity: " + similarity + "\n"
 				+ "dataset: " + datasetSchema + "\n"
 				+ "matchComponents: " + matchesStr + "\n"

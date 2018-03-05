@@ -1,5 +1,9 @@
-package chain_source;
+package chain.sparql;
 import java.util.ArrayList;
+
+import chain.core.CallSPSM;
+import chain.core.MatchStruc;
+import chain.core.RepairSchema;
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
@@ -19,20 +23,20 @@ import com.hp.hpl.jena.util.FileManager;
 
 /*
  * 
- * Responsible for taking in a Match_Struc 
+ * Responsible for taking in a MatchStruc
  * object and running the query that is 
  * stored as part of that structure.
  * 
  * This class is tested in Run_Query_Test_Cases.java
  * 
  */
-public class Run_Query {
+public class RunQuery {
 	//main method, used for testing the class
 	public static void main (String[] args){
-		Run_Query run = new Run_Query();
-		Create_Query queryCreator = new Create_Query();
-		Call_SPSM spsmCall = new Call_SPSM();
-		Repair_Schema getRepairedSchemas = new Repair_Schema();
+		RunQuery run = new RunQuery();
+		CreateQuery queryCreator = new CreateQuery();
+		CallSPSM spsmCall = new CallSPSM();
+		RepairSchema getRepairedSchemas = new RepairSchema();
 
 		// Example of creating and running a Sepa query
 		String source="waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
@@ -73,18 +77,18 @@ public class Run_Query {
 //				+ "LIMIT 20" ;
 		
 		// extract data from the original query, erady to build it into the new query
-		Query_Data queryData = new Query_Data(query) ;
+		QueryData queryData = new QueryData(query) ;
 		System.out.println(queryData) ;
 		
-		ArrayList<Match_Struc> finalRes = new ArrayList<Match_Struc>();
+		ArrayList<MatchStruc> finalRes = new ArrayList<MatchStruc>();
 	
 		
 		// Extract the schemas from the source query and call SPSM
 		
 		spsmCall.callSPSM(finalRes, source, target);
 		
-		for (Match_Struc f:finalRes) {
-			System.out.println("Match_Struc:" + f);
+		for (MatchStruc f:finalRes) {
+			System.out.println("MatchStruc:" + f);
 		}
 		
 
@@ -92,22 +96,22 @@ public class Run_Query {
 			finalRes = getRepairedSchemas.repairSchemas(finalRes);
 		}
 		
-		for (Match_Struc f:finalRes) {
-			System.out.println("Match_Struc:" + f);
+		for (MatchStruc f:finalRes) {
+			System.out.println("MatchStruc:" + f);
 		}
 		
 		finalRes = queryCreator.createQueries(finalRes, queryData, queryType, dataLocation, ontologyPath, maxValues);
 		
 				
 		//select first element in list and run that query
-		Match_Struc first = finalRes.get(0);
+		MatchStruc first = finalRes.get(0);
 		run.runQuery(first, queryType, dataLocation);
 		
 		
 	}
 	
 	
-	public ResultSet runQuery(Match_Struc current, String queryType, String datasetDir){
+	public ResultSet runQuery(MatchStruc current, String queryType, String datasetDir){
 			
 		if (current.getRepairedSchema() != null && !current.getRepairedSchema().isEmpty()) {
 			System.out.println("Repaired schema: "+current.getRepairedSchema());
@@ -126,7 +130,7 @@ public class Run_Query {
 	}
 	
 	//runs a sepa query
-	public ResultSet runSepaQuery(String query, String datasetToUseDir, Match_Struc currMatchStruc){
+	public ResultSet runSepaQuery(String query, String datasetToUseDir, MatchStruc currMatchStruc){
 		System.out.println("Running sepa query,");
 		System.out.println("\n\nQuery:\t" + query);	
 		
@@ -158,14 +162,14 @@ public class Run_Query {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-			System.out.println("Run_Query.java: QUERY ERROR!");
+			System.out.println("RunQuery.java: QUERY ERROR!");
 			return null;
 		}
 		
 	}
 	
 	//runs a dbpedia query
-	public ResultSet runDbpediaQuery(String query, Match_Struc currMatchStruc){
+	public ResultSet runDbpediaQuery(String query, MatchStruc currMatchStruc){
 		System.out.println("\n\nRunning dbpedia query,");
 		System.out.println("\nQuery:\t"+query);
 
@@ -192,7 +196,7 @@ public class Run_Query {
 			
 		}catch(Exception e){
 			e.printStackTrace();
-			System.out.println("Run_Query.java: QUERY ERROR!");
+			System.out.println("RunQuery.java: QUERY ERROR!");
 			return null;
 		}
 		

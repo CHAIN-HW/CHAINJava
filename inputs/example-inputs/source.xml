@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><context>
+  <node id="n0" preprocessed="true">
+    <name>City</name>
+    <label-formula>n0_0</label-formula>
+    <node-formula>n0_0</node-formula>
+    <tokens>
+      <token id="0">
+        <text>city</text>
+        <lemma>city</lemma>
+        <senses>
+          <sense id="n#8542298"/>
+          <sense id="n#8558466"/>
+          <sense id="n#8243256"/>
+        </senses>
+      </token>
+    </tokens>
+    <children>
+      <node id="n1" parent-id="n0" preprocessed="true">
+        <name>country</name>
+        <label-formula>n1_0</label-formula>
+        <node-formula>n1_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>country</text>
+            <lemma>country</lemma>
+            <senses>
+              <sense id="n#8185877"/>
+              <sense id="n#8562388"/>
+              <sense id="n#8183451"/>
+              <sense id="n#8662297"/>
+              <sense id="n#8514304"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+      <node id="n2" parent-id="n0" preprocessed="true">
+        <name>populationTotal</name>
+        <label-formula>n2_0 &amp; n2_1</label-formula>
+        <node-formula>(n2_0 &amp; n2_1) &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>populationtotal</text>
+            <lemma>populationtotal</lemma>
+            <senses>
+              <sense id="n#8196797"/>
+              <sense id="n#8195659"/>
+              <sense id="n#6035684"/>
+              <sense id="n#13802016"/>
+              <sense id="n#1260649"/>
+            </senses>
+          </token>
+          <token id="1">
+            <text>total</text>
+            <lemma>total</lemma>
+            <senses>
+              <sense id="n#4360881"/>
+              <sense id="n#5869651"/>
+              <sense id="v#2651091"/>
+              <sense id="v#951320"/>
+              <sense id="v#260268"/>
+              <sense id="a#517305"/>
+              <sense id="a#524974"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+    </children>
+  </node>
+</context>

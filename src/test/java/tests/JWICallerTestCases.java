@@ -16,11 +16,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import chain_source.Call_SPSM;
-import chain_source.Create_Query;
-import chain_source.JWI_Caller;
-import chain_source.Repair_Schema;
-import chain_source.StringParser;
+import chain.core.JWICaller;
+import chain.core.StringParser;
 import edu.mit.jwi.IDictionary;
 
 /* Author Diana Bental
@@ -29,15 +26,15 @@ import edu.mit.jwi.IDictionary;
  */
 
 /*
- * Responsible for testing JWI_Caller.java 
+ * Responsible for testing JWICaller.java
  * which uses JWI to call WordNet
  * 
  */
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
-public class JWI_Caller_Test_Cases {
-	private JWI_Caller JWIcaller ;
+public class JWICallerTestCases {
+	private JWICaller JWIcaller ;
 	private IDictionary dict ;
 	
 	private ArrayList<String> words = new ArrayList<String>() ;	
@@ -50,7 +47,7 @@ public class JWI_Caller_Test_Cases {
 	
 	@BeforeClass
 	public static void beforeAll(){
-		System.out.println("These tests are responsible for testing JWI_Caller.java to ensure that\n"
+		System.out.println("These tests are responsible for testing JWICaller.java to ensure that\n"
 				+"the JWI caller correctly splits a camel-case or similar word sequence into separate one-word components\n"
 				+"and then calls JWI to get the associated words from WordNet.");
 		System.out.println("\nThe results from these tests can be found in outputs/testing/JWI_Caller_Test.txt\n");
@@ -75,7 +72,7 @@ public class JWI_Caller_Test_Cases {
 			fOut = new PrintWriter(new FileWriter(testRes,true));
 			
 			if(alreadyWritten==false){
-				fOut.write("Testing Results for JWI_Caller_Test_Cases.java\n\n");
+				fOut.write("Testing Results for JWICallerTestCases.java\n\n");
 				alreadyWritten = true;
 			}
 			
@@ -106,7 +103,7 @@ public class JWI_Caller_Test_Cases {
 		words = StringParser.splitCamelCase(w) ;	
 		
 		for(String word: words) {
-			associatedWords = JWI_Caller.getAssociatedWords(dict, word, associatedWords) ;
+			associatedWords = JWICaller.getAssociatedWords(dict, word, associatedWords) ;
 		}
 		System.out.println(associatedWords) ;
 		System.out.println(associatedWords.size()) ; 
@@ -129,7 +126,7 @@ public class JWI_Caller_Test_Cases {
 		words = StringParser.splitCamelCase(w) ;	
 		
 		for(String word: words) {
-			associatedWords = JWI_Caller.getAssociatedWords(dict, word, associatedWords) ;
+			associatedWords = JWICaller.getAssociatedWords(dict, word, associatedWords) ;
 		}
 		System.out.println(associatedWords) ;
 		System.out.println(associatedWords.size()) ; 
@@ -154,7 +151,7 @@ public class JWI_Caller_Test_Cases {
 		words = StringParser.splitCamelCase(w) ;	
 		
 		for(String word: words) {
-			associatedWords = JWI_Caller.getAssociatedWords(dict, word, associatedWords) ;
+			associatedWords = JWICaller.getAssociatedWords(dict, word, associatedWords) ;
 		}
 		System.out.println(associatedWords) ;
 		System.out.println(associatedWords.size()) ; 
@@ -173,7 +170,7 @@ public class JWI_Caller_Test_Cases {
 		words = StringParser.splitCamelCase(w) ;	
 		
 		for(String word: words) {
-			associatedWords = JWI_Caller.getAssociatedWords(dict, word, associatedWords) ;
+			associatedWords = JWICaller.getAssociatedWords(dict, word, associatedWords) ;
 		}
 		System.out.println(associatedWords) ;
 		System.out.println(associatedWords.size()) ; 
@@ -201,7 +198,7 @@ public class JWI_Caller_Test_Cases {
 		
 		try {
 			for(String word: words) {
-				associatedWords = JWI_Caller.getAssociatedWords(dict, word, associatedWords) ;
+				associatedWords = JWICaller.getAssociatedWords(dict, word, associatedWords) ;
 			}
 			fail("Should get an exception from a null word") ;
 			

@@ -1,4 +1,4 @@
-package chain_source;
+package chain.core;
 
 /* @author Diana Bental
  * @author Tanya Howden
@@ -17,12 +17,12 @@ import it.unitn.disi.smatch.data.trees.INode;
 /*
  * This class is responsible for initially taking in both the 
  * target and source schema before calling SPSM with these schemas
- * it will then store the results as an ArrayList of Match_Struc objects
+ * it will then store the results as an ArrayList of MatchStruc objects
  * 
  * This class is tested in SPSM_Test_Cases.java & SPSM_Filter_Results_Test_Cases.java
  * 
  */
-public class Call_SPSM{
+public class CallSPSM {
 	
 	private String[] targetList;
 	private static int spsmCallCounter = 0;
@@ -32,9 +32,9 @@ public class Call_SPSM{
 	
 	//main method used for testing purposes during dev only
 	public static void main (String[] args){
-		Call_SPSM classInst = new Call_SPSM();
+		CallSPSM classInst = new CallSPSM();
 		
-		ArrayList<Match_Struc> result = new ArrayList<Match_Struc>();
+		ArrayList<MatchStruc> result = new ArrayList<MatchStruc>();
 		String source = "waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
 		String target = "waterBodyPressures(dataSource,identifiedDate,affectsGroundwater,waterBodyId)";
 		
@@ -53,7 +53,7 @@ public class Call_SPSM{
 			System.out.println("No Matches.");
 		}else{
 			for(int i = 0 ; i < result.size() ; i++){
-				Match_Struc currMatch = result.get(i);
+				MatchStruc currMatch = result.get(i);
 				System.out.println("\nResult Number "+(i+1)+": "+currMatch.getDatasetSchema());
 				System.out.println("Has a similarity of "+currMatch.getSimValue());
 				System.out.println("And " + currMatch.getNumMatchComponents() + " matche(s)");
@@ -74,7 +74,7 @@ public class Call_SPSM{
 	// Call SPSM on the source schema and one or more target schemas.
 	// If the schemas are not passed as a parameter then get them from the user
 	
-	public ArrayList<Match_Struc> callSPSM(ArrayList<Match_Struc> results, String srcSchema, String targetSchemas){
+	public ArrayList<MatchStruc> callSPSM(ArrayList<MatchStruc> results, String srcSchema, String targetSchemas){
 		//if we haven't been passed the schemas as params
 		//then get them through the command line
 		if(srcSchema==null && targetSchemas==null){
@@ -143,7 +143,7 @@ public class Call_SPSM{
 	//makes call to SPSM through using .sh file
 	// Match one source schema to one target schema
 	// May return multiple matches
-	public ArrayList<Match_Struc> callSPSMOnce(ArrayList<Match_Struc> results, String currTarget){
+	public ArrayList<MatchStruc> callSPSMOnce(ArrayList<MatchStruc> results, String currTarget){
 		// System.out.println("Calling SPSM");
 		
 		//first clean the files
@@ -170,7 +170,7 @@ public class Call_SPSM{
 			e.printStackTrace();
 		}
 		
-		// System.out.println("Call_SPSM.java: Reporting the match structures created by SPSM") ;
+		// System.out.println("CallSPSM.java: Reporting the match structures created by SPSM") ;
 		// System.out.println(results) ;
 	
 		return results ;
@@ -178,7 +178,7 @@ public class Call_SPSM{
 	
 	//then record the results from the .ser file returned from spsm
 	@SuppressWarnings("unchecked")
-	public ArrayList<Match_Struc> readSerialisedResults(ArrayList<Match_Struc> results,String targetSchema){
+	public ArrayList<MatchStruc> readSerialisedResults(ArrayList<MatchStruc> results, String targetSchema){
 		// System.out.println("Reading Results from SPSM");
 		
 		//get the serialised content from the .ser file
@@ -207,13 +207,13 @@ public class Call_SPSM{
 		return parseMatchObject(results,targetSchema,mapping);
 	}
 	
-	public ArrayList<Match_Struc> parseMatchObject(ArrayList<Match_Struc> results, String targetSchema, IContextMapping<INode> mapping){
+	public ArrayList<MatchStruc> parseMatchObject(ArrayList<MatchStruc> results, String targetSchema, IContextMapping<INode> mapping){
 		//start picking data out of the object for this target
 	
-		Match_Struc newMatch;
+		MatchStruc newMatch;
 	
 		double similarity = mapping.getSimilarity();
-		newMatch = new Match_Struc(similarity,targetSchema);
+		newMatch = new MatchStruc(similarity,targetSchema);
 		
 		String[] currMatch;
 		

@@ -7,6 +7,10 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import chain.core.CallSPSM;
+import chain.core.MatchStruc;
+import chain.sparql.CreateQuery;
+import chain.sparql.RunQuery;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -16,12 +20,8 @@ import org.junit.runners.MethodSorters;
 
 import com.hp.hpl.jena.query.ResultSet;
 
-import chain_source.Call_SPSM;
-import chain_source.Create_Query;
-import chain_source.Match_Struc;
-import chain_source.Query_Data;
-import chain_source.Repair_Schema;
-import chain_source.Run_Query;
+import chain.sparql.QueryData;
+import chain.core.RepairSchema;
 
 /* Author Tanya Howden
  * Author Diana Bental
@@ -31,14 +31,14 @@ import chain_source.Run_Query;
  */
 
 /*
- * Responsible for testing Run_Query.java to ensure
+ * Responsible for testing RunQuery.java to ensure
  * that after creating a query, we are able to run it 
  * without any errors.
  * 
  */
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Run_Query_Test_Cases {
+public class RunQueryTestCases {
 	
 	private static final int EXCEPTION = 1 ;
 	private static final int WITHRESULTS = 2 ;
@@ -305,12 +305,12 @@ public class Run_Query_Test_Cases {
 	          + "LIMIT 20" ;
 	
 	
-	private Call_SPSM spsmCall;
-	private Repair_Schema getRepairedSchema;
-	private Create_Query createQuery;
-	private Run_Query run;
+	private CallSPSM spsmCall;
+	private RepairSchema getRepairedSchema;
+	private CreateQuery createQuery;
+	private RunQuery run;
 	
-	private ArrayList<Match_Struc> finalRes;
+	private ArrayList<MatchStruc> finalRes;
 	private String target, source;
 	
 	//for writing results
@@ -320,7 +320,7 @@ public class Run_Query_Test_Cases {
 	
 	@BeforeClass
 	public static void beforeAll(){
-		System.out.println("These tests are responsible for testing Run_Query.java to ensure that\n"
+		System.out.println("These tests are responsible for testing RunQuery.java to ensure that\n"
 				+"after creating a query, we are able to run it without any errors.");
 		System.out.println("\nThe results from these tests can be found in outputs/testing/Run_Queries_Test.txt\n");
 
@@ -337,16 +337,16 @@ public class Run_Query_Test_Cases {
 	
 	@Before
 	public void setup(){
-		spsmCall = new Call_SPSM();
-		getRepairedSchema = new Repair_Schema();
-		createQuery = new Create_Query();
-		run = new Run_Query();
+		spsmCall = new CallSPSM();
+		getRepairedSchema = new RepairSchema();
+		createQuery = new CreateQuery();
+		run = new RunQuery();
 		
 		try{
 			fOut = new PrintWriter(new FileWriter(testRes,true));
 			
 			if(alreadyWritten==false){
-				fOut.write("Testing Results for Run_Query_Test_Cases.java\n\n");
+				fOut.write("Testing Results for RunQueryTestCases.java\n\n");
 				alreadyWritten = true;
 			}
 			
@@ -602,7 +602,7 @@ public class Run_Query_Test_Cases {
 	
 
 	private void testSepa(String testID, String source, String target, String query, int ExpectedResult) {
-		finalRes = new ArrayList<Match_Struc>();
+		finalRes = new ArrayList<MatchStruc>();
 		
 		//call appropriate methods
 		finalRes=spsmCall.callSPSM(finalRes, source, target);
@@ -611,11 +611,11 @@ public class Run_Query_Test_Cases {
 			finalRes = getRepairedSchema.repairSchemas(finalRes);
 		}
 		
-		Query_Data queryData = new Query_Data(query) ;
+		QueryData queryData = new QueryData(query) ;
 		System.out.println(queryData) ;
 		finalRes = createQuery.createQueries(finalRes, queryData, "sepa","queryData/sepa/sepa_datafiles/", "queryData/sepa/sepa_ontology.json",0);
 		// Run the first query only
-		Match_Struc current = finalRes.get(0);
+		MatchStruc current = finalRes.get(0);
 		
 		fOut.write("Test " + testID + " - sepa query\n");
 		fOut.write("Trying to run query: \n\n" + current.getQuery());
@@ -644,18 +644,18 @@ public class Run_Query_Test_Cases {
 	}
 	
 	private void testDBP(String testID, String source, String target, String query, int ExpectedResult) {
-		finalRes = new ArrayList<Match_Struc>();		
+		finalRes = new ArrayList<MatchStruc>();
 		finalRes=spsmCall.callSPSM(finalRes, source, target);
 		
 		if(finalRes!=null && finalRes.size()!=0){
 			finalRes = getRepairedSchema.repairSchemas(finalRes);
 		}
 		
-		Query_Data queryData = new Query_Data(query) ;
+		QueryData queryData = new QueryData(query) ;
 		System.out.println(queryData) ;
 		finalRes = createQuery.createQueries(finalRes, queryData, "dbpedia", null, "queryData/dbpedia/dbpedia_ontology.json",20);
 		// Run the first query only
-		Match_Struc current = finalRes.get(0);
+		MatchStruc current = finalRes.get(0);
 		
 		fOut.write("Test " + testID + " - dbpedia query\n");
 		fOut.write("Trying to run query: \n\n" + current.getQuery());

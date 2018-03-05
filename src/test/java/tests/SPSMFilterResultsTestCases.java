@@ -7,11 +7,11 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import chain.core.CallSPSM;
+import chain.core.MatchStruc;
 import org.junit.*;
 
-import chain_source.Best_Match_Results;
-import chain_source.Call_SPSM;
-import chain_source.Match_Struc;
+import chain.core.BestMatchResults;
 
 /* Author Tanya Howden
  * Author Diana Bental
@@ -23,15 +23,15 @@ import chain_source.Match_Struc;
 
 /*
  * Responsible for testing the whole of task 1 which involves
- * methods from both Call_SPSM.java and Best_Match_Results.java
+ * methods from both CallSPSM.java and BestMatchResults.java
  * to make sure that we get results from SPSM that have been filtered
  * and sorted
  */
-public class SPSM_Filter_Results_Test_Cases {
+public class SPSMFilterResultsTestCases {
 
-	private Call_SPSM spsmCall;
-	private Best_Match_Results filterResCall;
-	private ArrayList<Match_Struc> finalRes;
+	private CallSPSM spsmCall;
+	private BestMatchResults filterResCall;
+	private ArrayList<MatchStruc> finalRes;
 	private String target, source;
 	private static int counter;
 	
@@ -42,7 +42,7 @@ public class SPSM_Filter_Results_Test_Cases {
 	
 	@BeforeClass
 	public static void beforeAll(){
-		System.out.println("These tests are responsible for testing the output results from Call_SPSM.java & Best_Match_Results.java\n"
+		System.out.println("These tests are responsible for testing the output results from CallSPSM.java & BestMatchResults.java\n"
 				+ "which makes sure that we get results returned from SPSM that have then been filtered and sorted by CHAIn.");
 		System.out.println("\nThe results from these tests can be found in outputs/testing/Task_1_Tests.txt\n");
 		
@@ -60,14 +60,14 @@ public class SPSM_Filter_Results_Test_Cases {
 		
 	@Before
 	public void setup(){
-		spsmCall = new Call_SPSM();
-		filterResCall = new Best_Match_Results();
+		spsmCall = new CallSPSM();
+		filterResCall = new BestMatchResults();
 		
 		try{
 			fOut = new PrintWriter(new FileWriter(testRes,true));
 			
 			if(alreadyWritten==false){
-				fOut.write("Testing Results for SPSM_Filter_Results_Test_Cases.java\n\n");
+				fOut.write("Testing Results for SPSMFilterResultsTestCases.java\n\n");
 				alreadyWritten = true;
 			}
 			
@@ -82,7 +82,7 @@ public class SPSM_Filter_Results_Test_Cases {
 		
 		source = "author(name)";
 		target = "author(name) ; document(title,author) ; paperWriter(firstname,surname,paper) ; reviewAuthor(firstname,lastname,review)";
-		finalRes = new ArrayList<Match_Struc>();
+		finalRes = new ArrayList<MatchStruc>();
 		
 		finalRes= spsmCall.callSPSM(finalRes, source, target);
 		
@@ -113,7 +113,7 @@ public class SPSM_Filter_Results_Test_Cases {
 		
 		source="author(name)";
 		target="author(name)";
-		finalRes = new ArrayList<Match_Struc>();
+		finalRes = new ArrayList<MatchStruc>();
 		
 		finalRes=spsmCall.callSPSM(finalRes, source, target);
 		
@@ -144,7 +144,7 @@ public class SPSM_Filter_Results_Test_Cases {
 		
 		source="author(name)";
 		target="document(title,author)";
-		finalRes = new ArrayList<Match_Struc>();
+		finalRes = new ArrayList<MatchStruc>();
 		
 		finalRes=spsmCall.callSPSM(finalRes, source, target);
 		
@@ -174,7 +174,7 @@ public class SPSM_Filter_Results_Test_Cases {
 		
 		source = "author(name)";
 		target = "author(name) ; document(title,author) ; paperWriter(firstname,surname,paper) ; reviewAuthor(firstname,lastname,review)";
-		finalRes = new ArrayList<Match_Struc>();
+		finalRes = new ArrayList<MatchStruc>();
 		
 		finalRes=spsmCall.callSPSM(finalRes, source, target);
 		
@@ -205,7 +205,7 @@ public class SPSM_Filter_Results_Test_Cases {
 		
 		source="author(name)";
 		target="document(title,author)";
-		finalRes = new ArrayList<Match_Struc>();
+		finalRes = new ArrayList<MatchStruc>();
 		
 		finalRes=spsmCall.callSPSM(finalRes, source, target);
 		
