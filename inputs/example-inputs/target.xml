@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><context>
   <node id="n0">
-    <name>author</name>
+    <name>City</name>
     <children>
       <node id="n1" parent-id="n0">
-        <name>name</name>
+        <name>country</name>
+      </node>
+      <node id="n2" parent-id="n0">
+        <name>populationTotal</name>
       </node>
     </children>
   </node>

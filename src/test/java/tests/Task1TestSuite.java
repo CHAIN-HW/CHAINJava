@@ -12,19 +12,19 @@ import org.junit.runners.Suite.SuiteClasses;
 /*
  * 
  * Testing suite for task 2 that
- * runs Match_Results_Test_Cases,
- * SPSM_Filter_Results_Test_Cases
- * and SPSM_Test_Cases
+ * runs MatchResultsTestCases,
+ * SPSMFilterResultsTestCases
+ * and SPSMTestCases
  * 
  */
 
 @RunWith(Suite.class)
 
 @SuiteClasses({ 
-		Match_Results_Test_Cases.class,
-		SPSM_Filter_Results_Test_Cases.class, 
-		SPSM_Test_Cases.class 
+		MatchResultsTestCases.class,
+		SPSMFilterResultsTestCases.class,
+		SPSMTestCases.class
 })
 
-public class Task1_Test_Suite {
+public class Task1TestSuite {
 }

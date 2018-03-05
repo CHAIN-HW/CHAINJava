@@ -7,10 +7,9 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import chain.core.BestMatchResults;
+import chain.core.MatchStruc;
 import org.junit.*;
-
-import chain_source.Best_Match_Results;
-import chain_source.Match_Struc;
 
 /* Author Tanya Howden
  * Date September 2017
@@ -18,15 +17,15 @@ import chain_source.Match_Struc;
  */
 
 /*
- * Responsible for testing the Best_Match_Results.java file
+ * Responsible for testing the BestMatchResults.java file
  * to make sure that when we pass in the results we get results 
  * that are over the threshold value that are sorted and we only
  * have n number of results as requested
  */
-public class Match_Results_Test_Cases {
+public class MatchResultsTestCases {
 
-	private Best_Match_Results bestMatchResults;
-	private ArrayList<Match_Struc> finalRes;
+	private BestMatchResults bestMatchResults;
+	private ArrayList<MatchStruc> finalRes;
 	private static int counter;
 	
 	//for writing results
@@ -36,7 +35,7 @@ public class Match_Results_Test_Cases {
 	
 	@BeforeClass
 	public static void beforeAll(){
-		System.out.println("These tests are responsible for testing from Best_Match_Results.java to make sure that when\n"
+		System.out.println("These tests are responsible for testing from BestMatchResults.java to make sure that when\n"
 				+"we pass in the results from SPSM, we get results that are over the threshold value that are sorted\n"
 				+"and only have n number of results as requested.");
 		System.out.println("\nThe results from these tests can be found in outputs/testing/Filter_Limit_Tests.txt\n");
@@ -56,14 +55,14 @@ public class Match_Results_Test_Cases {
 	
 	@Before
 	public void setup(){
-		bestMatchResults = new Best_Match_Results();
-		finalRes = new ArrayList<Match_Struc>();
+		bestMatchResults = new BestMatchResults();
+		finalRes = new ArrayList<MatchStruc>();
 		
 		try{
 			fOut = new PrintWriter(new FileWriter(testRes,true));
 			
 			if(alreadyWritten==false){
-				fOut.write("Testing Results for Match_Results_Test_Cases.java\n\n");
+				fOut.write("Testing Results for MatchResultsTestCases.java\n\n");
 				alreadyWritten = true;
 			}
 			
@@ -76,7 +75,7 @@ public class Match_Results_Test_Cases {
 	public void emptyMatches(){
 		System.out.println("\nRunning test emptyMatches");
 		
-		ArrayList<Match_Struc> res = new ArrayList<Match_Struc>();
+		ArrayList<MatchStruc> res = new ArrayList<MatchStruc>();
 		finalRes = bestMatchResults.getThresholdAndFilter(res, 0.2, 0);
 		
 		fOut.write("Test 2."+counter+" - empty matches\n");
@@ -94,8 +93,8 @@ public class Match_Results_Test_Cases {
 	public void singleSuccMatch(){
 		System.out.println("\nRunning test singleSuccMatch");
 		
-		ArrayList<Match_Struc> res = new ArrayList<Match_Struc>();
-		res.add(new Match_Struc(0.2,"author(name,document)"));
+		ArrayList<MatchStruc> res = new ArrayList<MatchStruc>();
+		res.add(new MatchStruc(0.2,"author(name,document)"));
 		
 		finalRes = bestMatchResults.getThresholdAndFilter(res, 0.1, 0);
 		
@@ -114,8 +113,8 @@ public class Match_Results_Test_Cases {
 	public void singleFailMatch(){
 		System.out.println("\nRunning test singleFailMatch");
 		
-		ArrayList<Match_Struc> res = new ArrayList<Match_Struc>();
-		res.add(new Match_Struc(0.2,"author(name,document)"));
+		ArrayList<MatchStruc> res = new ArrayList<MatchStruc>();
+		res.add(new MatchStruc(0.2,"author(name,document)"));
 		
 		finalRes = bestMatchResults.getThresholdAndFilter(res, 0.5, 0 );
 		
@@ -134,12 +133,12 @@ public class Match_Results_Test_Cases {
 	public void multiSuccMatch(){
 		System.out.println("\nRunning test multiSuccMatch");
 		
-		ArrayList<Match_Struc> res = new ArrayList<Match_Struc>();
-		res.add(new Match_Struc(0.2,"author(name,document)"));
-		res.add(new Match_Struc(0.7,"author(name,document)"));
-		res.add(new Match_Struc(0.1,"author(name,document)"));
-		res.add(new Match_Struc(0.9,"author(name,document)"));
-		res.add(new Match_Struc(0.5,"author(name,document)"));
+		ArrayList<MatchStruc> res = new ArrayList<MatchStruc>();
+		res.add(new MatchStruc(0.2,"author(name,document)"));
+		res.add(new MatchStruc(0.7,"author(name,document)"));
+		res.add(new MatchStruc(0.1,"author(name,document)"));
+		res.add(new MatchStruc(0.9,"author(name,document)"));
+		res.add(new MatchStruc(0.5,"author(name,document)"));
 		
 		finalRes = bestMatchResults.getThresholdAndFilter(res, 0.6, 0);
 		
@@ -157,12 +156,12 @@ public class Match_Results_Test_Cases {
 	public void multiSuccMatch2(){
 		System.out.println("\nRunning test multiSuccMatch2");
 		
-		ArrayList<Match_Struc> res = new ArrayList<Match_Struc>();
-		res.add(new Match_Struc(0.2,"author(name,document)"));
-		res.add(new Match_Struc(0.7,"author(name,document)"));
-		res.add(new Match_Struc(0.1,"author(name,document)"));
-		res.add(new Match_Struc(0.9,"author(name,document)"));
-		res.add(new Match_Struc(0.5,"author(name,document)"));
+		ArrayList<MatchStruc> res = new ArrayList<MatchStruc>();
+		res.add(new MatchStruc(0.2,"author(name,document)"));
+		res.add(new MatchStruc(0.7,"author(name,document)"));
+		res.add(new MatchStruc(0.1,"author(name,document)"));
+		res.add(new MatchStruc(0.9,"author(name,document)"));
+		res.add(new MatchStruc(0.5,"author(name,document)"));
 		
 		finalRes = bestMatchResults.getThresholdAndFilter(res, 0.2, 0);
 		
@@ -180,12 +179,12 @@ public class Match_Results_Test_Cases {
 	public void multiFailMatch(){
 		System.out.println("\nRunning test multiFailMatch");
 		
-		ArrayList<Match_Struc> res = new ArrayList<Match_Struc>();
-		res.add(new Match_Struc(0.2,"author(name,document)"));
-		res.add(new Match_Struc(0.7,"author(name,document)"));
-		res.add(new Match_Struc(0.1,"author(name,document)"));
-		res.add(new Match_Struc(0.9,"author(name,document)"));
-		res.add(new Match_Struc(0.5,"author(name,document)"));
+		ArrayList<MatchStruc> res = new ArrayList<MatchStruc>();
+		res.add(new MatchStruc(0.2,"author(name,document)"));
+		res.add(new MatchStruc(0.7,"author(name,document)"));
+		res.add(new MatchStruc(0.1,"author(name,document)"));
+		res.add(new MatchStruc(0.9,"author(name,document)"));
+		res.add(new MatchStruc(0.5,"author(name,document)"));
 		
 		finalRes = bestMatchResults.getThresholdAndFilter(res, 1.0, 0);
 		
@@ -202,12 +201,12 @@ public class Match_Results_Test_Cases {
 	public void successWithLimit(){
 		System.out.println("\nRunning test successWithLimit");
 		
-		ArrayList<Match_Struc> res = new ArrayList<Match_Struc>();
-		res.add(new Match_Struc(0.2,"author(name,document)"));
-		res.add(new Match_Struc(0.7,"author(name,document)"));
-		res.add(new Match_Struc(0.1,"author(name,document)"));
-		res.add(new Match_Struc(0.9,"author(name,document)"));
-		res.add(new Match_Struc(0.5,"author(name,document)"));
+		ArrayList<MatchStruc> res = new ArrayList<MatchStruc>();
+		res.add(new MatchStruc(0.2,"author(name,document)"));
+		res.add(new MatchStruc(0.7,"author(name,document)"));
+		res.add(new MatchStruc(0.1,"author(name,document)"));
+		res.add(new MatchStruc(0.9,"author(name,document)"));
+		res.add(new MatchStruc(0.5,"author(name,document)"));
 		
 		finalRes = bestMatchResults.getThresholdAndFilter(res, 0.2, 3);
 		
@@ -224,12 +223,12 @@ public class Match_Results_Test_Cases {
 	public void successWithLargeLimit(){
 		System.out.println("\nRunning test successWithLargeLimit");
 		
-		ArrayList<Match_Struc> res = new ArrayList<Match_Struc>();
-		res.add(new Match_Struc(0.2,"author(name,document)"));
-		res.add(new Match_Struc(0.7,"author(name,document)"));
-		res.add(new Match_Struc(0.1,"author(name,document)"));
-		res.add(new Match_Struc(0.9,"author(name,document)"));
-		res.add(new Match_Struc(0.5,"author(name,document)"));
+		ArrayList<MatchStruc> res = new ArrayList<MatchStruc>();
+		res.add(new MatchStruc(0.2,"author(name,document)"));
+		res.add(new MatchStruc(0.7,"author(name,document)"));
+		res.add(new MatchStruc(0.1,"author(name,document)"));
+		res.add(new MatchStruc(0.9,"author(name,document)"));
+		res.add(new MatchStruc(0.5,"author(name,document)"));
 		
 		finalRes = bestMatchResults.getThresholdAndFilter(res, 0.2, 5);
 		
@@ -246,12 +245,12 @@ public class Match_Results_Test_Cases {
 	public void failWithLimit(){
 		System.out.println("\nRunning test failWithLimit");
 		
-		ArrayList<Match_Struc> res = new ArrayList<Match_Struc>();
-		res.add(new Match_Struc(0.2,"author(name,document)"));
-		res.add(new Match_Struc(0.7,"author(name,document)"));
-		res.add(new Match_Struc(0.1,"author(name,document)"));
-		res.add(new Match_Struc(0.9,"author(name,document)"));
-		res.add(new Match_Struc(0.5,"author(name,document)"));
+		ArrayList<MatchStruc> res = new ArrayList<MatchStruc>();
+		res.add(new MatchStruc(0.2,"author(name,document)"));
+		res.add(new MatchStruc(0.7,"author(name,document)"));
+		res.add(new MatchStruc(0.1,"author(name,document)"));
+		res.add(new MatchStruc(0.9,"author(name,document)"));
+		res.add(new MatchStruc(0.5,"author(name,document)"));
 		
 		finalRes = bestMatchResults.getThresholdAndFilter(res, 1.0, 5);
 		

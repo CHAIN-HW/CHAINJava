@@ -5,11 +5,11 @@ import static org.junit.Assert.*;
 import java.io.*;
 import java.util.*;
 
+import chain.core.MatchStruc;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
 
-import chain_source.Call_SPSM;
-import chain_source.Match_Struc;
+import chain.core.CallSPSM;
 
 /* Author Tanya Howden
  * Author Diana Bental
@@ -20,15 +20,15 @@ import chain_source.Match_Struc;
 
 /*
  * Responsible for testing the output results from
- * Call_SPSM.java which takes in source and target
+ * CallSPSM.java which takes in source and target
  * schemas and then calls SPSM before reading in
  * results as serialised object
  */
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SPSM_Test_Cases {
-	private Call_SPSM methodCaller;
-	private ArrayList<Match_Struc> results;
+public class SPSMTestCases {
+	private CallSPSM methodCaller;
+	private ArrayList<MatchStruc> results;
 	private String source,target;
 	
 	//for writing results
@@ -38,7 +38,7 @@ public class SPSM_Test_Cases {
 	
 	@BeforeClass
 	public static void beforeAll(){
-		System.out.println("These tests are responsible for testing the output results from Call_SPSM.java which takes in a source"
+		System.out.println("These tests are responsible for testing the output results from CallSPSM.java which takes in a source"
 							+"\nand target schema before calling SPSM and reading in the results as serialised objects.");
 		System.out.println("\nThe results from these tests can be found in outputs/testing/Call_SPSM_Tests.txt\n");
 		
@@ -55,14 +55,14 @@ public class SPSM_Test_Cases {
 	
 	@Before
 	public void setup(){
-		methodCaller = new Call_SPSM();
-		results = new ArrayList<Match_Struc>();
+		methodCaller = new CallSPSM();
+		results = new ArrayList<MatchStruc>();
 		
 		try{
 			fOut = new PrintWriter(new FileWriter(testRes,true));
 			
 			if(alreadyWritten==false){
-				fOut.write("Testing Results for SPSM_Test_Cases.java\n\n");
+				fOut.write("Testing Results for SPSMTestCases.java\n\n");
 				alreadyWritten = true;
 			}
 			
@@ -160,7 +160,7 @@ public class SPSM_Test_Cases {
 			fail() ;
 		}else{
 			if(results.size() > 0){
-				Match_Struc res = results.get(0);			
+				MatchStruc res = results.get(0);
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 				assertTrue(res.getSimValue() == 1.0) ;
 				assertTrue(res.getNumMatchComponents() == 2) ;
@@ -198,7 +198,7 @@ public class SPSM_Test_Cases {
 			if(results.size() > 0){
 				// System.out.println(results.size()); 
 				for(int i = 0 ; i < results.size() ; i++){
-					Match_Struc currRes = results.get(i);
+					MatchStruc currRes = results.get(i);
 					// System.out.println("Target: "+currRes.getDatasetSchema()+"\n");
 					// System.out.println("Expected Result: similarity == "+simValues[i]+" & numMatches == "+answer[i]+"\n");
 					// System.out.println("Actual Result: similarity == "+currRes.getSimValue()+" & numMatches == "+currRes.getNumMatchComponents()+"\n\n");
@@ -259,7 +259,7 @@ public class SPSM_Test_Cases {
 			// System.out.println(results.size());
 			assertTrue(results.size() == 1) ;
 			if(results.size() > 0){
-				Match_Struc currRes = results.get(0);
+				MatchStruc currRes = results.get(0);
 				// System.out.println("Target: "+currRes.getDatasetSchema()+"\n");
 				// System.out.println("Expected Result: similarity == 1.0"+" & numMatches == 2 \n");
 				// System.out.println("Actual Result: similarity == "+currRes.getSimValue()+" & numMatches == "+currRes.getNumMatchComponents()+"\n\n"); 
@@ -302,7 +302,7 @@ public class SPSM_Test_Cases {
 			assertTrue(results.size() == 3) ;
 			if(results.size()>0){
 				for(int i = 0 ; i < results.size() ; i++){
-					Match_Struc currRes = results.get(i);
+					MatchStruc currRes = results.get(i);
 					// System.out.println("Target: "+currRes.getDatasetSchema()+"\n");
 					assertTrue(currRes.getDatasetSchema().contains(schemas[i]));
 					assertTrue(currRes.getSimValue() == simVals[i]) ;
@@ -338,7 +338,7 @@ public class SPSM_Test_Cases {
 			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
 				
-				Match_Struc res = results.get(0);
+				MatchStruc res = results.get(0);
 				
 				assertTrue(res.getSimValue() == 1.0) ;
 				assertTrue(res.getNumMatchComponents() == 1) ;
@@ -414,7 +414,7 @@ public class SPSM_Test_Cases {
 		}else{
 			assertTrue(results.size() == 1) ;
 			if(results.size() > 0){
-				Match_Struc res = results.get(0);
+				MatchStruc res = results.get(0);
 				
 				assertTrue(res.getSimValue() == 0.5) ;
 				assertTrue(res.getNumMatchComponents() == 2) ;
@@ -447,7 +447,7 @@ public class SPSM_Test_Cases {
 		}else{
 			assertTrue(results.size() == 1) ;
 			if(results.size() > 0){
-				Match_Struc res = results.get(0);
+				MatchStruc res = results.get(0);
 				
 				assertTrue(res.getSimValue() == 0.5) ;
 				assertTrue(res.getNumMatchComponents() == 3) ;
@@ -484,7 +484,7 @@ public class SPSM_Test_Cases {
 			// System.out.println(results.size()) ;
 			assertTrue(results.size() == 1) ;
 			if(results.size() > 0){
-				Match_Struc res = results.get(0);			
+				MatchStruc res = results.get(0);
 				
 				// System.out.println("Expected Result: similarity == 0.5"+" & numMatches == 5 \n");
 				// System.out.println("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");	
@@ -521,7 +521,7 @@ public class SPSM_Test_Cases {
 		}else{
 			assertTrue(results.size() == 1) ;
 			if(results.size() > 0){
-				Match_Struc res = results.get(0);
+				MatchStruc res = results.get(0);
 				assertTrue(res.getSimValue() == 0.6) ;
 				assertTrue(res.getNumMatchComponents() == 5) ;
 				assertTrue(res.getDatasetSchema().contains(target)) ;
@@ -576,7 +576,7 @@ public class SPSM_Test_Cases {
 		}else{
 			assertTrue(results.size() == 1) ;
 			if(results.size() > 0){
-				Match_Struc res = results.get(0);
+				MatchStruc res = results.get(0);
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 				assertTrue((res.getSimValue() < 0.2) && (res.getSimValue() > 0.199)) ;
 				assertTrue(res.getNumMatchComponents() == 1) ;
@@ -608,7 +608,7 @@ public class SPSM_Test_Cases {
 			// System.out.println(results.size());
 			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
-				Match_Struc res = results.get(0);
+				MatchStruc res = results.get(0);
 				
 				// System.out.println("Target: "+res.getDatasetSchema()+"\n");
 				// System.out.println("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n"); 
@@ -645,7 +645,7 @@ public class SPSM_Test_Cases {
 		}else{
 			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
-				Match_Struc res = results.get(0);
+				MatchStruc res = results.get(0);
 				fOut.write("Expected Result: similarity == 0.625"+" & numMatches == 12 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
 				assertTrue(res.getSimValue() == 0.625) ;
@@ -676,7 +676,7 @@ public class SPSM_Test_Cases {
 		}else{
 			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
-				Match_Struc res = results.get(0);		
+				MatchStruc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.45833333333333337"+" & numMatches == 8 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
@@ -731,7 +731,7 @@ public class SPSM_Test_Cases {
 		}else{
 			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
-				Match_Struc res = results.get(0);
+				MatchStruc res = results.get(0);
 				
 				assertTrue(res.getSimValue() == 0.5) ;
 				assertTrue(res.getNumMatchComponents() == 2) ;
@@ -764,7 +764,7 @@ public class SPSM_Test_Cases {
 		}else{
 			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
-				Match_Struc res = results.get(0);
+				MatchStruc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
@@ -797,7 +797,7 @@ public class SPSM_Test_Cases {
 		}else{
 			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
-				Match_Struc res = results.get(0);
+				MatchStruc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
@@ -829,7 +829,7 @@ public class SPSM_Test_Cases {
 		}else{
 			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
-				Match_Struc res = results.get(0);
+				MatchStruc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
@@ -861,7 +861,7 @@ public class SPSM_Test_Cases {
 		}else{
 			assertTrue(results.size() == 1) ;
 			if(results.size()>0){
-				Match_Struc res = results.get(0);
+				MatchStruc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
@@ -893,7 +893,7 @@ public class SPSM_Test_Cases {
 		}else{
 			if(results.size() >0){
 				assertTrue(results.size() == 1) ;
-				Match_Struc res = results.get(0);
+				MatchStruc res = results.get(0);
 				
 				fOut.write("Expected Result: similarity == 0.5"+" & numMatches == 2 \n");
 				fOut.write("Actual Result: similarity == "+res.getSimValue()+" & numMatches == "+res.getNumMatchComponents()+"\n\n");
@@ -924,7 +924,7 @@ public class SPSM_Test_Cases {
 			fail();
 		}else{
 			assertTrue(results.size() == 1) ;
-			Match_Struc res = results.get(0);
+			MatchStruc res = results.get(0);
 			
 			assertTrue(res.getSimValue() == 0.75) ;
 			assertTrue(res.getNumMatchComponents() == 3) ;

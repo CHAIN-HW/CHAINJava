@@ -1,4 +1,4 @@
-package chain_source;
+package chain.sparql;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ import java.util.HashSet;
  * properties/key words
  * 
  */
-public class Ontology_Struc {
+public class OntologyStruc {
 
 	//FIELDS
 	private String name;
@@ -29,7 +29,7 @@ public class Ontology_Struc {
 	private HashSet<String> values ; //  DB
 	
 	//CONSTRUCTOR
-	public Ontology_Struc(String ontName, String ontLink, String[] ontProperties){
+	public OntologyStruc(String ontName, String ontLink, String[] ontProperties){
 		name=ontName;
 		link=ontLink;
 

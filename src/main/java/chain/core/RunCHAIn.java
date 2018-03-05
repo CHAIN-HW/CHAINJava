@@ -1,7 +1,8 @@
-package chain_source;
+package chain.core;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import chain.sparql.*;
 import com.hp.hpl.jena.query.ResultSet;
 
 /* Author Tanya Howden
@@ -19,7 +20,7 @@ import com.hp.hpl.jena.query.ResultSet;
  * This class is tested in Run_CHAIn_Test_Cases.java
  * 
  */
-public class Run_CHAIn {
+public class RunCHAIn {
 	
 	// Return Status
 	private static final int UNKNOWNSTATUS = 0 ;
@@ -32,16 +33,16 @@ public class Run_CHAIn {
 	private static final int REPAIREDQUERYNORESULTS = 11 ;
 	private static final int DATAREPAIREDWITHRESULTS = 12 ;
 
-	private Schema_From_Query getSchema = new Schema_From_Query();
-	private Call_SPSM spsm = new Call_SPSM();
-	private Best_Match_Results filterRes = new Best_Match_Results();
-	private Repair_Schema repairSchema = new Repair_Schema();
-	private Create_Query createQuery = new Create_Query();
-	private Run_Query runQuery = new Run_Query();
+	private SchemaFromQuery getSchema = new SchemaFromQuery();
+	private CallSPSM spsm = new CallSPSM();
+	private BestMatchResults filterRes = new BestMatchResults();
+	private RepairSchema repairSchema = new RepairSchema();
+	private CreateQuery createQuery = new CreateQuery();
+	private RunQuery runQuery = new RunQuery();
 	
 	//main method for testing during implementation
 	public static void main(String[] args){
-		Run_CHAIn run_CHAIn = new Run_CHAIn();
+		RunCHAIn run_CHAIn = new RunCHAIn();
 		
 		//need to pass in the query
 		//and also target schemas for dataset
@@ -84,7 +85,7 @@ public class Run_CHAIn {
 		int result_status = UNKNOWNSTATUS; 
 		
 		//first step is trying to run the initial query
-		Match_Struc current = new Match_Struc();
+		MatchStruc current = new MatchStruc();
 		current.setQuery(query);	
 		ResultSet queryRunResults = runQuery.runQuery(current, queryType, dataDir);
 		
@@ -121,9 +122,9 @@ public class Run_CHAIn {
 			}
 			
 			// Parse the query and store useful information about names, prefixes, literals
-			Query_Data queryData = new Query_Data(query) ;
+			QueryData queryData = new QueryData(query) ;
 			
-			ArrayList<Match_Struc> repairedQueries = createRepairedQueries(current, queryData, targetSchemas, queryType, dataDir, ontologyPath, queryLim, simThresholdVal, resLimit);
+			ArrayList<MatchStruc> repairedQueries = createRepairedQueries(current, queryData, targetSchemas, queryType, dataDir, ontologyPath, queryLim, simThresholdVal, resLimit);
 			
 			if(repairedQueries == null) {
 				System.out.println("\nSPSM Failure. Terminating.");
@@ -148,13 +149,13 @@ public class Run_CHAIn {
 				ResultSet resultsFromARepairedQuery;
 				
 				// Print all the match structures with their repaired queries
-				// for (Match_Struc r:repairedQueries) {
-				// 	System.out.println("Match_Struc:" + r);
+				// for (MatchStruc r:repairedQueries) {
+				// 	System.out.println("MatchStruc:" + r);
 				// }
 				
 				for(int i = 0 ; i < repairedQueries.size() ; i++){
 					//try running new queries
-					Match_Struc curr = repairedQueries.get(i);
+					MatchStruc curr = repairedQueries.get(i);
 					if(fOut!=null){
 						fOut.write("Target Schema, " + curr.getDatasetSchema() + ", has created the following query:\n\n"+curr.getQuery()+"\n\n");
 					}
@@ -194,33 +195,33 @@ public class Run_CHAIn {
 		return result_status; 
 	}
 	
-	public ResultSet dataRepair(String queryType, Match_Struc curr, Query_Data queryData, String dataDir, int queryLim, String ontologyPath, PrintWriter fOut) {
+	public ResultSet dataRepair(String queryType, MatchStruc curr, QueryData queryData, String dataDir, int queryLim, String ontologyPath, PrintWriter fOut) {
 		
 		System.out.println("Attempting data repair.");
 		fOut.write("Attempting data repair.\n\n\n");
 		
-		ArrayList<Ontology_Struc> ontologies = createQuery.make_ontologies(ontologyPath) ;
+		ArrayList<OntologyStruc> ontologies = createQuery.make_ontologies(ontologyPath) ;
 		// Make the new (open) query
 		String newQuery = createQuery.createOpenQuery(queryType, curr, queryData, dataDir, 
 				queryLim, ontologies) ;
-		// System.out.println("Run_CHAIn: "+ newQuery);
+		// System.out.println("RunCHAIn: "+ newQuery);
 		curr.setQuery(newQuery);
 		// Then run it
 		return runQuery.runQuery(curr, queryType, dataDir);		
 	}
 		
-	public ArrayList<Match_Struc> createRepairedQueries(Match_Struc current, Query_Data queryData, String targetSchemas, String queryType, String dataset, String ontFile, int queryLim, double simThresholdVal, int resLimit){
+	public ArrayList<MatchStruc> createRepairedQueries(MatchStruc current, QueryData queryData, String targetSchemas, String queryType, String dataset, String ontFile, int queryLim, double simThresholdVal, int resLimit){
 		
 		//Narrow down the target schemas by filtering them against the associated words in the source schema
 		System.out.println("All Target Schemas: " + targetSchemas);
 		
-		targetSchemas = Narrow_Down.narrowDown(current.getQuerySchemaHead(), targetSchemas) ;
+		targetSchemas = NarrowDown.narrowDown(current.getQuerySchemaHead(), targetSchemas) ;
 		
 		System.out.println("Narrowed Target Schemas: " + targetSchemas);
 		
 		//start off by calling SPSM with schema created from query
 		//and target schemas passed in originally
-		ArrayList<Match_Struc> matches = new ArrayList<Match_Struc>();
+		ArrayList<MatchStruc> matches = new ArrayList<MatchStruc>();
 		matches = spsm.callSPSM(matches, current.getQuerySchema(), targetSchemas);
 		
 		if(matches == null){
@@ -244,7 +245,7 @@ public class Run_CHAIn {
 		return matches;
 	}
 	
-	public ResultSet runRepairedQueries(Match_Struc matchStructure, String queryType, String dataset){
+	public ResultSet runRepairedQueries(MatchStruc matchStructure, String queryType, String dataset){
 		
 		try{
 			//running new queries

@@ -1,4 +1,5 @@
-package chain_source;
+package chain.core;
+
 import java.util.ArrayList;
 
 /* Author Tanya Howden
@@ -8,33 +9,33 @@ import java.util.ArrayList;
 
 /*
  * 
- * Responsible for taking in ArrayList of Match_Struc objects
+ * Responsible for taking in ArrayList of MatchStruc objects
  * and going through each one and creating a repaired schema
  * based on the relation between the source and target schemas
  * 
  * This class is tested in Repair_Schema_Test_Cases.java
  * 
  */
-public class Repair_Schema {
+public class RepairSchema {
 	
 	//main method used for testing purposes only
 	//this method can be run with the source and target schemas outlined
 	//below and the repaired schema will be produced
 	public static void main(String[] args){
-		Call_SPSM spsmCall;
-		Repair_Schema queryCreator;
-		ArrayList<Match_Struc> finalRes;
+		CallSPSM spsmCall;
+		RepairSchema queryCreator;
+		ArrayList<MatchStruc> finalRes;
 		String target, source;
 		
 		// Calls spsm with source and target schemas (as a test harness) and then performs the repair
 		// using the results from SPSM.
-		spsmCall = new Call_SPSM();
-		queryCreator = new Repair_Schema();
+		spsmCall = new CallSPSM();
+		queryCreator = new RepairSchema();
 	
 		source="conference(paper(title,review(date(day,month,year),author(name(first,second)))))";
 		target="conference(paper(title,document(category(day,month,year),writer(name(first,second)))))";
 		
-		finalRes = new ArrayList<Match_Struc>();
+		finalRes = new ArrayList<MatchStruc>();
 		
 		finalRes = spsmCall.callSPSM(finalRes, source, target);
 		
@@ -55,7 +56,7 @@ public class Repair_Schema {
 	
 	//take in the ArrayList of objects and start processing the 
 	//repaired schema for each one in the list
-	public ArrayList<Match_Struc> repairSchemas(ArrayList<Match_Struc> matchRes){
+	public ArrayList<MatchStruc> repairSchemas(ArrayList<MatchStruc> matchRes){
 		System.out.println("Repairing Target Schemas");
 		
 		//for each of the targets, create a tree and create repaired schema
@@ -63,7 +64,7 @@ public class Repair_Schema {
 		for(int i = 0 ; i < matchRes.size() ; i++){
 			
 			//current match
-			Match_Struc currMatch = matchRes.get(i);
+			MatchStruc currMatch = matchRes.get(i);
 			currMatch = repairSchema(currMatch);
 		}
 		
@@ -71,9 +72,9 @@ public class Repair_Schema {
 	}
 	
 	//creates a tree structure of the schema and adds that as
-	//a field to the Match_Struc object based on the relation
+	//a field to the MatchStruc object based on the relation
 	//between source and target schemas
-	public Match_Struc repairSchema(Match_Struc matchStructure){
+	public MatchStruc repairSchema(MatchStruc matchStructure){
 		
 		ArrayList<String[]> matchDetails = matchStructure.getMatchComponents();
 		

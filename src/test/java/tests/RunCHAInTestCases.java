@@ -6,12 +6,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
+import chain.core.RunCHAIn;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import chain_source.Run_CHAIn;
 
 /* Author Tanya Howden
  * Date September 2017
@@ -20,14 +19,14 @@ import chain_source.Run_CHAIn;
 
 /*
  * 
- * Responsible for testing Run_CHAIn.java that
+ * Responsible for testing RunCHAIn.java that
  * runs CHAIn from start to finish where we test
  * for different cases such as invalid queries, 
  * no results from SPSM and calling CHAIn with
  * more than one target schema for comparison.
  * 
  */
-public class Run_CHAIn_Test_Cases {
+public class RunCHAInTestCases {
 	
 	private static final int UNKNOWNSTATUS = 0 ;
 	private static final int INITIALQUERYSUCCESS = 5 ;
@@ -40,7 +39,7 @@ public class Run_CHAIn_Test_Cases {
 	private static final int DATAREPAIREDWITHRESULTS = 12 ;
 
 	private String query, queryType, targetSchemas;
-	private Run_CHAIn chain = new Run_CHAIn();
+	private RunCHAIn chain = new RunCHAIn();
 	
 	//for writing results
 	private static File testRes;
@@ -49,7 +48,7 @@ public class Run_CHAIn_Test_Cases {
 	
 	@BeforeClass
 	public static void beforeAll(){
-		System.out.println("These tests are responsible for testing Run_CHAIn.java to test running\n"
+		System.out.println("These tests are responsible for testing RunCHAIn.java to test running\n"
 				+"CHAIn with different scenarios.");
 		System.out.println("\nThe results from these tests can be found in outputs/testing/Run_CHAIn_Tests.txt\n");
 
@@ -74,7 +73,7 @@ public class Run_CHAIn_Test_Cases {
 			fOut = new PrintWriter(new FileWriter(testRes,true));
 			
 			if(alreadyWritten==false){
-				fOut.write("Testing Results for Run_CHAIn_Test_Cases.java\n\n");
+				fOut.write("Testing Results for RunCHAInTestCases.java\n\n");
 				alreadyWritten = true;
 			}
 			

@@ -1,6 +1,7 @@
-package chain_source;
+package chain.core;
 
 import java.util.*;
+
 import edu.mit.jwi.IDictionary;
 
 /* Author Diana Bental
@@ -8,7 +9,7 @@ import edu.mit.jwi.IDictionary;
  * Modified
  */
 
-public class Narrow_Down {
+public class NarrowDown {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -26,11 +27,11 @@ public class Narrow_Down {
 		
 		// Use WordNet to build  a set of words (or terms) associated with any of the words in the query head
 		Set<String> associatedWords = new HashSet<String>() ;
-		try {IDictionary dict = JWI_Caller.openDictionary () ; 
+		try {IDictionary dict = JWICaller.openDictionary () ;
 			// One word at a time from the query head
 			for (String qWord : queryWords) {
 				// System.out.println("qWord:"+qWord) ;
-				associatedWords = JWI_Caller.getAssociatedWords(dict, qWord, associatedWords) ;
+				associatedWords = JWICaller.getAssociatedWords(dict, qWord, associatedWords) ;
 			}
 			dict.close();
 		}catch(Exception e){

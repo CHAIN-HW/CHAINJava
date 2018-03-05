@@ -1,4 +1,4 @@
-package chain_source;
+package chain.core;
 import java.util.*;
 
 /* Author Tanya Howden

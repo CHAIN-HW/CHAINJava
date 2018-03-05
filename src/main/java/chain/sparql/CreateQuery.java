@@ -1,4 +1,4 @@
-package chain_source;
+package chain.sparql;
 import java.nio.charset.StandardCharsets;
 
 /* Author Tanya Howden
@@ -8,11 +8,12 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 
+import chain.core.CallSPSM;
+import chain.core.MatchStruc;
+import chain.core.RepairSchema;
 import org.json.*;
 
 import com.hp.hpl.jena.graph.Node;
@@ -35,21 +36,21 @@ import com.hp.hpl.jena.graph.Node;
  * 
  * Responsible for using the repaired schema
  * to create either a sepa or dbpedia query, this 
- * query is added as a field onto the Match_Struc
+ * query is added as a field onto the MatchStruc
  * object structure
  * 
  * This class is tested in Create_Query_Test_Cases.java
  * 
  */
-public class Create_Query {
+public class CreateQuery {
 	
 	private static int WITHDATA = 1 ;
 	private static int NODATA = 0 ;
 		
 	public static void main(String [] args){
-		Create_Query queryCreator = new Create_Query();
-		Call_SPSM spsmCall = new Call_SPSM();
-		Repair_Schema getRepairedSchema = new Repair_Schema();
+		CreateQuery queryCreator = new CreateQuery();
+		CallSPSM spsmCall = new CallSPSM();
+		RepairSchema getRepairedSchema = new RepairSchema();
 
 //		String source="surfaceWaterBodies(subBasinDistrict,riverName,altitudeTypology,associatedGroundwaterId,nonsense)";
 //		String target="surfaceWaterBodies(subBasinDistrict,riverName,altitudeTypology,associatedGroundwaterId,nonsense)";
@@ -88,9 +89,9 @@ public class Create_Query {
 		          + ".}\n"
 		          + "LIMIT 20" ;
 		
-		Query_Data queryData = new Query_Data(originalQuery) ;
+		QueryData queryData = new QueryData(originalQuery) ;
 		
-		ArrayList<Match_Struc> finalRes = new ArrayList<Match_Struc>();
+		ArrayList<MatchStruc> finalRes = new ArrayList<MatchStruc>();
 		
 		finalRes = spsmCall.callSPSM(finalRes, source, target);
 
@@ -107,18 +108,18 @@ public class Create_Query {
 	
 	
 	// By default - create bindings for object variables if possible
-	public ArrayList<Match_Struc> createQueries(ArrayList<Match_Struc> matchRes, Query_Data queryData, String queryType, String datasetDir, String ontologyFilePath, int noResults) {
+	public ArrayList<MatchStruc> createQueries(ArrayList<MatchStruc> matchRes, QueryData queryData, String queryType, String datasetDir, String ontologyFilePath, int noResults) {
 		return  createQueries(matchRes, queryData, queryType, datasetDir,  ontologyFilePath,  WITHDATA,  noResults) ;
 	}
 	
 	// Create queries without any bindings for object variables
-	public ArrayList<Match_Struc> createOpenQueries(ArrayList<Match_Struc> matchRes, Query_Data queryData, String queryType, String datasetDir, String ontologyFilePath, int noResults) {
+	public ArrayList<MatchStruc> createOpenQueries(ArrayList<MatchStruc> matchRes, QueryData queryData, String queryType, String datasetDir, String ontologyFilePath, int noResults) {
 		return  createQueries(matchRes, queryData, queryType, datasetDir,  ontologyFilePath,  NODATA,  noResults) ;
 	}
 	
 	//sets up ready to create query for each repaired schema in list of match structures
 	//Parameter sets whether to bind object variables or not
-	public ArrayList<Match_Struc> createQueries(ArrayList<Match_Struc> matchRes, Query_Data queryData, String queryType, String datasetDir, String ontologyFilePath, int withBindings, int noResults){
+	public ArrayList<MatchStruc> createQueries(ArrayList<MatchStruc> matchRes, QueryData queryData, String queryType, String datasetDir, String ontologyFilePath, int withBindings, int noResults){
 		String type="";
 		
 		//first start off by checking query type required
@@ -130,17 +131,17 @@ public class Create_Query {
 		}
 		
 		// Read the ontology file and make the (target) ontology structure
-		ArrayList<Ontology_Struc> ontologies = make_ontologies(ontologyFilePath) ;
+		ArrayList<OntologyStruc> ontologies = make_ontologies(ontologyFilePath) ;
 		
 		//for each of the match items, we want to create a query
 		if(ontologies != null) {
 			for(int i = 0 ; i < matchRes.size(); i++){
-				Match_Struc matchDetails = matchRes.get(i);
+				MatchStruc matchDetails = matchRes.get(i);
 			
 				//call the appropriate method based
 				//on the type of query
 				String query = createQuery(type, matchDetails, queryData, datasetDir, withBindings, noResults, ontologies) ;
-				System.out.println("Create_Query: Query created is: "+ query);
+				System.out.println("CreateQuery: Query created is: "+ query);
 				matchDetails.setQuery(query);
 			}
 		}
@@ -149,8 +150,8 @@ public class Create_Query {
 	}
 	
 	// Read the ontology file and make the (target) ontology structure
-	public static ArrayList<Ontology_Struc> make_ontologies(String ontologyFilePath) {
-		ArrayList<Ontology_Struc> ontologies = new ArrayList<Ontology_Struc>();
+	public static ArrayList<OntologyStruc> make_ontologies(String ontologyFilePath) {
+		ArrayList<OntologyStruc> ontologies = new ArrayList<OntologyStruc>();
 		try{
 			String jsonTxt = new String(Files.readAllBytes(Paths.get(ontologyFilePath)), StandardCharsets.UTF_8);
 			
@@ -165,16 +166,16 @@ public class Create_Query {
 	}
 			
 
-	public String createOpenQuery(String type, Match_Struc matchDetails, Query_Data queryData, String datasetDir, 
-			int noResults, ArrayList<Ontology_Struc> ontologies) {
+	public String createOpenQuery(String type, MatchStruc matchDetails, QueryData queryData, String datasetDir,
+								  int noResults, ArrayList<OntologyStruc> ontologies) {
 		
 		return createQuery(type, matchDetails, queryData, datasetDir, NODATA, noResults, ontologies) ;
 		
 	}
 	
-	public String createQuery(String type, Match_Struc matchDetails, Query_Data queryData, String datasetDir, 
-			int withBindings, int noResults,
-			ArrayList<Ontology_Struc> ontologies) {
+	public String createQuery(String type, MatchStruc matchDetails, QueryData queryData, String datasetDir,
+							  int withBindings, int noResults,
+							  ArrayList<OntologyStruc> ontologies) {
 		
 		if(type.equals("sepa")){
 			return createSepaQuery(matchDetails, queryData, datasetDir, withBindings, noResults, ontologies);
@@ -186,8 +187,8 @@ public class Create_Query {
 	}
 
 	//creates structure for sepa query
-	public String createSepaQuery(Match_Struc matchDetails, Query_Data queryData, String datafileDir, 
-			int withBindings, int noResults, ArrayList<Ontology_Struc> ontologies){
+	public String createSepaQuery(MatchStruc matchDetails, QueryData queryData, String datafileDir,
+								  int withBindings, int noResults, ArrayList<OntologyStruc> ontologies){
 		System.out.println("Creating sepa query");
 		
 		String query="";		
@@ -229,8 +230,8 @@ public class Create_Query {
 	}
 
 	//creates structure for dbpedia query
-	public String createDbpediaQuery(Match_Struc matchDetails, Query_Data queryData, 
-			int withBindings, int noResults, ArrayList<Ontology_Struc> ontologies){
+	public String createDbpediaQuery(MatchStruc matchDetails, QueryData queryData,
+									 int withBindings, int noResults, ArrayList<OntologyStruc> ontologies){
 		System.out.println("Creating dbpedia query");
 
 		String query="";
@@ -243,7 +244,7 @@ public class Create_Query {
 
 		String predicate="";
 		for(int j = 0 ; j < ontologies.size() ; j++){
-			Ontology_Struc currentOntology = ontologies.get(j);
+			OntologyStruc currentOntology = ontologies.get(j);
 			HashSet<String> values = currentOntology.getValues() ;
 
 			if(values != null) {
@@ -288,11 +289,11 @@ public class Create_Query {
 	}
 
 	// Make the ontology structure for the target
-	public static ArrayList<Ontology_Struc> makeOntologyStructures(JSONArray jsonArr, ArrayList<Ontology_Struc> ontologies){
+	public static ArrayList<OntologyStruc> makeOntologyStructures(JSONArray jsonArr, ArrayList<OntologyStruc> ontologies){
 		String name,link,propString;
 		String[] properties;
 		
-		Ontology_Struc ontology;
+		OntologyStruc ontology;
 		
 		//for each element in json arr create prefix string
 		for(int i = 0 ; i < jsonArr.length() ; i++){
@@ -310,7 +311,7 @@ public class Create_Query {
 					properties=null;
 				}
 				
-				ontology = new Ontology_Struc(name,link,properties);
+				ontology = new OntologyStruc(name,link,properties);
 				ontologies.add(ontology);
 				
 			} catch (Exception e) {
@@ -322,7 +323,7 @@ public class Create_Query {
 	}
 	
 	//writes the prefixes and links onto query string
-	public static String writePrefixHeaders(ArrayList<Ontology_Struc> ontologies){
+	public static String writePrefixHeaders(ArrayList<OntologyStruc> ontologies){
 		String finalStr="";
 		
 		for(int i = 0 ; i < ontologies.size() ; i++){
@@ -335,7 +336,7 @@ public class Create_Query {
 	// Write out all the property ?variable pairs for the WHERE part of the  query
 	// e.g. dbp:river ?river ;
 	// If the property does not belong to a known ontology then write nothing.
-	public String writeEmptyDataMatching(ArrayList<String> schemaChildren, ArrayList<Ontology_Struc> ontologies){
+	public String writeEmptyDataMatching(ArrayList<String> schemaChildren, ArrayList<OntologyStruc> ontologies){
 		String dataDetails="";
 
 		for(int i = 0 ; i < schemaChildren.size() ; i++){
@@ -345,7 +346,7 @@ public class Create_Query {
 			//by looking at properties.
 			String paramName = schemaChildren.get(i);
 
-			for(Ontology_Struc currentOntology:ontologies) {					
+			for(OntologyStruc currentOntology:ontologies) {
 				if(currentOntology.hasValue(paramName)) {
 					// e.g. dbp:river ?river ;
 					String search = " " + currentOntology.prefixedValue(paramName) + " ?" + paramName;
@@ -370,7 +371,7 @@ public class Create_Query {
 	//      dbp:river <http://rivers.ont.com/Thames> ;
 	// If the property does not belong to a known ontology then write nothing.
 	// Include data items in the query.
-	public String writeDataMatching(ArrayList<String> schemaChildren, Match_Struc matchDetails, Query_Data queryData, ArrayList<Ontology_Struc> ontologies){
+	public String writeDataMatching(ArrayList<String> schemaChildren, MatchStruc matchDetails, QueryData queryData, ArrayList<OntologyStruc> ontologies){
 		String dataDetails="";
 
 		for(int i = 0 ; i < schemaChildren.size() ; i++){
@@ -383,7 +384,7 @@ public class Create_Query {
 		
 				
 			//then see what ontology the parameter falls under
-			for(Ontology_Struc currentOntology:ontologies) {					
+			for(OntologyStruc currentOntology:ontologies) {
 				if(currentOntology.hasValue(paramName)) {
 					// e.g. dbp:river ?river ;
 					String search = " " + currentOntology.prefixedValue(paramName) + objectText;
@@ -401,14 +402,14 @@ public class Create_Query {
 		return dataDetails;
 	}
 
-	private String writeObject(String paramName, Match_Struc matchDetails, Query_Data queryData) {
+	private String writeObject(String paramName, MatchStruc matchDetails, QueryData queryData) {
 		
 		// Find the original name
 		String sourceName = matchDetails.getSource(paramName);
 			
 		HashMap <String, Node> literals = queryData.localPropertyNameToLiteralObjectMaps ;		
 		Node literalObject = literals.get(sourceName) ;
-		// System.out.println("Create_Query:writeObject: literalObject  "+ literalObject);
+		// System.out.println("CreateQuery:writeObject: literalObject  "+ literalObject);
 		HashMap <String, String> uris = queryData.localPropertyNameToURIObjectMaps ;
 		String uriObject = uris.get(sourceName) ;
 					

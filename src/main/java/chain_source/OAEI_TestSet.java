@@ -1,5 +1,7 @@
 package chain_source;
 
+import chain.core.*;
+
 import java.util.ArrayList;
 import java.util.StringJoiner;
 
@@ -9,9 +11,9 @@ public class OAEI_TestSet {
 	int maxMatchResults = 0 ; // (5) Maximum number of results to return - 0 if no limit
 	
 	
-	private Call_SPSM spsm = new Call_SPSM();
-	private Best_Match_Results filterRes = new Best_Match_Results();
-	private Repair_Schema repairSchema = new Repair_Schema();
+	private CallSPSM spsm = new CallSPSM();
+	private BestMatchResults filterRes = new BestMatchResults();
+	private RepairSchema repairSchema = new RepairSchema();
 	
 	private static String[] cmtSchemas = {
 			"administrator(acceptPaper, addProgramCommitteeMember, assignReviewer, enableVirtualMeeting,"
@@ -250,22 +252,22 @@ public class OAEI_TestSet {
 		
 		for(String sourceSchema: edasSchemas) {
 			System.out.println("\n\nSource: " + sourceSchema);
-			ArrayList<Match_Struc>  results = OAEITest.startRepair(sourceSchema, targetSchemas) ;
+			ArrayList<MatchStruc>  results = OAEITest.startRepair(sourceSchema, targetSchemas) ;
 			if (results != null) {
-				for(Match_Struc result: results) {
+				for(MatchStruc result: results) {
 					System.out.println("Repair: " + result.getRepairedSchema()) ;
 				}
 			}
 		}
-		Call_SPSM.reportSPSM() ;
+		CallSPSM.reportSPSM() ;
 		
 	}
 	
-public ArrayList<Match_Struc> startRepair(String sourceSchema, String targetSchemas)
-{
+	public ArrayList<MatchStruc> startRepair(String sourceSchema, String targetSchemas)
+	{
 		
 		//Create an empty match structure
-		Match_Struc current = new Match_Struc();
+		MatchStruc current = new MatchStruc();
 		// System.out.println(sourceSchema);
 		current.setQuerySchema(sourceSchema);
 		String [] head = sourceSchema.split("[,)(]");
@@ -275,13 +277,13 @@ public ArrayList<Match_Struc> startRepair(String sourceSchema, String targetSche
 		
 			
 		//Narrow down the target schemas by filtering them against the associated words in the source schema
-		targetSchemas = Narrow_Down.narrowDown(current.getQuerySchemaHead(), targetSchemas) ;
+		targetSchemas = NarrowDown.narrowDown(current.getQuerySchemaHead(), targetSchemas) ;
 		
 		System.out.println("Narrowed Target Schemas: " + targetSchemas);
 		
 		//start off by calling SPSM with schema created from query
 		//and target schemas passed in originally
-		ArrayList<Match_Struc> results = new ArrayList<Match_Struc>();
+		ArrayList<MatchStruc> results = new ArrayList<MatchStruc>();
 		
 		try {
 			results = spsm.callSPSM(results, current.getQuerySchema(), targetSchemas);

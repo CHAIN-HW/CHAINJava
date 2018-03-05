@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
+import chain.core.MatchStruc;
+import chain.sparql.SchemaFromQuery;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -13,26 +15,23 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import chain_source.Match_Struc;
-import chain_source.Schema_From_Query;
-
 /* Author Tanya Howden
  * Date September 2017
  * Modified
  */
 
 /*
- * Responsible for testing Schema_From_Query.java to ensure
+ * Responsible for testing SchemaFromQuery.java to ensure
  * that we can create a valid schema from a sepa or dbpedia
  * query.
  * 
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Schema_From_Query_Test_Cases {
+public class SchemaFromQueryTestCases {
 
-	private Schema_From_Query schemaCreator;
+	private SchemaFromQuery schemaCreator;
 	private String query;
-	private Match_Struc res;
+	private MatchStruc res;
 	
 	//for writing results
 	private static File testRes;
@@ -41,7 +40,7 @@ public class Schema_From_Query_Test_Cases {
 	
 	@BeforeClass
 	public static void beforeAll(){
-		System.out.println("These tests are responsible for testing Schema_From_Query.java to ensure that\n"
+		System.out.println("These tests are responsible for testing SchemaFromQuery.java to ensure that\n"
 				+"we can create a valid schema from a sepa or dbpedia query.");
 		System.out.println("\nThe results from these tests can be found in outputs/testing/Schema_From_Query_Tests.txt\n");
 
@@ -58,14 +57,14 @@ public class Schema_From_Query_Test_Cases {
 	
 	@Before
 	public void setup(){
-		schemaCreator = new Schema_From_Query();
+		schemaCreator = new SchemaFromQuery();
 		query="";
 		
 		try{
 			fOut = new PrintWriter(new FileWriter(testRes,true));
 			
 			if(alreadyWritten==false){
-				fOut.write("Testing Results for Schema_From_Query_Test_Cases.java\n\n");
+				fOut.write("Testing Results for SchemaFromQueryTestCases.java\n\n");
 				alreadyWritten = true;
 			}
 			
