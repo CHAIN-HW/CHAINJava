@@ -29,17 +29,18 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
     // https://mvnrepository.com/artifact/net.sf.extjwnl/extjwnl
-    compile group: 'net.sf.extjwnl', name: 'extjwnl', version: '1.6.4'
+    compile group: 'net.sf.extjwnl', name: 'extjwnl', version: '1.8.0'
+    // https://mvnrepository.com/artifact/net.sf.extjwnl/extjwnl-data-wn31
+    compile group: 'net.sf.extjwnl', name: 'extjwnl-data-wn31', version: '1.2'
+
 
     // S-match  - Maven repo very out of date, use local references
     // https://mvnrepository.com/artifact/it.unitn.disi/s-match
-//    compile group: 'it.unitn.disi', name: 's-match-parent', version: '2.0.0-SNAPSHOT'
     compile group: 'it.unitn.disi', name: 's-match-core', version: '2.0.0-SNAPSHOT'
     compile group: 'it.unitn.disi', name: 's-match-io', version: '2.0.0-SNAPSHOT'
     compile group: 'it.unitn.disi', name: 's-match-logic', version: '2.0.0-SNAPSHOT'
     compile group: 'it.unitn.disi', name: 's-match-nlp', version: '2.0.0-SNAPSHOT'
     compile group: 'it.unitn.disi', name: 's-match-nlp-annotation', version: '2.0.0-SNAPSHOT'
-//    compile group: 'it.unitn.disi', name: 's-match-opennlp', version: '2.0.0-SNAPSHOT'
     compile group: 'it.unitn.disi', name: 's-match-spsm', version: '2.0.0-SNAPSHOT'
     compile group: 'it.unitn.disi', name: 's-match-wordnet', version: '2.0.0-SNAPSHOT'
     compile group: 'it.unitn.disi', name: 's-match-utils', version: '2.0.0-SNAPSHOT'
