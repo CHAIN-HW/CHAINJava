@@ -6,3 +6,4 @@ before_install:
 - ./2buildSMatch
 - ./3createBinary
 - ./4extractBinary
+- cd ../../
