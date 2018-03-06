@@ -46,3 +46,10 @@ dependencies {
     compile group: 'it.unitn.disi', name: 's-match-utils', version: '2.0.0-SNAPSHOT'
     compile group: 'it.unitn.disi', name: 's-match-spsm-prolog', version: '2.0.0-SNAPSHOT'
 }
+
+// Outputs the results of each test - needed to stop travis timing out
+test {
+    afterTest { desc, result ->
+        logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+    }
+}
