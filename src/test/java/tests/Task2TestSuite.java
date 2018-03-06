@@ -19,15 +19,15 @@ import org.junit.runners.Suite.SuiteClasses;
  * RunQueryTestCases
  * 
  */
-@RunWith(Suite.class)
-
-@SuiteClasses({ 
-	SchemaFromQueryTestCases.class,
-	JWICallerTestCases.class,
-	CreateQueryTestCases.class,
-	RepairSchemaTestCases.class,
-		RunQueryTestCases.class
-})
+//@RunWith(Suite.class)
+//
+//@SuiteClasses({
+//	SchemaFromQueryTestCases.class,
+//	JWICallerTestCases.class,
+//	CreateQueryTestCases.class,
+//	RepairSchemaTestCases.class,
+//		RunQueryTestCases.class
+//})
 
 public class Task2TestSuite extends tests.BaseTest {
 }

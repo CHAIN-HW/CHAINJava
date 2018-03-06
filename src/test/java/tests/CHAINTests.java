@@ -14,21 +14,21 @@ import org.junit.runners.Suite.SuiteClasses;
  * Testing suite for CHAIn
  * 
  */
-
-@RunWith(Suite.class)
-
-@SuiteClasses({ 
-		MatchResultsTestCases.class,
-		SPSMFilterResultsTestCases.class,
-		SPSMTestCases.class,
-		SchemaFromQueryTestCases.class,
-		JWICallerTestCases.class,
-		CreateQueryTestCases.class,
-		RepairSchemaTestCases.class,
-		RunQueryTestCases.class,
-		RunCHAInTestCases.class,
-		SAQCreateQueryTests.class
-})
+//
+//@RunWith(Suite.class)
+//
+//@SuiteClasses({
+//		MatchResultsTestCases.class,
+//		SPSMFilterResultsTestCases.class,
+//		SPSMTestCases.class,
+//		SchemaFromQueryTestCases.class,
+//		JWICallerTestCases.class,
+//		CreateQueryTestCases.class,
+//		RepairSchemaTestCases.class,
+//		RunQueryTestCases.class,
+//		RunCHAInTestCases.class,
+//		SAQCreateQueryTests.class
+//})
 
 public class CHAINTests extends tests.BaseTest {
 
