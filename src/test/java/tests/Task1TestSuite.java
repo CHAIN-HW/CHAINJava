@@ -18,13 +18,13 @@ import org.junit.runners.Suite.SuiteClasses;
  * 
  */
 
-@RunWith(Suite.class)
-
-@SuiteClasses({ 
-		MatchResultsTestCases.class,
-		SPSMFilterResultsTestCases.class,
-		SPSMTestCases.class
-})
+//@RunWith(Suite.class)
+//
+//@SuiteClasses({
+//		MatchResultsTestCases.class,
+//		SPSMFilterResultsTestCases.class,
+//		SPSMTestCases.class
+//})
 
 public class Task1TestSuite extends tests.BaseTest {
 }
