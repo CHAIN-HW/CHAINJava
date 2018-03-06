@@ -53,7 +53,7 @@ import chain.core.RepairSchema;
  */
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class CreateQueryTestCases {
+public class CreateQueryTestCases extends BaseTest {
 
     private static String Q5_1_1 = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
             + "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"

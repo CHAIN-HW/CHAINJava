@@ -23,7 +23,7 @@ import org.junit.runners.Suite.SuiteClasses;
 		SPSMTestCases.class,
 		SchemaFromQueryTestCases.class,
 		JWICallerTestCases.class,
-//		Create_Query_Test_Cases.class,
+		CreateQueryTestCases.class,
 		RepairSchemaTestCases.class,
 		RunQueryTestCases.class,
 		RunCHAInTestCases.class,
