@@ -1,1 +1,9 @@
 language: java
+
+before_install:
+- cd spsm/s-match-source
+- ./0cloneSMatch
+- ./2buildSMatch
+- ./3createBinary
+- ./4extractBinary
+- cd ../../
