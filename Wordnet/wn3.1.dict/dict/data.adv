@@ -1787,7 +1787,7 @@
 00257824 02 r 01 in_situ 2 000 | in position  
 00257871 02 r 01 inter_alia 0 000 | among other things; "the committee recommended, inter alia, that he be promoted"  
 00257990 02 r 01 ipso_facto 0 000 | by the fact itself; "ipso facto, her innocence was established"  
-00258092 02 r 01 item 0 000 | (used when listing or enumerating items) also; "a length of chain, item a hook"-Philip Guedalla  
+00258092 02 r 01 item 0 000 | (used when listing or enumerating items) also; "a length of chain_tests, item a hook"-Philip Guedalla
 00258220 02 r 01 give_or_take 0 000 | plus or minus a small amount; "it is a mile away, give or take a few hundred yards"  
 00258344 02 r 01 mutatis_mutandis 0 000 | with the necessary changes having been carried out  
 00258439 02 r 01 par_excellence 0 000 | to a degree of excellence; "he is the honest politician par excellence"  

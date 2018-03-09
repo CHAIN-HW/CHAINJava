@@ -112,7 +112,7 @@ public class RunCHAIn {
 			
 			if(current==null){
 				//then we have an invalid query
-				//terminate chain with appropriate message
+				//terminate chain_tests with appropriate message
 				if(fOut!=null){
 					fOut.write("Invalid SPARQL query, please enter a valid query, terminating...\n\n");
 				}

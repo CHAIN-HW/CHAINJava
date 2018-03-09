@@ -1619,7 +1619,7 @@
 { [ leprous, noun.state:leprosy,+ noun.state:leprosy,\ ] (relating to or resembling or having leprosy) }
 { [ lingual1, noun.body:lingua,+ noun.body:tongue,\ ] (pertaining to or resembling or lying near the tongue; "lingual inflammation"; "the lingual surface of the teeth") }
 { [ Linnaean, noun.person:linnaeus,+ noun.person:Linnaeus,\ ] [ Linnean, noun.person:linnaeus,+ noun.person:Linnaeus,\ ] (of or relating to Linnaeus or to the system of taxonomic classification that Linnaeus proposed) }
-{ [ long-chain, noun.object:long_chain,\ ] (of molecules having relatively long chains of atoms in a molecule) }
+{ [ long-chain_tests, noun.object:long_chain,\ ] (of molecules having relatively long chains of atoms in a molecule) }
 { [ longitudinal, noun.location:longitude,+ noun.location:longitude,\ ] (of or relating to lines of longitude; "longitudinal reckoning by the navigator") }
 { [ literary, noun.communication:literature,+ noun.communication:literature,\ ] (of or relating to or characteristic of literature; "literary criticism") }
 { [ critical, noun.communication:criticism1,+ noun.person:critic2,+ noun.person:critic1,+ noun.person:critic,+ noun.cognition:criticism,\ ] (of or involving or characteristic of critics or criticism; "critical acclaim") }
@@ -2360,7 +2360,7 @@
 { [ transdermal, noun.body:dermis,\ ] [ transdermic, noun.body:dermis,\ ] [ percutaneous, noun.body:skin,\ ] [ transcutaneous, noun.body:skin,\ ] noun.cognition:pharmacology,;c (through the unbroken skin; refers to medications applied directly to the skin (creams or ointments) or in time-release forms (skin patches); "transdermal estrogen"; "percutaneous absorption") }
 { [ transitional, noun.event:transition,\ ] (of or relating to or characterized by transition; "adolescence is a transitional stage between childhood and adulthood") }
 { [ traumatic, noun.state:trauma2,+ noun.state:trauma2,\ ] (of or relating to a physical injury or wound to the body) }
-{ [ trophic, noun.process:nutrition,\ ] (of or relating to nutrition; "a trophic level on the food chain") }
+{ [ trophic, noun.process:nutrition,\ ] (of or relating to nutrition; "a trophic level on the food chain_tests") }
 { [ tympanic, noun.body:tympanum,\ ] (associated with the eardrum) }
 { [ tympanic1, noun.artifact:tympani,+ noun.artifact:tympani,\ ] (resembling a drum) }
 { [ tympanitic, noun.state:tympanites,\ ] (of or relating to tympanites) }

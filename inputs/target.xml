@@ -1,12 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?><context>
-  <node id="n0">
-    <name>document</name>
+  <node id="n0" preprocessed="true">
+    <name>entity</name>
+    <label-formula>n0_0</label-formula>
+    <node-formula>n0_0</node-formula>
+    <tokens>
+      <token id="0">
+        <text>entity</text>
+        <lemma>entity</lemma>
+        <senses>
+          <sense id="n#1740"/>
+        </senses>
+      </token>
+    </tokens>
     <children>
-      <node id="n1" parent-id="n0">
-        <name>title</name>
-      </node>
-      <node id="n2" parent-id="n0">
-        <name>author</name>
+      <node id="n1" parent-id="n0" preprocessed="true">
+        <name>populationTotal</name>
+        <label-formula>n1_0 &amp; n1_1</label-formula>
+        <node-formula>(n1_0 &amp; n1_1) &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>populationtotal</text>
+            <lemma>populationtotal</lemma>
+            <senses>
+              <sense id="n#8196797"/>
+              <sense id="n#8195659"/>
+              <sense id="n#6035684"/>
+              <sense id="n#13802016"/>
+              <sense id="n#1260649"/>
+            </senses>
+          </token>
+          <token id="1">
+            <text>total</text>
+            <lemma>total</lemma>
+            <senses>
+              <sense id="n#4360881"/>
+              <sense id="n#5869651"/>
+            </senses>
+          </token>
+        </tokens>
       </node>
     </children>
   </node>

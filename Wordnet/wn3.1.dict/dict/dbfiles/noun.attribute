@@ -2265,7 +2265,7 @@
 { mass, noun.quantity:fundamental_quantity,@ physical_property,@ (the property of a body that causes it to have weight in a gravitational field) }
 { body1, mass,@ (the main mass of a thing) }
 { biomass, mass,@ (the total mass of living matter in a given unit area) }
-{ critical_mass, mass,@ (the minimum mass of fissionable material that can sustain a chain reaction) }
+{ critical_mass, mass,@ (the minimum mass of fissionable material that can sustain a chain_tests reaction) }
 { rest_mass, mass,@ noun.cognition:physics,;c ((physics) the mass of a body as measured when the body is at rest relative to an observer, an inherent property of the body) }
 { relativistic_mass, mass,@ noun.cognition:physics,;c ((physics) the mass of a body in motion relative to the observer: it is equal to the rest mass multiplied by a factor that is greater than 1 and that increases as the magnitude of the velocity increases) }
 { [ bulk3, adj.all:large^bulky,+ ] mass,@ (the property possessed by a large mass) }
