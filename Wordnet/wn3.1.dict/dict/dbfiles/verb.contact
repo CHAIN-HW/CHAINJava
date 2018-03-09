@@ -449,7 +449,7 @@
 { tie_up1, bind_off, tie,@ noun.artifact:knitting,;c frames: 8 (finish the last row) }
 { [ rig, noun.artifact:rig,+ ] secure1,@ frames: 21 (connect or secure to; "They rigged the bomb to the ignition") }
 { [ loop1, noun.artifact:loop1,+ ] tie,@ frames: 8 (fasten or join with a loop; "He looped the watch through his belt") }
-{ chain_up, tie_up,@ frames: 8,9 (tie up with chains; "chain up the prisoners") }
+{ chain_up, tie_up,@ frames: 8,9 (tie up with chains; "chain_tests up the prisoners") }
 { [ bitt, noun.artifact:bitt,+ ] fasten1,@ frames: 8 (secure with a bitt; "bitt the ship line") }
 { [ cord1, noun.artifact:cord,+ ] tie,@ frames: 8 (bind or tie with a cord) }
 { [ latch, noun.artifact:latch,+ noun.artifact:latch1,+ ] fasten1,@ frames: 8 (fasten with a latch; "latch the door") }
@@ -464,8 +464,8 @@
 { [ manacle, noun.artifact:manacle,+ ] [ cuff1, noun.artifact:cuff1,+ ] [ handcuff, noun.artifact:handcuff,+ ] fetter,@ frames: 9 (confine or restrain with or as if with manacles or handcuffs; "The police handcuffed the suspect at the scene of the crime") }
 { enchain, restrain,@ frames: 8 (restrain or bind with chains) }
 { unchain1, verb.social:free,@ frames: 9,10 (make free) }
-{ [ chain, noun.artifact:chain,+ unchain,!] fasten1,@ frames: 8,9,21 (fasten or secure with chains; "Chain the chairs together") }
-{ [unchain, chain,!] unfasten1,@ frames: 8,9 (remove the chains from) }
+{ [ chain_tests, noun.artifact:chain_tests,+ unchain,!] fasten1,@ frames: 8,9,21 (fasten or secure with chains; "Chain the chairs together") }
+{ [unchain, chain_tests,!] unfasten1,@ frames: 8,9 (remove the chains from) }
 { cable, fasten1,@ frames: 8,21 (fasten with a cable; "cable trees") }
 { [ picket, noun.artifact:picket,+ ] fasten1,@ frames: 8,21 (fasten with a picket; "picket the goat") }
 { [ rope, noun.artifact:rope,+ verb.communication:rope_in,^ ] [ leash, noun.artifact:leash,+ ] tie,@ frames: 8,21 (fasten with a rope; "rope the bag securely") }
@@ -534,7 +534,7 @@
 { [ snaffle, noun.artifact:snaffle,+ ] bridle,@ frames: 8 (fit or restrain with a snaffle; "snaffle a horse") }
 { [ curb, noun.artifact:curb,+ ] restrain1,@ frames: 8 (keep to the curb; "curb your dogs") }
 { [ restrain1, noun.person:restrainer,+ ] encumber, cumber, verb.change:restrict,@ frames: 8 (restrict (someone or something) so as to make free movement difficult) }
-{ clog1, encumber,@ frames: 8,9,10,11 (impede the motion of, as with a chain or a burden; "horses were clogged until they were tamed") }
+{ clog1, encumber,@ frames: 8,9,10,11 (impede the motion of, as with a chain_tests or a burden; "horses were clogged until they were tamed") }
 { [ restrain, noun.person:restrainer,+ noun.state:restraint,+ ] confine1, [ hold3, noun.state:hold,+ noun.artifact:hold1,+ ] constrain, verb.change:disable,@ frames: 8,9,10,11 (to close within bounds, or otherwise limit or deprive of free movement; "This holds the local until the express passengers change trains"; "About a dozen animals were held inside the stockade"; "The illegal immigrants were held at a detention center"; "The terrorists held the journalists for ransom") }
 { [ keep10, noun.artifact:keep1,+ ] verb.social:detain,@ frames: 9 (hold and prevent from leaving; "The student was kept after school")}
 { impound, [ pound4, noun.artifact:pound,+ ] confine1,@ frames: 8,9 (place or shut up in a pound; "pound the cows so they don't stray")}
@@ -546,7 +546,7 @@
 { [ hoop, noun.artifact:hoop,+ ] encircle,@ frames: 8 (bind or fasten with a hoop; "hoop vats") }
 { [ bind, adj.all:attachable^bindable,+ noun.artifact:binder3,+ noun.artifact:binder,+ unbind,! ] attach1,@ frames: 8,11,21 (make fast; tie or secure, with or as if with a rope; "The Chinese would bind the feet of their women") }
 { [ bind8, adj.all:attachable^bindable,+ noun.act:binding,+ ] bandage3, fasten1,@ frames: 8 (wrap around with something so as to cover or enclose) }
-{ [lash2, unlash,!] tie,@ frames: 8 (bind with a rope, chain, or cord; "lash the horse") }
+{ [lash2, unlash,!] tie,@ frames: 8 (bind with a rope, chain_tests, or cord; "lash the horse") }
 { frap, lash2,@ frames: 8 (make secure by lashing; "frap a sail") }
 { [unlash, lash2,!] untie,@ frames: 8 (untie the lashing of; "unlash the horse") }
 { cement1, bind,@ frames: 8 (make fast as if with cement; "We cemented our friendship") }
@@ -819,7 +819,7 @@
 { [ waterproof, noun.artifact:waterproof2,+ noun.artifact:waterproof1,+ noun.act:waterproofing,+ ] seal3,@ frames: 8 (make watertight; "Waterproof the coat") }
 { caulk, calk, seal3,@ frames: 8 (seal with caulking; "caulk the window") }
 { [ connect, adj.all:conjunctive^connective,+ noun.artifact:connector,+ noun.artifact:connecter,+ disconnect,! ] [ link, noun.relation:link,+ noun.artifact:link,+ noun.act:linkage,+ ] [ tie1, noun.artifact:tie4,+ ] [link_up, noun.artifact:linkup,+] frames: 8,11,20,21 (connect, fasten, or put together two or more pieces; "Can you connect the two loudspeakers?"; "Tie the ropes together"; "Link arms")}
-{ daisy-chain, link,@ frames: 8 (connect devices on a part of a chip or circuit board in a computer) }
+{ daisy-chain_tests, link,@ frames: 8 (connect devices on a part of a chip or circuit board in a computer) }
 { [ tie2, noun.communication:tie,+ ] connect,@ frames: 8 (unite musical notes by a tie) }
 { [ communicate, noun.relation:communication,+ ] verb.stative:intercommunicate,@ frames: 4 (join or connect; "The rooms communicated") }
 { [ interconnect1, noun.act:interconnection,+ ] interlink1, connect,@ frames: 8,11,20,21 (cause to be interconnected or interwoven) }
@@ -1393,7 +1393,7 @@
 { [ tease1, noun.artifact:teaser1,+ noun.person:teaser1,+ ] tease_apart, loosen3, disentangle,@ frames: 8 (disentangle and raise the fibers of; "tease wool") }
 { [ arrange, noun.attribute:arrangement,+ noun.person:arranger,+ disarrange,! ] set_up, place,@ frames: 8 (put into a proper or systematic order; "arrange the books on the shelves in chronological order") }
 { stack6, arrange,@ frames: 8 (arrange the order of so as to increase one's winning chances; "stack the deck of cards")}
-{ chain1, arrange,@ frames: 8 (connect or arrange into a chain by linking)}
+{ chain1, arrange,@ frames: 8 (connect or arrange into a chain_tests by linking)}
 { [ concatenate, noun.state:concatenation,+ ] verb.change:concatenate,$ chain1,@ noun.cognition:computer_science,;c frames: 8 (combine two strings to form a single one)}
 { [ pair3, noun.quantity:pair,+ ] geminate, arrange,@ frames: 8 (arrange in pairs; "Pair these numbers")}
 { [ pair4, noun.quantity:pair,+ noun.group:pair1,+ ] geminate1, geminate,$ verb.stative:occur3,@ frames: 1 (occur in pairs)}
@@ -1402,7 +1402,7 @@
 { settle1, arrange,@ frames: 8 (arrange or fix in the desired order; "She settled the teacart") }
 { [ pyramid, noun.artifact:pyramid,+ noun.shape:pyramid,+ ] arrange,@ frames: 8 (arrange or build up as if on the base of a pyramid) }
 { corral1, arrange,@ frames: 8 (arrange wagons so that they form a corral) }
-{ [ catenate, noun.object:chain,+ noun.group:chain,+ noun.group:catena,+ ] [ catenulate, noun.object:chain,+ noun.group:chain,+ noun.group:catena,+ ] arrange,@ frames: 11 (arrange in a series of rings or chains, as for spores) }
+{ [ catenate, noun.object:chain_tests,+ noun.group:chain_tests,+ noun.group:catena,+ ] [ catenulate, noun.object:chain_tests,+ noun.group:chain_tests,+ noun.group:catena,+ ] arrange,@ frames: 11 (arrange in a series of rings or chains, as for spores) }
 { dress4, [ decorate, adj.all:nonfunctional^decorative,+ noun.artifact:decor,+ noun.artifact:decoration,+ noun.act:decoration,+ ] arrange,@ frames: 8 (provide with decoration; "dress the windows") }
 { [ disarrange, noun.state:disarrangement,+ arrange,! ] verb.motion:move1,@ frames: 8,11 (destroy the arrangement or order of; "My son disarranged the papers on my desk") }
 { [ border, noun.location:border1,+ noun.location:border,+ ] adjoin2, [ edge, noun.shape:edge,+ noun.artifact:edging,+ ] [ abut, noun.location:abutment,+ noun.person:abutter,+ ] [ march, noun.location:march,+ ] [ butt2, noun.artifact:butt5,+ ] butt_against, butt_on, touch1,@ frames: 11 (lie adjacent to another or share a boundary; "Canada adjoins the U.S."; "England marches with Scotland") }

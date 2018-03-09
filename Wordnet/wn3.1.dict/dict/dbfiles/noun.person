@@ -2443,7 +2443,7 @@
 { centurion, warrior,@ noun.location:Rome,;r noun.time:antiquity,;c ((ancient Rome) the leader of 100 soldiers) }
 { certified_public_accountant, CPA, accountant,@ (an accountant who has passed certain examinations and met all other statutory and licensing requirements of a United States state to be certified by that state; "in addition to accounting and auditing, CPAs also prepare tax returns for individuals and corporations") }
 { chachka, tsatske, tshatshke, tchotchke, tchotchkeleh, girl,@ noun.communication:Yiddish,;c ((Yiddish) an attractive, unconventional woman) }
-{ [ chain-smoker, verb.consumption:chain-smoke,+ ] smoker,@ (a heavy smoker (usually of cigarettes) who lights one off of another) }
+{ [ chain_tests-smoker, verb.consumption:chain_tests-smoke,+ ] smoker,@ (a heavy smoker (usually of cigarettes) who lights one off of another) }
 { chairman_of_the_board, corporate_executive,@ (the chairman of the board of directors of a corporation) }
 { Chaldean1, Chaldaean1, Chaldee1, occultist,@ (a wise man skilled in occult learning) }
 { chamberlain1, steward,@ (an officer who manages the household of a king or nobleman) }
@@ -5359,7 +5359,7 @@
 { [ overlord, noun.act:overlordship,+ ] [ master4, noun.act:mastership,+ verb.social:master,+ ] [ lord1, noun.attribute:lordship,+ ] ruler,@ (a person who has general authority over others) }
 { overnighter, guest1,@ (a guest who stays overnight) }
 { [ overseer, verb.social:oversee,+ ] [ superintendent, verb.social:superintend,+ ] supervisor,@ (a person who directs and manages an organization) }
-{ [ owner, noun.state:ownership,+ noun.possession:ownership,+ noun.act:ownership,+ verb.possession:own,+ ] [ proprietor, adj.all:proprietary,+ noun.possession:proprietorship,+ ] businessman,@ noun.group:law,;c ((law) someone who owns (is legal possessor of) a business; "he is the owner of a chain of restaurants") }
+{ [ owner, noun.state:ownership,+ noun.possession:ownership,+ noun.act:ownership,+ verb.possession:own,+ ] [ proprietor, adj.all:proprietary,+ noun.possession:proprietorship,+ ] businessman,@ noun.group:law,;c ((law) someone who owns (is legal possessor of) a business; "he is the owner of a chain_tests of restaurants") }
 { [ owner2, noun.state:ownership,+ noun.possession:ownership,+ noun.act:ownership,+ verb.possession:own,+ ] [ possessor, verb.possession:possess,+ ] noun.Tops:person,@ (a person who owns something; "they are searching for the owner of the car"; "who is the owner of that friendly smile?") }
 { owner-driver, driver,@ (a motorist who owns the car that he/she drives) }
 { owner-occupier, resident,@ (an occupant who owns the home that he/she lives in) }
@@ -8676,7 +8676,7 @@
 { Flinders, Matthew_Flinders, Sir_Matthew_Flinders, explorer,@i (British explorer who mapped the Australian coast (1774-1814)) }
 { Florey, Howard_Florey, Sir_Howard_Walter_Florey, pathologist,@i (British pathologist who isolated and purified penicillin, which had been discovered in 1928 by Sir Alexander Fleming (1898-1968)) }
 { Florio, John_Florio, lexicographer,@i (English lexicographer remembered for his Italian and English dictionary (1553-1625)) }
-{ Flory, Paul_John_Flory, chemist,@i (United States chemist who developed methods for studying long-chain molecules (1910-1985)) }
+{ Flory, Paul_John_Flory, chemist,@i (United States chemist who developed methods for studying long-chain_tests molecules (1910-1985)) }
 { Fonda, Henry_Fonda, actor,@i (United States film actor (1905-1982)) }
 { Fonda1, Jane_Fonda, actress,@i (United States film actress and daughter of Henry Fonda (born in 1937)) }
 { Fontanne, Lynn_Fontanne, actress,@i (United States actress (born in England) who married Alfred Lunt and performed with him in many plays (1887-1983)) }
@@ -8726,7 +8726,7 @@
 { Friedman, Milton_Friedman, economist,@i (United States economist noted as a proponent of monetarism and for his opposition to government intervention in the economy (born in 1912)) }
 { Frisch, Karl_von_Frisch, zoologist,@i (Austrian zoologist noted for his studies of honeybees (1886-1982)) }
 { Frisch1, Ragnar_Frisch, Ragnar_Anton_Kittil_Frisch, economist,@i (Norwegian economist noted for his work in econometrics (1895-1973)) }
-{ Frisch2, Otto_Frisch, Otto_Robert_Frisch, nuclear_physicist,@i (British physicist (born in Austria) who with Lise Meitner recognized that Otto Hahn had produced a new kind of nuclear reaction which they named nuclear fission; Frisch described the explosive potential of a chain nuclear reaction (1904-1979)) }
+{ Frisch2, Otto_Frisch, Otto_Robert_Frisch, nuclear_physicist,@i (British physicist (born in Austria) who with Lise Meitner recognized that Otto Hahn had produced a new kind of nuclear reaction which they named nuclear fission; Frisch described the explosive potential of a chain_tests nuclear reaction (1904-1979)) }
 { Frobisher, Sir_Martin_Frobisher, explorer,@i navigator,@i (English explorer who led an expedition in search of the Northwest Passage to the orient; served under Drake and helped defeat the Spanish Armada (1535-1594)) }
 { Froebel, Friedrich_Froebel, Friedrich_Wilhelm_August_Froebel, educator,@i (German educator who founded the kindergarten system (1782-1852)) }
 { [ Frost, adj.pert:frostian,+ ] Robert_Frost, Robert_Lee_Frost, poet,@i (United States poet famous for his lyrical poems on country life in New England (1874-1963)) }
@@ -9674,7 +9674,7 @@
 { Mark1, Saint_Mark, St._Mark, Apostle1,@i Evangelist1,@i saint3,@i (Apostle and companion of Saint Peter; assumed to be the author of the second Gospel) }
 { Markova, Dame_Alicia_Markova, Lilian_Alicia_Marks, dancer,@i (English ballet dancer (born in 1910)) }
 { [ Markov, adj.pert:markovian,+ ] Andrei_Markov, Markoff, Andre_Markoff, mathematician,@i (Russian mathematician (1856-1922)) }
-{ Marks, Simon_Marks, First_Baron_Marks_of_Broughton, businessman,@i (English businessman who created a retail chain (1888-1964)) }
+{ Marks, Simon_Marks, First_Baron_Marks_of_Broughton, businessman,@i (English businessman who created a retail chain_tests (1888-1964)) }
 { Marley, Robert_Nesta_Marley, Bob_Marley, singer,@i (Jamaican singer who popularized reggae (1945-1981)) }
 { Marlowe, Christopher_Marlowe, dramatist,@i poet,@i (English poet and playwright who introduced blank verse as a form of dramatic expression; was stabbed to death in a tavern brawl (1564-1593)) }
 { Marquand, John_Marquand, John_Philip_Marquand, writer,@i (United States writer who created the Japanese detective Mr. Moto and wrote other novels as well (1893-1960)) }
@@ -10270,7 +10270,7 @@
 { Rimsky-Korsakov, Nikolai_Andreyevich_Rimsky-Korsakov, Rimski-Korsakov, Nikolai_Andreyevich_Rimski-Korsakov, composer,@i (Russian composer of operas and orchestral works; often used themes from folk music (1844-1908)) }
 { Ringling, Charles_Ringling, showman,@i (United States showman whose song-and-dance troop evolved into a circus (1863-1926)) }
 { Rittenhouse, David_Rittenhouse, astronomer,@i (United States astronomer said to have built the first telescope made in America; also the first director of the United States Mint (1732-1796)) }
-{ Ritz, Cesar_Ritz, hotelier,@i (Swiss hotelier who created a chain of elegant hotels (1850-1918)) }
+{ Ritz, Cesar_Ritz, hotelier,@i (Swiss hotelier who created a chain_tests of elegant hotels (1850-1918)) }
 { Rivera, Diego_Rivera, muralist,@i (socialist Mexican painter of murals (1886-1957)) }
 { Robbins, Jerome_Robbins, choreographer,@i (United States choreographer who brought human emotion to classical ballet and spirited reality to Broadway musicals (1918-1998)) }
 { Robert, Henry_M._Robert, Henry_Martyn_Robert, parliamentarian,@i (United States parliamentary authority and author (in 1876) of Robert's Rules of Order (1837-1923)) }
@@ -10483,7 +10483,7 @@
 { Sinclair, Clive_Sinclair, Sir_Clive_Marles_Sinclair, electrical_engineer,@i entrepreneur,@i (English electrical engineer who founded a company that introduced many innovative products (born in 1940)) }
 { Sinclair1, Upton_Sinclair, Upton_Beall_Sinclair, writer,@i (United States writer whose novels argued for social reform (1878-1968)) }
 { Singer1, Isaac_Bashevis_Singer, writer,@i (United States writer (born in Poland) of Yiddish stories and novels (1904-1991)) }
-{ Singer2, Isaac_M._Singer, Isaac_Merrit_Singer, inventor,@i manufacturer,@i (United States inventor of an improved chain-stitch sewing machine (1811-1875)) }
+{ Singer2, Isaac_M._Singer, Isaac_Merrit_Singer, inventor,@i manufacturer,@i (United States inventor of an improved chain_tests-stitch sewing machine (1811-1875)) }
 { Siqueiros, David_Siqueiros, David_Alfaro_Siqueiros, painter,@i (Mexican painter of murals depicting protest and revolution (1896-1974)) }
 { Siraj-ud-daula, general,@i (Indian general and nawab of Bengal who opposed the colonization of India by England; he captured Calcutta in 1756 and many of his prisoners suffocated in a crowded room that became known as the Black Hole of Calcutta; he was defeated at the battle of Plassey by a group of Indian nobles in alliance with Robert Clive (1728-1757)) }
 { Sitter3, Willem_de_Sitter, astronomer,@i (Dutch astronomer who calculated the size of the universe and suggested that it is expanding (1872-1934)) }
@@ -11034,7 +11034,7 @@
 { Woolf, Virginia_Woolf, Adeline_Virginia_Stephen_Woolf, writer,@i noun.group:Bloomsbury_Group,#m (English author whose work used such techniques as stream of consciousness and the interior monologue; prominent member of the Bloomsbury Group (1882-1941)) }
 { Woollcott, Alexander_Woollcott, drama_critic,@i journalist,@i (United States drama critic and journalist (1887-1943)) }
 { Woolley, Sir_Leonard_Woolley, Sir_Charles_Leonard_Woolley, archaeologist,@i (English archaeologist who supervised the excavations at Ur (1880-1960)) }
-{ Woolworth, Frank_Winfield_Woolworth, businessman,@i (United States businessman who opened a shop in 1879 selling low-priced goods and built it into a national chain of stores (1852-1919)) }
+{ Woolworth, Frank_Winfield_Woolworth, businessman,@i (United States businessman who opened a shop in 1879 selling low-priced goods and built it into a national chain_tests of stores (1852-1919)) }
 { Worcester, Joseph_Emerson_Worcester, lexicographer,@i (United States lexicographer who was accused of plagiarism by Noah Webster (1784-1865)) }
 { [ Wordsworth, adj.pert:wordsworthian,+ ] William_Wordsworth, poet,@i noun.group:Lake_Poets,#m (a romantic English poet whose work was inspired by the Lake District where he spent most of his life (1770-1850)) }
 { Worth, Charles_Frederick_Worth, couturier,@i (French couturier (born in England) regarded as the founder of Parisian haute couture; noted for introducing the bustle (1825-1895)) }

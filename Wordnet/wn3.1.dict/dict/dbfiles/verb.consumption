@@ -205,7 +205,7 @@
 { predigest, digest,@ noun.animal:ruminant,;c frames: 8 (digest (food) beforehand) }
 { take_in1, sop_up, suck_in, take_up, ingest,@ frames: 8 (take up as if with a sponge) }
 { [ smoke, noun.act:smoke,+ noun.artifact:smoke1,+ noun.artifact:smoke,+ noun.person:smoker,+ noun.act:smoking,+ ] verb.body:inhale,* verb.body:exhale,* use2,@ frames: 2,8 (inhale and exhale smoke from cigarettes, cigars, pipes; "We never smoked marijuana"; "Do you smoke?") }
-{ [ chain-smoke, noun.person:chain-smoker,+ ] smoke,@ frames: 2 (smoke one cigarette after another; light one cigarette from the preceding one)}
+{ [ chain_tests-smoke, noun.person:chain_tests-smoker,+ ] smoke,@ frames: 2 (smoke one cigarette after another; light one cigarette from the preceding one)}
 { [ puff1, noun.act:puff,+ noun.act:puffing2,+ ] whiff2, smoke,@ frames: 8 (smoke and exhale strongly; "puff a cigar"; "whiff a pipe") }
 { [ inhale, adj.pert:inhalant,+ noun.artifact:inhalation,+ noun.act:inhalation,+ noun.substance:inhalant,+ ] smoke,@ frames: 2,8 (draw deep into the lungs in by breathing; "Clinton smoked marijuana but never inhaled") }
 { [ puff, noun.act:puff,+ ] [ drag, noun.act:drag2,+ ] draw1, smoke,* verb.body:inhale,@ frames: 2,22 (suck in or take (air); "draw a deep breath"; "draw on a cigarette") }
