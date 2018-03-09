@@ -609,7 +609,7 @@
 { [ Gothic_romance, noun.person:gothic_romancer,+ ] romance1,@ (a romance that deals with desolate and mysterious and grotesque events) }
 { bodice_ripper, romance1,@ (a romantic novel containing scenes in which the heroine is sexually violated) }
 { roman_fleuve, novel,@ (a French novel in the form of a long chronicle of a family or other social group) }
-{ story, fiction,@ (a piece of fiction that narrates a chain of related events; "he writes stories for the magazines") }
+{ story, fiction,@ (a piece of fiction that narrates a chain_tests of related events; "he writes stories for the magazines") }
 { utopia1, fiction,@ (a work of fiction describing a utopia) }
 { adventure_story, heroic_tale, story,@ (a story of an adventure) }
 { [ thriller, verb.perception:thrill,+ ] adventure_story,@ (a suspenseful adventure story or play or movie) }
@@ -5669,7 +5669,7 @@
 { bookplate, ex_libris, gummed_label,@ (a label identifying the owner of a book in which it is pasted) }
 { gummed_label, [ sticker, verb.contact:stick,+ ] [ paster, verb.contact:paste1,+ ] label,@ (an adhesive label) }
 { dog_tag1, tag,@ (metal plate on a dog collar bearing its registration number) }
-{ dog_tag2, tag,@ (military identification tag worn on a chain around the neck) }
+{ dog_tag2, tag,@ (military identification tag worn on a chain_tests around the neck) }
 { name_tag, tag,@ (a tag showing the name of the person who wears it) }
 { price_tag, tag,@ (a tag showing the price of the article it is attached to) }
 { [ tag, verb.contact:tag,+ ] ticket3, label,@ (a label written or printed on paper, cardboard, or plastic that is attached to something to indicate its owner, nature, price, etc.) }

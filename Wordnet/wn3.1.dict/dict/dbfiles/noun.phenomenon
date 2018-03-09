@@ -27,7 +27,7 @@
 { Coriolis_effect, consequence,@ noun.cognition:physics,;c ((physics) an effect whereby a body moving in a rotating frame of reference experiences the Coriolis force acting perpendicular to the direction of motion and to the axis of rotation; on Earth the Coriolis effect deflects moving bodies to the right in the northern hemisphere and to the left in the southern hemisphere) }
 { dent, consequence,@ (an appreciable consequence (especially a lessening); "it made a dent in my bank account") }
 { [ dominance, adj.all:dominant2,+ ] organic_phenomenon,@ noun.cognition:genetics,;c (the organic phenomenon in which one of a pair of alleles present in a genotype is expressed in the phenotype and the other allele of the pair is not) }
-{ domino_effect, consequence,@ noun.communication:figure_of_speech,;u (the consequence of one event setting off a chain of similar events (like a falling domino causing a whole row of upended dominos to fall)) }
+{ domino_effect, consequence,@ noun.communication:figure_of_speech,;u (the consequence of one event setting off a chain_tests of similar events (like a falling domino causing a whole row of upended dominos to fall)) }
 { harvest, consequence,@ (the consequence of an effort or activity; "they gathered a harvest of examples"; "a harvest of love") }
 { [ impact, verb.change:impact,+ ] wallop, consequence,@ (a forceful consequence; a strong effect; "the book had an important impact on my thinking"; "the book packs a wallop") }
 { [ influence, adj.all:influential,+ verb.communication:influence,+ verb.cognition:influence,+ verb.social:influence,+ ] consequence,@ (the effect of one thing (or person) on another; "the influence of mechanical action") }

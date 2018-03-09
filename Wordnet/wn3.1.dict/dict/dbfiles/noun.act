@@ -602,7 +602,7 @@
 { [ interconnection, verb.contact:interconnect1,+ ] joining,@ noun.artifact:computer,;c ((computer science) the act of interconnecting (wires or computers or theories etc.)) }
 { [ intersection, verb.motion:intersect,+ ] joining,@ (the act of intersecting (as joining by causing your path to intersect your target's path)) }
 { approximation, bringing_close_together, joining,@ (the act of bringing near or bringing together especially the cut edges of tissue) }
-{ [ concatenation, verb.change:concatenate,+ ] joining,@ (the act of linking together as in a series or chain) }
+{ [ concatenation, verb.change:concatenate,+ ] joining,@ (the act of linking together as in a series or chain_tests) }
 { [ convergence1, adj.all:convergent,+ verb.motion:converge,+ ] [ converging, verb.stative:converge,+ verb.motion:converge,+ verb.change:converge,+ ] [ convergency, adj.all:convergent,+ verb.stative:converge,+ verb.motion:converge,+ ] joining,@ (the act of converging (coming closer)) }
 { [ merging2, verb.change:merge,+ ] meeting2, coming_together2, convergence1,@ (the act of joining together as one; "the merging of the two groups occurred quickly"; "there was no meeting of minds") }
 { concourse, confluence2, meeting2,@ (a coming together of people) }
@@ -3965,7 +3965,7 @@
 { [ bunco, verb.social:bunco,+ ] bunco_game, bunko, bunko_game, [ con, verb.social:con,+ ] confidence_trick, confidence_game, con_game, hustle1, sting, [ flimflam, verb.social:flim-flam,+ ] swindle,@ (a swindle in which you cheat at gambling or persuade a person to buy worthless property) }
 { [ gyp, verb.social:gyp,+ ] [ gip, verb.social:gip,+ ] swindle,@ noun.communication:derogation,;u ((sometimes offensive) an act of swindling or cheating) }
 { sting_operation, bunco,@ (a complicated confidence game planned and executed with great care (especially an operation implemented by undercover agents to apprehend criminals)) }
-{ pyramiding, swindle,@ (a fraudulent business practice involving some form of pyramid scheme e.g., the chain of distribution is artificially expanded by an excessive number of distributors selling to other distributors at progressively higher wholesale prices until retail prices are unnecessarily inflated) }
+{ pyramiding, swindle,@ (a fraudulent business practice involving some form of pyramid scheme e.g., the chain_tests of distribution is artificially expanded by an excessive number of distributors selling to other distributors at progressively higher wholesale prices until retail prices are unnecessarily inflated) }
 { [ swindle, verb.social:swindle,+ ] [ cheat1, verb.competition:cheat,+ ] [ rig, verb.possession:rig,+ verb.social:rig,+ ] fraud,@ (the act of swindling by some fraudulent scheme; "that book is a fraud") }
 { holdout, swindle,@ (the act of hiding playing cards in a gambling game so they are available for personal use later) }
 { swiz, swindle,@ noun.location:Britain,;r noun.communication:slang,;u (British slang for a swindle) }
@@ -5615,7 +5615,7 @@
 { [ commerce, adj.all:inferior2^commercial,+ adj.pert:commercial,+ adj.all:commercial,+ ] commercialism, mercantilism, transaction,@ (transactions (sales and purchases) having the objective of supplying commodities (goods and services)) }
 { [ trade5, verb.possession:trade11,+ verb.stative:trade,+ verb.possession:trade,+ verb.possession:trade1,+ ] commerce,@ (the commercial exchange (buying and selling on domestic or international markets) of goods and services; "Venice was an important center of trade with the East"; "they are accused of conspiring to constrain trade") }
 { fair_trade, trade5,@ (trade that is conducted legally) }
-{ fair_trade1, trade5,@ (trade that satisfies certain criteria on the supply chain of the goods involved, usually including fair payment for producers; often with other social and environmental considerations) }
+{ fair_trade1, trade5,@ (trade that satisfies certain criteria on the supply chain_tests of the goods involved, usually including fair payment for producers; often with other social and environmental considerations) }
 { free_trade, trade5,@ (international trade free of government interference) }
 { North_American_Free_Trade_Agreement, NAFTA, free_trade,@ (an agreement for free trade between the United States and Canada and Mexico; became effective in 1994 for ten years) }
 { e-commerce, commerce,@ (commerce conducted electronically (as on the internet)) }

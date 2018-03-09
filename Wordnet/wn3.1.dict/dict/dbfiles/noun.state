@@ -2745,7 +2745,7 @@
 
 { connection, [ link, verb.contact:link2,+ verb.stative:link1,+ verb.cognition:link,+ ] [ connectedness, adj.all:related2^connected,+ adj.all:connected,+ disconnectedness,!] union,@ (the state of being connected; "the connection between church and state is inescapable") }
 { [ contact, verb.contact:contact3,+ ] connection,@ (the state or condition of touching or of being in immediate proximity; "litmus paper turns red on contact with an acid") }
-{ [ concatenation, verb.contact:concatenate,+ ] connection,@ (the state of being linked together as in a chain; union in a linked series) }
+{ [ concatenation, verb.contact:concatenate,+ ] connection,@ (the state of being linked together as in a chain_tests; union in a linked series) }
 { [ osculation, verb.stative:osculate,+ ] contact,@ noun.cognition:math,;c ((mathematics) a contact of two curves (or two surfaces) at which they have a common tangent) }
 { [ tangency, noun.shape:tangent,+ ] contact,@ (the state of being tangent; having contact at a single point or along a line without crossing) }
 { [ interconnection, verb.stative:interconnect,+ ] [ interconnectedness, adj.all:reticulate^interconnected,+ adj.all:integrated2^interconnected,+ ] connection,@ (a state of being connected reciprocally; "an interconnection between the two buildings") }
@@ -3292,7 +3292,7 @@
 { environmental_condition, condition,@ (the state of the environment) }
 { [ pollution, verb.change:pollute,+ ] environmental_condition,@ impurity,@ (undesirable state of the natural environment being contaminated with harmful substances as a consequence of human activities) }
 { [ biodegradable_pollution, nonbiodegradable_pollution,! ] pollution,@ (pollution that is rendered harmless by natural processes and so causes no permanent harm) }
-{ [ nonbiodegradable_pollution, biodegradable_pollution,! ] pollution,@ (pollution that accumulates in the environment and may appear in the food chain) }
+{ [ nonbiodegradable_pollution, biodegradable_pollution,! ] pollution,@ (pollution that accumulates in the environment and may appear in the food chain_tests) }
 { air_pollution, pollution,@ (pollution of the atmosphere; "air pollution reduced the visibility") }
 { acid_rain, acid_precipitation, air_pollution,@ (rain containing acids that form in the atmosphere when industrial gas emissions (especially sulfur dioxide and nitrogen oxides) combine with water) }
 { industrial_air_pollution, air_pollution,@ (pollution resulting from an industrial plant discharging pollutants into the atmosphere) }

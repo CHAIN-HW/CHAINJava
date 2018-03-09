@@ -1866,7 +1866,7 @@
 { fettered, shackled, (bound by chains fastened around the ankles) }
 { furled, rolled, (rolled up and secured; "furled sails bound securely to the spar"; "a furled flag"; "his rolled umbrella hanging on his arm") }
 { pinioned, (bound fast especially having the arms restrained) }
-{ tethered, (confined or restricted with or as if with a rope or chain) }
+{ tethered, (confined or restricted with or as if with a rope or chain_tests) }
 { trussed, tied, (bound or secured closely; "the guard was found trussed up with his arms and legs securely tied"; "a trussed chicken") }
 { wired, (tied or bound with wire; "wired bundles of newspapers") }
 ----
@@ -4217,7 +4217,7 @@
 { [ ceaseless, noun.attribute:ceaselessness,+ ] constant, [ incessant, noun.attribute:incessantness,+ noun.attribute:incessancy,+ ] never-ending, [ perpetual, noun.attribute:perpetuity,+ ] unceasing, unremitting, (uninterrupted in time and indefinitely long continuing; "the ceaseless thunder of surf"; "in constant pain"; "night and day we live with the incessant noise of the city"; "the never-ending search for happiness"; "the perpetual struggle to maintain standards in a democracy"; "man's unceasing warfare with drought and isolation"; "unremitting demands of hunger") }
 { continual, (having no interruptions; "`continual' is often used interchangeably with `continuous'") }
 { dogging, persisting, (relentless and indefatigable in pursuit or as if in pursuit; "impossible to escape the dogging fears") }
-{ [ endless, noun.attribute:endlessness,+ ] (having the ends united so as to form a continuous whole; "an endless chain") }
+{ [ endless, noun.attribute:endlessness,+ ] (having the ends united so as to form a continuous whole; "an endless chain_tests") }
 { free_burning, sustained2, ((of an electric arc) continuous; "heat transfer to the anode in free burning arcs") }
 { straight, consecutive, (successive (without a break); "sick for five straight days") }
 { sustained, (maintained at length without interruption or weakening; "sustained flight") }
@@ -4620,8 +4620,8 @@
 { [ NONCRITICAL1, CRITICAL3,!] noncrucial4, noun.state:crisis,= (not in a state of crisis or emergency) }
 { acritical, (without a crisis (as of some diseases)) }]
 
-[{ [ CRITICAL4, noun.state:criticality1,+ NONCRITICAL2,!] noun.state:criticality1,= noun.cognition:chemistry,;c noun.cognition:physics,;c (at or of a point at which a property or phenomenon suffers an abrupt change especially having enough mass to sustain a chain reaction; "a critical temperature of water is 100 degrees C--its boiling point at standard atmospheric pressure"; "critical mass"; "go critical") }
-{ supercritical, ((especially of fissionable material) able to sustain a chain reaction in such a manner that the rate of reaction increases) }
+[{ [ CRITICAL4, noun.state:criticality1,+ NONCRITICAL2,!] noun.state:criticality1,= noun.cognition:chemistry,;c noun.cognition:physics,;c (at or of a point at which a property or phenomenon suffers an abrupt change especially having enough mass to sustain a chain_tests reaction; "a critical temperature of water is 100 degrees C--its boiling point at standard atmospheric pressure"; "critical mass"; "go critical") }
+{ supercritical, ((especially of fissionable material) able to sustain a chain_tests reaction in such a manner that the rate of reaction increases) }
 ----
 { [ NONCRITICAL2, CRITICAL4,!] noun.state:criticality1,= noun.cognition:chemistry,;c noun.cognition:physics,;c (not critical; not at a point of abrupt change) }]
 
@@ -4815,11 +4815,11 @@
 
 [{ [ CYCLIC2, ACYCLIC2,!] noun.cognition:chemistry,;c (of a compound having atoms arranged in a ring structure) }
 { bicyclic, (having molecules consisting of two fused rings) }
-{ closed-chain, closed-ring, (having atoms linked by bonds represented in circular or triangular form) }
+{ closed-chain_tests, closed-ring, (having atoms linked by bonds represented in circular or triangular form) }
 { [ heterocyclic, noun.substance:heterocycle,+ noun.object:heterocycle,+ ] (containing a closed ring of atoms of which at least one is not a carbon atom) }
 { homocyclic, isocyclic, (containing a closed ring of atoms of the same kind especially carbon atoms) }
 ----
-{ [ ACYCLIC2, CYCLIC2,!] open-chain, noun.cognition:chemistry,;c (having an open chain structure) }
+{ [ ACYCLIC2, CYCLIC2,!] open-chain_tests, noun.cognition:chemistry,;c (having an open chain_tests structure) }
 { aliphatic, (having carbon atoms linked in open chains) }]
 
 [{ [ CYCLIC3, ACYCLIC1,!] noun.cognition:botany,;c (forming a whorl or having parts arranged in a whorl; "cyclic petals"; "cyclic flowers") }
@@ -5363,8 +5363,8 @@
 [{ [ SATURATED, UNSATURATED,!] noun.cognition:chemistry,;c (used especially of organic compounds; having all available valence bonds filled; "saturated fats") }
 ----
 { [ UNSATURATED, SATURATED,!] noun.cognition:chemistry,;c (used of a compound (especially of carbon) containing atoms sharing more than one valence bond; "unsaturated fats") }
-{ monounsaturated, ((of long-chain carbon compounds especially fats) saturated except for one multiple bond) }
-{ polyunsaturated, ((of long-chain carbon compounds especially fats) having many unsaturated bonds) }]
+{ monounsaturated, ((of long-chain_tests carbon compounds especially fats) saturated except for one multiple bond) }
+{ polyunsaturated, ((of long-chain_tests carbon compounds especially fats) having many unsaturated bonds) }]
 
 [{ [ SATURATED1, UNSATURATED1,!] concentrated2, (being the most concentrated solution possible at a given temperature; unable to dissolve still more of a substance; "a saturated solution") }
 { supersaturated, (being more concentrated than normally possible and therefore not in equilibrium) }
@@ -6765,7 +6765,7 @@
 { [ errant, noun.attribute:errancy1,+ noun.attribute:errancy,+ ] (straying from the right course or from accepted standards; "errant youngsters") }
 { erring, error-prone, (capable of making an error; "all men are error-prone") }
 { [ undependable, noun.attribute:undependableness,+ ] [ unreliable, noun.attribute:unreliableness,+ ] (liable to be erroneous or misleading; "an undependable generalization") }
-{ [ weak, noun.state:weakness,+ ] (likely to fail under stress or pressure; "the weak link in the chain") }
+{ [ weak, noun.state:weakness,+ ] (likely to fail under stress or pressure; "the weak link in the chain_tests") }
 ----
 { [ INFALLIBLE, noun.attribute:infallibility,+ FALLIBLE,!] (incapable of failure or error; "an infallible antidote"; "an infallible memory"; "the Catholic Church considers the Pope infallible"; "no doctor is infallible") }
 { foolproof, unfailing, (not liable to failure; "a foolproof identification system"; "the unfailing sign of an amateur"; "an unfailing test") }
@@ -11051,8 +11051,8 @@
 { last-ditch, (of something done as a final recourse (especially to prevent a crisis or disaster); "a last-ditch attempt") }
 { supreme, (final or last in your life or progress; "the supreme sacrifice"; "the supreme judgment") }
 ----
-{ [ PROXIMATE, ULTIMATE,!] (closest in degree or order (space or time) especially in a chain of causes and effects; "news of his proximate arrival"; "interest in proximate rather than ultimate goals") }
-{ [ immediate, noun.attribute:immediateness1,+ ] (immediately before or after as in a chain of cause and effect; "the immediate result"; "the immediate cause of the trouble") }]
+{ [ PROXIMATE, ULTIMATE,!] (closest in degree or order (space or time) especially in a chain_tests of causes and effects; "news of his proximate arrival"; "interest in proximate rather than ultimate goals") }
+{ [ immediate, noun.attribute:immediateness1,+ ] (immediately before or after as in a chain_tests of cause and effect; "the immediate result"; "the immediate cause of the trouble") }]
 
 [{ [ NECESSARY, noun.state:necessity,+ noun.object:necessity,+ UNNECESSARY,!] ESSENTIAL,^ INDISPENSABLE,^ OBLIGATORY,^ noun.state:necessity,= (absolutely essential) }
 { [ essential, noun.object:essential,+ noun.attribute:essentialness,+ ] [ indispensable, noun.attribute:indispensableness,+ noun.attribute:indispensability,+ ] (absolutely necessary; vitally necessary; "essential tools and materials"; "funds essential to the completion of the project"; "an indispensable worker") }

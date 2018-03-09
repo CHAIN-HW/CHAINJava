@@ -1,13 +1,29 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = 'chain.core.RunCHAIn'
+mainClassName = 'RunCHAIn'
 
 repositories {
     mavenCentral()
     flatDir {
         dirs 'spsm/s-match/lib', 'JWI'
     }
+}
+
+sourceSets{
+    fastTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/fastTest/java')
+        }
+
+    }
+}
+
+configurations {
+    fastTestCompile.extendsFrom testCompile
+    fastTestRuntime.extendsFrom testRuntime
 }
 
 dependencies {
@@ -27,6 +43,7 @@ dependencies {
     //JUnit
     // https://mvnrepository.com/artifact/junit/junit
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    fastTestCompile group: 'junit', name: 'junit', version: '4.12'
 
     // https://mvnrepository.com/artifact/net.sf.extjwnl/extjwnl
     compile group: 'net.sf.extjwnl', name: 'extjwnl', version: '1.8.0'
@@ -47,9 +64,24 @@ dependencies {
     compile group: 'it.unitn.disi', name: 's-match-spsm-prolog', version: '2.0.0-SNAPSHOT'
 }
 
+
+
+
 // Outputs the results of each test - needed to stop travis timing out
 test {
     afterTest { desc, result ->
         logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
     }
+}
+
+task fastTest(type: Test) {
+    testClassesDir = sourceSets.fastTest.output.classesDir
+    classpath = sourceSets.fastTest.runtimeClasspath
+    outputs.upToDateWhen { false }
+}
+
+check.dependsOn fastTest
+
+tasks.withType(Test) {
+    reports.html.destination = file("${reporting.baseDir}/${name}")
 }

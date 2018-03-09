@@ -1650,7 +1650,7 @@
 { Micronesia1, noun.object:archipelago,@i Austronesia,#p Oceania,#p (the islands in the northwestern part of Oceania) }
 { Micronesia, Federated_States_of_Micronesia, TT, country,@i Micronesia1,#p (a country scattered over Micronesia with a constitutional government in free association with the United States; achieved independence in 1986) }
 { Kolonia, national_capital,@i Micronesia,#p (capital of Micronesia) }
-{ Mariana_Islands, Marianas, Ladrone_Islands, noun.object:archipelago,@i Micronesia,#p (a chain of coral and volcanic islands in Micronesia (including Guam and the Northern Marianas) halfway between New Guinea and Japan; discovered by Magellan in 1521) }
+{ Mariana_Islands, Marianas, Ladrone_Islands, noun.object:archipelago,@i Micronesia,#p (a chain_tests of coral and volcanic islands in Micronesia (including Guam and the Northern Marianas) halfway between New Guinea and Japan; discovered by Magellan in 1521) }
 { Northern_Marianas, Northern_Mariana_Islands, district,@i Mariana_Islands,#p (a self-governing territory comprising all of the Mariana Islands except Guam) }
 { Saipan, noun.object:island,@i Northern_Marianas,#p (the largest island in the Northern Marianas and the administrative center of the commonwealth of the Northern Mariana Islands in union with the United States) }
 { Guam, GU, noun.object:island,@i Mariana_Islands,#p (the largest and southernmost island in the Marianas which is administered as a territory of the United States; it was ceded by Spain to the United States in 1898) }
@@ -1672,9 +1672,9 @@
 { Nauru, Republic_of_Nauru, country,@i Nauru_Island,#p (an island republic on Nauru Island; phosphate exports support the economy) }
 { Polynesia, noun.object:archipelago,@i Austronesia,#p Oceania,#p (the islands in the eastern part of Oceania) }
 { Malay_Archipelago, East_Indies, [ East_India, adj.pert:east_indian,+ ] noun.object:archipelago,@i noun.object:Pacific,#p (a group of islands in the Indian and Pacific Oceans between Asia and Australia) }
-{ Sunda_Islands, noun.object:archipelago,@i Malay_Archipelago,#p (a chain of islands in the western Malay Archipelago) }
-{ Greater_Sunda_Islands, noun.object:archipelago,@i Sunda_Islands,#p (a chain of islands including Borneo and Celebes and Java and Sumatra) }
-{ Lesser_Sunda_Islands, Nusa_Tenggara, noun.object:archipelago,@i Sunda_Islands,#p (a chain of islands forming a province of Indonesia to the east of Java; includes Bali and Timor) }
+{ Sunda_Islands, noun.object:archipelago,@i Malay_Archipelago,#p (a chain_tests of islands in the western Malay Archipelago) }
+{ Greater_Sunda_Islands, noun.object:archipelago,@i Sunda_Islands,#p (a chain_tests of islands including Borneo and Celebes and Java and Sumatra) }
+{ Lesser_Sunda_Islands, Nusa_Tenggara, noun.object:archipelago,@i Sunda_Islands,#p (a chain_tests of islands forming a province of Indonesia to the east of Java; includes Bali and Timor) }
 { Bismarck_Archipelago, noun.object:archipelago,@i Melanesia,#p Papua_New_Guinea,#p (a group of islands in the southwestern Pacific to the northeast of New Guinea; part of Papua New Guinea) }
 { Admiralty_Islands, noun.object:archipelago,@i Bismarck_Archipelago,#p (a group of islands in the Bismarck Archipelago) }
 { Borneo, Kalimantan, noun.object:island,@i Malay_Archipelago,#p (3rd largest island in the world; in the western Pacific to the north of Java; largely covered by dense jungle and rain forest; part of the Malay Archipelago) }
@@ -2005,7 +2005,7 @@
 { Yokohama, city,@i port,@i Honshu,#p Japan,#p (port city on southeastern Honshu in central Japan) }
 { Okinawa, noun.object:island,@i Ryukyu_Islands,#p (the largest island of the central Ryukyu Islands) }
 { Naha_City, city,@i Okinawa,#p Japan,#p (the chief city in the Ryukyu Islands) }
-{ Ryukyu_Islands, noun.object:archipelago,@i Japan,#p (a chain of 55 islands in the western Pacific to the to the southwest of Japan (returned by United States to Japan in 1972)) }
+{ Ryukyu_Islands, noun.object:archipelago,@i Japan,#p (a chain_tests of 55 islands in the western Pacific to the to the southwest of Japan (returned by United States to Japan in 1972)) }
 { Kobe, city,@i port,@i Honshu,#p (a port city in Japan on Osaka Bay in southern Honshu; was damaged by an earthquake in 1995) }
 { Kyoto, city,@i Honshu,#p Japan,#p (a city in central Japan on southern Honshu; a famous cultural center that was once the capital of Japan) }
 { Hiroshima, port,@i city,@i Honshu,#p (a port city on the southwestern coast of Honshu in Japan; on August 6, 1945 Hiroshima was almost completely destroyed by the first atomic bomb dropped on a populated area) }
@@ -2148,7 +2148,7 @@
 { Friesland, state1,@i Netherlands,#p (one of the northernmost provinces of the Netherlands) }
 { Friesland1, geographical_area,@i Frisia,#p (the western part of the ancient region of Frisia in northern Europe on the North Sea between the Scheldt river and the Weser river; part of this region is now a province in the Netherlands) }
 { [ Frisia, adj.pert:frisian,+ ] geographical_area,@i noun.object:Europe,#p (an ancient region of northwestern Europe including the Frisian Islands) }
-{ Frisian_Islands, noun.object:archipelago,@i Netherlands,#p Germany,#p Denmark,#p (a chain of islands in the North Sea off the coast of northwestern Europe extending from the IJsselmeer to Jutland) }
+{ Frisian_Islands, noun.object:archipelago,@i Netherlands,#p Germany,#p Denmark,#p (a chain_tests of islands in the North Sea off the coast of northwestern Europe extending from the IJsselmeer to Jutland) }
 { [ Hungary, adj.pert:hungarian,+ ] Republic_of_Hungary, Magyarorszag, European_country,@i noun.object:Europe,#p (a republic in central Europe) }
 { Budapest, Hungarian_capital, capital_of_Hungary, national_capital,@i Hungary,#p (capital and largest city of Hungary; located on the Danube River in north-central Hungary) }
 { Faroe_Islands, Faeroe_Islands, Faroes, Faeroes, noun.object:island,@i noun.object:Atlantic,#p (a group of 21 volcanic islands in the North Atlantic between Iceland and the Shetland Islands) }
@@ -2290,7 +2290,7 @@
 { Rawalpindi, city,@i Pakistan,#p (an ancient city in northeastern Pakistan; served as capital of Pakistan while Islamabad was being built) }
 { Sind, region,@ Pakistan,#p (a region of southeastern Pakistan) }
 
-{ Palau1, Palau_Islands, Belau, Pelew, noun.object:archipelago,@i noun.object:Pacific,#p (a chain of more than 200 islands about 400 miles long in the western central Pacific Ocean) }
+{ Palau1, Palau_Islands, Belau, Pelew, noun.object:archipelago,@i noun.object:Pacific,#p (a chain_tests of more than 200 islands about 400 miles long in the western central Pacific Ocean) }
 { Palau, Republic_of_Palau, TT1, country,@i Palau1,#p (a republic in the western central Pacific Ocean in association with the United States) }
 { [ Paraguay, adj.pert:paraguayan,+ ] Republic_of_Paraguay, South_American_country,@i noun.object:South_America,#p noun.group:OAS,#m (a landlocked republic in south central South America; achieved independence from Spain in 1811) }
 { Asuncion, capital_of_Paraguay, national_capital,@i port,@i Paraguay,#p (the capital and chief port of Paraguay) }
@@ -2355,7 +2355,7 @@
 { Papeete, city,@i Tahiti,#p (the capital of French Polynesia on the northwestern coast of Tahiti) }
 { Society_Islands, noun.object:archipelago,@i French_Polynesia,#p (an island group of French Polynesia in the South Pacific to the east of Samoa) }
 { Tuamotu_Archipelago, Paumotu_Archipelago, Low_Archipelago, noun.object:archipelago,@i French_Polynesia,#p (a group of about 80 coral islands in French Polynesia) }
-{ Tubuai_Islands, Austral_Islands, noun.object:archipelago,@i French_polynesia,#p (a chain of small islands in French Polynesia) }
+{ Tubuai_Islands, Austral_Islands, noun.object:archipelago,@i French_polynesia,#p (a chain_tests of small islands in French Polynesia) }
 { Gambier_Islands, noun.object:archipelago,@i French_Polynesia,#p (a group of islands in the south central Pacific; part of French Polynesia) }
 { Marquesas_Islands, Iles_Marquises, noun.object:archipelago,@i French_Polynesia,#p (a group of volcanic islands in the south central Pacific; part of French Polynesia) }
 { Samoa1, Samoan_Islands, noun.object:island,@i Polynesia,#p (a group of volcanic islands in the South Pacific midway between Hawaii and Australia; its climate and scenery and Polynesian culture make it a popular tourist stop) }

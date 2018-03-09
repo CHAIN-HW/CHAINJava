@@ -1,9 +1,9 @@
 package chain.sparql;
 import java.util.ArrayList;
 
-import chain.core.CallSPSM;
 import chain.core.MatchStruc;
 import chain.core.RepairSchema;
+import chain.core.CallSPSM;
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;

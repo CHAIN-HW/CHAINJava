@@ -254,7 +254,7 @@
 { anastigmat, lens,@ (compound lens or lens system designed to be free of astigmatism and able to form approximately point images) }
 { anastigmatic_lens, lens,@ (a lens designed to correct astigmatism) }
 { [ anchor, verb.contact:anchor,+ ] ground_tackle, hook1,@ vessel,#p (a mechanical device that prevents a vessel from moving) }
-{ anchor_chain, anchor_rope, chain,@ (the chain or rope that attaches an anchor to a vessel) }
+{ anchor_chain, anchor_rope, chain_tests,@ (the chain_tests or rope that attaches an anchor to a vessel) }
 { anchor_light, riding_light, riding_lamp, light,@ (a light in the rigging of a ship that is riding at anchor) }
 { AND_circuit, AND_gate, gate1,@ (a circuit in a computer that fires only when all of its inputs fire) }
 { andiron, firedog, dog1, dog-iron, support,@ (metal supports for logs in a fireplace; "the andirons were too hot to touch") }
@@ -353,7 +353,7 @@
 { [ appendicle, adj.pert:appendicular,+ ] appendage,@ (a small appendage) }
 { Appian_Way, highway,@i noun.location:Italy,#p (an ancient Roman road in Italy extending south from Rome to Brindisi; begun in 312 BC) }
 { applecart, handcart,@ (a handcart from which apples and other fruit are sold in the street) }
-{ apple_of_discord, trophy,@ noun.group:classical_mythology,;c ((classical mythology) a golden apple thrown into a banquet of the gods by Eris (goddess of discord--who had not been invited); the apple had `for the fairest' written on it and Hera and Athena and Aphrodite all claimed it; when Paris (prince of Troy) awarded it to Aphrodite it began a chain of events that led to the Trojan War) }
+{ apple_of_discord, trophy,@ noun.group:classical_mythology,;c ((classical mythology) a golden apple thrown into a banquet of the gods by Eris (goddess of discord--who had not been invited); the apple had `for the fairest' written on it and Hera and Athena and Aphrodite all claimed it; when Paris (prince of Troy) awarded it to Aphrodite it began a chain_tests of events that led to the Trojan War) }
 { apple_orchard, grove,@ (a grove of apple trees) }
 { appliance, durables,@ (durable goods for home or office use) }
 { appliance1, contraption, contrivance, [ convenience, adj.all:convenient,+ ] [ gadget, noun.person:gadgeteer,+ ] gizmo, gismo, widget, device,@ (a device or control that is very useful for a particular job) }
@@ -640,7 +640,7 @@
 { baling_wire, wire,@ (wire used to make bales) }
 { [ ball1, noun.act:ball1,+ ] game_equipment,@ (round object that is hit or thrown or kicked in games; "the ball travelled 90 mph on his serve"; "the mayor threw out the first ball"; "the ball rolled into the corner pocket") }
 { ball2, plaything,@ (a spherical object used as a plaything; "he played with his rubber ball in the bathtub") }
-{ ball_and_chain, shackle,@ (heavy iron ball attached to a prisoner by a chain) }
+{ ball_and_chain, shackle,@ (heavy iron ball attached to a prisoner by a chain_tests) }
 { ball-and-socket_joint, joint1,@ (a joint that can rotate within a socket) }
 { [ ballast, verb.change:ballast,+ ] noun.substance:material,@ (any heavy material used to stabilize a ship or airship) }
 { ballast1, light_ballast, electrical_device,@ (an electrical device for starting and regulating fluorescent and discharge lamps) }
@@ -988,8 +988,8 @@
 { [ bicorn, adj.all:horned^bicorn,+ ] bicorne, cocked_hat,@ (a cocked hat with the brim turned up to form two points) }
 { [ bicycle, noun.person:bicyclist,+ verb.motion:bicycle,+ ] [ bike, verb.motion:bike,+ ] wheel6, [ cycle, noun.person:cyclist,+ ] wheeled_vehicle,@ (a wheeled vehicle that has two wheels and is moved by foot pedals) }
 { bicycle-built-for-two, tandem_bicycle, tandem, bicycle,@ (a bicycle with two sets of pedals and two seats) }
-{ bicycle_chain, chain,@ (a chain that transmits the power from the pedals to the rear wheel of a bicycle) }
-{ bicycle_clip, trouser_clip, clip1,@ (a clip worn around a cyclist's ankles that keeps trousers from becoming caught in the bicycle chain) }
+{ bicycle_chain, chain_tests,@ (a chain_tests that transmits the power from the pedals to the rear wheel of a bicycle) }
+{ bicycle_clip, trouser_clip, clip1,@ (a clip worn around a cyclist's ankles that keeps trousers from becoming caught in the bicycle chain_tests) }
 { bicycle_pump, pump,@ (a small pump that fills bicycle tires with air) }
 { bicycle_rack, rack1,@ (a rack for parking bicycles) }
 { bicycle_seat, saddle2, seat,@ bicycle,#p (a seat for the rider of a bicycle) }
@@ -1395,7 +1395,7 @@
 { briefs, Jockey_shorts, underpants,@ noun.communication:plural,;u ((used in the plural) short tight-fitting underpants (trade name Jockey shorts)) }
 { brig, penal_institution,@ noun.artifact:ship,;c (a penal institution (especially on board a ship)) }
 { brig1, sailing_vessel,@ (two-masted sailing vessel square-rigged on both masts) }
-{ brigandine, chain_mail,@ (a medieval coat of chain mail consisting of metal rings sewn onto leather or cloth) }
+{ brigandine, chain_mail,@ (a medieval coat of chain_tests mail consisting of metal rings sewn onto leather or cloth) }
 { brigantine, hermaphrodite_brig, sailing_vessel,@ (two-masted sailing vessel square-rigged on the foremast and fore-and-aft rigged on the mainmast) }
 { brilliantine, pomade,@ (a pomade to make the hair manageable and lustrous) }
 { brilliant_pebble, heat-seeking_missile,@ (a code name for a small computerized heat-seeking missile that was supposed to intercept and destroy enemy missiles) }
@@ -1950,7 +1950,7 @@
 { cellulose_tape, [ Scotch_tape, verb.contact:scotch_tape,+ noun.communication:trademark,;u ] [ Sellotape, noun.communication:trademark,;u ] adhesive_tape,@ (transparent or semitransparent adhesive tape (trade names Scotch tape and Sellotape) used for sealing or attaching or mending) }
 { Celtic_cross, cross,@ (a Latin cross with a ring surrounding the intersection) }
 { cenotaph, empty_tomb, monument,@ (a monument built to honor people whose remains are interred elsewhere or whose remains cannot be recovered) }
-{ censer, thurible, vessel1,@ noun.cognition:religion,;c (a container for burning incense (especially one that is swung on a chain in a religious ritual)) }
+{ censer, thurible, vessel1,@ noun.cognition:religion,;c (a container for burning incense (especially one that is swung on a chain_tests in a religious ritual)) }
 { center, [ centre, noun.location:Canada,;r noun.location:Britain,;r ] building,@ (a building dedicated to a particular activity; "they were raising money to build a new center for research") }
 { center_bit, [ centre_bit, noun.location:Canada,;r noun.location:Britain,;r ] bit,@ (a bit with a sharp center point for guidance and two side cutters) }
 { centerboard, [ centreboard, noun.location:Canada,;r noun.location:Britain,;r ] drop_keel, sliding_keel, fin_keel,@ sailboat,#p (a retractable fin keel used on sailboats to prevent drifting to leeward) }
@@ -1983,19 +1983,19 @@
 { [ chaff, adj.pert:chaffy,+ ] foil1,@ (foil in thin strips; ejected into the air as a radar countermeasure) }
 { chafing_dish, cooking_utensil,@ (a metal pan over a heater; used to cook or to keep things warm at the table) }
 { chafing_gear, covering,@ (covering (usually rope or canvas) of a line or spar to protect it from friction) }
-{ [ chain, verb.contact:chain,+ ] ligament,@ chain_printer,#p chain_tongs,#p bicycle,#p (a series of (usually metal) rings or links fitted into one another to make a flexible ligament) }
+{ [ chain_tests, verb.contact:chain_tests,+ ] ligament,@ chain_printer,#p chain_tongs,#p bicycle,#p (a series of (usually metal) rings or links fitted into one another to make a flexible ligament) }
 { chain1, [ string2, verb.contact:string2,+ ] strand1, necklace,@ (a necklace made by stringing objects together; "a string of beads"; "a strand of pearls") }
 { chain3, restraint,@ (anything that acts as a restraint) }
-{ chain4, necklace,@ (a linked or connected series of objects; "a chain of daisies") }
+{ chain4, necklace,@ (a linked or connected series of objects; "a chain_tests of daisies") }
 { chainlink_fence, fence,@ (a fence of steel wires woven into a diamond pattern) }
 { chain_mail, ring_mail, mail, chain_armor, chain_armour, ring_armor, ring_armour, body_armor,@ noun.time:middle_ages,;c ((Middle Ages) flexible armor made of interlinked metal rings) }
-{ chain_printer, impact_printer,@ (an impact printer that carries the type slugs by links of a revolving chain) }
-{ chain_saw, chainsaw, power_saw,@ (portable power saw; teeth linked to form an endless chain) }
-{ chain_stitch, sewing_stitch,@ (a looped stitch resembling the links of a chain; used in embroidery and in sewing) }
+{ chain_printer, impact_printer,@ (an impact printer that carries the type slugs by links of a revolving chain_tests) }
+{ chain_saw, chainsaw, power_saw,@ (portable power saw; teeth linked to form an endless chain_tests) }
+{ chain_stitch, sewing_stitch,@ (a looped stitch resembling the links of a chain_tests; used in embroidery and in sewing) }
 { chain_stitch1, crochet_stitch,@ (the most basic of all crochet stitches made by pulling a loop of yarn through another loop) }
-{ chain_store, noun.group:chain2,#m store,@ (one of a chain of retail stores under the same management and selling the same merchandise) }
-{ chain_tongs, pipe_wrench,@ noun.communication:plural,;u (a pipe wrench used for turning large pipes; an adjustable chain circles the pipe with its ends connected to the head whose teeth engage the pipe) }
-{ chain_wrench, chain_tongs,@ (another name for chain tongs) }
+{ chain_store, noun.group:chain2,#m store,@ (one of a chain_tests of retail stores under the same management and selling the same merchandise) }
+{ chain_tongs, pipe_wrench,@ noun.communication:plural,;u (a pipe wrench used for turning large pipes; an adjustable chain_tests circles the pipe with its ends connected to the head whose teeth engage the pipe) }
+{ chain_wrench, chain_tongs,@ (another name for chain_tests tongs) }
 { chair, seat1,@ (a seat for one person, with a support for the back; "he put his coat over the back of the chair and sat down") }
 { chair2, seat,@ (a particular seat in an orchestra; "he is second chair violin") }
 { chair_of_state, chair,@ (a ceremonial chair for an exalted or powerful person) }
@@ -2054,7 +2054,7 @@
 { chassis1, mounting,@ (a metal mounting for the circuit components of an electronic device) }
 { chasuble, vestment,@ (a long sleeveless vestment worn by a priest when celebrating Mass) }
 { chateau, country_house,@ (an impressive country house (or castle) in France) }
-{ chatelaine, chain,@ (a chain formerly worn at the waist by women; for carrying a purse or bunch of keys etc.) }
+{ chatelaine, chain_tests,@ (a chain_tests formerly worn at the waist by women; for carrying a purse or bunch of keys etc.) }
 { [ check, verb.creation:check,+ ] weave,@ (a textile pattern of squares or crossed lines (resembling a checkerboard); "she wore a skirt with checks") }
 { checker, chequer, man,@ noun.act:checkers,;c (one of the flat round pieces used in playing the game of checkers) }
 { checkerboard, checker_board, board5,@ noun.act:chess,#p noun.act:checkers,#p (a board having 64 squares of two alternating colors) }
@@ -2877,7 +2877,7 @@
 { cupola, dome,@ (a roof in the form of a dome) }
 { cupola1, furnace,@ (a vertical cylindrical furnace for melting iron for casting) }
 { [ curb, verb.contact:curb,+ ] curbing, kerb, edge,@ (an edge between a sidewalk and a roadway consisting of a line of curbstones (usually forming part of a gutter)) }
-{ curb2, curb_bit, bit1,@ (a horse's bit with an attached chain or strap to check the horse) }
+{ curb2, curb_bit, bit1,@ (a horse's bit with an attached chain_tests or strap to check the horse) }
 { curb_market, stock_exchange,@ (a stock market for trading in securities not listed on the New York Stock Exchange) }
 { curb_roof, roof,@ (a roof with two or more slopes on each side of the ridge) }
 { curbside, pavement,@ (the side of a sidewalk that is bordered by a curb; "policemen stood at intervals along the curbside") }
@@ -2943,7 +2943,7 @@
 { daguerreotype, photograph,@ (a photograph made by an early photographic process; the image was produced on a silver plate sensitized to iodine and developed in mercury vapor) }
 { dairy, dairy_farm, farm,@ (a farm where dairy products are produced) }
 { dais, podium, pulpit, rostrum, ambo, stump1, soapbox, platform,@ (a platform raised above the surrounding level to give prominence to the person on it) }
-{ daisy_chain, flower_chain,@ (flower chain consisting of a string of daisies linked by their stems; worn by students on class day at some schools) }
+{ daisy_chain, flower_chain,@ (flower chain_tests consisting of a string of daisies linked by their stems; worn by students on class day at some schools) }
 { daisy_print_wheel, daisy_wheel, wheel,@ daisywheel_printer,#p (a wheel around which is a set of print characters that make a typing impression on paper) }
 { daisywheel_printer, character_printer,@ (a printer that uses a daisy print wheel) }
 { [ dam, verb.contact:dam,+ ] [ dike, verb.contact:dike,+ ] [ dyke, verb.contact:dyke,+ ] barrier,@ (a barrier constructed to contain the flow of water or to keep out the sea) }
@@ -3050,7 +3050,7 @@
 { dentist's_drill, burr_drill, drill,@ (a high speed drill that dentists use to cut into teeth) }
 { [ denture, noun.person:denturist,+ ] dental_plate, plate9, dental_appliance,@ (a dental appliance that artificially replaces missing teeth) }
 { [ deodorant, verb.perception:deodorize,+ ] [ deodourant, verb.perception:deodourise,+ ] toiletry,@ (a toiletry applied to the skin in order to mask unpleasant odors) }
-{ department_store, emporium, mercantile_establishment,@ noun.group:retail_chain,#m (a large retail store organized into departments offering a variety of merchandise; commonly part of a retail chain) }
+{ department_store, emporium, mercantile_establishment,@ noun.group:retail_chain,#m (a large retail store organized into departments offering a variety of merchandise; commonly part of a retail chain_tests) }
 { departure_gate, gate2,@ (gate where passengers embark) }
 { departure_lounge, lounge,@ (lounge where passengers can await departure) }
 { [ depilatory, adj.all:hairless^depilatory,+ ] [ depilator, verb.body:depilate,+ ] epilator, cosmetic,@ (a cosmetic for temporary removal of undesired hair) }
@@ -4140,7 +4140,7 @@
 { flour_mill, mill,@ (a mill for grinding grain into flour) }
 { flower_arrangement, floral_arrangement, noun.group:arrangement,@ decoration,@ (a decorative arrangement of flowers) }
 { flowerbed, flower_bed, bed_of_flowers, bed1,@ (a bed in which flowers are growing) }
-{ flower_chain, flower_arrangement,@ (flowers strung together in a chain) }
+{ flower_chain, flower_arrangement,@ (flowers strung together in a chain_tests) }
 { flower_garden, garden,@ (a garden featuring flowering plants) }
 { floxuridine, antineoplastic,@ (antineoplastic drug used to treat some cancers; can cause loss of hair) }
 { flue, conduit,@ (a conduit to carry off smoke) }
@@ -4181,8 +4181,8 @@
 { fly_tent, tent,@ (a tent with a fly front) }
 { flytrap, trap,@ (a trap for catching flies) }
 { flywheel, regulator1,@ (regulator consisting of a heavy wheel that stores kinetic energy and smooths the operation of a reciprocating engine) }
-{ fob, watch_chain, watch_guard, chain,@ (short chain or ribbon attaching a pocket watch to a man's vest) }
-{ fob1, adornment,@ (an adornment that hangs from a watch chain) }
+{ fob, watch_chain, watch_guard, chain_tests,@ (short chain_tests or ribbon attaching a pocket watch to a man's vest) }
+{ fob1, adornment,@ (an adornment that hangs from a watch chain_tests) }
 { fob2, watch_pocket, vest_pocket,@ (a vest pocket to hold a pocket watch) }
 { foghorn, horn3,@ signaling_device,@ (a warning device consisting of a horn that generates a loud low tone) }
 { foglamp, headlight,@ (headlight that provides strong beam for use in foggy weather) }
@@ -4791,7 +4791,7 @@
 { [ gyroscope, adj.pert:gyroscopic,+ ] gyro, rotating_mechanism,@ gyrocompass,#p gyrostabilizer,#p (rotating mechanism in the form of a universally mounted spinning wheel that offers resistance to turns in any direction) }
 { gyrostabilizer, gyrostabiliser, stabilizer,@ ship,#p (a stabilizer consisting of a heavy gyroscope that spins on a vertical axis; reduces side-to-side rolling of a ship or plane) }
 { haberdashery, men's_furnishings, drygoods,@ (the drygoods sold by a haberdasher) }
-{ habergeon, chain_mail,@ noun.time:middle_ages,;c ((Middle Ages) a light sleeveless coat of chain mail worn under the hauberk) }
+{ habergeon, chain_mail,@ noun.time:middle_ages,;c ((Middle Ages) a light sleeveless coat of chain_tests mail worn under the hauberk) }
 { [ habit, verb.body:habit,+ ] attire,@ noun.cognition:religion,;c (a distinctive attire worn by a member of a religious order) }
 { habit1, riding_habit, attire,@ (attire that is typically worn by a horseback rider (especially a woman's attire)) }
 { hacienda, house,@ noun.possession:hacienda,#p (the main house on a ranch or large estate) }
@@ -4941,7 +4941,7 @@
 { hatchet, ax,@ (a small ax with a short handle used with one hand (usually to chop wood)) }
 { hatchway, [ opening1, verb.stative:open,+ ] scuttle1, entrance,@ (an entrance equipped with a hatch; especially a passageway between decks of a ship) }
 { hatpin, pin,@ (a long sturdy pin used by women to secure a hat to their hair) }
-{ hauberk, byrnie, chain_mail,@ (a long (usually sleeveless) tunic of chain mail formerly worn as defensive armor) }
+{ hauberk, byrnie, chain_mail,@ (a long (usually sleeveless) tunic of chain_tests mail formerly worn as defensive armor) }
 { havelock, cloth_covering,@ (a cloth covering for a service cap with a flap extending over the back of the neck to protect the neck from direct rays of the sun) }
 { haven, oasis, shelter,@ (a shelter serving as a place of safety or sanctuary) }
 { Hawaiian_guitar, steel_guitar, guitar,@ (guitar whose steel strings are twanged while being pressed with a movable steel bar for a glissando effect) }
@@ -5837,7 +5837,7 @@
 { laundry_truck, van,@ (van that picks up and delivers laundry; "a laundry truck stops by every week") }
 { laurel, laurel_wreath, bay_wreath, wreath,@ noun.location:Greece,;r noun.time:antiquity,;c ((antiquity) a wreath of laurel foliage worn on the head as an emblem of victory) }
 { lavalava, skirt,@ (a skirt consisting of a rectangle of calico or printed cotton; worn by Polynesians (especially Samoans)) }
-{ lavaliere, lavalier, lavalliere, pendant1,@ (jeweled pendant worn on a chain around the neck) }
+{ lavaliere, lavalier, lavalliere, pendant1,@ (jeweled pendant worn on a chain_tests around the neck) }
 { laver, basin,@ noun.communication:Old_Testament,;c ((Old Testament) large basin used by a priest in an ancient Jewish temple to perform ritual ablutions) }
 { court5, lawcourt, court_of_law, law_court, court_of_justice, noun.group:court,@ (a tribunal that is presided over by a magistrate or by one or more judges who administer justice according to the laws) }
 { lawn_chair, garden_chair, chair,@ (chair left outside for use on a lawn or in a garden) }
@@ -5848,7 +5848,7 @@
 { layette, kit,@ (kit consisting of a complete outfit (clothing and accessories) for a new baby) }
 { lay_figure, dummy,@ (dummy in the form of an artist's jointed model of the human body) }
 { lazaretto, lazaret, lazarette, lazar_house, pesthouse, hospital,@ (hospital for persons with infectious diseases (especially leprosy)) }
-{ lazy_daisy_stitch, chain_stitch,@ (long chain stitches arranged in flower patterns) }
+{ lazy_daisy_stitch, chain_stitch,@ (long chain_tests stitches arranged in flower patterns) }
 { lead, pencil_lead, noun.substance:graphite,@ lead_pencil1,#p (mixture of graphite with clay in different degrees of hardness; the marking substance in a pencil) }
 { lead2, leading, strip,@ (thin strip of metal used to separate lines of type in printing) }
 { lead-acid_battery, lead-acid_accumulator, storage_battery,@ (a battery with lead electrodes with dilute sulphuric acid as the electrolyte; each cell generates about 2 volts) }
@@ -5862,7 +5862,7 @@
 { Leaning_Tower, Leaning_Tower_of_Pisa, campanile,@i noun.location:Pisa,#p (a tall round marble campanile in Pisa that is not perpendicular; construction was begun in 1174) }
 { lean-to, shelter1,@ (rough shelter whose roof has only one slope) }
 { lean-to_tent, tent,@ (tent that is attached to the side of a building) }
-{ [ leash, verb.contact:leash,+ ] [ tether, verb.contact:tether,+ ] lead3, restraint,@ (restraint consisting of a rope (or light chain) used to restrain an animal) }
+{ [ leash, verb.contact:leash,+ ] [ tether, verb.contact:tether,+ ] lead3, restraint,@ (restraint consisting of a rope (or light chain_tests) used to restrain an animal) }
 { leatherette, imitation_leather, fabric,@ (fabric made to look like leather) }
 { leather_strip, implement,@ (implement consisting of a strip of leather) }
 { leatherwork, work,@ (work made of leather) }
@@ -6800,7 +6800,7 @@
 { neck_brace, brace4,@ (a brace worn to steady the neck) }
 { neckcloth, stock3, cravat1,@ (an ornamental white cravat) }
 { neckerchief, kerchief,@ (a kerchief worn around the neck) }
-{ necklace, jewelry,@ (jewelry consisting of a cord or chain (often bearing gems) worn about the neck as an ornament (especially by women)) }
+{ necklace, jewelry,@ (jewelry consisting of a cord or chain_tests (often bearing gems) worn about the neck as an ornament (especially by women)) }
 { necklet, decoration,@ (decoration worn about the neck (fur piece or tight necklace) as an ornament) }
 { neckline, neck,@ dress,#p blouse,#p sweater,#p (the line formed by the edge of a garment around the neck) }
 { neckpiece, clothing,@ (an article of apparel worn about the neck) }
@@ -7160,7 +7160,7 @@
 { paddle_steamer, paddle-wheeler, steamer,@ (a steam vessel propelled by paddle wheels) }
 { paddlewheel, paddle_wheel, wheel,@ (a large wheel fitted with paddles and driven by an engine in order to propel a boat) }
 { paddock, pen1,@ (pen where racehorses are saddled and paraded before a race) }
-{ [ padlock, verb.contact:padlock,+ ] lock,@ (a detachable lock; has a hinged shackle that can be passed through the staple of a hasp or the links in a chain and then snapped shut) }
+{ [ padlock, verb.contact:padlock,+ ] lock,@ (a detachable lock; has a hinged shackle that can be passed through the staple of a hasp or the links in a chain_tests and then snapped shut) }
 { page_printer, page-at-a-time_printer, printer,@ (a printer that prints one page at a time) }
 { pagoda, temple,@ (an Asian temple; usually a pyramidal tower with an upward curving roof) }
 { paillasse, palliasse, mattress,@ (mattress consisting of a thin pad filled with straw or sawdust) }
@@ -7235,7 +7235,7 @@
 { papal_cross, cross,@ (a cross with three crossbars) }
 { papaverine, [ Kavrin, noun.communication:trade_name,;u ] muscle_relaxant,@ (an alkaloid medicine (trade name Kavrin) obtained from opium; used to relax smooth muscles; it is nonaddictive) }
 { paperback_book, paper-back_book, [ paperback, adj.all:bound2^paperback,+ ] softback_book, softback, soft-cover_book, soft-cover, book,@ (a book with paper covers) }
-{ paper_chain, chain,@ (a chain made of loops of colored paper; used to decorate a room) }
+{ paper_chain, chain_tests,@ (a chain_tests made of loops of colored paper; used to decorate a room) }
 { paper_clip, paperclip, gem_clip, clip1,@ (a wire or plastic clip for holding sheets of paper together; "the paper clip was invented in 1900") }
 { paper_cutter, cutting_implement,@ (a cutting implement for cutting sheets of paper to the desired size) }
 { paper_doll, doll,@ (a piece of paper cut or folded into the shape of a human being) }
@@ -7310,7 +7310,7 @@
 { patchwork1, patchwork_quilt, quilt,@ (a quilt made by sewing patches of different materials together) }
 { patent_log, screw_log, taffrail_log, log1,@ (a cigar-shaped log with rotary fins that measure the ship's speed) }
 { patent_medicine, medicine,@ (medicine that is protected by a patent and available without a doctor's prescription) }
-{ paternoster, elevator,@ noun.location:Britain,;r (a type of lift having a chain of open compartments that move continually in an endless loop so that (agile) passengers can step on or off at each floor) }
+{ paternoster, elevator,@ noun.location:Britain,;r (a type of lift having a chain_tests of open compartments that move continually in an endless loop so that (agile) passengers can step on or off at each floor) }
 { path, way,@ (a way especially designed for a particular use) }
 { pathway, footpath, path,@ (a trodden path) }
 { [ patina, verb.contact:patinate,+ verb.contact:patinize,+ ] coating,@ (a fine coating of oxide (produced by oxidation over a long period of time) on the surface of a metal (particularly copper)) }
@@ -8018,7 +8018,7 @@
 { puck, hockey_puck, disk,@ (a vulcanized rubber disk 3 inches in diameter that is used instead of a ball in ice hockey) }
 { [ pull1, verb.contact:pull2,+ ] device,@ (a device used for pulling something; "he grabbed the pull and opened the drawer") }
 { pullback, tieback, holding_device,@ (a device (as a decorative loop of cord or fabric) for holding or drawing something back; "the draperies were drawn to the sides by pullbacks") }
-{ pull_chain, chain,@ pull1,@ flush_toilet,#p (a chain (usually with a handle at the end) that is pulled in order to operate some mechanism (e.g. to flush a toilet)) }
+{ pull_chain, chain_tests,@ pull1,@ flush_toilet,#p (a chain_tests (usually with a handle at the end) that is pulled in order to operate some mechanism (e.g. to flush a toilet)) }
 { pulley, pulley-block, pulley_block, block2, machine2,@ block_and_tackle,#p (a simple machine consisting of a wheel with a groove in which a rope can run to change the direction or point of application of a force applied to the rope) }
 { pull-in, pull-up, cafe,@ noun.location:Britain,;r (a roadside cafe especially for lorry drivers) }
 { pull-off, rest_area, rest_stop, layby, lay-by, area,@ (designated paved area beside a main road where cars can stop temporarily) }
@@ -8988,7 +8988,7 @@
 { sextant, measuring_instrument,@ (a measuring instrument for measuring the angular distance between celestial objects; resembles an octant) }
 { sgraffito, ornament,@ (a ceramic or mural decoration made by scratching off a surface layer to reveal the ground) }
 { [ shackle, verb.contact:shackle,+ ] bond, [ hamper1, verb.competition:hamper,+ verb.change:hamper,+ ] [ trammel, verb.change:trammel,+ ] restraint,@ (a restraint that confines or restricts freedom (especially something used to tie down or restrain a prisoner)) }
-{ shackle1, bar,@ padlock,#p (a U-shaped bar; the open end can be passed through chain links and closed with a bar) }
+{ shackle1, bar,@ padlock,#p (a U-shaped bar; the open end can be passed through chain_tests links and closed with a bar) }
 { [ shade, verb.contact:shade,+ ] protective_covering,@ (protective covering that protects something from direct sunlight; "they used umbrellas as shades"; "as the sun moved he readjusted the shade") }
 { [ shade1, verb.creation:shade,+ ] representation,@ (a representation of the effect of shadows in a picture or drawing (as by shading or darker pigment)) }
 { shadow_box, box,@ (a shallow rectangular box with a transparent front used to protect and display small items (jewelry, coins, etc.)) }
@@ -9030,7 +9030,7 @@
 { sheepskin_coat, afghan1, coat,@ (a coat made of sheepskin) }
 { sheepwalk, sheeprun, farm,@ noun.location:Britain,;r (farm devoted to raising sheep) }
 { [ sheet, verb.contact:sheet,+ ] bed_sheet, bed_linen,@ (bed linen consisting of a large rectangular piece of cotton or linen cloth; used in pairs) }
-{ sheet2, [ tack2, verb.motion:tack,+ ] mainsheet, weather_sheet, shroud1, line,@ ship,#p noun.act:seafaring,;c ((nautical) a line (rope or chain) that regulates the angle at which a sail is set in relation to the wind) }
+{ sheet2, [ tack2, verb.motion:tack,+ ] mainsheet, weather_sheet, shroud1, line,@ ship,#p noun.act:seafaring,;c ((nautical) a line (rope or chain_tests) that regulates the angle at which a sail is set in relation to the wind) }
 { sheet3, flat_solid, noun.Tops:artifact,@ (a flat artifact that is thin relative to its length and width) }
 { sheet_anchor, waist_anchor, anchor,@ (spare anchor for use in emergency) }
 { sheet_bend, becket_bend, weaver's_knot, weaver's_hitch, hitch,@ (a hitch used for temporarily tying a rope to the middle of another rope (or to an eye)) }
@@ -9663,7 +9663,7 @@
 { sprinkler_system, system,@ (a system for extinguishing fires; water from a network of overhead pipes is released through nozzles that open automatically with the rise in temperature) }
 { sprit, spar,@ spritsail,#p (a light spar that crosses a fore-and-aft sail diagonally) }
 { spritsail, fore-and-aft_sail,@ (a fore-and-aft sail extended by a sprit) }
-{ sprocket, sprocket_wheel, wheel,@ bicycle,#p (thin wheel with teeth that engage with a chain) }
+{ sprocket, sprocket_wheel, wheel,@ bicycle,#p (thin wheel with teeth that engage with a chain_tests) }
 { sprocket2, roller,@ camera,#p (roller that has teeth on the rims to pull film or paper through) }
 { spud, stump_spud, hand_shovel,@ (a sharp hand shovel for digging out roots and weeds) }
 { spun_yarn, small_stuff,@ noun.act:navigation1,;c ((nautical) small stuff consisting of a lightweight rope made of several rope yarns loosely wound together) }
@@ -10158,7 +10158,7 @@
 { switchblade, switchblade_knife, flick-knife, flick_knife, pocketknife,@ (a pocketknife with a blade that springs open at the press of a button) }
 { switchboard, patchboard, plugboard, central,@ telephone_system,#p (telephone central where circuits are completed with patchcords) }
 { switch_engine, donkey_engine1, locomotive,@ (a locomotive for switching rolling stock in a railroad yard) }
-{ [ swivel, verb.motion:swivel,+ ] coupling,@ (a coupling (as in a chain) that has one end that turns on a headed pin) }
+{ [ swivel, verb.motion:swivel,+ ] coupling,@ (a coupling (as in a chain_tests) that has one end that turns on a headed pin) }
 { swivel_chair, chair,@ (a chair that swivels on its base) }
 { swizzle_stick, stick,@ (a small stick used to stir mixed drinks) }
 { sword, blade1, brand, steel1, weapon,@ (a cutting or thrusting weapon that has a long metal blade and a hilt with a hand guard) }
@@ -10565,7 +10565,7 @@
 { tinware, article_of_commerce,@ (articles of commerce made of tin plate) }
 { tippet, cape,@ (a woman's fur shoulder cape with hanging ends; often consisting of the whole fur of a fox or marten) }
 { tire, tyre, hoop,@ (hoop that covers a wheel; "automobile tires are usually made of rubber and filled with compressed air") }
-{ tire_chain, snow_chain, chain,@ (chain attached to wheels to increase traction on ice or snow) }
+{ tire_chain, snow_chain, chain_tests,@ (chain_tests attached to wheels to increase traction on ice or snow) }
 { tire_iron, tire_tool, hand_tool,@ lever,@ (hand tool consisting of a lever that is used to force the casing of a pneumatic tire onto a steel wheel) }
 { tissue_plasminogen_activator, [ Activase, noun.communication:trade_name,;u ] thrombolytic_agent,@ (a thrombolytic agent (trade name Activase) that causes fibrinolysis at the site of a blood clot; used in treating acute myocardial infarction) }
 { titfer, hat,@ noun.location:Britain,;r (a hat (Cockney rhyming slang: `tit for tat' rhymes with `hat')) }
@@ -10593,7 +10593,7 @@
 { toehold, footing,@ (a small foothold used in climbing) }
 { toga, cloak,@ (a one-piece cloak worn by men in ancient Rome) }
 { toga_virilis, toga,@ noun.location:Rome,;r noun.time:antiquity,;c ((ancient Rome) a toga worn by a youth as a symbol of manhood and citizenship) }
-{ [ toggle, verb.contact:toggle,+ verb.possession:toggle,+ ] fastener,@ (a fastener consisting of a peg or pin or crosspiece that is inserted into an eye at the end of a rope or a chain or a cable in order to fasten it to something (as another rope or chain or cable)) }
+{ [ toggle, verb.contact:toggle,+ verb.possession:toggle,+ ] fastener,@ (a fastener consisting of a peg or pin or crosspiece that is inserted into an eye at the end of a rope or a chain_tests or a cable in order to fasten it to something (as another rope or chain_tests or cable)) }
 { toggle_bolt, fastener,@ (a fastener consisting of a threaded bolt and a hinged spring-loaded toggle; used to fasten objects to hollow walls) }
 { toggle_joint, joint1,@ (a joint made by two arms attached by a pivot; used to apply pressure at the two ends by straightening the joint) }
 { toggle_switch, [ toggle1, verb.contact:toggle1,+ verb.possession:toggle,+ ] on-off_switch, on/off_switch, switch1,@ (a hinged switch that can assume either of two positions) }
@@ -11150,7 +11150,7 @@
 { vivarium, enclosure,@ (an indoor enclosure for keeping and raising living animals and plants and observing them under natural conditions) }
 { Viyella, fabric,@ noun.communication:trademark,;u (a fabric made from a twilled mixture of cotton and wool) }
 { V_neck, neck,@ (the neck of a garment has the shape of the letter V) }
-{ voider1, gusset2, chain_mail,@ body_armor,#p (a piece of chain mail covering a place unprotected by armor plate) }
+{ voider1, gusset2, chain_mail,@ body_armor,#p (a piece of chain_tests mail covering a place unprotected by armor plate) }
 { voile, fabric,@ (a light semitransparent fabric) }
 { [ volatile_storage, non-volatile_storage,! ] memory,@ (computer storage that is erased when the power is turned off) }
 { volleyball, ball1,@ (an inflated ball used in playing volleyball) }

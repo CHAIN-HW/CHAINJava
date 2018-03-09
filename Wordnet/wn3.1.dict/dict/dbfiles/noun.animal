@@ -21,7 +21,7 @@
 { varmint, varment, noun.Tops:animal,@ (any usually predatory wild animal considered undesirable; e.g., coyote) }
 { [ scavenger, verb.consumption:scavenge,+ ] noun.Tops:animal,@ (any animal that feeds on refuse and other decaying organic matter) }
 { bottom-feeder, bottom-dweller, fish,@ (a fish that lives and feeds on the bottom of a body of water) }
-{ bottom-feeder1, scavenger,@ (a scavenger that feeds low on the food chain) }
+{ bottom-feeder1, scavenger,@ (a scavenger that feeds low on the food chain_tests) }
 { bottom_lurkers, fish,@ (a fish that lurks on the bottom of a body of water) }
 { work_animal, noun.Tops:animal,@ (an animal trained for and used for heavy labor) }
 { beast_of_burden, [ jument, adj.pert:jumentous,+ ] work_animal,@ (an animal such as a donkey or ox or elephant used for transporting loads or doing other heavy work) }
