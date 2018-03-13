@@ -7,3 +7,5 @@ before_install:
 - ./3createBinary
 - ./4extractBinary
 - cd ../../
+script:
+- ./gradlew check -x fastTest

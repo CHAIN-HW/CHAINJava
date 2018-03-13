@@ -74,8 +74,9 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-# Ignore Outputs folder
+# Ignore inputs and Outputs folder
 outputs/
+inputs/
 
 # Ignore Build folder (gradle output)
 /build
