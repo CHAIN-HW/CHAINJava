@@ -8,4 +8,5 @@ before_install:
 - ./4extractBinary
 - cd ../../
 script:
+- ./gradlew assemble
 - ./gradlew check -x fastTest
