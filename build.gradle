@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = 'RunCHAIn'
+mainClassName = 'chain.core.RunCHAIn'
 
 repositories {
     mavenCentral()
@@ -24,6 +24,8 @@ sourceSets{
 configurations {
     fastTestCompile.extendsFrom testCompile
     fastTestRuntime.extendsFrom testRuntime
+
+    jwi
 }
 
 dependencies {
@@ -38,7 +40,13 @@ dependencies {
 
     // JWI (out of date)
     // https://mvnrepository.com/artifact/edu.mit/jwi
-    compile group: 'edu.mit', name: 'jwi', version: '2.4.0'
+//    jwi group: 'edu.mit', name: 'jwi', version: '2.4.0'
+
+//    jwi name: 'edu.mit.jwi_2.4.0_jdk.jar'
+
+    // https://mvnrepository.com/artifact/edu.mit/jwi
+    compile group: 'edu.mit', name: 'jwi', version: '2.2.3'
+
 
     //JUnit
     // https://mvnrepository.com/artifact/junit/junit
@@ -80,8 +88,37 @@ task fastTest(type: Test) {
     outputs.upToDateWhen { false }
 }
 
+//task getJWI {
+//    def f = new File('JWI/edu.mit.jwi_2.4.0_jdk.jar')
+//    if (!f.exists()) {
+//        new URL('https://projects.csail.mit.edu/jwi/download.php?f=edu.mit.jwi_2.4.0_jdk.jar').withInputStream{ i -> f.withOutputStream{ it << i }}
+//    }
+//}
+
+
+task getSPSM(type:Exec) {
+    outputs.file('spsm/s-match/lib')
+
+    doFirst {
+        println('Getting SPSM...')
+    }
+    doLast {
+        println('Retreived SPSM')
+    }
+    workingDir('spsm/s-match-source')
+
+    //on windows:
+//    commandLine 'cmd', '/c', 'stop.bat'
+
+    //on linux
+//    commandLine 'installSMatch'
+    commandLine './installSMatch'
+}
+
 check.dependsOn fastTest
+compileJava.dependsOn  getSPSM
 
 tasks.withType(Test) {
     reports.html.destination = file("${reporting.baseDir}/${name}")
 }
+
