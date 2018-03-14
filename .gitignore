@@ -145,6 +145,7 @@ local.properties
 # Ignore Build folder (gradle output)
 /build
 /.gradle/
+/src/.gradle/
 
 # ---------------------------------------------------------------------#
 

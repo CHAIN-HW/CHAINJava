@@ -1,4 +1,4 @@
-package chain_source;
+package chain_tests.core;
 
 import chain.core.*;
 
