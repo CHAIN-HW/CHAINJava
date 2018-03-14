@@ -1,7 +1,6 @@
-import junit.framework.Test
-
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'idea'
 
 mainClassName = 'chain.core.RunCHAIn'
 
@@ -66,6 +65,14 @@ dependencies {
     compile group: 'it.unitn.disi', name: 's-match-wordnet', version: '2.0.0-SNAPSHOT'
     compile group: 'it.unitn.disi', name: 's-match-utils', version: '2.0.0-SNAPSHOT'
     compile group: 'it.unitn.disi', name: 's-match-spsm-prolog', version: '2.0.0-SNAPSHOT'
+}
+
+// Flag fast tests as test source for intellij
+idea {
+    module {
+        testSourceDirs += project.sourceSets.fastTest.java.srcDirs
+        testSourceDirs += project.sourceSets.fastTest.resources.srcDirs
+    }
 }
 
 // Outputs the results of each test - needed to stop travis timing out
