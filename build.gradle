@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'idea'
+apply plugin: 'eclipse'
 
 mainClassName = 'chain.core.RunCHAIn'
 
@@ -10,6 +11,8 @@ repositories {
         dirs 'spsm/s-match/lib', 'JWI'
     }
 }
+
+// TODO: reconfigure the tests so the "normal" test set is the fast one, and large one is a different one.  Configure so the large one is not run automatically on build steps
 
 sourceSets{
     fastTest {
@@ -111,4 +114,16 @@ compileJava.dependsOn  getSPSM
 
 tasks.withType(Test) {
     reports.html.destination = file("${reporting.baseDir}/${name}")
+}
+
+// Set the groups of existing tasks
+
+configure(fastTest) {
+    group = 'verification'
+    description = 'Run the fastTest suite of tests'
+}
+
+configure(getSPSM) {
+    group = 'build'
+    description = 'Download and install SPSM'
 }
