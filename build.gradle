@@ -1,7 +1,9 @@
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
 
-mainClassName = 'RunCHAIn'
+mainClassName = 'chain.core.RunCHAIn'
 
 repositories {
     mavenCentral()
@@ -9,6 +11,8 @@ repositories {
         dirs 'spsm/s-match/lib', 'JWI'
     }
 }
+
+// TODO: reconfigure the tests so the "normal" test set is the fast one, and large one is a different one.  Configure so the large one is not run automatically on build steps
 
 sourceSets{
     fastTest {
@@ -24,6 +28,8 @@ sourceSets{
 configurations {
     fastTestCompile.extendsFrom testCompile
     fastTestRuntime.extendsFrom testRuntime
+
+    jwi
 }
 
 dependencies {
@@ -36,9 +42,9 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.jena/jena-arq
     compile group: 'org.apache.jena', name: 'jena-arq', version: '2.12.1'
 
-    // JWI (out of date)
     // https://mvnrepository.com/artifact/edu.mit/jwi
-    compile group: 'edu.mit', name: 'jwi', version: '2.4.0'
+    compile group: 'edu.mit', name: 'jwi', version: '2.2.3'
+
 
     //JUnit
     // https://mvnrepository.com/artifact/junit/junit
@@ -64,8 +70,13 @@ dependencies {
     compile group: 'it.unitn.disi', name: 's-match-spsm-prolog', version: '2.0.0-SNAPSHOT'
 }
 
-
-
+// Flag fast tests as test source for intellij
+idea {
+    module {
+        testSourceDirs += project.sourceSets.fastTest.java.srcDirs
+        testSourceDirs += project.sourceSets.fastTest.resources.srcDirs
+    }
+}
 
 // Outputs the results of each test - needed to stop travis timing out
 test {
@@ -80,8 +91,39 @@ task fastTest(type: Test) {
     outputs.upToDateWhen { false }
 }
 
+task getSPSM(type:Exec) {
+    outputs.file('spsm/s-match/lib')
+
+    doFirst {
+        println('Getting SPSM...')
+    }
+    doLast {
+        println('Retreived SPSM')
+    }
+    workingDir('spsm/s-match-source')
+
+    //on windows:
+//    commandLine 'cmd', '/c', 'stop.bat'
+
+    //on linux
+    commandLine './installSMatch'
+}
+
 check.dependsOn fastTest
+compileJava.dependsOn  getSPSM
 
 tasks.withType(Test) {
     reports.html.destination = file("${reporting.baseDir}/${name}")
+}
+
+// Set the groups of existing tasks
+
+configure(fastTest) {
+    group = 'verification'
+    description = 'Run the fastTest suite of tests'
+}
+
+configure(getSPSM) {
+    group = 'build'
+    description = 'Download and install SPSM'
 }
