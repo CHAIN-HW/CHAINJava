@@ -1,4 +1,4 @@
-package chain_test.core;
+package chain.core;
 
 public class SQLAdapterTest {
 }
