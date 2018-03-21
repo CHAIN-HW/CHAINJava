@@ -1,8 +1,6 @@
 package chain.sparql;
  import java.util.*;
 
- import chain.core.MatchStruc;
- import chain.core.NodeCHAIN;
  import com.hp.hpl.jena.graph.Node;
 
 /* Author Tanya Howden
