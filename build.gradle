@@ -15,21 +15,20 @@ repositories {
 // TODO: reconfigure the tests so the "normal" test set is the fast one, and large one is a different one.  Configure so the large one is not run automatically on build steps
 
 sourceSets{
-    fastTest {
+    sparqlTest {
         java {
             compileClasspath += main.output + test.output
             runtimeClasspath += main.output + test.output
-            srcDir file('src/fastTest/java')
+            srcDir file('src/sparqlTest/java')
         }
 
     }
 }
 
 configurations {
-    fastTestCompile.extendsFrom testCompile
-    fastTestRuntime.extendsFrom testRuntime
+    sparqlTestCompile.extendsFrom testCompile
+    sparqlTestRuntime.extendsFrom testRuntime
 
-    jwi
 }
 
 dependencies {
@@ -49,7 +48,7 @@ dependencies {
     //JUnit
     // https://mvnrepository.com/artifact/junit/junit
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    fastTestCompile group: 'junit', name: 'junit', version: '4.12'
+    sparqlTestCompile group: 'junit', name: 'junit', version: '4.12'
 
     // https://mvnrepository.com/artifact/net.sf.extjwnl/extjwnl
     compile group: 'net.sf.extjwnl', name: 'extjwnl', version: '1.8.0'
@@ -68,13 +67,22 @@ dependencies {
     compile group: 'it.unitn.disi', name: 's-match-wordnet', version: '2.0.0-SNAPSHOT'
     compile group: 'it.unitn.disi', name: 's-match-utils', version: '2.0.0-SNAPSHOT'
     compile group: 'it.unitn.disi', name: 's-match-spsm-prolog', version: '2.0.0-SNAPSHOT'
+
+
+    // https://mvnrepository.com/artifact/com.github.jsqlparser/jsqlparser
+    compile group: 'com.github.jsqlparser', name: 'jsqlparser', version: '1.1'
+    // https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+    compile group: 'org.springframework', name: 'spring-jdbc', version: '5.0.4.RELEASE'
+
+
+
 }
 
 // Flag fast tests as test source for intellij
 idea {
     module {
-        testSourceDirs += project.sourceSets.fastTest.java.srcDirs
-        testSourceDirs += project.sourceSets.fastTest.resources.srcDirs
+        testSourceDirs += project.sourceSets.sparqlTest.java.srcDirs
+        testSourceDirs += project.sourceSets.sparqlTest.resources.srcDirs
     }
 }
 
@@ -85,9 +93,9 @@ test {
     }
 }
 
-task fastTest(type: Test) {
-    testClassesDir = sourceSets.fastTest.output.classesDir
-    classpath = sourceSets.fastTest.runtimeClasspath
+task sparqlTest(type: Test) {
+    testClassesDir = sourceSets.sparqlTest.output.classesDir
+    classpath = sourceSets.sparqlTest.runtimeClasspath
     outputs.upToDateWhen { false }
 }
 
@@ -109,7 +117,6 @@ task getSPSM(type:Exec) {
     commandLine './installSMatch'
 }
 
-check.dependsOn fastTest
 compileJava.dependsOn  getSPSM
 
 tasks.withType(Test) {
@@ -118,9 +125,9 @@ tasks.withType(Test) {
 
 // Set the groups of existing tasks
 
-configure(fastTest) {
+configure(sparqlTest) {
     group = 'verification'
-    description = 'Run the fastTest suite of tests'
+    description = 'Run the sparqlTest suite of tests'
 }
 
 configure(getSPSM) {
