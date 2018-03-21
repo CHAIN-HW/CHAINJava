@@ -1,4 +1,9 @@
 package chain.core;
 
-public class ChainDataSource {
+public interface ChainDataSource {
+
+    public void getSchemaOntology();
+
+    public ChainResultSet executeQuery(String query);
+
 }
