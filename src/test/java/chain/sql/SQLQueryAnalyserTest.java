@@ -28,4 +28,9 @@ public class SQLQueryAnalyserTest {
 
         assertThat(this.analyser.getTables(), is(expected));
     }
+
+    @Test (expected = ChainDataSourceException.class)
+    public void testExceptionThrownOnInvalidQuery() throws ChainDataSourceException {
+        new SQLQueryAnalyser("Invalid SQL Query");
+    }
 }
