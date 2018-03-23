@@ -62,7 +62,7 @@ public class SQLAdapter implements ChainDataSource  {
     private String getDriverNameFromHostname(String hostname) throws SQLException {
         String driverClassName;
         if(hostname.startsWith("jdbc:mysql:"))
-            driverClassName = "com.mysql.jdbc.Driver";
+            driverClassName = "com.mysql.cj.jdbc.Driver";
         else if(hostname.startsWith("jdbc:oracle:"))
             driverClassName = "oracle.jdbc.driver.OracleDriver";
         else if(hostname.startsWith("jdbc:db2:"))
@@ -75,6 +75,10 @@ public class SQLAdapter implements ChainDataSource  {
 
     public Connection getConnection() {
         return connection;
+    }
+
+    public void closeConnection() throws SQLException {
+        connection.close();
     }
 
     @Override
