@@ -1,6 +1,5 @@
 package chain.sql;
 
-import java.util.List;
 import java.util.Set;
 
 
@@ -19,7 +18,7 @@ public class SQLTable {
      * @param tableName Name of the table
      * @param columnNames Set of columns stored in the table
      */
-    public SQLTable(String tableName, Set<String> columnNames)
+    SQLTable(String tableName, Set<String> columnNames)
     {
         this.tableName = tableName;
         this.columnNames = columnNames;

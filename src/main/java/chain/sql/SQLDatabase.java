@@ -1,9 +1,9 @@
 package chain.sql;
 
-import java.util.Dictionary;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.*;
 
 /**
  * @author Lewis McNeill
@@ -12,21 +12,53 @@ import java.util.Map;
  */
 public class SQLDatabase {
 
+
     private Map<String, SQLTable> dbTables;
+    private SQLAdapter adapter;
 
-    public SQLDatabase()
-    {
-        dbTables = new HashMap<>();
+    /**
+     * SQLDatabase constructor
+     */
+    SQLDatabase(SQLAdapter adapter) throws SQLException {
+        this.dbTables = new HashMap<>();
+        this.adapter = adapter;
+        retrieveDbStructure();
+        this.adapter.closeConnection();
     }
-
 
     /**
      * Retrieves structure of database
      */
-    private void getTableStruct()
-    {
+    private void retrieveDbStructure() throws SQLException {
+        Statement state = this.adapter.getConnection().createStatement();
+        state.executeQuery("SHOW TABLES");
+        ResultSet tables  = state.getResultSet();
 
+        while(tables.next()) {
+            String table = tables.getString(1);
+            dbTables.put(table, new SQLTable(table, retrieveTableColumns(table)));
+        }
     }
+
+    /**
+     * Retrieves all the column names belonging to a table
+     * @param tableName Table for which the columns should be found
+     * @return A Set of strings containing the column names
+     * @throws SQLException Handles any exceptions causes by Mysql
+     */
+    private Set<String> retrieveTableColumns(String tableName) throws SQLException {
+
+        Statement getColumns = this.adapter.getConnection().createStatement();
+        ResultSet tableColumns;
+
+        getColumns.executeQuery("DESCRIBE " + tableName);
+        Set<String>  columnSet  = new HashSet<>();
+        tableColumns = getColumns.getResultSet();
+        while(tableColumns.next())
+            columnSet.add(tableColumns.getString(1));
+        return columnSet;
+    }
+
 
     /**
      * Retrieves SQLTable object related to name of table
