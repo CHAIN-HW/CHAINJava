@@ -1,5 +1,6 @@
 package chain.sql;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,26 +15,23 @@ public class SQLDatabase {
 
 
     private Map<String, SQLTable> dbTables;
-    private SQLAdapter adapter;
+    private Connection connection;
 
     /**
      * SQLDatabase constructor
      */
-    SQLDatabase(SQLAdapter adapter) throws SQLException {
+    SQLDatabase(Connection connection) throws SQLException {
         this.dbTables = new HashMap<>();
-        this.adapter = adapter;
+        this.connection = connection;
         retrieveDbStructure();
-        this.adapter.closeConnection();
     }
 
     /**
      * Retrieves structure of database
      */
     private void retrieveDbStructure() throws SQLException {
-        Statement state = this.adapter.getConnection().createStatement();
-        state.executeQuery("SHOW TABLES");
-        ResultSet tables  = state.getResultSet();
-
+        SQLQueryRunner runner = new SQLQueryRunner("SHOW TABLES", this.connection);
+        ResultSet tables  = runner.getResults();
         while(tables.next()) {
             String table = tables.getString(1);
             dbTables.put(table, new SQLTable(table, retrieveTableColumns(table)));
@@ -48,12 +46,9 @@ public class SQLDatabase {
      */
     private Set<String> retrieveTableColumns(String tableName) throws SQLException {
 
-        Statement getColumns = this.adapter.getConnection().createStatement();
-        ResultSet tableColumns;
-
-        getColumns.executeQuery("DESCRIBE " + tableName);
+        SQLQueryRunner runner = new SQLQueryRunner("DESCRIBE " + tableName, this.connection);
+        ResultSet tableColumns = runner.getResults();
         Set<String>  columnSet  = new HashSet<>();
-        tableColumns = getColumns.getResultSet();
         while(tableColumns.next())
             columnSet.add(tableColumns.getString(1));
         return columnSet;
