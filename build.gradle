@@ -50,6 +50,10 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     sparqlTestCompile group: 'junit', name: 'junit', version: '4.12'
 
+    //Mockito
+    // https://mvnrepository.com/artifact/org.mockito/mockito-all
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+
     // https://mvnrepository.com/artifact/net.sf.extjwnl/extjwnl
     compile group: 'net.sf.extjwnl', name: 'extjwnl', version: '1.8.0'
     // https://mvnrepository.com/artifact/net.sf.extjwnl/extjwnl-data-wn31
