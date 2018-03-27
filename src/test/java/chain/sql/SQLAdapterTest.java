@@ -24,10 +24,12 @@ public class SQLAdapterTest {
         assertNotNull(adapter.getConnection());
     }
 
+    @Ignore("Will probably be removed")
     @Test
     public void getSchemaOntology() {
     }
 
+    @Ignore("Forming connection will not work on travis.  This function is also not implemented")
     @Test
     public void executeQuery() {
 
