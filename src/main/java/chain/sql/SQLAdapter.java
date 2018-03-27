@@ -5,6 +5,7 @@ import chain.core.ChainResultSet;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -23,14 +24,22 @@ public class SQLAdapter implements ChainDataSource  {
 
     private Connection connection;
 
-    public SQLAdapter(String databaseUrl, String databaseUsername, String databasePassword) throws SQLException {
-        registerDriver(databaseUrl);
-        connection = DriverManager.getConnection(databaseUrl, databaseUsername, databasePassword);
+    public SQLAdapter(String databaseUrl, String databaseUsername, String databasePassword) throws ChainDataSourceException {
+        try {
+            registerDriver(databaseUrl);
+            connection = DriverManager.getConnection(databaseUrl, databaseUsername, databasePassword);
+        } catch (SQLException e) {
+            throw new ChainDataSourceException("Failed to establish database connection", e);
+        }
     }
 
-    public SQLAdapter(String databaseUrl) throws SQLException {
-        registerDriver(databaseUrl);
-        connection = DriverManager.getConnection(databaseUrl);
+    public SQLAdapter(String databaseUrl) throws ChainDataSourceException {
+        try {
+            registerDriver(databaseUrl);
+            connection = DriverManager.getConnection(databaseUrl);
+        } catch (SQLException e) {
+            throw new ChainDataSourceException("Failed to establish database connection", e);
+        }
     }
 
     public SQLAdapter(Connection connection)  {
@@ -42,14 +51,19 @@ public class SQLAdapter implements ChainDataSource  {
      * @param hostname The hostname of the connection
      * @throws SQLException Thrown if no driver class could be loaded
      */
-    private void registerDriver(String hostname) throws SQLException {
-        String driverClassName = getDriverNameFromHostname(hostname);
+    private void registerDriver(String hostname) throws ChainDataSourceException {
+        String driverClassName;
         try {
-            // TODO: will need dependencies for all drivers (other than mySQL)
+            driverClassName = getDriverNameFromHostname(hostname);
+        } catch(SQLException e) {
+            throw new ChainDataSourceException("Could not get name of driver from hostname: " + hostname, e);
+        }
+
+        try {
             Class.forName(driverClassName);
         }
-        catch(ClassNotFoundException ex) {
-            throw new SQLException("Could not load driver class: " + driverClassName + "\nThis may be as there is no dependency installed for this type of driver");
+        catch(ClassNotFoundException e) {
+            throw new ChainDataSourceException("Could not load driver class: " + driverClassName + "\nThis may be as there is no dependency installed for this type of driver", e);
         }
     }
 
@@ -77,8 +91,12 @@ public class SQLAdapter implements ChainDataSource  {
         return connection;
     }
 
-    public void closeConnection() throws SQLException {
-        connection.close();
+    public void closeConnection() throws ChainDataSourceException {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new ChainDataSourceException("Failed to close database connection: " + e.getMessage(), e);
+        }
     }
 
     @Override
@@ -87,7 +105,23 @@ public class SQLAdapter implements ChainDataSource  {
     }
 
     @Override
-    public ChainResultSet executeQuery(String query) {
-        return null;
+    public ChainResultSet executeQuery(String query) throws ChainDataSourceException {
+        try {
+
+            // Analyse and repair using SQLQueryAnalyser
+
+            // run query, return results
+
+            SQLQueryRunner sqlQueryRunner = new SQLQueryRunner(query, connection);
+            ResultSet results = sqlQueryRunner.getResults();
+
+            return new SQLResultSet(results);
+
+        } catch (SQLException e) {
+
+
+
+            throw new ChainDataSourceException("Could not execute query: " + query, e);
+        } // catch wrong structure
     }
 }
