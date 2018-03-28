@@ -68,7 +68,7 @@ public class SQLQueryAnalyser {
         return this.recurseWhereToColumns(where);
     }
 
-    private List<String> recurseWhereToColumns(Expression where) {
+    protected List<String> recurseWhereToColumns(Expression where) {
         if (where instanceof Column) {
             ArrayList<String> ret = new ArrayList<>();
             ret.add(((Column) where).getColumnName());
