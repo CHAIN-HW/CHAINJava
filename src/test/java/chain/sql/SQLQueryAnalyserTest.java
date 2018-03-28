@@ -14,7 +14,10 @@ public class SQLQueryAnalyserTest {
 
     @Before
     public void setUp() throws Exception {
-        this.analyser = new SQLQueryAnalyser("SELECT * FROM customers");
+        this.analyser = new SQLQueryAnalyser("SELECT *" +
+                "FROM customers " +
+                "WHERE name = 'Lewis'" +
+                "AND gender = 'M'");
     }
 
     @Test
@@ -25,7 +28,6 @@ public class SQLQueryAnalyserTest {
     @Test
     public void getTables() {
         List<String> expected = Arrays.asList("customers");
-
         assertThat(this.analyser.getTables(), is(expected));
     }
 
@@ -36,8 +38,15 @@ public class SQLQueryAnalyserTest {
 
     @Test
     public void setSelectTableName() {
-        assertEquals(this.analyser.toSQL(), "SELECT * FROM customers");
+        assertEquals(this.analyser.toSQL(), "SELECT * FROM customers WHERE name = 'Lewis' AND gender = 'M'");
         this.analyser.setSelectTableName("users");
-        assertEquals(this.analyser.toSQL(), "SELECT * FROM users");
+        assertEquals(this.analyser.toSQL(), "SELECT * FROM users WHERE name = 'Lewis' AND gender = 'M'");
+    }
+
+    @Test
+    public void getWhereColumns() {
+        List<String> columns = this.analyser.getWhereColumns();
+        List<String> expected = Arrays.asList("name", "gender");
+        assertThat(columns, is(expected));
     }
 }

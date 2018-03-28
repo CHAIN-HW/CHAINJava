@@ -20,7 +20,6 @@ import net.sf.jsqlparser.statement.select.*;
 import net.sf.jsqlparser.statement.truncate.Truncate;
 import net.sf.jsqlparser.statement.update.Update;
 import net.sf.jsqlparser.statement.upsert.Upsert;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class SQLSelectTableVisitor implements StatementVisitor, SelectVisitor, FromItemVisitor {
     String replacementTableName;
