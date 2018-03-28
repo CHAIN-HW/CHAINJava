@@ -33,4 +33,11 @@ public class SQLQueryAnalyserTest {
     public void testExceptionThrownOnInvalidQuery() throws ChainDataSourceException {
         new SQLQueryAnalyser("Invalid SQL Query");
     }
+
+    @Test
+    public void setSelectTableName() {
+        assertEquals(this.analyser.toSQL(), "SELECT * FROM customers");
+        this.analyser.setSelectTableName("users");
+        assertEquals(this.analyser.toSQL(), "SELECT * FROM users");
+    }
 }
