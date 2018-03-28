@@ -1,11 +1,16 @@
 package chain.sql;
 
 import java.util.List;
+
+import chain.sql.visitors.SQLSelectTableVisitor;
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.parser.CCJSqlParserUtil;
 import net.sf.jsqlparser.statement.Statement;
 import net.sf.jsqlparser.statement.StatementVisitor;
+import net.sf.jsqlparser.statement.select.Select;
 import net.sf.jsqlparser.util.TablesNamesFinder;
+import net.sf.jsqlparser.util.deparser.ExpressionDeParser;
+import net.sf.jsqlparser.util.deparser.SelectDeParser;
 
 /**
  * SQLQueryAnalyser
@@ -34,10 +39,9 @@ public class SQLQueryAnalyser {
         }
     }
 
-
-    public void analyseAndRepair() {
-//        StatementVisitor visitor = new RepairVisitor();
-//        stmt.accept(visitor);
+    public void setSelectTableName(String name) {
+        SQLSelectTableVisitor visitor = new SQLSelectTableVisitor(name);
+        stmt.accept(visitor);
     }
 
     /**
@@ -54,5 +58,5 @@ public class SQLQueryAnalyser {
         return (new TablesNamesFinder()).getTableList(this.stmt);
     }
 
-
+    public String toSQL() { return this.stmt.toString(); }
 }
