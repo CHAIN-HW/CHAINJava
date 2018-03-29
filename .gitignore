@@ -153,4 +153,7 @@ local.properties
 outputs/
 inputs/
 
+# Ignore s-match folder
+spsm/s-match/
+
 
