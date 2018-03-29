@@ -13,6 +13,12 @@ public class SQLNameMatcherManager {
     private SQLDatabase database;
     private SPSMMatcher matcher;
 
+    public SQLNameMatcherManager(List<String> tableNames, SQLDatabase database) {
+        this.tableNames = tableNames;
+        this.database = database;
+        this.matcher = new SPSMMatcher(database.getTableNames());
+    }
+
     public SQLNameMatcherManager(List<String> tableNames, SQLDatabase database, SPSMMatcher matcher) {
         this.tableNames = tableNames;
         this.database = database;

@@ -36,6 +36,9 @@ configurations {
     sparqlTestCompile.extendsFrom testCompile
     sparqlTestRuntime.extendsFrom testRuntime
 
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+
 }
 
 dependencies {
@@ -82,7 +85,6 @@ dependencies {
     compile group: 'net.sf.extjwnl', name: 'extjwnl', version: '1.8.0'
     // https://mvnrepository.com/artifact/net.sf.extjwnl/extjwnl-data-wn31
     compile group: 'net.sf.extjwnl', name: 'extjwnl-data-wn31', version: '1.2'
-
 
     // S-match  - Maven repo very out of date, use local references
     // https://mvnrepository.com/artifact/it.unitn.disi/s-match

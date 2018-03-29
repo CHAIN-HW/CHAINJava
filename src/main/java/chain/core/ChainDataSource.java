@@ -6,6 +6,5 @@ public interface ChainDataSource {
 
     public void getSchemaOntology();
 
-    public ChainResultSet executeQuery(String query) throws ChainDataSourceException;
-
+    String getRepairedQuery(String s) throws ChainDataSourceException;
 }
