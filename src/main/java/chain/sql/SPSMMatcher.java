@@ -45,6 +45,13 @@ public class SPSMMatcher {
 
         IMapping<INode> result =  mm.match(sourceNode,targetNode);
 
+        if(result.size() < 1) {
+            String msg = "No matches found for " + source + "\nPossibilities were: ";
+            for(String target : targets) {
+                msg = msg + "\n" + target;
+            }
+            throw new SPSMMatchingException(msg);
+        }
         return processResults(result);
     }
 
@@ -67,8 +74,6 @@ public class SPSMMatcher {
 
         if(matches.size() > 1)
             throw new SPSMMatchingException("Multiple matches found");
-        else if(matches.size() < 1)
-            throw new SPSMMatchingException("No matches found");
 
         return matches.get(0);
 

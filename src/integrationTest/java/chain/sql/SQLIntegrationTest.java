@@ -14,7 +14,9 @@ public class SQLIntegrationTest {
 
             assertEquals("SELECT * FROM users", repairedQuery);
 
+            repairedQuery = dataSource.getRepairedQuery("SELECT surname from user");
 
+            assertEquals("SELECT lastname FROM users", repairedQuery);
     }
 
 }
