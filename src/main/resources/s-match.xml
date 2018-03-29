@@ -6,9 +6,9 @@
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 
-<!--
-    Default S-Match configuration file. Also used in S-Match GUI by default.
--->
+    <!--
+        Default S-Match configuration file for CLI and MatchingBasicGUI.
+    -->
 
     <!-- enable ${name} properties resolution -->
     <context:property-placeholder properties-ref="properties"/>
@@ -82,7 +82,7 @@
 
     <bean id="linguisticOracle" class="it.unitn.disi.smatch.oracles.wordnet.WordNet">
         <!--default config tokenizes too much, so we have to use our own config -->
-        <constructor-arg name="jwnlPropertiesPath" value="../conf/wn31resource.xml"/>
+        <constructor-arg name="jwnlPropertiesPath" value="classpath://wn31resource.xml"/>
     </bean>
     <alias name="linguisticOracle" alias="senseMatcher"/>
 
