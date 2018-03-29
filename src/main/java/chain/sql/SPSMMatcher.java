@@ -1,12 +1,79 @@
 package chain.sql;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import chain.sql.visitors.SPSMMatchingException;
+import it.unitn.disi.smatch.IMatchManager;
+import it.unitn.disi.smatch.MatchManager;
+import it.unitn.disi.smatch.SMatchException;
+import it.unitn.disi.smatch.data.mappings.IContextMapping;
+import it.unitn.disi.smatch.data.mappings.IMapping;
+import it.unitn.disi.smatch.data.mappings.IMappingElement;
+import it.unitn.disi.smatch.data.trees.IContext;
+import it.unitn.disi.smatch.data.trees.INode;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class SPSMMatcher {
 
-    public String match(String tableName, Set<String> tableNames) {
-        throw new NotImplementedException();
+
+    private Set<String> targets;
+
+    SPSMMatcher(Set<String> targets) {
+        this.targets = targets;
     }
+
+    /**
+     *
+     * @param source
+     * @return
+     * @throws SMatchException
+     * @throws SPSMMatchingException
+     */
+    public String match(String source) throws SMatchException, SPSMMatchingException {
+
+        IMatchManager mm = MatchManager.getInstanceFromResource("/s-match.xml");
+        IContext s = mm.createContext();
+        s.createRoot(source);
+
+
+        IContext t = mm.createContext();
+        INode root = t.createRoot();
+
+        for(String target: targets ) {
+            root.createChild(target);
+        }
+
+        IMapping<INode> result =  mm.match(s,t);
+
+        return processResults(result);
+    }
+
+    /**
+     *
+      * @param result
+     * @return
+     * @throws SPSMMatchingException
+     */
+    private String processResults(IMapping<INode> result) throws SPSMMatchingException {
+        List<String> matches = new ArrayList<>();
+
+        for (IMappingElement<INode> e : result) {
+            System.out.println(e.getSource().nodeData().getName() + "\t" + e.getRelation() + "\t" + e.getTarget().nodeData().getName());
+            if(e.getRelation() == '=')
+                return e.getTarget().nodeData().getName();
+
+            matches.add(e.getTarget().nodeData().getName());
+        }
+
+        if(matches.size() > 1)
+            throw new SPSMMatchingException("Multiple matches found");
+        else if(matches.size() < 1)
+            throw new SPSMMatchingException("No matches found");
+
+        return matches.get(0);
+
+    }
+
 }

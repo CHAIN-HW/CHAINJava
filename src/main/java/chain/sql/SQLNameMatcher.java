@@ -1,5 +1,8 @@
 package chain.sql;
 
+import chain.sql.visitors.SPSMMatchingException;
+import it.unitn.disi.smatch.SMatchException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,12 +20,12 @@ public class SQLNameMatcher {
         this.matcher = matcher;
     }
 
-    public Map<String, String> getReplacementTableNames() {
+    public Map<String, String> getReplacementTableNames() throws SMatchException, SPSMMatchingException {
         Map<String, String> replacements = new HashMap<>();
 
         for(String tableName : tableNames) {
             if(!database.containsTable(tableName)) {
-                String replacement = matcher.match(tableName, database.getTableNames());
+                String replacement = matcher.match(tableName);
             }
         }
 
