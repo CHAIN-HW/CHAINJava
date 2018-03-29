@@ -1,11 +1,9 @@
 package chain.sql;
 
 
-import chain.sql.visitors.SPSMMatchingException;
 import it.unitn.disi.smatch.IMatchManager;
 import it.unitn.disi.smatch.MatchManager;
 import it.unitn.disi.smatch.SMatchException;
-import it.unitn.disi.smatch.data.mappings.IContextMapping;
 import it.unitn.disi.smatch.data.mappings.IMapping;
 import it.unitn.disi.smatch.data.mappings.IMappingElement;
 import it.unitn.disi.smatch.data.trees.IContext;
@@ -34,18 +32,18 @@ public class SPSMMatcher {
     public String match(String source) throws SMatchException, SPSMMatchingException {
 
         IMatchManager mm = MatchManager.getInstanceFromResource("/s-match.xml");
-        IContext s = mm.createContext();
-        s.createRoot(source);
+        IContext sourceNode = mm.createContext();
+        sourceNode.createRoot(source);
 
 
-        IContext t = mm.createContext();
-        INode root = t.createRoot();
+        IContext targetNode = mm.createContext();
+        INode root = targetNode.createRoot();
 
         for(String target: targets ) {
             root.createChild(target);
         }
 
-        IMapping<INode> result =  mm.match(s,t);
+        IMapping<INode> result =  mm.match(sourceNode,targetNode);
 
         return processResults(result);
     }

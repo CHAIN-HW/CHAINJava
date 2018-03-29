@@ -1,9 +1,15 @@
 package chain.sql;
 
-import net.sf.jsqlparser.JSQLParserException;
-import net.sf.jsqlparser.parser.CCJSqlParserUtil;
+import chain.sql.visitors.SQLSelectTableVisitor;
+import it.unitn.disi.smatch.SMatchException;
 import net.sf.jsqlparser.statement.Statement;
-import net.sf.jsqlparser.util.TablesNamesFinder;
+import org.slf4j.impl.StaticMarkerBinder;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author "Lewis McNeill"
@@ -11,22 +17,45 @@ import net.sf.jsqlparser.util.TablesNamesFinder;
  */
 public class SQLQueryRepair {
 
-    private String query;
+    private SQLQueryAnalyser analyser;
+    private SQLDatabase db;
+    private Statement stmt;
 
-    /**
-     *
-     */
-    private void repairQuery()
+
+    public SQLQueryRepair(String query, SQLDatabase db) throws ChainDataSourceException, SQLException {
+        this.analyser = new SQLQueryAnalyser(query);
+        this.stmt = analyser.getStatement();
+        this.db = db;
+    }
+
+    public String runRepairer() throws SPSMMatchingException, SMatchException {
+        repairTables();
+        return this.analyser.toSQL();
+    }
+
+    private void repairTables() throws SPSMMatchingException, SMatchException {
+        List<String> tables =  this.analyser.getTables();
+        SQLNameMatcherManager manager = new SQLNameMatcherManager(tables, this.db);
+        Map<String, String> newTableNames = manager.getReplacementTableNames();
+
+        for(String key: newTableNames.keySet() )
+            repairTableName(newTableNames.get(key));
+
+    }
+
+    private void repairColumns()
     {
 
     }
 
-    /**
-     * Gets repaired query
-     * @return
-     */
-    public String getRepairedQuery()
-    {
-        return query;
+    private void repairTableName(String name) {
+        SQLSelectTableVisitor visitor = new SQLSelectTableVisitor(name);
+        stmt.accept(visitor);
     }
+
+
+
+
+
+
 }
