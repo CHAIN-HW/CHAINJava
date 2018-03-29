@@ -1,5 +1,7 @@
 package chain.sql;
 
+import chain.sql.visitors.SPSMMatchingException;
+import it.unitn.disi.smatch.SMatchException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,14 +29,14 @@ public class SQLNameMatcherManagerTest {
 
 
     @Test
-    public void testTableNameReplacement() {
+    public void testTableNameReplacement() throws SPSMMatchingException, SMatchException {
         Set<String> realTableNames = new HashSet<String>();
         realTableNames.add("users");
         realTableNames.add("roles");
 
         when(database.getTableNames()).thenReturn(realTableNames);
         when(database.containsTable("user")).thenReturn(false);
-        when(spsmMatcher.match("user", realTableNames)).thenReturn("users");
+        when(spsmMatcher.match("user")).thenReturn("users");
 
         Map<String, String> matches = matcher.getReplacementTableNames();
 

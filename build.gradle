@@ -60,13 +60,13 @@ dependencies {
      * Repositories used for SPSM
      */
 
-    compile group: 'org.springframework', name: 'spring-context', version: '4.3.14.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version: '4.1.9.RELEASE'
 
     // https://mvnrepository.com/artifact/org.sat4j/org.sat4j.core
     compile group: 'org.sat4j', name: 'org.sat4j.core', version: '2.3.1'
 
     // https://mvnrepository.com/artifact/com.googlecode.aima-java/aima-core
-    compile group: 'com.googlecode.aima-java', name: 'aima-core', version: '3.0.0'
+    compile group: 'com.googlecode.aima-java', name: 'aima-core', version: '0.11.0'
 
 
     // https://mvnrepository.com/artifact/net.sf.extjwnl/extjwnl
