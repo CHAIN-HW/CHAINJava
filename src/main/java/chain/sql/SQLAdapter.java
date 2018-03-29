@@ -2,11 +2,15 @@ package chain.sql;
 
 import chain.core.ChainDataSource;
 import chain.core.ChainResultSet;
+import chain.sql.visitors.SPSMMatchingException;
+import it.unitn.disi.smatch.SMatchException;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 
 
 // TODO: Better implementations for different SQL databases
@@ -20,7 +24,7 @@ import java.sql.SQLException;
  * and repair them
  *
  */
-public class SQLAdapter implements ChainDataSource  {
+public class SQLAdapter implements SQLChainDataSource  {
 
     private Connection connection;
 
@@ -105,23 +109,42 @@ public class SQLAdapter implements ChainDataSource  {
     }
 
     @Override
-    public ChainResultSet executeQuery(String query) throws ChainDataSourceException {
+    public ResultSet executeQuery(String query) throws ChainDataSourceException { throw new NotImplementedException(); }
+
+
+    // currently only supports table name replacements, needs a bit of work
+    public String getRepairedQuery(String query) throws ChainDataSourceException {
         try {
 
-            // Analyse and repair using SQLQueryAnalyser
+            SQLQueryAnalyser analyser = new SQLQueryAnalyser(query);
+            SQLDatabase db = new SQLDatabase(connection);
+            SQLNameMatcherManager manager = new SQLNameMatcherManager(analyser.getTables(), db);
 
-            // run query, return results
+            // Will need to do this for all supported thigns
+            Map<String, String> replacements =  manager.getReplacementTableNames();
 
-            SQLQueryRunner sqlQueryRunner = new SQLQueryRunner(query, connection);
-            ResultSet results = sqlQueryRunner.getResults();
+            // No repair needed as far as we know
+            if(replacements.size() == 0)
+                return query;
 
-            return new SQLResultSet(results);
+            for(String key : replacements.keySet())
+                analyser.setSelectTableName(replacements.get(key));
 
-        } catch (SQLException e) {
+            return analyser.toSQL();
+
+//            SQLQueryRunner sqlQueryRunner = new SQLQueryRunner(query, connection);
+//            ResultSet results = sqlQueryRunner.getResults();
 
 
 
-            throw new ChainDataSourceException("Could not execute query: " + query, e);
+
+//            return new SQLResultSet(results);
+
+        } catch (SQLException | SMatchException | SPSMMatchingException e) {
+
+
+
+            throw new ChainDataSourceException("Could not get repaired query: " + query, e);
         } // catch wrong structure
     }
 }
