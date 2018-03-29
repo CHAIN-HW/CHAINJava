@@ -13,21 +13,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+
+/**
+ *
+ */
 public class SPSMMatcher {
 
 
     private Set<String> targets;
 
+    /**
+     * Constructor for  the SPSMMatcher class
+     * @param targets is a set of strings that SPSM should try and match to
+     */
     SPSMMatcher(Set<String> targets) {
         this.targets = targets;
     }
 
     /**
+     * Creates a tree structure for source and target and runs a match between them
      *
-     * @param source
-     * @return
+     * @param source is the broken term for which a match is being looked for
+     * @return A string from the target set that closely matches the source
      * @throws SMatchException
-     * @throws SPSMMatchingException
+     * @throws SPSMMatchingException if no match is made or if there is more than one possible match
      */
     public String match(String source) throws SMatchException, SPSMMatchingException {
 
@@ -49,10 +58,11 @@ public class SPSMMatcher {
     }
 
     /**
+     * Processes data stored in match nodes
      *
-      * @param result
-     * @return
-     * @throws SPSMMatchingException
+     * @param result is a list of nodes containing a source and a target that matches it
+     * @return A matching target as a string
+     * @throws SPSMMatchingException Thrown if no matches exist or if there is more than one
      */
     private String processResults(IMapping<INode> result) throws SPSMMatchingException {
         List<String> matches = new ArrayList<>();

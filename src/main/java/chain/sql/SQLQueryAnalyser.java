@@ -80,5 +80,9 @@ public class SQLQueryAnalyser {
         return ret;
     }
 
+    /**
+     * Converts the analysed query back into a string
+     * @return the query as a string
+     */
     public String toSQL() { return this.stmt.toString(); }
 }
