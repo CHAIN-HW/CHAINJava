@@ -15,17 +15,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * SPSMMatcher
+ * 
+ * Use SPSM Match Manager to create a match for each of a given set of targets.
+ *
+ */
 public class SPSMMatcher {
 
 
     private Set<String> targets;
 
+    /**
+     * Constructor
+     * @param targets - set of strings to get matches for
+     */
     SPSMMatcher(Set<String> targets) {
         this.targets = targets;
     }
 
     /**
-     *
+     * Match
      * @param source
      * @return
      * @throws SMatchException
@@ -52,7 +62,7 @@ public class SPSMMatcher {
 
     /**
      *
-      * @param result
+     * @param result
      * @return
      * @throws SPSMMatchingException
      */
