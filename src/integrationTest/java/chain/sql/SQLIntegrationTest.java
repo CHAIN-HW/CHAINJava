@@ -1,25 +1,18 @@
 package chain.sql;
 
 import chain.core.ChainDataSource;
-import org.junit.Before;
 import org.junit.Test;
-import static org.mockito.Mockito.*;
+import static junit.framework.TestCase.assertEquals;
 
-import java.sql.Connection;
 
 public class SQLIntegrationTest {
-
-
-
-    @Before
-
-
     @Test
     public void integrationTest() throws ChainDataSourceException {
-        Connection connection = mock(Connection.class);
+            ChainDataSource dataSource = new SQLAdapter("jdbc:mysql://mysql-server-1.macs.hw.ac.uk/dac31", "dac31", "sql");
 
-        ChainDataSource dataSource = new SQLAdapter(connection);
-        dataSource.executeQuery("SELECT * from user");
+            String repairedQuery = dataSource.getRepairedQuery("SELECT * from user");
+
+            assertEquals("SELECT * FROM users", repairedQuery);
 
 
     }
