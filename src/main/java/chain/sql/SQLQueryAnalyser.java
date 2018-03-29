@@ -41,10 +41,7 @@ public class SQLQueryAnalyser {
         }
     }
 
-    public void setSelectTableName(String name) {
-        SQLSelectTableVisitor visitor = new SQLSelectTableVisitor(name);
-        stmt.accept(visitor);
-    }
+
 
     /**
      * @return
