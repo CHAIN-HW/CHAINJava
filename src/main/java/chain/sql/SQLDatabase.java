@@ -9,7 +9,7 @@ import java.util.*;
 /**
  * @author Lewis McNeill
  *
- * Stores the tables present in the database
+ * Retrieves and stores the tables present in the database
  */
 public class SQLDatabase {
 
@@ -24,6 +24,11 @@ public class SQLDatabase {
         this.dbTables = new HashMap<>();
         this.connection = connection;
         retrieveDbStructure();
+    }
+
+
+    public Set<String> getTableNames() {
+        return dbTables.keySet();
     }
 
     /**
@@ -57,12 +62,17 @@ public class SQLDatabase {
 
     /**
      * Retrieves SQLTable object related to name of table
+     * Throws TableNotFoundException if table does not exist
      * @param tableName Name of table being retrieved
-     * @return SQLTable if table exists otherwise returns null
+     * @return SQLTable object if table exists
      */
-    public SQLTable getTable(String tableName)
-    {
-        return dbTables.get(tableName);
+    public SQLTable getTable(String tableName) throws TableNotFoundException {
+        SQLTable result = dbTables.get(tableName);
+
+        if (result == null)
+            throw new TableNotFoundException(tableName);
+
+        return result;
     }
 
     /**
@@ -74,4 +84,18 @@ public class SQLDatabase {
     {
         return dbTables.containsKey(tableName);
     }
+
+    /**
+     * Checks if a table contains a column
+     * Throws TableNotFoundException if the table does not exist
+     * @param tableName table to check in
+     * @param columnName column to check for
+     * @return True if column exists within table otherwise false
+     */
+    public boolean tableContainsColumn(String tableName, String columnName) throws TableNotFoundException {
+
+        return getTable(tableName).containsColumn(columnName);
+    }
+
+
 }
