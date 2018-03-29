@@ -83,7 +83,6 @@ public class SQLQueryAnalyser {
         return ret;
     }
 
-
     private List<String> getColumnNamesFromSelect(PlainSelect select) {
         GetSelectColumnVisitor visitor = new GetSelectColumnVisitor();
         for(SelectItem selItem : select.getSelectItems()) {
@@ -92,5 +91,9 @@ public class SQLQueryAnalyser {
         return visitor.getColumnNames();
     }
 
+    /**
+     * Converts the analysed query back into a string
+     * @return the query as a string
+     */
     public String toSQL() { return this.stmt.toString(); }
 }

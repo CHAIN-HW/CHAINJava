@@ -4,9 +4,9 @@ import java.util.Set;
 
 
 /**
- * @author Lewis McNeill
+ * SQLTable
  *
- * Represents an sql table
+ * Represents an the structure of an sql table
  */
 public class SQLTable {
 

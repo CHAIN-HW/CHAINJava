@@ -91,10 +91,18 @@ public class SQLAdapter implements SQLChainDataSource  {
         return driverClassName;
     }
 
+    /**
+     * Gets the adaptors connection
+     * @return the connection
+     */
     public Connection getConnection() {
         return connection;
     }
 
+    /**
+     * Closes the adaptor connection
+     * @throws ChainDataSourceException
+     */
     public void closeConnection() throws ChainDataSourceException {
         try {
             connection.close();
