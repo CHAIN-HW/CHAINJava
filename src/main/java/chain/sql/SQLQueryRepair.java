@@ -4,15 +4,14 @@ import chain.sql.visitors.SQLSelectColumnVisitor;
 import chain.sql.visitors.SQLSelectTableVisitor;
 import it.unitn.disi.smatch.SMatchException;
 import net.sf.jsqlparser.statement.Statement;
-
 import java.sql.SQLException;
-
 import java.util.List;
 import java.util.Map;
 
 /**
- * @author "Lewis McNeill"
+ * SQLQueryRepair
  *
+ * Repair a repair process on the defined query
  */
 public class SQLQueryRepair {
 
@@ -21,6 +20,14 @@ public class SQLQueryRepair {
     private Statement stmt;
     private SQLNameMatcherManager manager;
 
+
+    /**
+     * Constructor for SQLQueryRepair
+     * @param query is the SQL query that being repaired
+     * @param db is the structure of the database being queried
+     * @throws ChainDataSourceException
+     * @throws SQLException
+     */
     public SQLQueryRepair(String query, SQLDatabase db) throws ChainDataSourceException, SQLException {
         this.analyser = new SQLQueryAnalyser(query);
         this.stmt = analyser.getStatement();
@@ -31,6 +38,12 @@ public class SQLQueryRepair {
         manager = new SQLNameMatcherManager(tables, columns, this.db);
     }
 
+    /**
+     * Runs the repair process and returns the repaired query
+     * @return repaired query as a string
+     * @throws SPSMMatchingException
+     * @throws SMatchException
+     */
     public String runRepairer() throws SPSMMatchingException, SMatchException {
         repairTables();
         repairColumns();
@@ -45,6 +58,11 @@ public class SQLQueryRepair {
         return this.analyser.toSQL();
     }
 
+    /**
+     * Repairs table names present in the query
+     * @throws SPSMMatchingException
+     * @throws SMatchException
+     */
     private void repairTables() throws SPSMMatchingException, SMatchException {
         Map<String, String> newTableNames = manager.getReplacementTableNames();
 
@@ -52,11 +70,18 @@ public class SQLQueryRepair {
             repairTableName(newTableNames.get(key));
     }
 
+    /**
+     * Repairs column names present in the query
+     */
     private void repairColumns() throws SPSMMatchingException, SMatchException {
         Map<String, String> columnReplacements = manager.getReplacementColumnNames();
         repairColumnNames(columnReplacements);
     }
 
+    /**
+     * Replaces table names
+     * @param name what the table should be renamed
+     */
     private void repairTableName(String name) {
         SQLSelectTableVisitor visitor = new SQLSelectTableVisitor(name);
         stmt.accept(visitor);
@@ -65,11 +90,6 @@ public class SQLQueryRepair {
     public void repairColumnNames(Map<String, String> columnReplacements) {
         SQLSelectColumnVisitor visitor = new SQLSelectColumnVisitor(columnReplacements);
         stmt.accept(visitor);
+
     }
-
-
-
-
-
-
 }
