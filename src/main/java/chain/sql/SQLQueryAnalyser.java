@@ -27,7 +27,8 @@ public class SQLQueryAnalyser {
     protected Statement stmt;
 
     /**
-     * @param query
+     * Constructor
+     * @param query - the SQL query to be analysed.
      * @throws ChainDataSourceException
      */
     public SQLQueryAnalyser(String query) throws ChainDataSourceException {
@@ -41,25 +42,35 @@ public class SQLQueryAnalyser {
         }
     }
 
+    /**
+     * 
+     * @param name
+     */
     public void setSelectTableName(String name) {
         SQLSelectTableVisitor visitor = new SQLSelectTableVisitor(name);
         stmt.accept(visitor);
     }
 
     /**
-     * @return
+     * Get the statement associated with this instance of SQLQueryAnalyser
+     * @return the statement provided by parsing the query.
      */
     public Statement getStatement() {
         return stmt;
     }
 
     /**
-     * @return
+     * Get a list of the tables associated with this statement.
+     * @return a list of Strings containing table names.
      */
     public List<String> getTables() {
         return (new TablesNamesFinder()).getTableList(this.stmt);
     }
 
+    /**
+     * 
+     * @return
+     */
     public List<String> getWhereColumns() {
         Select fullStatement = (Select) this.stmt;
         PlainSelect sel = (PlainSelect) fullStatement.getSelectBody();
@@ -68,6 +79,11 @@ public class SQLQueryAnalyser {
         return this.recurseWhereToColumns(where);
     }
 
+    /**
+     * 
+     * @param where
+     * @return
+     */
     protected List<String> recurseWhereToColumns(Expression where) {
         if (where instanceof Column) {
             ArrayList<String> ret = new ArrayList<>();
