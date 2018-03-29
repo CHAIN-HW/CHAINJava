@@ -45,7 +45,7 @@ public class SQLQueryAnalyserTest {
 
     @Test
     public void getWhereColumns() {
-        List<String> columns = this.analyser.getWhereColumns();
+        List<String> columns = this.analyser.getColumns();
         List<String> expected = Arrays.asList("name", "gender");
         assertThat(columns, is(expected));
     }
