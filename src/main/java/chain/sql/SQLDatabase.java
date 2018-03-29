@@ -26,6 +26,11 @@ public class SQLDatabase {
         retrieveDbStructure();
     }
 
+
+    public Set<String> getTableNames() {
+        return dbTables.keySet();
+    }
+
     /**
      * Retrieves structure of database
      */
