@@ -2,7 +2,7 @@ package chain.sql;
 
 import chain.core.ChainDataSource;
 import chain.core.ChainResultSet;
-import chain.sql.visitors.SPSMMatchingException;
+import chain.sql.SPSMMatchingException;
 import it.unitn.disi.smatch.SMatchException;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -112,33 +112,11 @@ public class SQLAdapter implements SQLChainDataSource  {
     public ResultSet executeQuery(String query) throws ChainDataSourceException { throw new NotImplementedException(); }
 
 
-    // currently only supports table name replacements, needs a bit of work
     public String getRepairedQuery(String query) throws ChainDataSourceException {
         try {
-
-            SQLQueryAnalyser analyser = new SQLQueryAnalyser(query);
             SQLDatabase db = new SQLDatabase(connection);
-            SQLNameMatcherManager manager = new SQLNameMatcherManager(analyser.getTables(), db);
-
-            // Will need to do this for all supported thigns
-            Map<String, String> replacements =  manager.getReplacementTableNames();
-
-            // No repair needed as far as we know
-            if(replacements.size() == 0)
-                return query;
-
-            for(String key : replacements.keySet())
-                analyser.setSelectTableName(replacements.get(key));
-
-            return analyser.toSQL();
-
-//            SQLQueryRunner sqlQueryRunner = new SQLQueryRunner(query, connection);
-//            ResultSet results = sqlQueryRunner.getResults();
-
-
-
-
-//            return new SQLResultSet(results);
+            SQLQueryRepair queryRepair = new SQLQueryRepair(query, db);
+            return queryRepair.runRepairer();
 
         } catch (SQLException | SMatchException | SPSMMatchingException e) {
 

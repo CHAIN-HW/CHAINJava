@@ -1,9 +1,10 @@
 package chain.sql;
 
-import chain.sql.visitors.SPSMMatchingException;
 import it.unitn.disi.smatch.SMatchException;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
+
 
 import java.util.HashSet;
 import java.util.Set;
@@ -33,4 +34,15 @@ public class SPSMMatcherTest {
 
         assertEquals("lastname", matcher.match(sourceExample));
     }
+
+    @Test(expected = SPSMMatchingException.class)
+    public void matchThrowSPSMMatchingExceptionTooMany() throws SMatchException, SPSMMatchingException{
+        matcher.match("name");
+    }
+
+    @Test(expected = SPSMMatchingException.class)
+    public void matchThrowSPSMMatchingExceptionNone() throws SMatchException, SPSMMatchingException{
+        matcher.match("france");
+    }
+
 }
