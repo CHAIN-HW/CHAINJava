@@ -1,4 +1,4 @@
-package chain.sql.visitors;
+package chain.sql;
 
 /**
  *

@@ -2,11 +2,15 @@ package chain.sql;
 
 import chain.core.ChainDataSource;
 import chain.core.ChainResultSet;
+import chain.sql.SPSMMatchingException;
+import it.unitn.disi.smatch.SMatchException;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 
 
 // TODO: Better implementations for different SQL databases
@@ -20,7 +24,7 @@ import java.sql.SQLException;
  * and repair them
  *
  */
-public class SQLAdapter implements ChainDataSource  {
+public class SQLAdapter implements SQLChainDataSource  {
 
     private Connection connection;
 
@@ -87,10 +91,18 @@ public class SQLAdapter implements ChainDataSource  {
         return driverClassName;
     }
 
+    /**
+     * Gets the adaptors connection
+     * @return the connection
+     */
     public Connection getConnection() {
         return connection;
     }
 
+    /**
+     * Closes the adaptor connection
+     * @throws ChainDataSourceException
+     */
     public void closeConnection() throws ChainDataSourceException {
         try {
             connection.close();
@@ -105,23 +117,20 @@ public class SQLAdapter implements ChainDataSource  {
     }
 
     @Override
-    public ChainResultSet executeQuery(String query) throws ChainDataSourceException {
+    public ResultSet executeQuery(String query) throws ChainDataSourceException { throw new NotImplementedException(); }
+
+
+    public String getRepairedQuery(String query) throws ChainDataSourceException {
         try {
+            SQLDatabase db = new SQLDatabase(connection);
+            SQLQueryRepair queryRepair = new SQLQueryRepair(query, db);
+            return queryRepair.runRepairer();
 
-            // Analyse and repair using SQLQueryAnalyser
-
-            // run query, return results
-
-            SQLQueryRunner sqlQueryRunner = new SQLQueryRunner(query, connection);
-            ResultSet results = sqlQueryRunner.getResults();
-
-            return new SQLResultSet(results);
-
-        } catch (SQLException e) {
+        } catch (SQLException | SMatchException | SPSMMatchingException e) {
 
 
 
-            throw new ChainDataSourceException("Could not execute query: " + query, e);
+            throw new ChainDataSourceException("Could not get repaired query: " + query, e);
         } // catch wrong structure
     }
 }

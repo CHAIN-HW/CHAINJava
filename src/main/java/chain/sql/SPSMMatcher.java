@@ -1,11 +1,9 @@
 package chain.sql;
 
 
-import chain.sql.visitors.SPSMMatchingException;
 import it.unitn.disi.smatch.IMatchManager;
 import it.unitn.disi.smatch.MatchManager;
 import it.unitn.disi.smatch.SMatchException;
-import it.unitn.disi.smatch.data.mappings.IContextMapping;
 import it.unitn.disi.smatch.data.mappings.IMapping;
 import it.unitn.disi.smatch.data.mappings.IMappingElement;
 import it.unitn.disi.smatch.data.trees.IContext;
@@ -27,44 +25,53 @@ public class SPSMMatcher {
     private Set<String> targets;
 
     /**
-     * Constructor
-     * @param targets - set of strings to get matches for
+     * Constructor for  the SPSMMatcher class
+     * @param targets is a set of strings that SPSM should try and match to
      */
     SPSMMatcher(Set<String> targets) {
         this.targets = targets;
     }
 
     /**
-     * Match
-     * @param source
-     * @return
+     * Creates a tree structure for source and target and runs a match between them
+     *
+     * @param source is the broken term for which a match is being looked for
+     * @return A string from the target set that closely matches the source
      * @throws SMatchException
-     * @throws SPSMMatchingException
+     * @throws SPSMMatchingException if no match is made or if there is more than one possible match
      */
     public String match(String source) throws SMatchException, SPSMMatchingException {
 
         IMatchManager mm = MatchManager.getInstanceFromResource("/s-match.xml");
-        IContext s = mm.createContext();
-        s.createRoot(source);
+        IContext sourceNode = mm.createContext();
+        sourceNode.createRoot(source);
 
 
-        IContext t = mm.createContext();
-        INode root = t.createRoot();
+        IContext targetNode = mm.createContext();
+        INode root = targetNode.createRoot();
 
         for(String target: targets ) {
             root.createChild(target);
         }
 
-        IMapping<INode> result =  mm.match(s,t);
+        IMapping<INode> result =  mm.match(sourceNode,targetNode);
 
+        if(result.size() < 1) {
+            String msg = "No matches found for " + source + "\nPossibilities were: ";
+            for(String target : targets) {
+                msg = msg + "\n" + target;
+            }
+            throw new SPSMMatchingException(msg);
+        }
         return processResults(result);
     }
 
     /**
+     * Processes data stored in match nodes
      *
-     * @param result
-     * @return
-     * @throws SPSMMatchingException
+     * @param result is a list of nodes containing a source and a target that matches it
+     * @return A matching target as a string
+     * @throws SPSMMatchingException Thrown if no matches exist or if there is more than one
      */
     private String processResults(IMapping<INode> result) throws SPSMMatchingException {
         List<String> matches = new ArrayList<>();
@@ -79,8 +86,6 @@ public class SPSMMatcher {
 
         if(matches.size() > 1)
             throw new SPSMMatchingException("Multiple matches found");
-        else if(matches.size() < 1)
-            throw new SPSMMatchingException("No matches found");
 
         return matches.get(0);
 

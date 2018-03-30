@@ -3,7 +3,7 @@ package chain.sql;
 import java.util.ArrayList;
 import java.util.List;
 
-import chain.sql.visitors.SQLSelectTableVisitor;
+import chain.sql.visitors.GetSelectColumnVisitor;
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.expression.BinaryExpression;
 import net.sf.jsqlparser.expression.Expression;
@@ -12,6 +12,7 @@ import net.sf.jsqlparser.schema.Column;
 import net.sf.jsqlparser.statement.Statement;
 import net.sf.jsqlparser.statement.select.PlainSelect;
 import net.sf.jsqlparser.statement.select.Select;
+import net.sf.jsqlparser.statement.select.SelectItem;
 import net.sf.jsqlparser.util.TablesNamesFinder;
 
 /**
@@ -42,14 +43,6 @@ public class SQLQueryAnalyser {
         }
     }
 
-    /**
-     * 
-     * @param name
-     */
-    public void setSelectTableName(String name) {
-        SQLSelectTableVisitor visitor = new SQLSelectTableVisitor(name);
-        stmt.accept(visitor);
-    }
 
     /**
      * Get the statement associated with this instance of SQLQueryAnalyser
@@ -71,12 +64,13 @@ public class SQLQueryAnalyser {
      * 
      * @return
      */
-    public List<String> getWhereColumns() {
+    public List<String> getColumns() {
         Select fullStatement = (Select) this.stmt;
         PlainSelect sel = (PlainSelect) fullStatement.getSelectBody();
         Expression where = sel.getWhere();
-
-        return this.recurseWhereToColumns(where);
+        List<String> columnNames = recurseWhereToColumns(where);
+        columnNames.addAll(getColumnNamesFromSelect(sel));
+        return columnNames;
     }
 
     /**
@@ -84,7 +78,8 @@ public class SQLQueryAnalyser {
      * @param where
      * @return
      */
-    protected List<String> recurseWhereToColumns(Expression where) {
+    // TODO: could probably return the actual column objects and update them instead of having to go back in with the visitor
+    private List<String> recurseWhereToColumns(Expression where) {
         if (where instanceof Column) {
             ArrayList<String> ret = new ArrayList<>();
             ret.add(((Column) where).getColumnName());
@@ -99,5 +94,17 @@ public class SQLQueryAnalyser {
         return ret;
     }
 
+    private List<String> getColumnNamesFromSelect(PlainSelect select) {
+        GetSelectColumnVisitor visitor = new GetSelectColumnVisitor();
+        for(SelectItem selItem : select.getSelectItems()) {
+            selItem.accept(visitor);
+        }
+        return visitor.getColumnNames();
+    }
+
+    /**
+     * Converts the analysed query back into a string
+     * @return the query as a string
+     */
     public String toSQL() { return this.stmt.toString(); }
 }
