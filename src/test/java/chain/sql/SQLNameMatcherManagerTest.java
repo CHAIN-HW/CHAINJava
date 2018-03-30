@@ -1,6 +1,5 @@
 package chain.sql;
 
-import chain.sql.visitors.SPSMMatchingException;
 import it.unitn.disi.smatch.SMatchException;
 import org.junit.Before;
 import org.junit.Test;
