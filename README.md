@@ -10,6 +10,8 @@ $ git clone https://github.com/lewis785/CHAINJava
 $ cd CHAINJava
 ```
 
+Note: [Maven](https://maven.apache.org/install.html) must be installed for the project to build. If you're a Mac user with [Homebrew](https://brew.sh) installed, you can use the `brew install maven` command.
+
 ## Gradle
 The project uses Gradle as its build tool and for dependency management.  
 
