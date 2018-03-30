@@ -21,13 +21,23 @@ sourceSets{
             runtimeClasspath += main.output + test.output
             srcDir file('src/sparqlTest/java')
         }
-
+    }
+    integrationTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/integrationTest/java')
+        }
+        resources.srcDir file('src/integrationTest/resources')
     }
 }
 
 configurations {
     sparqlTestCompile.extendsFrom testCompile
     sparqlTestRuntime.extendsFrom testRuntime
+
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
 
 }
 
@@ -51,10 +61,12 @@ dependencies {
     // https://mvnrepository.com/artifact/junit/junit
     testCompile group: 'junit', name: 'junit', version: '4.12'
     sparqlTestCompile group: 'junit', name: 'junit', version: '4.12'
+    integrationTestCompile group: 'junit', name: 'junit', version: '4.12'
 
     //Mockito
     // https://mvnrepository.com/artifact/org.mockito/mockito-all
     testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+    integrationTestCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
 
     /**
      * Repositories used for SPSM
@@ -73,7 +85,6 @@ dependencies {
     compile group: 'net.sf.extjwnl', name: 'extjwnl', version: '1.8.0'
     // https://mvnrepository.com/artifact/net.sf.extjwnl/extjwnl-data-wn31
     compile group: 'net.sf.extjwnl', name: 'extjwnl-data-wn31', version: '1.2'
-
 
     // S-match  - Maven repo very out of date, use local references
     // https://mvnrepository.com/artifact/it.unitn.disi/s-match
@@ -105,6 +116,8 @@ idea {
     module {
         testSourceDirs += project.sourceSets.sparqlTest.java.srcDirs
         testSourceDirs += project.sourceSets.sparqlTest.resources.srcDirs
+        testSourceDirs += project.sourceSets.integrationTest.java.srcDirs
+        testSourceDirs += project.sourceSets.integrationTest.resources.srcDirs
     }
 }
 
@@ -118,6 +131,12 @@ test {
 task sparqlTest(type: Test) {
     testClassesDir = sourceSets.sparqlTest.output.classesDir
     classpath = sourceSets.sparqlTest.runtimeClasspath
+    outputs.upToDateWhen { false }
+}
+
+task integrationTest(type: Test) {
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
     outputs.upToDateWhen { false }
 }
 
@@ -150,6 +169,11 @@ tasks.withType(Test) {
 configure(sparqlTest) {
     group = 'verification'
     description = 'Run the sparqlTest suite of tests'
+}
+
+configure(integrationTest) {
+    group = 'verification'
+    description = 'Run the integration tests'
 }
 
 configure(getSPSM) {

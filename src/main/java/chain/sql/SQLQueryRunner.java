@@ -3,11 +3,9 @@ package chain.sql;
 import java.sql.*;
 
 /**
- * 
- * @author 
- * 
- * Runs a given query on the database connected to through the given connection.
+ * SQLQueryRunner
  *
+ * Runs a specified query on a database
  */
 public class SQLQueryRunner {
 
@@ -17,9 +15,9 @@ public class SQLQueryRunner {
     private String query;
 
     /**
-     * Constructor
-     * @param query - the query to be run.
-     * @param connection - the connection to the database on which to run the query.
+     * Constructor for the SQLQueryRunner class
+     * @param query is the SQL which is to be run
+     * @param connection a connection object used to connect to the database
      * @throws SQLException
      */
     public SQLQueryRunner(String query, Connection connection) throws SQLException {
@@ -28,9 +26,9 @@ public class SQLQueryRunner {
     }
 
     /**
-     * Get the result set returned by running the query.
-     * @return results given by running query on the database.
-     * @throws SQLException
+     * Returns the result of the query and runs the query if not already run
+     * @return resultSet containing the results of the query
+     * @throws SQLException Thrown if the SQL query is invalid
      */
     public ResultSet getResults() throws SQLException {
         if(resultSet==null)
@@ -39,9 +37,9 @@ public class SQLQueryRunner {
     }
 
     /**
-     * Runs the given query on the given database.
-     * @return results given by running the query on the database.
-     * @throws SQLException
+     * Executes the SQL query and returns the result
+     * @return resultSet containing the results of the query
+     * @throws SQLException Thrown if the SQL query is invalid
      */
     public ResultSet runQuery() throws SQLException {
         resultSet = stmt.executeQuery(query);
