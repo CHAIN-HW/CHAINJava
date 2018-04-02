@@ -14,28 +14,28 @@ public class SQLNameMatcherManagerTest {
 
     private SQLNameMatcherManager matcher;
     private SQLDatabase database;
-    private SPSMMatcher spsmMatcher;
+    private WordNetMatcher wordNetMatcher;
 
     @Before
     public void setup() {
         database = mock(SQLDatabase.class);
-        spsmMatcher = mock(SPSMMatcher.class);
+        wordNetMatcher = mock(WordNetMatcher.class);
 
         List<String> tableNames = new ArrayList<>();
         tableNames.add("user");
-        matcher = new SQLNameMatcherManager(tableNames, database, spsmMatcher);
+        matcher = new SQLNameMatcherManager(tableNames, database, wordNetMatcher);
     }
 
 
     @Test
-    public void testTableNameReplacement() throws SPSMMatchingException, SMatchException {
+    public void testTableNameReplacement() throws WordNetMatchingException, SMatchException {
         Set<String> realTableNames = new HashSet<String>();
         realTableNames.add("users");
         realTableNames.add("roles");
 
         when(database.getTableNames()).thenReturn(realTableNames);
         when(database.containsTable("user")).thenReturn(false);
-        when(spsmMatcher.match("user")).thenReturn("users");
+        when(wordNetMatcher.match("user")).thenReturn("users");
 
         Map<String, String> matches = matcher.getReplacementTableNames();
 
