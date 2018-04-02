@@ -6,9 +6,11 @@ import java.sql.SQLException;
 import java.util.*;
 
 /**
- * @author Lewis McNeill
+ * SQLDatabase
  *
- * Retrieves and stores the tables present in the database
+ * Represents and provides an interface to an SQL database
+ *
+ * @author Lewis McNeill
  */
 public class SQLDatabase {
 
@@ -18,6 +20,8 @@ public class SQLDatabase {
 
     /**
      * SQLDatabase constructor
+     *
+     * @param connection Connection instance for database communication
      */
     SQLDatabase(Connection connection) throws SQLException {
         this.dbTables = new HashMap<>();
@@ -26,12 +30,21 @@ public class SQLDatabase {
     }
 
 
+    /**
+     * getTableNames
+     *
+     * @return Set of table names present in database.
+     */
     public Set<String> getTableNames() {
         return dbTables.keySet();
     }
 
     /**
+     * retrieveDbStructure
+     *
      * Retrieves structure of database
+     *
+     * @throws SQLException if unable to retrieve tables.
      */
     private void retrieveDbStructure() throws SQLException {
         SQLQueryRunner runner = new SQLQueryRunner("SHOW TABLES", this.connection);
@@ -43,7 +56,10 @@ public class SQLDatabase {
     }
 
     /**
+     * retrieveTableColumns
+     *
      * Retrieves all the column names belonging to a table
+     *
      * @param tableName Table for which the columns should be found
      * @return A Set of strings containing the column names
      * @throws SQLException Handles any exceptions causes by Mysql
@@ -60,8 +76,11 @@ public class SQLDatabase {
 
 
     /**
+     * getTable
+     *
      * Retrieves SQLTable object related to name of table
-     * Throws TableNotFoundException if table does not exist
+     *
+     * @Throws TableNotFoundException if table does not exist
      * @param tableName Name of table being retrieved
      * @return SQLTable object if table exists
      */
@@ -75,7 +94,10 @@ public class SQLDatabase {
     }
 
     /**
+     * containsTable
+     *
      * Checks if table exists in database
+     *
      * @param tableName Name of table being checked
      * @return True if table exists false otherwise
      */
@@ -85,8 +107,11 @@ public class SQLDatabase {
     }
 
     /**
+     * tableContainsColumn
+     *
      * Checks if a table contains a column
-     * Throws TableNotFoundException if the table does not exist
+     *
+     * @Throws TableNotFoundException if the table does not exist
      * @param tableName table to check in
      * @param columnName column to check for
      * @return True if column exists within table otherwise false
@@ -97,6 +122,13 @@ public class SQLDatabase {
     }
 
 
+    /**
+     * getTables
+     *
+     * Returns the set of tables within the database
+     *
+     * @return Collection of tables as SQLTable objects
+     */
     public Collection<SQLTable> getTables() {
         return dbTables.values();
     }
