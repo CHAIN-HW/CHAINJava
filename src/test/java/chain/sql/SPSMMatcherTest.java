@@ -11,6 +11,17 @@ import java.util.Set;
 
 import static org.junit.Assert.*;
 
+/**
+ * 
+ * SPSMMatcherTest
+ * 
+ * This class is responsible for testing the SPSMMatcher class.
+ * 
+ * It will create a new instance of SPSMMatcher and use this
+ * matcher to check that we can get the synonym “lastname”
+ * for the given word “surname” from an example list of targets.
+ *
+ */
 public class SPSMMatcherTest {
 
     private SPSMMatcher matcher;
