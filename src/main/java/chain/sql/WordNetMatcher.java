@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-
 /**
+ * SPSMMatcher
+ * 
+ * Use SPSM Match Manager to create a match for each of a given set of targets.
  *
  */
 public class WordNetMatcher {

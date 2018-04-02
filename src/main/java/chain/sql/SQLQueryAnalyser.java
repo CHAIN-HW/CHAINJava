@@ -28,7 +28,8 @@ public class SQLQueryAnalyser {
     protected Statement stmt;
 
     /**
-     * @param query
+     * Constructor
+     * @param query - the SQL query to be analysed.
      * @throws ChainDataSourceException
      */
     public SQLQueryAnalyser(String query) throws ChainDataSourceException {
@@ -42,20 +43,27 @@ public class SQLQueryAnalyser {
         }
     }
 
+
     /**
-     * @return
+     * Get the statement associated with this instance of SQLQueryAnalyser
+     * @return the statement provided by parsing the query.
      */
     public Statement getStatement() {
         return stmt;
     }
 
     /**
-     * @return
+     * Get a list of the tables associated with this statement.
+     * @return a list of Strings containing table names.
      */
     public List<String> getTables() {
         return (new TablesNamesFinder()).getTableList(this.stmt);
     }
 
+    /**
+     * 
+     * @return
+     */
     public List<String> getColumns() {
         Select fullStatement = (Select) this.stmt;
         PlainSelect sel = (PlainSelect) fullStatement.getSelectBody();
@@ -65,6 +73,11 @@ public class SQLQueryAnalyser {
         return columnNames;
     }
 
+    /**
+     * 
+     * @param where
+     * @return
+     */
     // TODO: could probably return the actual column objects and update them instead of having to go back in with the visitor
     private List<String> recurseWhereToColumns(Expression where) {
         if (where instanceof Column) {
