@@ -90,6 +90,5 @@ public class SQLQueryRepair {
     public void repairColumnNames(Map<String, String> columnReplacements) {
         SQLSelectColumnVisitor visitor = new SQLSelectColumnVisitor(columnReplacements);
         stmt.accept(visitor);
-
     }
 }
