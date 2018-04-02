@@ -30,7 +30,7 @@ public class SQLQueryAnalyser {
     /**
      * Constructor
      * @param query - the SQL query to be analysed.
-     * @throws ChainDataSourceException
+     * @throws ChainDataSourceException An exception related to data sources
      */
     public SQLQueryAnalyser(String query) throws ChainDataSourceException {
         try {
