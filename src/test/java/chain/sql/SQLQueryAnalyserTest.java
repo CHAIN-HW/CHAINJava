@@ -9,6 +9,13 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
+/**
+ * SQLQueryAnalyserTest
+ * 
+ * This class tests the SQLQueryAnalyser class. It initialises an instance of
+ * SQLQueryAnalyser using a sample query and then runs the tests.
+ *
+ */
 public class SQLQueryAnalyserTest {
     protected SQLQueryAnalyser analyser;
 
@@ -20,11 +27,20 @@ public class SQLQueryAnalyserTest {
                 "AND gender = 'M'");
     }
 
+    /**
+     * Test 12.1
+	 * Checks that the analyser did not fail in construction.
+     */
     @Test
     public void getStatement() {
         assertNotNull("Analyser failed in construction", this.analyser);
     }
 
+    /**
+     * Test 12.2
+	 * Tests the getTables function of the SQLQueryAnalyser class by
+	 * comparing the returned value to the string “customers”.
+     */
     @Test
     public void getTables() {
         List<String> expected = Arrays.asList("customers");
@@ -43,6 +59,12 @@ public class SQLQueryAnalyserTest {
 //        assertEquals(this.analyser.toSQL(), "SELECT * FROM users WHERE name = 'Lewis' AND gender = 'M'");
 //    }
 
+    /**
+     * Test 12.3
+	 * Tests the getWhereColumns function of the SQLQueryAnalyser class by
+	 * comparing the returned value with a list containing the strings “name”
+	 * and “gender”.
+     */
     @Test
     public void getWhereColumns() {
         List<String> columns = this.analyser.getColumns();
