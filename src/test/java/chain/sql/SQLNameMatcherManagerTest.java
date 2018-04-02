@@ -69,12 +69,6 @@ public class SQLNameMatcherManagerTest {
     }
 
     @Test
-    public void getReplacementTableNames() {
-
-
-    }
-
-    @Test
     public void getReplacementColumnNames() throws NoReplacementFoundException, SMatchException {
         List<String> brokenColumnNames = new ArrayList<>();
         brokenColumnNames.add("surname");

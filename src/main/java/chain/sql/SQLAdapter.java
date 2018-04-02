@@ -108,12 +108,31 @@ public class SQLAdapter implements SQLChainDataSource  {
     }
 
     @Override
-    public void getSchemaOntology() {
+    public ResultSet executeQuery(String query) throws ChainDataSourceException {
+        SQLQueryRunner runner;
+        try {
+             runner = new SQLQueryRunner(query, connection);
+        } catch (SQLException e) {
+            throw new ChainDataSourceException("Error with Database Connection: " + e.getMessage(), e);
+        }
 
+        try {
+            return runner.runQuery();
+        } catch (SQLException e) {
+            // Failed to run the query.  Get repaired one:
+            return repairAndRunQuery(query);
+        }
     }
 
-    @Override
-    public ResultSet executeQuery(String query) throws ChainDataSourceException { throw new NotImplementedException(); }
+    private ResultSet repairAndRunQuery(String query) throws ChainDataSourceException {
+        String repairedQuery = getRepairedQuery(query);
+        try {
+            SQLQueryRunner runner = new SQLQueryRunner(repairedQuery, connection);
+            return runner.runQuery();
+        } catch (SQLException e) {
+            throw new ChainDataSourceException("Repaired Query failed to run: " + e.getMessage(), e);
+        }
+    }
 
 
     public String getRepairedQuery(String query) throws ChainDataSourceException {
@@ -121,9 +140,7 @@ public class SQLAdapter implements SQLChainDataSource  {
             SQLDatabase db = new SQLDatabase(connection);
             SQLQueryRepair queryRepair = new SQLQueryRepair(query, db);
             return queryRepair.runRepairer();
-
         } catch (SQLException e) {
-
             throw new ChainDataSourceException("Could not get repaired query: " + query, e);
         } // catch wrong structure
     }
