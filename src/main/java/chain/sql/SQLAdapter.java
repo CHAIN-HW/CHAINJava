@@ -1,7 +1,7 @@
 package chain.sql;
 
 import it.unitn.disi.smatch.SMatchException;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.lang.UnsupportedOperationException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -113,7 +113,7 @@ public class SQLAdapter implements SQLChainDataSource  {
     }
 
     @Override
-    public ResultSet executeQuery(String query) throws ChainDataSourceException { throw new NotImplementedException(); }
+    public ResultSet executeQuery(String query) throws ChainDataSourceException { throw new UnsupportedOperationException(); }
 
 
     public String getRepairedQuery(String query) throws ChainDataSourceException {
