@@ -13,22 +13,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+
 /**
- * SPSMMatcher
- * 
- * Use SPSM Match Manager to create a match for each of a given set of targets.
  *
  */
-public class WordNetMatcher {
+public class SPSMMatcher {
 
 
     private Set<String> targets;
 
     /**
-     * Constructor for  the WordNetMatcher class
+     * Constructor for  the SPSMMatcher class
      * @param targets is a set of strings that SPSM should try and match to
      */
-    WordNetMatcher(Set<String> targets) {
+    SPSMMatcher(Set<String> targets) {
         this.targets = targets;
     }
 
@@ -37,10 +35,10 @@ public class WordNetMatcher {
      *
      * @param source is the broken term for which a match is being looked for
      * @return A string from the target set that closely matches the source
-     * @throws SMatchException An exception captured in SMatch
-     * @throws WordNetMatchingException if no match is made or if there is more than one possible match
+     * @throws SMatchException
+     * @throws SPSMMatchingException if no match is made or if there is more than one possible match
      */
-    public String match(String source) throws SMatchException, WordNetMatchingException {
+    public String match(String source) throws SMatchException, SPSMMatchingException {
 
         IMatchManager mm = MatchManager.getInstanceFromResource("/s-match.xml");
         IContext sourceNode = mm.createContext();
@@ -61,7 +59,7 @@ public class WordNetMatcher {
             for(String target : targets) {
                 msg = msg + "\n" + target;
             }
-            throw new WordNetMatchingException(msg);
+            throw new SPSMMatchingException(msg);
         }
         return processResults(result);
     }
@@ -71,9 +69,9 @@ public class WordNetMatcher {
      *
      * @param result is a list of nodes containing a source and a target that matches it
      * @return A matching target as a string
-     * @throws WordNetMatchingException Thrown if no matches exist or if there is more than one
+     * @throws SPSMMatchingException Thrown if no matches exist or if there is more than one
      */
-    private String processResults(IMapping<INode> result) throws WordNetMatchingException {
+    private String processResults(IMapping<INode> result) throws SPSMMatchingException {
         List<String> matches = new ArrayList<>();
 
         for (IMappingElement<INode> e : result) {
@@ -85,7 +83,7 @@ public class WordNetMatcher {
         }
 
         if(matches.size() > 1)
-            throw new WordNetMatchingException("Multiple matches found");
+            throw new SPSMMatchingException("Multiple matches found");
 
         return matches.get(0);
 

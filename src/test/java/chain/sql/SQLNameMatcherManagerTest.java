@@ -34,10 +34,6 @@ public class SQLNameMatcherManagerTest {
 
         List<String> columnNames = new ArrayList<>();
         tableNames.add("surname");
-
-
-
-
     }
 
     

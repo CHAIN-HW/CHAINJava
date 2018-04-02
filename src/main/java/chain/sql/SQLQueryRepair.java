@@ -25,8 +25,7 @@ public class SQLQueryRepair {
      * Constructor for SQLQueryRepair
      * @param query is the SQL query that being repaired
      * @param db is the structure of the database being queried
-     * @throws ChainDataSourceException
-     * @throws SQLException
+     * @throws ChainDataSourceException An exception related to data sources
      */
     public SQLQueryRepair(String query, SQLDatabase db) throws ChainDataSourceException {
         this.analyser = new SQLQueryAnalyser(query);
@@ -41,8 +40,7 @@ public class SQLQueryRepair {
     /**
      * Runs the repair process and returns the repaired query
      * @return repaired query as a string
-     * @throws WordNetMatchingException
-     * @throws SMatchException
+     * @throws ChainDataSourceException An exception related to failure of repair on query
      */
     public String runRepairer() throws ChainDataSourceException {
         try {
@@ -64,8 +62,8 @@ public class SQLQueryRepair {
 
     /**
      * Repairs table names present in the query
-     * @throws WordNetMatchingException
-     * @throws SMatchException
+     * @throws WordNetMatchingException An exception related to WordNet
+     * @throws SMatchException An exception captured through SMatch
      */
     private void repairTables() throws WordNetMatchingException, SMatchException {
         Map<String, String> newTableNames = manager.getReplacementTableNames();
@@ -76,6 +74,8 @@ public class SQLQueryRepair {
 
     /**
      * Repairs column names present in the query
+     * @throws SMatchException An exception related to smatch
+     * @throws NoReplacementFoundException An exception thrown when no column replacement was found
      */
     private void repairColumns() throws SMatchException, NoReplacementFoundException {
         Map<String, String> columnReplacements = manager.getReplacementColumnNames();

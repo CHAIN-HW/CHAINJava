@@ -12,8 +12,6 @@ import static org.junit.Assert.*;
 
 
 /**
- * @author Lewis McNeill
- *
  * This class is responsible for carrying out unit tests on the
  * SQLDatabase class. It creates a mock database using the SQLMockDatabase
  * class and connects to it before running the tests.
@@ -58,13 +56,12 @@ public class SQLDatabaseTest {
         assertThat( database.getTable("users"), instanceOf(SQLTable.class));
     }
 
-    
     @Test(expected = TableNotFoundException.class)
     public void getTableThrowException() throws TableNotFoundException {
        database.getTable("false_table");
     }
 
-    
+
     /**
      * Test 10.2
 	 * This test checks that the containsTable function of SQLDatabase works

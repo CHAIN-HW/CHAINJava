@@ -46,7 +46,7 @@ public class SQLNameMatcherManager {
 
     /**
      * Goes through each table name provided to it and attempts to find a replacement
-     * @return Replacement names as a map in the form <orginal, replacement>
+     * @return Replacement names as a map in the form (original, replacement)
      * @throws SMatchException
      * @throws WordNetMatchingException
      */

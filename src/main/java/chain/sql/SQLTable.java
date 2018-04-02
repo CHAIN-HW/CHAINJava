@@ -25,7 +25,10 @@ public class SQLTable {
     }
 
     /**
-     * Retrieves the name of the table
+     * getTableName
+     *
+     * Returns the name of the current table instance.
+     *
      * @return The table name as string
      */
     public String getTableName()
@@ -34,7 +37,10 @@ public class SQLTable {
     }
 
     /**
-     * Retrieves all the columns in the table
+     * getColumnNames
+     *
+     * Returns a set of column names in the table.
+     *
      * @return Set containing all column names
      */
     public Set<String> getColumnNames()
