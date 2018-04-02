@@ -1,11 +1,9 @@
 package chain.sql;
 
-import chain.core.ChainDataSource;
 import it.unitn.disi.smatch.SMatchException;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,6 +14,15 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+
+/**
+ * SQLQueryRepairTest
+ * 
+ * Responsible for testing the SQLQueryRepair class. It will create
+ * some mock database tables and connect to a database which will
+ * return those tables before running the tests.
+ *
+ */
 public class SQLQueryRepairTest {
 
     private SQLDatabase mockDb;
@@ -31,24 +38,112 @@ public class SQLQueryRepairTest {
         when(mockDb.getTableNames()).thenReturn(mockTables);
     }
 
-
+    /**
+     * Test 13.1
+	 * Check that the runRepairer function works as expected. It should
+	 * return the query “SELECT * FROM users” having replaced the table
+	 * name “user” with “users” when run over the mock database.
+     * @throws ChainDataSourceException
+     * @throws SQLException
+     * @throws SPSMMatchingException
+     * @throws SMatchException
+     */
     @Test
-    public void runRepairer() throws ChainDataSourceException, SQLException, SPSMMatchingException, SMatchException {
+    public void runRepairer() throws ChainDataSourceException, SQLException, WordNetMatchingException, SMatchException {
         SQLQueryRepair queryRepair = new SQLQueryRepair( "SELECT * from user", mockDb);
         String repairedQuery = queryRepair.runRepairer();
         assertEquals("SELECT * FROM users", repairedQuery);
     }
 
-
+    /**
+     * Test 13.2
+	 * Check that the repairColumnNames functionality works as expected by
+	 * comparing the value returned from this function with the manually
+	 * repaired query “SELECT lastname FROM users”. The function should have
+	 * replaced “surname” with “lastname”.
+     * @throws SQLException
+     * @throws ChainDataSourceException
+     */
     @Test
     public void testSetColumns() throws SQLException, ChainDataSourceException {
-        SQLQueryRepair queryRepair = new SQLQueryRepair( "SELECT surname from users", mockDb);
+        SQLQueryRepair queryRepair = new SQLQueryRepair( "SELECT surname FROM users", mockDb);
         Map<String, String> test = new HashMap<>();
         test.put("surname", "lastname");
         queryRepair.repairColumnNames(test);
 
         String query = queryRepair.getQueryFromTree();
-        System.out.println(query);
         assertEquals("SELECT lastname FROM users", query);
+
+        // Test EqualTo expressions
+        queryRepair = new SQLQueryRepair("SELECT surname FROM users WHERE surname = 'McNeill'", mockDb);
+        queryRepair.repairColumnNames(test);
+        query = queryRepair.getQueryFromTree();
+        assertEquals("SELECT lastname FROM users WHERE lastname = 'McNeill'", query);
+
+        // Test GreaterThan expressions
+        queryRepair = new SQLQueryRepair("SELECT surname FROM users WHERE surname > 'McNeill'", mockDb);
+        queryRepair.repairColumnNames(test);
+        query = queryRepair.getQueryFromTree();
+        assertEquals("SELECT lastname FROM users WHERE lastname > 'McNeill'", query);
+
+        // Test GreaterThanEqual expressions
+        queryRepair = new SQLQueryRepair("SELECT surname FROM users WHERE surname >= 'McNeill'", mockDb);
+        queryRepair.repairColumnNames(test);
+        query = queryRepair.getQueryFromTree();
+        assertEquals("SELECT lastname FROM users WHERE lastname >= 'McNeill'", query);
+
+        // Test LessThan expressions
+        queryRepair = new SQLQueryRepair("SELECT surname FROM users WHERE surname < 'McNeill'", mockDb);
+        queryRepair.repairColumnNames(test);
+        query = queryRepair.getQueryFromTree();
+        assertEquals("SELECT lastname FROM users WHERE lastname < 'McNeill'", query);
+
+        // Test LessThanEqual expressions
+        queryRepair = new SQLQueryRepair("SELECT surname FROM users WHERE surname <= 'McNeill'", mockDb);
+        queryRepair.repairColumnNames(test);
+        query = queryRepair.getQueryFromTree();
+        assertEquals("SELECT lastname FROM users WHERE lastname <= 'McNeill'", query);
+
+        // Test NotEqual expressions
+        queryRepair = new SQLQueryRepair("SELECT surname FROM users WHERE surname != 'McNeill'", mockDb);
+        queryRepair.repairColumnNames(test);
+        query = queryRepair.getQueryFromTree();
+        assertEquals("SELECT lastname FROM users WHERE lastname != 'McNeill'", query);
+
+        // Test NotEqual expressions
+        queryRepair = new SQLQueryRepair("SELECT surname FROM users WHERE surname IS NULL", mockDb);
+        queryRepair.repairColumnNames(test);
+        query = queryRepair.getQueryFromTree();
+        assertEquals("SELECT lastname FROM users WHERE lastname IS NULL", query);
+
+        // Test Like expressions
+        queryRepair = new SQLQueryRepair("SELECT surname FROM users WHERE surname LIKE '%McNeill%'", mockDb);
+        queryRepair.repairColumnNames(test);
+        query = queryRepair.getQueryFromTree();
+        assertEquals("SELECT lastname FROM users WHERE lastname LIKE '%McNeill%'", query);
+
+        // Test In expressions
+        queryRepair = new SQLQueryRepair("SELECT surname FROM users WHERE surname IN ('McNeill', 'Union')", mockDb);
+        queryRepair.repairColumnNames(test);
+        query = queryRepair.getQueryFromTree();
+        assertEquals("SELECT lastname FROM users WHERE lastname IN ('McNeill', 'Union')", query);
+
+        // Test OR expressions
+        queryRepair = new SQLQueryRepair("SELECT surname FROM users WHERE surname = 'McNeill' OR surname = 'Union'", mockDb);
+        queryRepair.repairColumnNames(test);
+        query = queryRepair.getQueryFromTree();
+        assertEquals("SELECT lastname FROM users WHERE lastname = 'McNeill' OR lastname = 'Union'", query);
+
+        // Test AND expressions
+        queryRepair = new SQLQueryRepair("SELECT surname FROM users WHERE surname = 'McNeill' AND surname = 'Union'", mockDb);
+        queryRepair.repairColumnNames(test);
+        query = queryRepair.getQueryFromTree();
+        assertEquals("SELECT lastname FROM users WHERE lastname = 'McNeill' AND lastname = 'Union'", query);
+
+        // Test BETWEEN expressions
+        queryRepair = new SQLQueryRepair("SELECT surname FROM users WHERE surname BETWEEN 0 AND 10", mockDb);
+        queryRepair.repairColumnNames(test);
+        query = queryRepair.getQueryFromTree();
+        assertEquals("SELECT lastname FROM users WHERE lastname BETWEEN 0 AND 10", query);
     }
 }

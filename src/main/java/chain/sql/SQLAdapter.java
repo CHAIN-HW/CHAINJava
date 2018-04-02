@@ -1,8 +1,5 @@
 package chain.sql;
 
-import chain.core.ChainDataSource;
-import chain.core.ChainResultSet;
-import chain.sql.SPSMMatchingException;
 import it.unitn.disi.smatch.SMatchException;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -10,7 +7,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Map;
 
 
 // TODO: Better implementations for different SQL databases
@@ -151,8 +147,8 @@ public class SQLAdapter implements SQLChainDataSource  {
             SQLDatabase db = new SQLDatabase(connection);
             SQLQueryRepair queryRepair = new SQLQueryRepair(query, db);
             return queryRepair.runRepairer();
+        } catch (SQLException | SMatchException | WordNetMatchingException e) {
 
-        } catch (SQLException | SMatchException | SPSMMatchingException e) {
             throw new ChainDataSourceException("Could not get repaired query: " + query, e);
         } // catch wrong structure
     }
