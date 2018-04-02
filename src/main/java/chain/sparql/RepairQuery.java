@@ -29,7 +29,8 @@ public class RepairQuery {
 	private static int NODATA = 0 ;  // We can't do queries with no data at present
 
 	/**
-	 * @param args
+	 * Main method
+	 * @param args Command line arguments
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
