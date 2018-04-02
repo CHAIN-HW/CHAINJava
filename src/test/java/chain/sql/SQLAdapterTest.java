@@ -4,9 +4,14 @@ import org.junit.Ignore;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class SQLAdapterTest {
 
@@ -24,14 +29,4 @@ public class SQLAdapterTest {
         assertNotNull(adapter.getConnection());
     }
 
-    @Ignore("Will probably be removed")
-    @Test
-    public void getSchemaOntology() {
-    }
-
-    @Ignore("Forming connection will not work on travis.  This function is also not implemented")
-    @Test
-    public void executeQuery() {
-
-    }
 }

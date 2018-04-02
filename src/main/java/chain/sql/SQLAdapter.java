@@ -125,7 +125,6 @@ public class SQLAdapter implements SQLChainDataSource  {
             return runner.runQuery();
         } catch (SQLException e) {
             // Failed to run the query.  Get repaired one:
-            query = getRepairedQuery(query);
             return repairAndRunQuery(query);
         }
     }
@@ -138,7 +137,6 @@ public class SQLAdapter implements SQLChainDataSource  {
         } catch (SQLException e) {
             throw new ChainDataSourceException("Repaired Query failed to run: " + e.getMessage(), e);
         }
-
     }
 
 
