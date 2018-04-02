@@ -2,7 +2,6 @@ package chain.sql;
 
 import it.unitn.disi.smatch.SMatchException;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 
@@ -11,9 +10,9 @@ import java.util.Set;
 
 import static org.junit.Assert.*;
 
-public class SPSMMatcherTest {
+public class WordNetMatcherTest {
 
-    private SPSMMatcher matcher;
+    private WordNetMatcher matcher;
 
     @Before
     public void setUp()
@@ -25,23 +24,23 @@ public class SPSMMatcherTest {
         targetExample.add("username");
         targetExample.add("kettle");
 
-        matcher = new SPSMMatcher(targetExample);
+        matcher = new WordNetMatcher(targetExample);
     }
 
     @Test
-    public void match() throws SMatchException, SPSMMatchingException {
+    public void match() throws SMatchException, WordNetMatchingException {
         String sourceExample = "surname";
 
         assertEquals("lastname", matcher.match(sourceExample));
     }
 
-    @Test(expected = SPSMMatchingException.class)
-    public void matchThrowSPSMMatchingExceptionTooMany() throws SMatchException, SPSMMatchingException{
+    @Test(expected = WordNetMatchingException.class)
+    public void matchThrowSPSMMatchingExceptionTooMany() throws SMatchException, WordNetMatchingException {
         matcher.match("name");
     }
 
-    @Test(expected = SPSMMatchingException.class)
-    public void matchThrowSPSMMatchingExceptionNone() throws SMatchException, SPSMMatchingException{
+    @Test(expected = WordNetMatchingException.class)
+    public void matchThrowSPSMMatchingExceptionNone() throws SMatchException, WordNetMatchingException {
         matcher.match("france");
     }
 
