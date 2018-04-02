@@ -1,11 +1,9 @@
 package chain.sql;
 
-import chain.core.ChainDataSource;
 import it.unitn.disi.smatch.SMatchException;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -33,7 +31,7 @@ public class SQLQueryRepairTest {
 
 
     @Test
-    public void runRepairer() throws ChainDataSourceException, SQLException, SPSMMatchingException, SMatchException {
+    public void runRepairer() throws ChainDataSourceException, SQLException, WordNetMatchingException, SMatchException {
         SQLQueryRepair queryRepair = new SQLQueryRepair( "SELECT * from user", mockDb);
         String repairedQuery = queryRepair.runRepairer();
         assertEquals("SELECT * FROM users", repairedQuery);
