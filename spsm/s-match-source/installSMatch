@@ -1,6 +1,0 @@
-#!/bin/bash
-
-./0cloneSMatch
-./2buildSMatch
-./3createBinary
-./4extractBinary
