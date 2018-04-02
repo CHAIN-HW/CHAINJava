@@ -10,6 +10,14 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+/**
+ * SQLNameMatcherManagerTest
+ * 
+ * Tests the SQLNameMatcherManager class. It will create a mock database
+ * and mock SPSMMatcher. It will then create an instance of SQLNameMatcherManager
+ * using the mock database and matcher before running the tests.
+ *
+ */
 public class SQLNameMatcherManagerTest {
 
     private SQLNameMatcherManager matcher;
@@ -26,7 +34,14 @@ public class SQLNameMatcherManagerTest {
         matcher = new SQLNameMatcherManager(tableNames, database, spsmMatcher);
     }
 
-
+    
+    /**
+     * Test 11.1
+	 * Tests the getReplacementTableNames function of the SQLNameMatcherManager class.
+	 * It will check that 1 match is returned and that “users” is matched to “user”.
+     * @throws SPSMMatchingException
+     * @throws SMatchException
+     */
     @Test
     public void testTableNameReplacement() throws SPSMMatchingException, SMatchException {
         Set<String> realTableNames = new HashSet<String>();
