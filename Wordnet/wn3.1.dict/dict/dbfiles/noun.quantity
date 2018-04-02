@@ -476,7 +476,7 @@
 { [ inch, verb.motion:inch,+ ] in, linear_unit,@ foot,#p noun.location:US,;r noun.location:Britain,;r (a unit of length equal to one twelfth of a foot) }
 { foot, ft, linear_unit,@ yard,#p (a linear unit of length equal to 12 inches or a third of a yard; "he is six feet tall") }
 { footer, linear_unit,@ noun.communication:combining_form,;u ((used only in combinations) the height or length of something in feet; "he is a six-footer"; "the golfer sank a 40-footer"; "his yacht is a 60-footer") }
-{ yard, [ pace, verb.change:pace,+ ] linear_unit,@ fathom1,#p chain,#p rod1,#p lea,#p (a unit of length equal to 3 feet; defined as 91.44 centimeters; originally taken to be the average length of a stride) }
+{ yard, [ pace, verb.change:pace,+ ] linear_unit,@ fathom1,#p chain_tests,#p rod1,#p lea,#p (a unit of length equal to 3 feet; defined as 91.44 centimeters; originally taken to be the average length of a stride) }
 { yarder, linear_unit,@ noun.communication:combining_form,;u ((used only in combinations) the height or length of something in yards; "the golfer hit a 300-yarder to the green") }
 { perch1, rod1, pole1, linear_unit,@ furlong,#p noun.location:Britain,;r (a linear measure of 16.5 feet) }
 { furlong, linear_unit,@ mile1,#p (a unit of length equal to 220 yards) }
@@ -494,9 +494,9 @@
 { vara, linear_unit,@ (a Spanish unit of length (about a yard) having different values in different localities) }
 { verst, linear_unit,@ (a Russian unit of length (1.067 km)) }
 { cable, cable_length, cable's_length, linear_unit,@ (a nautical unit of depth) }
-{ chain, linear_unit,@ (a unit of length) }
-{ Gunter's_chain, chain,@ furlong,#p (a unit of length (22 yards)) }
-{ engineer's_chain, chain,@ (a unit of length (100 ft)) }
+{ chain_tests, linear_unit,@ (a unit of length) }
+{ Gunter's_chain, chain_tests,@ furlong,#p (a unit of length (22 yards)) }
+{ engineer's_chain, chain_tests,@ (a unit of length (100 ft)) }
 { cubit, linear_unit,@ (an ancient unit of length based on the length of the forearm) }
 { finger1, fingerbreadth, finger's_breadth, digit1, linear_unit,@ (the length of breadth of a finger used as a linear measure) }
 { fistmele, linear_unit,@ (about seven inches; the breadth of a fist with the thumb stuck out (used especially in archery to give the correct distance of the string from the bow)) }
@@ -507,7 +507,7 @@
 { head, linear_unit,@ (the length or height based on the size of a human or animal head; "he is two heads taller than his little sister"; "his horse won by a head") }
 { lea, linear_unit,@ (a unit of length of thread or yarn) }
 { li, linear_unit,@ (Chinese distance measure; approximately 0.5 kilometers) }
-{ link1, linear_unit,@ chain,#p (a unit of length equal to 1/100 of a chain) }
+{ link1, linear_unit,@ chain_tests,#p (a unit of length equal to 1/100 of a chain_tests) }
 { mesh, linear_unit,@ inch,#p (the number of openings per linear inch of a screen; measures size of particles; "a 100 mesh screen"; "100 mesh powdered cellulose") }
 { mil1, linear_unit,@ inch,#p (a unit of length equal to one thousandth of an inch; used to specify thickness (e.g., of sheets or wire)) }
 { [ mile2, noun.quantity:miler,+ noun.person:miler,+ ] mil5, Swedish_mile, linear_unit,@ (a Swedish unit of length equivalent to 10 km) }
@@ -543,7 +543,7 @@
 { myriameter, [ myriametre, noun.location:Canada,;r noun.location:Britain,;r ] mym, metric_linear_unit,@ (a metric unit of length equal to 10,000 meters) }
 
 ( **** NAUTICAL LINEAR UNITS **** )
-{ nautical_chain, chain,@ (a nautical unit of length (15 ft)) }
+{ nautical_chain, chain_tests,@ (a nautical unit of length (15 ft)) }
 { [ fathom1, verb.change:fathom,+ ] fthm1, linear_unit,@ (a linear unit of measurement (equal to 6 feet) for water depth) }
 { nautical_mile1, [ mile4, noun.quantity:miler,+ ] mi4, naut_mi, international_nautical_mile, air_mile, nautical_linear_unit,@ (a unit of length used in navigation; exactly 1,852 meters; historically based on the distance spanned by one minute of arc in latitude) }
 { nautical_mile2, naut_mi1, [ mile6, noun.quantity:miler,+ ] mi5, geographical_mile, Admiralty_mile, nautical_linear_unit,@ (a former British unit of length equivalent to 6,080 feet (1,853.184 meters); 800 feet longer than a statute mile) }

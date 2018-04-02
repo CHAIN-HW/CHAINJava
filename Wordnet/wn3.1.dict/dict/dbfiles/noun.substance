@@ -385,7 +385,7 @@
 { ununquadium, Uuq, element_114", atomic_number_114", element,@ (a radioactive transuranic element) }
 { ununtrium, Uut, element_113", atomic_number_113", element,@ (a radioactive transuranic element) }
 { uranium, U, atomic_number_92", metallic_element,@ uraninite,#s (a heavy toxic silvery-white radioactive metallic element; occurs in many isotopes; used for nuclear fuels and nuclear weapons) }
-{ uranium_235", uranium,@ (a uranium isotope with mass number 235; capable of sustaining chain reactions) }
+{ uranium_235", uranium,@ (a uranium isotope with mass number 235; capable of sustaining chain_tests reactions) }
 { uranium_238", uranium,@ (the commonest isotope of uranium; it is not fissionable but when irradiated with neutrons it produces fissionable plutonium 239) }
 { vanadium, V, atomic_number_23", metallic_element,@ carnotite,#s vanadinite,#s (a soft silvery white toxic metallic element used in steel alloys; it occurs in several complex minerals including carnotite and vanadinite) }
 { xenon, Xe, atomic_number_54", element,@ noble_gas,@ air,#s (a colorless odorless inert gaseous element occurring in the earth's atmosphere in trace amounts) }
@@ -400,7 +400,7 @@
 { alabaster1, oriental_alabaster, onyx_marble, Mexican_onyx, calcite,@ (a hard compact kind of calcite) }
 { amblygonite, mineral,@ (a white or grey mineral consisting of lithium aluminum phosphate; a source of lithium) }
 { amphibole, mineral,@ amphibolite,#s amphibole_group,#m (a mineral or mineral variety belonging to the amphibole group) }
-{ amphibole_group, mineral,@ (a group of minerals with similar crystal structures containing a silicate chain and combinations of chiefly sodium and calcium and magnesium and iron and aluminum) }
+{ amphibole_group, mineral,@ (a group of minerals with similar crystal structures containing a silicate chain_tests and combinations of chiefly sodium and calcium and magnesium and iron and aluminum) }
 { amphibolite, metamorphic_rock,@ (a metamorphic rock composed chiefly of amphibole and plagioclase) }
 { apatite, mineral,@ (a common complex mineral consisting of calcium fluoride phosphate or calcium chloride phosphate; a source of phosphorus) }
 { aragonite, mineral,@ (a mineral form of crystalline calcium carbonate; dimorphic with calcite) }
@@ -817,14 +817,14 @@
 { sebacic_acid, decanedioic_acid, carboxylic_acid,@ (a dicarboxylic acid used to make resins) }
 { sorbic_acid, carboxylic_acid,@ (a white crystalline carboxylic acid used as a preservative) }
 { valeric_acid, pentanoic_acid, carboxylic_acid,@ (a clear liquid carboxylic acid used in perfumes and drugs) }
-{ fatty_acid, carboxylic_acid,@ (any of a class of aliphatic monocarboxylic acids that form part of a lipid molecule and can be derived from fat by hydrolysis; fatty acids are simple molecules built around a series of carbon atoms linked together in a chain of 12 to 22 carbon atoms) }
-{ saturated_fatty_acid, fatty_acid,@ (a fatty acid whose carbon chain cannot absorb any more hydrogen atoms; found chiefly in animal fats) }
-{ unsaturated_fatty_acid, fatty_acid,@ (a fatty acid whose carbon chain can absorb additional hydrogen atoms) }
+{ fatty_acid, carboxylic_acid,@ (any of a class of aliphatic monocarboxylic acids that form part of a lipid molecule and can be derived from fat by hydrolysis; fatty acids are simple molecules built around a series of carbon atoms linked together in a chain_tests of 12 to 22 carbon atoms) }
+{ saturated_fatty_acid, fatty_acid,@ (a fatty acid whose carbon chain_tests cannot absorb any more hydrogen atoms; found chiefly in animal fats) }
+{ unsaturated_fatty_acid, fatty_acid,@ (a fatty acid whose carbon chain_tests can absorb additional hydrogen atoms) }
 { trans_fatty_acid, fatty_acid,@ noun.food:margarine,#s (a fatty acid that has been produced by hydrogenating an unsaturated fatty acid (and so changing its shape); found in processed foods such as margarine and fried foods and puddings and commercially baked goods and partially hydrogenated vegetable oils) }
-{ monounsaturated_fatty_acid, unsaturated_fatty_acid,@ (an unsaturated fatty acid whose carbon chain has one double or triple valence bond per molecule; found chiefly in olive oil and chicken and almonds) }
-{ polyunsaturated_fatty_acid, unsaturated_fatty_acid,@ (an unsaturated fatty acid whose carbon chain has more than one double or triple valence bond per molecule; found chiefly in fish and corn and soybean oil and safflower oil) }
-{ omega-3_fatty_acid, omega-3", polyunsaturated_fatty_acid,@ (a polyunsaturated fatty acid whose carbon chain has its first double valence bond three carbons from the beginning) }
-{ omega-6_fatty_acid, omega-6", polyunsaturated_fatty_acid,@ (a polyunsaturated fatty acid whose carbon chain has its first double valence bond six carbons from the beginning) }
+{ monounsaturated_fatty_acid, unsaturated_fatty_acid,@ (an unsaturated fatty acid whose carbon chain_tests has one double or triple valence bond per molecule; found chiefly in olive oil and chicken and almonds) }
+{ polyunsaturated_fatty_acid, unsaturated_fatty_acid,@ (an unsaturated fatty acid whose carbon chain_tests has more than one double or triple valence bond per molecule; found chiefly in fish and corn and soybean oil and safflower oil) }
+{ omega-3_fatty_acid, omega-3", polyunsaturated_fatty_acid,@ (a polyunsaturated fatty acid whose carbon chain_tests has its first double valence bond three carbons from the beginning) }
+{ omega-6_fatty_acid, omega-6", polyunsaturated_fatty_acid,@ (a polyunsaturated fatty acid whose carbon chain_tests has its first double valence bond six carbons from the beginning) }
 { margaric_acid, heptadecanoic_acid, saturated_fatty_acid,@ (a colorless crystalline synthetic fatty acid) }
 { ricinoleic_acid, unsaturated_fatty_acid,@ noun.artifact:castor_oil,#s (an oily fatty acid found in castor oil and used in soap) }
 { fibrinopeptide, peptide,@ (peptide released from the amino end of fibrinogen by the action of thrombin to form fibrin during clotting of the blood) }
@@ -1022,7 +1022,7 @@
 { beet_sugar, sugar,@ (sugar made from sugar beets) }
 { bell_metal, bronze,@ (bronze with 3 or 4 parts copper to 1 part tin; used in making bells) }
 { benzene, benzine, benzol, aromatic_hydrocarbon,@ (a colorless liquid hydrocarbon; highly flammable; carcinogenic; the simplest of the aromatic compounds) }
-{ benzene_formula, benzene_ring, benzene_nucleus, Kekule_formula, benzene,@ (a closed chain of 6 carbon atoms with hydrogen atoms attached) }
+{ benzene_formula, benzene_ring, benzene_nucleus, Kekule_formula, benzene,@ (a closed chain_tests of 6 carbon atoms with hydrogen atoms attached) }
 { benzoate, salt,@ (any salt or ester of benzoic acid) }
 { benzoate_of_soda, sodium_benzoate, benzoate,@ (a white crystalline salt used as a food preservative and antiseptic) }
 { benzoic_acid, carboxylic_acid,@ (a white crystalline solid occurring in many resins) }
@@ -1359,7 +1359,7 @@
 { ribonucleic_acid, RNA, polymer,@ noun.cognition:biochemistry,;c ((biochemistry) a long linear polymer of nucleotides found in the nucleus but mainly in the cytoplasm of a cell where it is associated with microsomes; it transmits genetic information from DNA to the cytoplasm and controls certain chemical processes in the cell; "ribonucleic acid is the genetic material of some viruses") }
 { messenger_RNA, mRNA, template_RNA, informational_RNA, ribonucleic_acid,@ (the template for protein synthesis; the form of RNA that carries information from DNA in the nucleus to the ribosome sites of protein synthesis in the cell) }
 { nuclear_RNA, nRNA, ribonucleic_acid,@ (ribonucleic acid found in the nucleolus of the cell) }
-{ transfer_RNA, tRNA, acceptor_RNA, soluble_RNA, ribonucleic_acid,@ (RNA molecules present in the cell (in at least 20 varieties, each variety capable of combining with a specific amino acid) that attach the correct amino acid to the protein chain that is being synthesized at the ribosome of the cell (according to directions coded in the mRNA)) }
+{ transfer_RNA, tRNA, acceptor_RNA, soluble_RNA, ribonucleic_acid,@ (RNA molecules present in the cell (in at least 20 varieties, each variety capable of combining with a specific amino acid) that attach the correct amino acid to the protein chain_tests that is being synthesized at the ribosome of the cell (according to directions coded in the mRNA)) }
 { deoxyribose, sugar,@ (a sugar that is a constituent of nucleic acids) }
 { dental_gold, alloy,@ (an alloy of gold used in dentistry) }
 { [ depilatory, adj.all:hairless^depilatory,+ ] compound,@ (a chemical (usually a sulfide) used to remove hair or wool or bristles from hides) }

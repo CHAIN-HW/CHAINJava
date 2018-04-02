@@ -1,0 +1,186 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+def javaVersion = JavaVersion.VERSION_1_8
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
+mainClassName = 'chain.core.RunCHAIn'
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'spsm/s-match/lib', 'JWI'
+    }
+}
+
+// TODO: reconfigure the tests so the "normal" test set is the fast one, and large one is a different one.  Configure so the large one is not run automatically on build steps
+
+sourceSets{
+    sparqlTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/sparqlTest/java')
+        }
+    }
+    integrationTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/integrationTest/java')
+        }
+        resources.srcDir file('src/integrationTest/resources')
+    }
+}
+
+configurations {
+    sparqlTestCompile.extendsFrom testCompile
+    sparqlTestRuntime.extendsFrom testRuntime
+
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+
+}
+
+dependencies {
+
+    // JSON parser
+    // https://mvnrepository.com/artifact/org.json/json
+    compile group: 'org.json', name: 'json', version: '20180130'
+
+    // Apache Jena
+    // https://mvnrepository.com/artifact/org.apache.jena/jena-arq
+    compile group: 'org.apache.jena', name: 'jena-arq', version: '2.12.1'
+
+    // https://mvnrepository.com/artifact/edu.mit/jwi
+    compile group: 'edu.mit', name: 'jwi', version: '2.2.3'
+
+    /**
+     * Repositories used for testing
+     */
+    //JUnit
+    // https://mvnrepository.com/artifact/junit/junit
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    sparqlTestCompile group: 'junit', name: 'junit', version: '4.12'
+    integrationTestCompile group: 'junit', name: 'junit', version: '4.12'
+
+    //Mockito
+    // https://mvnrepository.com/artifact/org.mockito/mockito-all
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+    integrationTestCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+
+    /**
+     * Repositories used for SPSM
+     */
+
+    compile group: 'org.springframework', name: 'spring-context', version: '4.1.9.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.sat4j/org.sat4j.core
+    compile group: 'org.sat4j', name: 'org.sat4j.core', version: '2.3.1'
+
+    // https://mvnrepository.com/artifact/com.googlecode.aima-java/aima-core
+    compile group: 'com.googlecode.aima-java', name: 'aima-core', version: '0.11.0'
+
+
+    // https://mvnrepository.com/artifact/net.sf.extjwnl/extjwnl
+    compile group: 'net.sf.extjwnl', name: 'extjwnl', version: '1.8.0'
+    // https://mvnrepository.com/artifact/net.sf.extjwnl/extjwnl-data-wn31
+    compile group: 'net.sf.extjwnl', name: 'extjwnl-data-wn31', version: '1.2'
+
+    // S-match  - Maven repo very out of date, use local references
+    // https://mvnrepository.com/artifact/it.unitn.disi/s-match
+    compile group: 'it.unitn.disi', name: 's-match-core', version: '2.0.0-SNAPSHOT'
+    compile group: 'it.unitn.disi', name: 's-match-io', version: '2.0.0-SNAPSHOT'
+    compile group: 'it.unitn.disi', name: 's-match-logic', version: '2.0.0-SNAPSHOT'
+    compile group: 'it.unitn.disi', name: 's-match-nlp', version: '2.0.0-SNAPSHOT'
+    compile group: 'it.unitn.disi', name: 's-match-nlp-annotation', version: '2.0.0-SNAPSHOT'
+    compile group: 'it.unitn.disi', name: 's-match-spsm', version: '2.0.0-SNAPSHOT'
+    compile group: 'it.unitn.disi', name: 's-match-wordnet', version: '2.0.0-SNAPSHOT'
+    compile group: 'it.unitn.disi', name: 's-match-utils', version: '2.0.0-SNAPSHOT'
+    compile group: 'it.unitn.disi', name: 's-match-spsm-prolog', version: '2.0.0-SNAPSHOT'
+
+
+    // https://mvnrepository.com/artifact/com.github.jsqlparser/jsqlparser
+    compile group: 'com.github.jsqlparser', name: 'jsqlparser', version: '1.1'
+    // https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+    compile group: 'org.springframework', name: 'spring-jdbc', version: '5.0.4.RELEASE'
+
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
+
+
+
+}
+
+// Flag fast tests as test source for intellij
+idea {
+    module {
+        testSourceDirs += project.sourceSets.sparqlTest.java.srcDirs
+        testSourceDirs += project.sourceSets.sparqlTest.resources.srcDirs
+        testSourceDirs += project.sourceSets.integrationTest.java.srcDirs
+        testSourceDirs += project.sourceSets.integrationTest.resources.srcDirs
+    }
+}
+
+// Outputs the results of each test - needed to stop travis timing out
+test {
+    afterTest { desc, result ->
+        logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+    }
+}
+
+task sparqlTest(type: Test) {
+    testClassesDir = sourceSets.sparqlTest.output.classesDir
+    classpath = sourceSets.sparqlTest.runtimeClasspath
+    outputs.upToDateWhen { false }
+}
+
+task integrationTest(type: Test) {
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    outputs.upToDateWhen { false }
+}
+
+task getSPSM(type:Exec) {
+    outputs.file('spsm/s-match/lib')
+
+    doFirst {
+        println('Getting SPSM...')
+    }
+    doLast {
+        println('Retreived SPSM')
+    }
+    workingDir('spsm/s-match-source')
+
+    //on windows:
+//    commandLine 'cmd', '/c', 'stop.bat'
+
+    //on linux
+    commandLine './installSMatch'
+}
+
+compileJava.dependsOn  getSPSM
+
+tasks.withType(Test) {
+    reports.html.destination = file("${reporting.baseDir}/${name}")
+}
+
+// Set the groups of existing tasks
+
+configure(sparqlTest) {
+    group = 'verification'
+    description = 'Run the sparqlTest suite of tests'
+}
+
+configure(integrationTest) {
+    group = 'verification'
+    description = 'Run the integration tests'
+}
+
+configure(getSPSM) {
+    group = 'build'
+    description = 'Download and install SPSM'
+}

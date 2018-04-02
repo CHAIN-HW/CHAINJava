@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><context>
+  <node id="n0" preprocessed="true">
+    <name>author</name>
+    <label-formula>n0_0</label-formula>
+    <node-formula>n0_0</node-formula>
+    <tokens>
+      <token id="0">
+        <text>author</text>
+        <lemma>author</lemma>
+        <senses>
+          <sense id="n#10813654"/>
+          <sense id="n#10145714"/>
+          <sense id="v#1708311"/>
+        </senses>
+      </token>
+    </tokens>
+    <children>
+      <node id="n1" parent-id="n0" preprocessed="true">
+        <name>name</name>
+        <label-formula>n1_0</label-formula>
+        <node-formula>n1_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>name</text>
+            <lemma>name</lemma>
+            <senses>
+              <sense id="n#6344646"/>
+              <sense id="n#14462254"/>
+              <sense id="n#7988726"/>
+              <sense id="n#10364174"/>
+              <sense id="n#1141957"/>
+              <sense id="n#6733713"/>
+              <sense id="v#1030757"/>
+              <sense id="v#1028104"/>
+              <sense id="v#2401858"/>
+              <sense id="v#2401347"/>
+              <sense id="v#949471"/>
+              <sense id="v#1026199"/>
+              <sense id="v#654017"/>
+              <sense id="v#947885"/>
+              <sense id="v#647205"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+    </children>
+  </node>
+</context>

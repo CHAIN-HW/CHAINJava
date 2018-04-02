@@ -5007,11 +5007,11 @@ cha-cha%1:04:00:: 1 1
 chafe%2:39:00:: 1 2
 chaff%2:32:00:: 1 1
 chagrin%1:12:00:: 1 2
-chain%1:06:00:: 3 2
-chain%1:06:03:: 5 1
-chain%1:14:00:: 1 14
-chain%1:14:02:: 4 1
-chain%1:17:00:: 2 3
+chain_tests%1:06:00:: 3 2
+chain_tests%1:06:03:: 5 1
+chain_tests%1:14:00:: 1 14
+chain_tests%1:14:02:: 4 1
+chain_tests%1:17:00:: 2 3
 chain_reaction%1:22:01:: 1 2
 chain_store%1:06:00:: 1 1
 chair%1:04:00:: 2 2
