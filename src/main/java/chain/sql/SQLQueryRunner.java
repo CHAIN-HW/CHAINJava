@@ -9,6 +9,7 @@ import java.sql.*;
  */
 public class SQLQueryRunner {
 
+
     private ResultSet resultSet;
     private Statement stmt;
     private String query;

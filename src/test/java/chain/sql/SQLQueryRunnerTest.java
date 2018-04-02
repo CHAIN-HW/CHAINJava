@@ -14,6 +14,13 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+/**
+ * SQLQueryRunnerTest
+ * 
+ * This class creates and connects to a mock database using the
+ * SQLMockDatabaseClass before using it to test the SQLQueryRunner class.
+ *
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class SQLQueryRunnerTest {
 
@@ -45,6 +52,13 @@ public class SQLQueryRunnerTest {
         conn.close();
     }
 
+    /**
+     * Test 14.1
+	 * This test checks the getResults function by comparing the results
+	 * returned to the strings which should have been returned by running
+	 * the query.
+     * @throws SQLException
+     */
     @Test
     public void getResults() throws SQLException {
         String query = "SELECT * FROM users";
@@ -55,6 +69,12 @@ public class SQLQueryRunnerTest {
         testResults(resultSet2, 1, "john", "smith");
     }
 
+    /**
+     * Test 14.2
+	 * Tests the runQuery function by comparing the results returned to
+	 * the strings which should have been returned by running the query.
+     * @throws SQLException
+     */
     @Test
     public void runQuery() throws SQLException {
         String query = "SELECT * FROM users";
@@ -65,6 +85,15 @@ public class SQLQueryRunnerTest {
         testResults(resultSet2, 2, "steve", "johnson");
     }
 
+    /**
+     * Function to make the assertions on the results passed in to it from
+     * the above tests.
+     * @param resultSet
+     * @param expectedId
+     * @param expectedFirst
+     * @param expectedSecond
+     * @throws SQLException
+     */
     private void testResults(ResultSet resultSet, int expectedId, String expectedFirst, String expectedSecond) throws SQLException {
         resultSet.next();
 
