@@ -1,16 +1,12 @@
 package chain.sql;
 
-import chain.core.ChainDataSource;
-import chain.core.ChainResultSet;
-import chain.sql.SPSMMatchingException;
 import it.unitn.disi.smatch.SMatchException;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.lang.UnsupportedOperationException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Map;
 
 
 // TODO: Better implementations for different SQL databases
@@ -22,7 +18,6 @@ import java.util.Map;
  *
  * It establishes a connection with the database and implements the necessary public functions to run chain on queries
  * and repair them
- *
  */
 public class SQLAdapter implements SQLChainDataSource  {
 
@@ -78,17 +73,15 @@ public class SQLAdapter implements SQLChainDataSource  {
      * @throws SQLException Thrown if no driver class could be found for that name
      */
     private String getDriverNameFromHostname(String hostname) throws SQLException {
-        String driverClassName;
-        if(hostname.startsWith("jdbc:mysql:"))
-            driverClassName = "com.mysql.cj.jdbc.Driver";
-        else if(hostname.startsWith("jdbc:oracle:"))
-            driverClassName = "oracle.jdbc.driver.OracleDriver";
-        else if(hostname.startsWith("jdbc:db2:"))
-            driverClassName = "COM.ibm.db2.jdbc.net.DB2Driver";
-        else if(hostname.startsWith("jdbc:sybase:"))
-            driverClassName = "com.sybase.jdbc.SybDriver";
+        if (hostname.startsWith("jdbc:mysql:"))
+            return "com.mysql.cj.jdbc.Driver";
+        else if (hostname.startsWith("jdbc:oracle:"))
+            return "oracle.jdbc.driver.OracleDriver";
+        else if (hostname.startsWith("jdbc:db2:"))
+            return "COM.ibm.db2.jdbc.net.DB2Driver";
+        else if (hostname.startsWith("jdbc:sybase:"))
+            return "com.sybase.jdbc.SybDriver";
         else throw new SQLException("Could not find driver for url: " + hostname);
-        return driverClassName;
     }
 
     /**
@@ -101,7 +94,7 @@ public class SQLAdapter implements SQLChainDataSource  {
 
     /**
      * Closes the adaptor connection
-     * @throws ChainDataSourceException
+     * @throws ChainDataSourceException if unable to exit cleanly.
      */
     public void closeConnection() throws ChainDataSourceException {
         try {
@@ -117,7 +110,7 @@ public class SQLAdapter implements SQLChainDataSource  {
     }
 
     @Override
-    public ResultSet executeQuery(String query) throws ChainDataSourceException { throw new NotImplementedException(); }
+    public ResultSet executeQuery(String query) throws ChainDataSourceException { throw new UnsupportedOperationException(); }
 
 
     public String getRepairedQuery(String query) throws ChainDataSourceException {
@@ -126,7 +119,7 @@ public class SQLAdapter implements SQLChainDataSource  {
             SQLQueryRepair queryRepair = new SQLQueryRepair(query, db);
             return queryRepair.runRepairer();
 
-        } catch (SQLException | SMatchException | SPSMMatchingException e) {
+        } catch (SQLException | SMatchException | WordNetMatchingException e) {
 
 
 

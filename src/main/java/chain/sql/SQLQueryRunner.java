@@ -9,6 +9,7 @@ import java.sql.*;
  */
 public class SQLQueryRunner {
 
+
     private ResultSet resultSet;
     private Statement stmt;
     private String query;
@@ -17,7 +18,7 @@ public class SQLQueryRunner {
      * Constructor for the SQLQueryRunner class
      * @param query is the SQL which is to be run
      * @param connection a connection object used to connect to the database
-     * @throws SQLException
+     * @throws SQLException Thrown if the SQL query is invalid
      */
     public SQLQueryRunner(String query, Connection connection) throws SQLException {
         stmt = connection.createStatement();

@@ -1,5 +1,5 @@
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/9108635/37350210-18a53112-26d0-11e8-8690-6ce00fcbd29c.png" alt="Lovely Logo" />
+<p>
+  <img src="https://user-images.githubusercontent.com/6493590/38195471-7ff6083c-3675-11e8-9c05-c07d5bc094fb.png" alt="CHAIn: Combining Heterogeneous Agencies' Information" />
 </p>
 
 ## Getting Started

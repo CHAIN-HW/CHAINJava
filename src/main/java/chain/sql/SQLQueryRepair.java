@@ -25,8 +25,8 @@ public class SQLQueryRepair {
      * Constructor for SQLQueryRepair
      * @param query is the SQL query that being repaired
      * @param db is the structure of the database being queried
-     * @throws ChainDataSourceException
-     * @throws SQLException
+     * @throws ChainDataSourceException An exception related to data sources
+     * @throws SQLException Thrown if the SQL query is invalid
      */
     public SQLQueryRepair(String query, SQLDatabase db) throws ChainDataSourceException, SQLException {
         this.analyser = new SQLQueryAnalyser(query);
@@ -41,10 +41,10 @@ public class SQLQueryRepair {
     /**
      * Runs the repair process and returns the repaired query
      * @return repaired query as a string
-     * @throws SPSMMatchingException
-     * @throws SMatchException
+     * @throws WordNetMatchingException An exception related to WordNet
+     * @throws SMatchException An exception captured through SMatch
      */
-    public String runRepairer() throws SPSMMatchingException, SMatchException {
+    public String runRepairer() throws WordNetMatchingException, SMatchException {
         repairTables();
         repairColumns();
         return getQueryFromTree();
@@ -60,10 +60,10 @@ public class SQLQueryRepair {
 
     /**
      * Repairs table names present in the query
-     * @throws SPSMMatchingException
-     * @throws SMatchException
+     * @throws WordNetMatchingException An exception related to WordNet
+     * @throws SMatchException An exception captured through SMatch
      */
-    private void repairTables() throws SPSMMatchingException, SMatchException {
+    private void repairTables() throws WordNetMatchingException, SMatchException {
         Map<String, String> newTableNames = manager.getReplacementTableNames();
 
         for(String key: newTableNames.keySet() )
@@ -73,7 +73,7 @@ public class SQLQueryRepair {
     /**
      * Repairs column names present in the query
      */
-    private void repairColumns() throws SPSMMatchingException, SMatchException {
+    private void repairColumns() throws WordNetMatchingException, SMatchException {
         Map<String, String> columnReplacements = manager.getReplacementColumnNames();
         repairColumnNames(columnReplacements);
     }
@@ -90,6 +90,5 @@ public class SQLQueryRepair {
     public void repairColumnNames(Map<String, String> columnReplacements) {
         SQLSelectColumnVisitor visitor = new SQLSelectColumnVisitor(columnReplacements);
         stmt.accept(visitor);
-
     }
 }

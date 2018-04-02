@@ -3,6 +3,10 @@ apply plugin: 'application'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 
+def javaVersion = JavaVersion.VERSION_1_8
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
 mainClassName = 'chain.core.RunCHAIn'
 
 repositories {
