@@ -15,7 +15,7 @@ import com.hp.hpl.jena.query.QueryFactory;
 
 /**
  * @author Diana Bental
- * @date 10 January 2017
+ * Created on 10 January 2017
  *
  * Repair a query by replacement of matching properties and removal of
  * non-matching ones.
@@ -29,7 +29,8 @@ public class RepairQuery {
 	private static int NODATA = 0 ;  // We can't do queries with no data at present
 
 	/**
-	 * @param args
+	 * Main method
+	 * @param args Command line arguments
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
