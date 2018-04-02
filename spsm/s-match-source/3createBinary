@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd s-match-utils/lib/
+sh install.sh
+
+cd ../
+mvn clean package -PmakeZip
