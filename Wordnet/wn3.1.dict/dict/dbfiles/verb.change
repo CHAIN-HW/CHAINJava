@@ -347,7 +347,7 @@
 { foist1, insert,@ frames: 21 (insert surreptitiously or without warrant) }
 { intercalate, add,@ frames: 8 (insert (days) in a calendar) }
 { [ punctuate, noun.communication:punctuation,+ noun.act:punctuation,+ ] mark8, add,@ frames: 8 (insert punctuation marks into) }
-{ [ concatenate, noun.act:concatenation,+ ] add,@ frames: 8 (add by linking or joining so as to form a chain or series; "concatenate terms"; "concatenate characters") }
+{ [ concatenate, noun.act:concatenation,+ ] add,@ frames: 8 (add by linking or joining so as to form a chain_tests or series; "concatenate terms"; "concatenate characters") }
 { [ string, noun.group:string,+ ] string_up, add,@ frames: 8 (add as if on a string; "string these ideas together"; "string up these songs and you'll have a musical") }
 { flick, remove,@ frames: 21 (remove with a flick (of the hand))}
 { [ activate, noun.substance:activator,+ noun.act:activation1,+ inactivate,! ] change1,@ frames: 8,10,11 (make active or more active; "activate an old file") }

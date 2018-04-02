@@ -1764,7 +1764,7 @@
 { in_situ2, (in position) }
 { inter_alia, (among other things; "the committee recommended, inter alia, that he be promoted") }
 { ipso_facto, (by the fact itself; "ipso facto, her innocence was established") }
-{ item, ((used when listing or enumerating items) also; "a length of chain, item a hook"-Philip Guedalla) }
+{ item, ((used when listing or enumerating items) also; "a length of chain_tests, item a hook"-Philip Guedalla) }
 { give_or_take, (plus or minus a small amount; "it is a mile away, give or take a few hundred yards") }
 { mutatis_mutandis, (with the necessary changes having been carried out) }
 { par_excellence, (to a degree of excellence; "he is the honest politician par excellence") }

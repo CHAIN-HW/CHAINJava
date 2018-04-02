@@ -1,0 +1,6 @@
+language: java
+
+script:
+- ./gradlew assemble
+- ./gradlew test
+- ./gradlew integrationTest

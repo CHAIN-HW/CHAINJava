@@ -206,7 +206,7 @@
 { brae, hillside,@ noun.location:Scotland,;r (a slope or hillside) }
 { Brahmaputra, Brahmaputra_River, river,@i noun.location:China,#p noun.location:India,#p noun.location:Bangladesh,#p (an Asian river; flows into the Bay of Bengal) }
 { [ branch1, verb.change:branch,+ ] stream,@ (a stream or river connected to a larger one) }
-{ branched_chain, open_chain,@ (an open chain of atoms with one or more side chains attached to it) }
+{ branched_chain, open_chain,@ (an open chain_tests of atoms with one or more side chains attached to it) }
 { Brazos, Brazos_River, river,@i noun.location:New_Mexico,#p noun.location:Texas,#p (a river that rises in Mexico and flows across Texas into the Gulf of Mexico) }
 { [ breach, verb.contact:breach,+ ] opening,@ (an opening (especially a gap in a dike or fortification)) }
 { Brenner_Pass, pass,@i noun.location:Austria,#p noun.location:Italy,#p (an Alpine mountain pass connecting Innsbruck in Austria with Bolzano in Italy that has long been a route for trade and for invasions) }
@@ -274,7 +274,7 @@
 { Cepheus, constellation,@i (a faint constellation in the northern hemisphere near Cassiopeia and the pole star) }
 { Ceres, asteroid,@i (the largest asteroid and the first discovered) }
 { Cetus, constellation,@i (a large constellation on the equator near Pisces and Aquarius) }
-{ [ chain, verb.contact:catenulate,+ verb.contact:catenate,+ ] chemical_chain, unit,@ noun.substance:molecule,#p noun.cognition:chemistry,;c ((chemistry) a series of linked atoms (generally in an organic molecule)) }
+{ [ chain_tests, verb.contact:catenulate,+ verb.contact:catenate,+ ] chemical_chain, unit,@ noun.substance:molecule,#p noun.cognition:chemistry,;c ((chemistry) a series of linked atoms (generally in an organic molecule)) }
 { Chamaeleon, Chameleon, constellation,@i (a faint constellation in the polar region of the southern hemisphere near Apus and Mensa) }
 { Changtzu, mountain_peak,@i Himalayas,#p noun.location:Nepal,#p noun.location:Tibet,#p (a mountain in the central Himalayas on the border of Tibet and Nepal (24,780 feet high)) }
 { channel, body_of_water,@ noun.object:river,;c (a deep and relatively narrow body of water (as in a river or a harbor or a strait linking two larger bodies) that allows the best passage for vessels; "the ship went aground in the channel") }
@@ -309,7 +309,7 @@
 { [ clastic_rock, adj.all:disintegrative^clastic,+ ] rock1,@ noun.cognition:geology,;c ((geology) a rock composed of broken pieces of older rocks) }
 { cliff, drop, drop-off, geological_formation,@ (a steep high face of rock; "he stood on a high cliff overlooking the town"; "a steep drop") }
 { Clinch_River, river,@i noun.location:Virginia,#p noun.location:Tennessee,#p (a river that rises in southwestern Virginia and flows generally southwestward across eastern Tennessee to the Tennessee River) }
-{ [ closed_chain, open_chain,! ] ring, chain,@ noun.cognition:chemistry,;c ((chemistry) a chain of atoms in a molecule that forms a closed loop) }
+{ [ closed_chain, open_chain,! ] ring, chain_tests,@ noun.cognition:chemistry,;c ((chemistry) a chain_tests of atoms in a molecule that forms a closed loop) }
 { closed_universe, universe,@ noun.cognition:cosmology,;c ((cosmology) a universe that is spatially closed and in which there is sufficient matter to halt the expansion that began with the big bang; the visible matter is only 10 percent of the matter required for closure but there may be large amounts of dark matter) }
 { [ cloud, adj.all:cloudy,+ verb.weather:cloud,+ verb.motion:cloud,+ ] noun.phenomenon:atmospheric_phenomenon,@ sky,#p (a visible mass of water or ice particles suspended at a considerable altitude) }
 { cloud_bank, cloud,@ (a layer of clouds seen from a distance) }
@@ -806,7 +806,7 @@
 { Logan, Mount_Logan, mountain_peak,@i St._Elias_Range,#p noun.location:Yukon,#p (a mountain peak in the St. Elias Range in the southwestern Yukon Territory in Canada (19,850 feet high)) }
 { Loire, Loire_River, river,@i noun.location:France,#p (the longest French river; rises in the Massif Central and flows north and west to the Atlantic Ocean) }
 { Loire_Valley, valley,@i noun.location:France,#p (the valley of the Loire River where many French wines originated) }
-{ long_chain, long-chain_molecule, chain,@ noun.cognition:chemistry,;c ((chemistry) a relatively long chain of atoms in a molecule) }
+{ long_chain, long-chain_molecule, chain_tests,@ noun.cognition:chemistry,;c ((chemistry) a relatively long chain_tests of atoms in a molecule) }
 { Long_Island_Sound, sound,@i noun.location:Long_Island,#p noun.location:Connecticut,#p Atlantic,#p (a sound between Long Island and Connecticut) }
 { lough, lake,@ (Irish word for a lake) }
 { lough1, cove,@ (a long narrow (nearly landlocked) cove in Ireland) }
@@ -997,7 +997,7 @@
 { Olduvai_Gorge, gorge,@i noun.location:Tanzania,#p (a gorge in northeastern Tanzania where anthropologists have found some of the earliest human remains) }
 { [ Olympus, adj.pert:olympian,+ ] Mount_Olympus, Mt._Olympus, Olimbos, mountain_peak,@i noun.location:Greece,#p (a mountain peak in northeast Greece near the Aegean coast; believed by ancient Greeks to be the dwelling place of the gods (9,570 feet high)) }
 { Omega_Centauri, noun.group:cluster,@i Centaurus,#m (a global cluster in the constellation Centaurus) }
-{ [ open_chain, closed_chain,! ] chain,@ (a chain of atoms in a molecule whose ends are not joined to form a ring) }
+{ [ open_chain, closed_chain,! ] chain_tests,@ (a chain_tests of atoms in a molecule whose ends are not joined to form a ring) }
 { [ opening, verb.stative:open,+ ] [ gap, verb.contact:gap,+ ] noun.shape:space,@ surface,#p (an open or empty space in or between things; "there was a small opening between the trees"; "the explosion made a gap in the wall") }
 { Ophiuchus, constellation,@i (a large constellation in the equatorial region between Hercules and Scorpius) }
 { Orange, Orange_River, river,@i noun.location:South_Africa,#p (a river in South Africa that flows generally westward to the Atlantic Ocean) }
@@ -1112,7 +1112,7 @@
 { pulsar, neutron_star,@ (a degenerate neutron star; small and extremely dense; rotates very fast and emits regular pulses of polarized radiation) }
 { Puppis, constellation,@i Argo,#p (a constellation in the southern hemisphere between Vela and Canis Major that shaped like the stern of a boat)  }
 { Purus, Purus_River, river,@i noun.location:Brazil,#p (a Brazilian river; tributary of the Amazon River) }
-{ Pyrenees, range,@i noun.location:France,#p noun.location:Spain,#p (a chain of mountains between France and Spain) }
+{ Pyrenees, range,@i noun.location:France,#p noun.location:Spain,#p (a chain_tests of mountains between France and Spain) }
 { Pyxis, constellation,@i Argo,#p (a constellation in the southern hemisphere near Puppis and Antlia) }
 { Quaoar, planetoid,@i (a planetoid discovered in 2002) }
 { quark, elementary_particle,@ hadron,#p noun.cognition:physics,;c ((physics) hypothetical truly fundamental particle in mesons and baryons; there are supposed to be six flavors of quarks (and their antiquarks), which come in pairs; each has an electric charge of +2/3 or -1/3; "quarks have not been observed directly but theoretical predictions based on their existence have been confirmed experimentally") }
@@ -1335,7 +1335,7 @@
 { steps, path,@ noun.communication:plural,;u (the course along which a person has walked or is walking in; "I followed in his steps"; "he retraced his steps"; "his steps turned toward home") }
 { Sterope, Asterope, star,@i Pleiades,#m (one of the stars in the star cluster Pleiades) }
 { storm_cloud, cloud,@ (a heavy dark cloud presaging rain or a storm) }
-{ straight_chain, open_chain,@ (an open chain of atoms with no side chains) }
+{ straight_chain, open_chain,@ (an open chain_tests of atoms with no side chains) }
 { strait, sound1, channel,@ (a narrow channel of the sea joining two larger bodies of water) }
 { Strait_of_Georgia, strait,@i (the strait separating Vancouver Island from the Canadian mainland) }
 { Strait_of_Gibraltar, strait,@i (the strait between Spain and Africa) }

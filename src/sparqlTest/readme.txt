@@ -1,0 +1,1 @@
+The tests in this are from the original Sparql-only tests.  As they take a long time to run, they have been moved to a completely separate tests set.

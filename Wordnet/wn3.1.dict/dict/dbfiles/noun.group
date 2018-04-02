@@ -530,12 +530,12 @@
 { [ partnership, noun.person:partner2,+ noun.person:partner,+ ] business,@ (the members of a business venture created by contract) }
 { [ copartnership, noun.person:copartner,+ ] partnership,@ (a partnership in which employees get a share of the profits in addition to their wages) }
 { business, concern, business_concern, business_organization, business_organisation, enterprise,@ noun.act:business1,;c (a commercial or industrial enterprise and the people who constitute it; "he bought his brother's business"; "a small mom-and-pop business"; "a racially integrated business concern") }
-{ apparel_chain, chain2,@ (a chain of clothing stores) }
-{ discount_chain, chain2,@ (a chain of discount stores) }
-{ restaurant_chain, chain2,@ (a chain of restaurants) }
+{ apparel_chain, chain2,@ (a chain_tests of clothing stores) }
+{ discount_chain, chain2,@ (a chain_tests of discount stores) }
+{ restaurant_chain, chain2,@ (a chain_tests of restaurants) }
 { distributor, company1,@ (a company that markets merchandise; "his company is a large distributor of software products") }
 { direct_mailer, distributor,@ (a distributor who uses direct mail to sell merchandise) }
-{ retail_chain, chain2,@ distributor,@ (a chain of retail stores) }
+{ retail_chain, chain2,@ distributor,@ (a chain_tests of retail stores) }
 { accounting_firm, firm,@ (a firm of accountants who provide accounting and auditing services for a fee) }
 { consulting_firm, consulting_company, firm,@ (a firm of experts providing professional advice to an organization for a fee) }
 { [ publisher, verb.creation:publish1,+ verb.communication:publish,+ ] publishing_house, publishing_firm, publishing_company, firm,@ (a firm in the publishing business) }
@@ -2093,9 +2093,9 @@
 { National_Rifle_Association, NRA, lobby,@ (a powerful lobby that advocates the right to own and bear arms and rejects any gun regulation by the government) }
 { lobby1, people,@ (the people who support some common cause or business or principle or sectional interest) }
 { hierarchy1, power_structure, pecking_order, organization,@ administration,#p (the organization of people at different ranks in an administrative body) }
-{ [ chain, verb.contact:catenulate,+ verb.contact:catenate,+ ] concatenation, series,@ (a series of things depending on each other as if linked together; "the chain of command"; "a complicated concatenation of circumstances") }
-{ [ catena, verb.contact:catenulate,+ verb.contact:catenate,+ ] chain,@ (a chain of connected ideas or passages or objects so arranged that each member is closely related to the preceding and following members (especially a series of patristic comments elucidating Christian dogma)) }
-{ daisy_chain, chain,@ ((figurative) a series of associated things or people or experiences) }
+{ [ chain_tests, verb.contact:catenulate,+ verb.contact:catenate,+ ] concatenation, series,@ (a series of things depending on each other as if linked together; "the chain_tests of command"; "a complicated concatenation of circumstances") }
+{ [ catena, verb.contact:catenulate,+ verb.contact:catenate,+ ] chain_tests,@ (a chain_tests of connected ideas or passages or objects so arranged that each member is closely related to the preceding and following members (especially a series of patristic comments elucidating Christian dogma)) }
+{ daisy_chain, chain_tests,@ ((figurative) a series of associated things or people or experiences) }
 { cordon, series,@ (a series of sentinels or of military posts enclosing or guarding some place or thing) }
 { course, line2, series,@ (a connected series of events or actions or developments; "the government took a firm course"; "historians can only point out those lines for which evidence is available") }
 { cycle, series,@ (a series of poems or songs on the same theme; "Schubert's song cycles") }

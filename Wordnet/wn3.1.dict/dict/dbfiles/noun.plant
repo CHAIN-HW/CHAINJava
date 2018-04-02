@@ -9397,7 +9397,7 @@
 { doodia, rasp_fern, fern,@ genus_Doodia,#m (any fern of the genus Doodia having pinnate fronds with sharply dentate pinnae) }
 { Sadleria, genus_Sadleria, fern_genus,@ family_Blechnaceae,#m (low tree ferns with large fronds; in rain forests and on lava flows of Hawaiian Islands) }
 { Stenochlaena, genus_Stenochlaena, fern_genus,@ family_Blechnaceae,#m (large tropical ferns; some epiphytic climbers and some terrestrial bog ferns; Africa; Asia; Australasia) }
-{ Woodwardia, genus_Woodwardia, fern_genus,@ family_Blechnaceae,#m (in some classification systems placed in family Polypodiaceae: chain ferns) }
+{ Woodwardia, genus_Woodwardia, fern_genus,@ family_Blechnaceae,#m (in some classification systems placed in family Polypodiaceae: chain_tests ferns) }
 { chain_fern, fern,@ genus_Woodwardia,#m (a fern of the genus Woodwardia having the sori in chainlike rows) }
 { Virginia_chain_fern, Woodwardia_virginica, chain_fern,@ (North American fern) }
 
