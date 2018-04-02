@@ -9,8 +9,6 @@ import java.util.*;
  * SQLDatabase
  *
  * Represents and provides an interface to an SQL database
- *
- * @author Lewis McNeill
  */
 public class SQLDatabase {
 

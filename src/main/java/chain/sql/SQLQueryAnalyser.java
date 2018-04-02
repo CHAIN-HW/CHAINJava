@@ -20,8 +20,6 @@ import net.sf.jsqlparser.util.TablesNamesFinder;
  *
  * Class for performing analysis of SQL queries
  * leveraging the JSQLParser library.
- *
- * @author Daniel Waghorn
  */
 public class SQLQueryAnalyser {
 
