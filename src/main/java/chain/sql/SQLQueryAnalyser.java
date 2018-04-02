@@ -62,7 +62,7 @@ public class SQLQueryAnalyser {
 
     /**
      * 
-     * @return
+     * @return The column names
      */
     public List<String> getColumns() {
         Select fullStatement = (Select) this.stmt;
@@ -76,7 +76,7 @@ public class SQLQueryAnalyser {
     /**
      * 
      * @param where
-     * @return
+     * @return An ArrayList of column names
      */
     // TODO: could probably return the actual column objects and update them instead of having to go back in with the visitor
     private List<String> recurseWhereToColumns(Expression where) {
