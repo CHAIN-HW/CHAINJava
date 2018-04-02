@@ -37,7 +37,7 @@ public class WordNetMatcher {
      *
      * @param source is the broken term for which a match is being looked for
      * @return A string from the target set that closely matches the source
-     * @throws SMatchException
+     * @throws SMatchException An exception captured in SMatch
      * @throws WordNetMatchingException if no match is made or if there is more than one possible match
      */
     public String match(String source) throws SMatchException, WordNetMatchingException {
