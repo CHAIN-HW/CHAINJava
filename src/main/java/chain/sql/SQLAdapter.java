@@ -117,7 +117,33 @@ public class SQLAdapter implements SQLChainDataSource  {
     }
 
     @Override
-    public ResultSet executeQuery(String query) throws ChainDataSourceException { throw new NotImplementedException(); }
+    public ResultSet executeQuery(String query) throws ChainDataSourceException {
+        SQLQueryRunner runner;
+        try {
+             runner = new SQLQueryRunner(query, connection);
+        } catch (SQLException e) {
+            throw new ChainDataSourceException("Error with Database Connection: " + e.getMessage(), e);
+        }
+
+        try {
+            return runner.runQuery();
+        } catch (SQLException e) {
+            // Failed to run the query.  Get repaired one:
+            query = getRepairedQuery(query);
+            return repairAndRunQuery(query);
+        }
+    }
+
+    private ResultSet repairAndRunQuery(String query) throws ChainDataSourceException {
+        String repairedQuery = getRepairedQuery(query);
+        try {
+            SQLQueryRunner runner = new SQLQueryRunner(repairedQuery, connection);
+            return runner.runQuery();
+        } catch (SQLException e) {
+            throw new ChainDataSourceException("Repaired Query failed to run: " + e.getMessage(), e);
+        }
+
+    }
 
 
     public String getRepairedQuery(String query) throws ChainDataSourceException {
@@ -127,9 +153,6 @@ public class SQLAdapter implements SQLChainDataSource  {
             return queryRepair.runRepairer();
 
         } catch (SQLException | SMatchException | SPSMMatchingException e) {
-
-
-
             throw new ChainDataSourceException("Could not get repaired query: " + query, e);
         } // catch wrong structure
     }
