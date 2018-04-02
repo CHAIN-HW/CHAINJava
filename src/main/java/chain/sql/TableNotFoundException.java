@@ -1,8 +1,6 @@
 package chain.sql;
 
 /**
- * @author Lewis McNeill
- *
  * TableNotFoundException
  *
  * Custom exception class for errors that may occur due to

@@ -8,8 +8,6 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.*;
 
 /**
- * @author Lewis McNeill
- *
  * Unit tests for the SQLTable class
  */
 public class SQLTableTest {

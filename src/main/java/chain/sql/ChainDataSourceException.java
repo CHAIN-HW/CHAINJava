@@ -6,7 +6,6 @@ package chain.sql;
  * Custom exception class for unifying errors that may occur
  * in the data connection and analysis lifecycle for CHAIn
  *
- * @author Daniel Waghorn
  */
 
 public class ChainDataSourceException extends Exception {
