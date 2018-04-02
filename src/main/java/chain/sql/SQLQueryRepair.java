@@ -41,10 +41,10 @@ public class SQLQueryRepair {
     /**
      * Runs the repair process and returns the repaired query
      * @return repaired query as a string
-     * @throws SPSMMatchingException
+     * @throws WordNetMatchingException
      * @throws SMatchException
      */
-    public String runRepairer() throws SPSMMatchingException, SMatchException {
+    public String runRepairer() throws WordNetMatchingException, SMatchException {
         repairTables();
         repairColumns();
         return getQueryFromTree();
@@ -60,10 +60,10 @@ public class SQLQueryRepair {
 
     /**
      * Repairs table names present in the query
-     * @throws SPSMMatchingException
+     * @throws WordNetMatchingException
      * @throws SMatchException
      */
-    private void repairTables() throws SPSMMatchingException, SMatchException {
+    private void repairTables() throws WordNetMatchingException, SMatchException {
         Map<String, String> newTableNames = manager.getReplacementTableNames();
 
         for(String key: newTableNames.keySet() )
@@ -73,7 +73,7 @@ public class SQLQueryRepair {
     /**
      * Repairs column names present in the query
      */
-    private void repairColumns() throws SPSMMatchingException, SMatchException {
+    private void repairColumns() throws WordNetMatchingException, SMatchException {
         Map<String, String> columnReplacements = manager.getReplacementColumnNames();
         repairColumnNames(columnReplacements);
     }
