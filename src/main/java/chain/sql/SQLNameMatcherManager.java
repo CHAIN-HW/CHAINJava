@@ -75,6 +75,13 @@ public class SQLNameMatcherManager {
 
             for(String originalColumnName : queryColumnNames)
             {
+                boolean cont = false;
+                for(SQLTable table: tables) {
+                    if(table.containsColumn(originalColumnName))
+                        cont = true;
+                }
+                if(cont) continue;
+
                 Map<String,String> resultOfReplacementSearch = getReplacementColumnNamesFromTables(originalColumnName, tables);
 
                 if(resultOfReplacementSearch.isEmpty())
@@ -90,20 +97,20 @@ public class SQLNameMatcherManager {
     private Map<String, String> getReplacementColumnNamesFromTables(String originalColumnName, Collection<SQLTable> tables) throws SMatchException {
         Map<String, String> replacements = new HashMap<>();
 
-        try {
+
             // TODO: if column names are with table names, only check for that table
-            for(SQLTable table : tables) {
+        for (SQLTable table : tables) {
+            try {
                 WordNetMatcher columnMatcher = new WordNetMatcher(table.getColumnNames());
-                if(!table.containsColumn(originalColumnName)) {
+                if (!table.containsColumn(originalColumnName)) {
                     String replacement = columnMatcher.match(originalColumnName);
                     replacements.put(originalColumnName, replacement);
                 }
+
+            } catch(WordNetMatchingException e){
+               // e.printStackTrace();
             }
-
-        } catch(WordNetMatchingException e) {
-            e.printStackTrace();
         }
-
         return replacements;
     }
 
