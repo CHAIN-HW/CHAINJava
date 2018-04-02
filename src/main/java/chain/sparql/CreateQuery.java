@@ -18,9 +18,6 @@ import com.hp.hpl.jena.graph.Node;
 
 /*
  *
- * @author Diana Bental
- * @author Tanya Howden
- * 
  * Date September 2017
  * Modified December 2017
  */
