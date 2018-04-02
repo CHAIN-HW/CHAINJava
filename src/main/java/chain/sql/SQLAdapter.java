@@ -122,9 +122,7 @@ public class SQLAdapter implements SQLChainDataSource  {
             SQLQueryRepair queryRepair = new SQLQueryRepair(query, db);
             return queryRepair.runRepairer();
 
-        } catch (SQLException | SMatchException | WordNetMatchingException e) {
-
-
+        } catch (SQLException e) {
 
             throw new ChainDataSourceException("Could not get repaired query: " + query, e);
         } // catch wrong structure

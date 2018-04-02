@@ -28,7 +28,7 @@ public class SQLQueryRepair {
      * @throws ChainDataSourceException
      * @throws SQLException
      */
-    public SQLQueryRepair(String query, SQLDatabase db) throws ChainDataSourceException, SQLException {
+    public SQLQueryRepair(String query, SQLDatabase db) throws ChainDataSourceException {
         this.analyser = new SQLQueryAnalyser(query);
         this.stmt = analyser.getStatement();
         this.db = db;
@@ -44,10 +44,14 @@ public class SQLQueryRepair {
      * @throws WordNetMatchingException
      * @throws SMatchException
      */
-    public String runRepairer() throws WordNetMatchingException, SMatchException {
-        repairTables();
-        repairColumns();
-        return getQueryFromTree();
+    public String runRepairer() throws ChainDataSourceException {
+        try {
+            repairTables();
+            repairColumns();
+            return getQueryFromTree();
+        } catch (SMatchException | WordNetMatchingException | NoReplacementFoundException e) {
+            throw new ChainDataSourceException("Failed to repair query", e);
+        }
     }
 
     /**
@@ -73,7 +77,7 @@ public class SQLQueryRepair {
     /**
      * Repairs column names present in the query
      */
-    private void repairColumns() throws WordNetMatchingException, SMatchException {
+    private void repairColumns() throws SMatchException, NoReplacementFoundException {
         Map<String, String> columnReplacements = manager.getReplacementColumnNames();
         repairColumnNames(columnReplacements);
     }
