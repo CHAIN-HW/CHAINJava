@@ -12,9 +12,9 @@ import static org.junit.Assert.*;
 
 
 /**
- * @author Lewis McNeill
- *
- * Unit tests for the SQLDatabase class
+ * This class is responsible for carrying out unit tests on the
+ * SQLDatabase class. It creates a mock database using the SQLMockDatabase
+ * class and connects to it before running the tests.
  */
 public class SQLDatabaseTest {
 
@@ -45,18 +45,30 @@ public class SQLDatabaseTest {
     }
 
 
-
+    /**
+     * Test 10.1
+	 * Tests that the getTable function returns a SQLTable when given the
+	 * table name “users” as input for the mock database.
+     * @throws TableNotFoundException
+     */
     @Test
     public void getTable() throws TableNotFoundException {
         assertThat( database.getTable("users"), instanceOf(SQLTable.class));
     }
-
 
     @Test(expected = TableNotFoundException.class)
     public void getTableThrowException() throws TableNotFoundException {
        database.getTable("false_table");
     }
 
+
+    /**
+     * Test 10.2
+	 * This test checks that the containsTable function of SQLDatabase works
+	 * correctly for tables that do exist in the mock database and tables which
+	 * do not exist.
+     * @throws TableNotFoundException
+     */
     @Test
     public void containsTable() {
         assertTrue("Could not find table called users", database.containsTable( "users"));
@@ -65,7 +77,13 @@ public class SQLDatabaseTest {
     }
 
 
-
+    /**
+     * Test 10.3
+	 * Tests the tableContainsColumn function of SQLDatabase. It checks that the
+	 * table “users” in the mock database contains a column named “username”
+	 * but does not contain a column named “firstname”.
+     * @throws TableNotFoundException
+     */
     @Test
     public void tableContainsColumn() throws TableNotFoundException {
         assertTrue("Table \"users\" should contain column \"username\"", database.tableContainsColumn("users", "username"));

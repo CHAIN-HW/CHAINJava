@@ -37,6 +37,10 @@ public class SQLMockDatabase {
         when(statement.executeQuery(query)).thenReturn(rs).thenReturn(rs2);
     }
 
+    public void throwWhenQuerying(String query, Exception e) throws SQLException {
+        when(statement.executeQuery(query)).thenThrow(e);
+    }
+
     public Connection getConnection() {
         return connection;
     }

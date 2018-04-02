@@ -24,14 +24,16 @@ public class SQLNameMatcherManagerTest {
     private SQLDatabase database;
     private WordNetMatcher wordNetMatcher;
 
+
     @Before
     public void setup() {
         database = mock(SQLDatabase.class);
         wordNetMatcher = mock(WordNetMatcher.class);
-
         List<String> tableNames = new ArrayList<>();
         tableNames.add("user");
-        matcher = new SQLNameMatcherManager(tableNames, database, wordNetMatcher);
+
+        List<String> columnNames = new ArrayList<>();
+        tableNames.add("surname");
     }
 
     
@@ -39,11 +41,15 @@ public class SQLNameMatcherManagerTest {
      * Test 11.1
 	 * Tests the getReplacementTableNames function of the SQLNameMatcherManager class.
 	 * It will check that 1 match is returned and that “users” is matched to “user”.
-     * @throws SPSMMatchingException
      * @throws SMatchException
      */
     @Test
     public void testTableNameReplacement() throws WordNetMatchingException, SMatchException {
+        List<String> brokenTableNames = new ArrayList<>();
+        brokenTableNames.add("user");
+
+        matcher = new SQLNameMatcherManager(brokenTableNames, null, database, wordNetMatcher);
+
         Set<String> realTableNames = new HashSet<String>();
         realTableNames.add("users");
         realTableNames.add("roles");
@@ -56,5 +62,47 @@ public class SQLNameMatcherManagerTest {
 
         assertEquals(1, matches.size());
         assertEquals("users", matches.get("user"));
+    }
+
+    @Test
+    public void getReplacementColumnNames() throws NoReplacementFoundException, SMatchException {
+        List<String> brokenColumnNames = new ArrayList<>();
+        brokenColumnNames.add("surname");
+
+        matcher = new SQLNameMatcherManager(null, brokenColumnNames, database, wordNetMatcher);
+
+        Set<String> columns = new HashSet<>();
+        columns.add("firstname");
+        columns.add("lastname");
+        columns.add("address");
+
+        SQLTable testTable = new SQLTable("users", columns);
+        Collection<SQLTable> testCollection = new ArrayList<>();
+        testCollection.add(testTable);
+        when(database.getTables()).thenReturn(testCollection);
+
+        Map<String, String> result = matcher.getReplacementColumnNames();
+
+        assertTrue(result.get("surname").equals("lastname"));
+    }
+
+    @Test(expected = NoReplacementFoundException.class)
+    public void getReplacementColumnNamesNoReplacementFoundException() throws NoReplacementFoundException, SMatchException {
+        List<String> brokenColumnNames = new ArrayList<>();
+        brokenColumnNames.add("kettle");
+
+        matcher = new SQLNameMatcherManager(null, brokenColumnNames, database, wordNetMatcher);
+
+        Set<String> columns = new HashSet<>();
+        columns.add("firstname");
+        columns.add("lastname");
+        columns.add("address");
+
+        SQLTable testTable = new SQLTable("users", columns);
+        Collection<SQLTable> testCollection = new ArrayList<>();
+        testCollection.add(testTable);
+        when(database.getTables()).thenReturn(testCollection);
+
+        matcher.getReplacementColumnNames();
     }
 }

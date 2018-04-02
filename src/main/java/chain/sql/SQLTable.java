@@ -14,10 +14,7 @@ public class SQLTable {
     private Set<String> columnNames;
 
     /**
-     * SQLTable
-     *
-     * Constructs an object for representing an individual table.
-     *
+     * Constructs an object for an individual table
      * @param tableName Name of the table
      * @param columnNames Set of columns stored in the table
      */
@@ -52,10 +49,7 @@ public class SQLTable {
     }
 
     /**
-     * containsColumn
-     *
-     * Determines the existence of a column in the table.
-     *
+     * Checks if column exists in table
      * @param column Name of column being looked for
      * @return True if column exists false otherwise
      */
