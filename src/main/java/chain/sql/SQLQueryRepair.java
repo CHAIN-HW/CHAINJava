@@ -25,8 +25,8 @@ public class SQLQueryRepair {
      * Constructor for SQLQueryRepair
      * @param query is the SQL query that being repaired
      * @param db is the structure of the database being queried
-     * @throws ChainDataSourceException
-     * @throws SQLException
+     * @throws ChainDataSourceException An exception related to data sources
+     * @throws SQLException Thrown if the SQL query is invalid
      */
     public SQLQueryRepair(String query, SQLDatabase db) throws ChainDataSourceException, SQLException {
         this.analyser = new SQLQueryAnalyser(query);
@@ -41,8 +41,8 @@ public class SQLQueryRepair {
     /**
      * Runs the repair process and returns the repaired query
      * @return repaired query as a string
-     * @throws WordNetMatchingException
-     * @throws SMatchException
+     * @throws WordNetMatchingException An exception related to WordNet
+     * @throws SMatchException An exception captured through SMatch
      */
     public String runRepairer() throws WordNetMatchingException, SMatchException {
         repairTables();
@@ -60,8 +60,8 @@ public class SQLQueryRepair {
 
     /**
      * Repairs table names present in the query
-     * @throws WordNetMatchingException
-     * @throws SMatchException
+     * @throws WordNetMatchingException An exception related to WordNet
+     * @throws SMatchException An exception captured through SMatch
      */
     private void repairTables() throws WordNetMatchingException, SMatchException {
         Map<String, String> newTableNames = manager.getReplacementTableNames();

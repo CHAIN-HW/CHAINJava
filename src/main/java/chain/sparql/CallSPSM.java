@@ -1,8 +1,6 @@
 package chain.sparql;
 
-/* @author Diana Bental
- * @author Tanya Howden
- * 
+/**
  * Date September 2017
  * Modified November 2017
  */

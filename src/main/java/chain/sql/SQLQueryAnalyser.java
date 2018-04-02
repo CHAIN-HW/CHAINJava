@@ -20,8 +20,6 @@ import net.sf.jsqlparser.util.TablesNamesFinder;
  *
  * Class for performing analysis of SQL queries
  * leveraging the JSQLParser library.
- *
- * @author Daniel Waghorn
  */
 public class SQLQueryAnalyser {
 
@@ -30,7 +28,7 @@ public class SQLQueryAnalyser {
     /**
      * Constructor
      * @param query - the SQL query to be analysed.
-     * @throws ChainDataSourceException
+     * @throws ChainDataSourceException An exception related to data sources
      */
     public SQLQueryAnalyser(String query) throws ChainDataSourceException {
         try {
@@ -62,7 +60,7 @@ public class SQLQueryAnalyser {
 
     /**
      * 
-     * @return
+     * @return The column names
      */
     public List<String> getColumns() {
         Select fullStatement = (Select) this.stmt;
@@ -76,7 +74,7 @@ public class SQLQueryAnalyser {
     /**
      * 
      * @param where
-     * @return
+     * @return An ArrayList of column names
      */
     // TODO: could probably return the actual column objects and update them instead of having to go back in with the visitor
     private List<String> recurseWhereToColumns(Expression where) {
