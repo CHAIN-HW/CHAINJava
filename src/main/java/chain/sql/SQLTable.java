@@ -14,7 +14,10 @@ public class SQLTable {
     private Set<String> columnNames;
 
     /**
-     * Constructs an object for an individual table
+     * SQLTable
+     *
+     * Constructs an object for representing an individual table.
+     *
      * @param tableName Name of the table
      * @param columnNames Set of columns stored in the table
      */
@@ -25,7 +28,10 @@ public class SQLTable {
     }
 
     /**
-     * Retrieves the name of the table
+     * getTableName
+     *
+     * Returns the name of the current table instance.
+     *
      * @return The table name as string
      */
     public String getTableName()
@@ -34,7 +40,10 @@ public class SQLTable {
     }
 
     /**
-     * Retrieves all the columns in the table
+     * getColumnNames
+     *
+     * Returns a set of column names in the table.
+     *
      * @return Set containing all column names
      */
     public Set<String> getColumnNames()
@@ -43,7 +52,10 @@ public class SQLTable {
     }
 
     /**
-     * Checks if column exists in table
+     * containsColumn
+     *
+     * Determines the existence of a column in the table.
+     *
      * @param column Name of column being looked for
      * @return True if column exists false otherwise
      */
