@@ -21,6 +21,7 @@ public class SQLNameMatcherManager {
     /**
      * Constructor for SQLNameMatcherManager that generates its own WordNetMatcher
      * @param tableNames List of names for which replacement should be found
+     * @param columnNames List of column names
      * @param database Structure of database being queried
      */
     public SQLNameMatcherManager(List<String> tableNames, List<String> columnNames, SQLDatabase database) {
@@ -44,9 +45,9 @@ public class SQLNameMatcherManager {
 
     /**
      * Goes through each table name provided to it and attempts to find a replacement
-     * @return Replacement names as a map in the form <orginal, replacement>
+     * @return Replacement names as a map in the form (orginal, replacement)
      * @throws SMatchException An exception captured by SMatch
-     * @throws WordNetMatchingException
+     * @throws WordNetMatchingException An exception thrown by WordNet
      */
     public Map<String, String> getReplacementTableNames() throws SMatchException, WordNetMatchingException {
         Map<String, String> replacements = new HashMap<>();
