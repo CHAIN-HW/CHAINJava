@@ -15,7 +15,7 @@ import com.hp.hpl.jena.query.QueryFactory;
 
 /**
  * @author Diana Bental
- * @date 10 January 2017
+ * Created on 10 January 2017
  *
  * Repair a query by replacement of matching properties and removal of
  * non-matching ones.
