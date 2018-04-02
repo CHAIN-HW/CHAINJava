@@ -28,18 +28,50 @@ import net.sf.jsqlparser.statement.update.Update;
 import net.sf.jsqlparser.statement.upsert.Upsert;
 import java.util.Map;
 
+/**
+ * SQLSelectColumnVisitor
+ *
+ * Visitor class for updating columns in a SELECT
+ * statement.
+ */
 public class SQLSelectColumnVisitor implements StatementVisitor, SelectVisitor, SelectItemVisitor, ExpressionVisitor {
 
     Map<String, String> replacements;
 
+    /**
+     * SQLSelectColumnVisitor
+     *
+     * Constructor for visitor.
+     *
+     * @param replacements map containing replacements in old => new format
+     */
     public SQLSelectColumnVisitor(Map<String, String> replacements) {
         this.replacements = replacements;
     }
 
+    /**
+     * canReplaceColumn
+     *
+     * Helper function to determine the presence of a
+     * column name in the replacements map.
+     *
+     * @param columnName String
+     * @return boolean TRUE if we have a replacement for columnName
+     */
     protected boolean canReplaceColumn(String columnName) {
         return replacements.keySet().contains(columnName);
     }
 
+    /**
+     * columnReplacement
+     *
+     * Helper function to get the corresponding replacement
+     * for columnName
+     * Returns original name if no match to be safe.
+     *
+     * @param columnName String
+     * @return String replacement name
+     */
     protected String columnReplacement(String columnName) {
         if (!canReplaceColumn(columnName)) return columnName;
         return replacements.get(columnName);
@@ -69,6 +101,14 @@ public class SQLSelectColumnVisitor implements StatementVisitor, SelectVisitor, 
         }
     }
 
+    /**
+     * warnNotImplemented
+     *
+     * Internal method for warning if a required method
+     * is not yet implemented.
+     *
+     * @param param Type hint for method signature
+     */
     protected void warnNotImplemented(String param) {
         System.err.println("SQLSelectTableVisitor: Method not implemented - visit(" + param + ")");
     }
