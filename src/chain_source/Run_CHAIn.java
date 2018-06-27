@@ -110,12 +110,12 @@ public class Run_CHAIn {
 			current = getSchema.getSchemaFromQuery(query, queryType);
 			
 			if(current==null){
-				//then we have an invalid query
+				//then we have a synactically invalid query, or one that CHAIn can't parse into a schema
 				//terminate chain with appropriate message
 				if(fOut!=null){
-					fOut.write("Invalid SPARQL query, please enter a valid query, terminating...\n\n");
+					fOut.write("This SPARQL query cannot be parsed into a schema, terminating...\n\n");
 				}
-				System.out.println("Invalid SPARQL query, Terminating.");
+				System.out.println("This SPARQL query cannot be parsed into a schema, Terminating.");
 				
 				return INVALIDQUERY;
 			}
@@ -148,9 +148,9 @@ public class Run_CHAIn {
 				ResultSet resultsFromARepairedQuery;
 				
 				// Print all the match structures with their repaired queries
-				// for (Match_Struc r:repairedQueries) {
-				// 	System.out.println("Match_Struc:" + r);
-				// }
+//				 for (Match_Struc r:repairedQueries) {
+//				 	System.out.println("Match_Struc:" + r);
+//				 }
 				
 				for(int i = 0 ; i < repairedQueries.size() ; i++){
 					//try running new queries

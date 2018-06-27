@@ -170,29 +170,36 @@ public class Run_Query {
 		System.out.println("\nQuery:\t"+query);
 
 		//create query object
-		Query queryObj = QueryFactory.create(query);
-		QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", queryObj);	
-		
-		try{			
-			System.out.println("\nResults:\n");
-			
-			//execute and print results to console
-			// Use a factory so that its possible to keep and copy the results after printing them
-			ResultSet results = ResultSetFactory.copyResults(qexec.execSelect());
-			
-//			if (results == null || !results.hasNext()) {
-			if (results == null) {
-			    return null;
-			} else {
-				// Need to create a copy because ResultSetFormatter is destructive
-				ResultSetFormatter.out(System.out, ResultSetFactory.copyResults(results));
-				// ResultSetFormatter.out(System.out, results);
-				return results;
+		try{
+
+			Query queryObj = QueryFactory.create(query);
+			QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", queryObj);	
+
+			try{			
+				System.out.println("\nResults:\n");
+
+				//execute and print results to console
+				// Use a factory so that its possible to keep and copy the results after printing them
+				ResultSet results = ResultSetFactory.copyResults(qexec.execSelect());
+
+				//			if (results == null || !results.hasNext()) {
+				if (results == null) {
+					return null;
+				} else {
+					// Need to create a copy because ResultSetFormatter is destructive
+					ResultSetFormatter.out(System.out, ResultSetFactory.copyResults(results));
+					// ResultSetFormatter.out(System.out, results);
+					return results;
+				}
+
+			}catch(Exception e){
+				e.printStackTrace();
+				System.out.println("Run_Query.java: QUERY ERROR!");
+				return null;
 			}
-			
-		}catch(Exception e){
+		} catch(Exception e){
 			e.printStackTrace();
-			System.out.println("Run_Query.java: QUERY ERROR!");
+			System.out.println("Run_Query.java: Jena QueryFactory Cannot interpret the input as a valid SPARQL query.");
 			return null;
 		}
 		

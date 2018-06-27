@@ -157,7 +157,7 @@ public class Schema_From_Query {
 				
 			}catch(Exception e){
 				//invalid query, return null
-				System.out.println("Invalid Query, returning null.\n");
+				System.out.println("Cannot parse this Sparql query, returning null.\n");
 				return null;
 			}
 		}
@@ -183,8 +183,10 @@ public class Schema_From_Query {
 		if(!query.equals("")){
 
 			try{
+			
 				
 				//create query object
+				// Parse with Jena - this will raise an exception if Jena can't parse it
 				Query dbpediaQuery = QueryFactory.create(query);
 				res.setQuery(dbpediaQuery.toString());
 				
@@ -200,7 +202,7 @@ public class Schema_From_Query {
 					            // ...go through all the triples...
 					            Iterator<TriplePath> triples = el.patternElts();
 					            while (triples.hasNext()) {
-					            	
+					            	 
 					                // Get the next triple
 					            	TriplePath triple = triples.next() ;
 					            	// System.out.println(triple) ;
@@ -231,27 +233,31 @@ public class Schema_From_Query {
 					    }
 					);
 				
-				
 				//start schema string
-				predicate = chainPredicates.get(0) ;
-				schema = predicate + "(";
+				if(chainPredicates.isEmpty()) {
+					System.out.println("No schema predicate has been identified.") ;
+					return null ;
+				} else {
+					predicate = chainPredicates.get(0) ;
+					schema = predicate + "(";
 				
-				int size = chainParameters.size() ;
+					int size = chainParameters.size() ;
 				
-				if (size > 0) {
-					for(int i = 1 ; i < size ; i++) {
-						schema = schema + chainParameters.get(i-1) + ",";
+					if (size > 0) {
+						for(int i = 1 ; i < size ; i++) {
+							schema = schema + chainParameters.get(i-1) + ",";
+						}
+						schema = schema + chainParameters.get(size-1) ;
 					}
-					schema = schema + chainParameters.get(size-1) ;
+				
+					schema = schema + ")" ;
+				
+					System.out.println("Chain schema "+schema);
 				}
-				
-				schema = schema + ")" ;
-				
-				System.out.println("Chain schema "+schema);
 				
 			}catch(Exception e){
 				//invalid query, returning null
-				System.out.println("Invalid Query, returning null.\n");
+				System.out.println("Cannot parse this Sparql query, returning null.\n");
 				return null;
 			}
 		}

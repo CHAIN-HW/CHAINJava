@@ -531,7 +531,55 @@ public class Repair_Schema_Test_Cases {
 		testRepairSchema(source, target, test, expectedNumMatches, expectedSizeFirst) ;
 	}
 	
+	@Test
+	public void test4240(){
 
+		source="get_wine(Region, Country, Color, Price, Amount)";
+		target="get_wine(Region(Country, Area), Colour, Cost, Year, Quantity)";
+		test = "4240" ;
+		expectedNumMatches = 1 ;
+		expectedSizeFirst = 6 ;
+		
+		testRepairSchema(source, target, test, expectedNumMatches, expectedSizeFirst) ;
+	}
+	
+	
+	
+	@Test
+	public void test4241(){
+
+		source="?x(foaf:mbox, foaf:knows/foaf:knows(foaf:name))";
+		target="?x(foaf:mbox, foaf:knows(foaf:name)";
+		test = "4241" ;
+		expectedNumMatches = 1 ;
+		expectedSizeFirst = 3 ;
+		
+		testRepairSchema(source, target, test, expectedNumMatches, expectedSizeFirst) ;
+	}
+	
+	@Test
+	public void test4242(){
+
+		source="?x(foaf:mbox, foaf:knows(foaf:name))";
+		target="?x(foaf:mbox, foaf:knows/foaf:knows(foaf:name)";
+		test = "4242" ;
+		expectedNumMatches = 1 ;
+		expectedSizeFirst = 3 ;
+		
+		testRepairSchema(source, target, test, expectedNumMatches, expectedSizeFirst) ;
+	}
+	
+	@Test
+	public void test4243(){
+
+		source="get_wine(Region(Country, Area), Colour, Cost, Year, Quantity)";
+		target="get_wine(Region, Country, Color, Price, Amount)";
+		test = "4243" ;
+		expectedNumMatches = 1 ;
+		expectedSizeFirst = 4 ;
+		
+		testRepairSchema(source, target, test, expectedNumMatches, expectedSizeFirst) ;
+	}
 	
 	private void testRepairSchema(String source, String target, String test,
 			int expectedNumMatches, int expectedSizeFirst) {
@@ -573,7 +621,9 @@ public class Repair_Schema_Test_Cases {
 				fail() ;			
 			}
 			
-			//we can test repaired schema
+			System.out.println(finalRes) ;
+			
+			// we can test repaired schema
 			for(int i = 0 ; i < finalRes.size() ; i++){
 				Match_Struc currRes = finalRes.get(i);
 				
@@ -585,7 +635,7 @@ public class Repair_Schema_Test_Cases {
 					if(currRes.getNumMatchComponents() == expectedSizeFirst) 
 						System.out.println("Repaired schema size matches expected size") ;
 						else {
-							System.out.println("Test Error: Repaired schema size " + currRes.getNumMatchComponents() + "expected size :" + expectedSizeFirst) ;
+							System.out.println("Test Error: Repaired schema size " + currRes.getNumMatchComponents() + " expected size :" + expectedSizeFirst) ;
 							fail() ;
 					
 				}
