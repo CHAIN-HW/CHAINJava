@@ -1,7 +1,7 @@
 [{
   "name":"dbo",
   "link":"<http://dbpedia.org/ontology/>",
-  "properties":"River,Automobile,Royalty,Place,Film,Politician,Astronaut,Country,Company,Game,River,Island,Town,City,Mountain,Cave,FormulaOneRacer,length,assembly,manufacturer,place,locationCountry,birthPlace,deathPlace,parent,language,director,religion,spouse,nationality,battle,populationTotal,location,publisher,mission,country,occupation,leaderParty,elevation,instrument,races,team,birthDate"
+  "properties":"SourceCountry,River,Automobile,Royalty,Place,Film,Politician,Astronaut,Country,Company,Game,River,Island,Town,City,Mountain,Cave,FormulaOneRacer,length,assembly,manufacturer,place,locationCountry,birthPlace,deathPlace,parent,language,director,religion,spouse,nationality,battle,populationTotal,location,publisher,mission,country,occupation,leaderParty,elevation,instrument,races,team,birthDate,headquarter"
 
 },
 {
@@ -12,7 +12,7 @@
 {
   "name":"res",
   "link":"<http://dbpedia.org/resource/>",
-  "properties":"Nonprofit_organization"
+  "properties":"Ganges, Nonprofit_organization, Germany, Russia, Soviet_Union, Berlin, Skateboarding, Sweden, BandLeader, Trumpet, Premier_League, Vienna, Turkmenistan, Francis_Ford_Coppola, Angela_Merkel, Methodism, Jane_Fonda, Italy, Australia, T._E._Lawrence, Maribor, Munich, GMT_Games, Amanda_Palmer, Rhine, Surfing, Japan, Lisbon, Apollo_14"
 },
 {
   "name":"rdf",
