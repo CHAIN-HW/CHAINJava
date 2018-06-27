@@ -1,17 +1,27 @@
 package chain_source;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.StringJoiner;
 
 public class OAEI_TestSet {
 	
-	double similarityThreshold = 0.0; // (0.3) Minimum similarity threshold to filter SPSM results (0.0 to 1.0)
+	//for writing results
+	private static File testRes;
+	private static PrintWriter fOut;
+	private static boolean alreadyWritten;
+	
+	double similarityThreshold = 0.3; // (0.3) Minimum similarity threshold to filter SPSM results (0.0 to 1.0)
 	int maxMatchResults = 0 ; // (5) Maximum number of results to return - 0 if no limit
+	private static int countRepairs;
+	private static int countRepairedSchemas;
 	
 	
-	private Call_SPSM spsm = new Call_SPSM();
-	private Best_Match_Results filterRes = new Best_Match_Results();
-	private Repair_Schema repairSchema = new Repair_Schema();
+//  private Call_SPSM spsm = new Call_SPSM();
+//	private Best_Match_Results filterRes = new Best_Match_Results();
+//	private Repair_Schema repairSchema = new Repair_Schema();
 	
 	private static String[] cmtSchemas = {
 			"administrator(acceptPaper, addProgramCommitteeMember, assignReviewer, enableVirtualMeeting,"
@@ -234,36 +244,120 @@ public class OAEI_TestSet {
 		    "sponzor(nameOfSponsor, searchedBy)"
 	};
 
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		OAEI_TestSet OAEITest = new OAEI_TestSet();
+	
+		alreadyWritten = false;
+		try{
+			testRes = new File("outputs/OAEI.txt");
+			testRes.createNewFile();
+			
+			new PrintWriter("outputs/OAEI.txt").close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		try{
+			fOut = new PrintWriter(new FileWriter(testRes,true));
+			
+			if(alreadyWritten==false){
+				fOut.println("OAEI Evaluation set results\n");
+				alreadyWritten = true;
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		match_schemas(OAEITest, "cmt", "conference", cmtSchemas, conferenceSchemas) ;
+		match_schemas(OAEITest, "cmt", "confOf", cmtSchemas, confOfSchemas) ;
+		match_schemas(OAEITest, "cmt", "edas", cmtSchemas, edasSchemas) ;
+		match_schemas(OAEITest, "cmt", "ekaw", cmtSchemas, ekawSchemas) ;
+		match_schemas(OAEITest, "cmt", "iasted", cmtSchemas, iastedSchemas) ;
+		match_schemas(OAEITest, "cmt", "sigkdd", cmtSchemas, sigkddSchemas) ;
+		
+		match_schemas(OAEITest, "conference", "confOf", conferenceSchemas, confOfSchemas) ;
+		match_schemas(OAEITest, "conference", "edas", conferenceSchemas, edasSchemas) ;
+		match_schemas(OAEITest, "conference", "ekaw", conferenceSchemas, ekawSchemas) ;
+		match_schemas(OAEITest, "conference", "iasted", conferenceSchemas, iastedSchemas) ;
+		match_schemas(OAEITest, "conference", "sigkdd", conferenceSchemas, sigkddSchemas) ;
+		
+		match_schemas(OAEITest, "confOf", "edas", confOfSchemas, edasSchemas) ;
+		match_schemas(OAEITest, "confOf", "ekaw", confOfSchemas, ekawSchemas) ;
+		match_schemas(OAEITest, "confOf", "iasted", confOfSchemas, iastedSchemas) ;
+		match_schemas(OAEITest, "confOf", "sigkdd", confOfSchemas, sigkddSchemas) ;
+		
+		match_schemas(OAEITest, "edas", "ekaw", edasSchemas, ekawSchemas) ;
+		match_schemas(OAEITest, "edas", "iasted", edasSchemas, iastedSchemas) ;
+		match_schemas(OAEITest, "edas", "sigkdd", edasSchemas, sigkddSchemas) ;
+		
+		match_schemas(OAEITest, "ekaw", "iasted", ekawSchemas, iastedSchemas) ;
+		match_schemas(OAEITest, "ekaw", "sigkdd", ekawSchemas, sigkddSchemas) ;
+		
+		match_schemas(OAEITest, "iasted", "sigkdd", iastedSchemas, sigkddSchemas) ;
 		
 		
+		
+		
+		
+		fOut.close();
+		
+	}
+	
+	public static void match_schemas(OAEI_TestSet OAEITest, 
+			String sourceId, String targetId, String[] sourceSchemasArray, String[] targetSchemasArray) {
+		
+		countRepairs = 0 ;
+		countRepairedSchemas = 0 ;
+		int countSchemas = 0 ;
+		
+		fOut.println("\n\n\nSource: " + sourceId + " Target: " + targetId +"\n") ;
+		System.out.println("\n\n\nSource: " + sourceId + " Target: " + targetId +"\n") ;
+		
+		fOut.println(sourceId + "  All Source Schemas:");
+		System.out.println(sourceId + "  All Source Schemas:");
+		for(String source: sourceSchemasArray) {
+			fOut.println(source);
+			countSchemas++ ;
+			System.out.println(source);
+		}
+		
+		fOut.println("\n" + targetId + "  All Target Schemas:");
+		System.out.println("\n" + targetId + "  All Target Schemas:");
 		StringJoiner targets = new StringJoiner(";");
-		for(String target: sigkddSchemas) {
+		for(String target: targetSchemasArray) {
+			fOut.println(target);
+			System.out.println(target);
 			targets.add(target) ;
 		}
 		String targetSchemas = targets.toString() ;
 		
-		System.out.println("All Target Schemas: " + targetSchemas);
+		Call_SPSM spsm = new Call_SPSM();
 		
-		
-		for(String sourceSchema: edasSchemas) {
+		for(String sourceSchema: sourceSchemasArray) {
 			System.out.println("\n\nSource: " + sourceSchema);
-			ArrayList<Match_Struc>  results = OAEITest.startRepair(sourceSchema, targetSchemas) ;
-			if (results != null) {
-				for(Match_Struc result: results) {
-					System.out.println("Repair: " + result.getRepairedSchema()) ;
-				}
-			}
+			fOut.println("\n\nSource: " + sourceSchema);
+			ArrayList<Match_Struc>  results = OAEITest.startRepair(spsm, sourceSchema, targetSchemas) ;
 		}
-		Call_SPSM.reportSPSM() ;
+		
+		spsm.reportSPSM(fOut) ;
+		System.out.println("Created " + countRepairs + " repairs for " + countRepairedSchemas + " source schemas out of "
+				+ countSchemas + ".");
+		fOut.println("Created " + countRepairs + " repairs for " + countRepairedSchemas + " source schemas out of "
+				+ countSchemas + ".");
 		
 	}
 	
-public ArrayList<Match_Struc> startRepair(String sourceSchema, String targetSchemas)
-{
+	
+	
+	public ArrayList<Match_Struc> startRepair(Call_SPSM spsm, String sourceSchema, String targetSchemas)
+	{
 		
+		Best_Match_Results filterRes = new Best_Match_Results();
+		Repair_Schema repairSchema = new Repair_Schema();
+
 		//Create an empty match structure
 		Match_Struc current = new Match_Struc();
 		// System.out.println(sourceSchema);
@@ -277,35 +371,69 @@ public ArrayList<Match_Struc> startRepair(String sourceSchema, String targetSche
 		//Narrow down the target schemas by filtering them against the associated words in the source schema
 		targetSchemas = Narrow_Down.narrowDown(current.getQuerySchemaHead(), targetSchemas) ;
 		
-		System.out.println("Narrowed Target Schemas: " + targetSchemas);
 		
-		//start off by calling SPSM with schema created from query
-		//and target schemas passed in originally
-		ArrayList<Match_Struc> results = new ArrayList<Match_Struc>();
+		if(targetSchemas.isEmpty()) {
+			System.out.println("No Target Schemas identified by narrowing.");
+			fOut.println("No Target Schemas identified by narrowing. ");
+		} else {
+			System.out.println("Narrowed Target Schemas: " + targetSchemas);
+			fOut.println("Narrowed Target Schemas: " + targetSchemas);
 		
-		try {
-			results = spsm.callSPSM(results, current.getQuerySchema(), targetSchemas);
+			//start off by calling SPSM with schema created from query
+			//and target schemas passed in originally
+			ArrayList<Match_Struc> results = new ArrayList<Match_Struc>();
 		
-			if(results == null){
-				System.out.println("getSchemas returned null.");
-			}else if(results.size()==0){
-				//there are no results from spsm
-				System.out.println("SPSM returned no matches.");
-			}else{
-				//spsm has returned something
-				//filter results
-				System.out.println("SPSM returned matches.");
+			try {
+				results = spsm.callSPSM(results, current.getQuerySchema(), targetSchemas);
+		
+				if(results == null){
+					System.out.println("getSchemas returned null.");
+					fOut.println("getSchemas returned null.");
+				}else if(results.size()==0){
+					//there are no results from spsm
+					System.out.println("SPSM returned no matches.");
+					fOut.println("SPSM returned no matches.");
+				}else{
+					//spsm has returned something
+					
+					System.out.println("SPSM returned matches.");
+					fOut.println("SPSM returned " + results.size() + " matches.");
+				
+					for(Match_Struc result:results) {
+						fOut.println(result.getDatasetSchema() + " similarity: " + result.getSimValue());
+						System.out.println(result.getDatasetSchema() + " similarity: " + result.getSimValue());
+					}
 			
-				results = filterRes.getThresholdAndFilter(results, similarityThreshold, maxMatchResults);
-			
-				//return repaired schema
-				results = repairSchema.repairSchemas(results);
+					//filter results
+					results = filterRes.getThresholdAndFilter(results, similarityThreshold, maxMatchResults);
+
+					if (!results.equals(null) && !results.isEmpty()) {
+						countRepairedSchemas++ ;
+						fOut.println("\nRepairs: ") ;
+						
+						//return repaired schema
+						results = repairSchema.repairSchemas(results);
+						for(Match_Struc result:results) {
+							fOut.println(result.getDatasetSchema() + " similarity: " + result.getSimValue() + " size: " + result.getNumMatchComponents() + " repair: " + result.getRepairedSchema());
+							System.out.println(result.getDatasetSchema() + " similarity: " + result.getSimValue() +  " size: " + result.getNumMatchComponents() + " repair: " + result.getRepairedSchema());
+							countRepairs++ ;
+						}
+					} else {
+						fOut.println("No matches over the threshold value (" + similarityThreshold + ")") ;
+					}
+
+					fOut.println("\n") ;
+					System.out.println("\n") ;
+
+				}
+			} catch(Exception e){
+				e.printStackTrace();
 			}
-		} catch(Exception e){
-			e.printStackTrace();
+			return results;
 		}
+		return null ;
+	
 		
-		return results;
 	}
 
 }
