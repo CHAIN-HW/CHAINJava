@@ -97,7 +97,8 @@ public class Match_Struc{
 			for(int i= 0; i < SourcesString.length; i++ ) {
 				if (SourcesString[i].equals(Source))
 				{
-					Target = TargetsString[i] ;
+					if (i < TargetsString.length)
+							Target = TargetsString[i] ;
 					return Target ;
 				}
 			}
@@ -111,10 +112,12 @@ public class Match_Struc{
 		for (String[] m: matchComponents) {
 			String[] SourcesString = m[0].split(",") ;
 			String[] TargetsString = m[2].split(",") ;
+			
 			for(int i= 0; i < TargetsString.length; i++ ) {
 				if (TargetsString[i].equals(Target))
 				{
-					Source = SourcesString[i] ;
+					if(i < SourcesString.length)
+						Source = SourcesString[i] ;
 					return Source ;
 				}
 			}

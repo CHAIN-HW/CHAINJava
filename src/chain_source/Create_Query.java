@@ -231,12 +231,13 @@ public class Create_Query {
 	//creates structure for dbpedia query
 	public String createDbpediaQuery(Match_Struc matchDetails, Query_Data queryData, 
 			int withBindings, int noResults, ArrayList<Ontology_Struc> ontologies){
-		System.out.println("Creating dbpedia query");
+		System.out.println("Creating dbpedia query ");
 
 		String query="";
 
 		//write prefix part of query
 		query = query + writePrefixHeaders(ontologies);
+		 System.out.println("Trace 1") ;
 
 		//start writing main bulk of query
 		query = query + "\nSELECT DISTINCT *\n"+"WHERE { ?id rdf:type ";
@@ -245,10 +246,12 @@ public class Create_Query {
 		for(int j = 0 ; j < ontologies.size() ; j++){
 			Ontology_Struc currentOntology = ontologies.get(j);
 			HashSet<String> values = currentOntology.getValues() ;
-
+			System.out.println("Trace 2") ;
 			if(values != null) {
+				System.out.println("Trace 3 " + values) ;
 				String predicateName = matchDetails.getRepairedSchemaTree().getValue() ;
 				if(values.contains(predicateName)) {
+					System.out.println("Trace 4") ;
 					predicate = currentOntology.getName() + ":" + predicateName ;				
 				}
 
@@ -377,14 +380,21 @@ public class Create_Query {
 
 			//get the names of the schema parameters
 			
-			String paramName = schemaChildren.get(i);
+			String paramName = schemaChildren.get(i).replaceAll("[()]", ""); //HACK - remove dodgy parentheses
 			
 			String objectText = writeObject(paramName, matchDetails, queryData) ;
+			
+			System.out.println("writeDataMatching " + objectText + " paramName " + paramName);
+			
+			
 		
 				
 			//then see what ontology the parameter falls under
-			for(Ontology_Struc currentOntology:ontologies) {					
+			for(Ontology_Struc currentOntology:ontologies) {	
+				System.out.println("ontologies " + currentOntology.getName() + currentOntology.getValues() ) ;
+				
 				if(currentOntology.hasValue(paramName)) {
+					System.out.println("ontology has " + paramName) ;
 					// e.g. dbp:river ?river ;
 					String search = " " + currentOntology.prefixedValue(paramName) + objectText;
 					//For all but the last child, add a semi-colon
