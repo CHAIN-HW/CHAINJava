@@ -261,6 +261,17 @@ public class Call_SPSM{
     }
     
     // Report SPSM performance
+    public static void reportSPSM(PrintWriter fOut) {
+    	if(!fOut.equals(null)) {
+    		fOut.println("\n\nSPSM Calls: " + spsmCallCounter);
+    		fOut.println("SPSM Crashes: " + spsmCrashCounter);
+    		fOut.println("SPSM Successful (matching) calls: " + spsmSuccessCounter);
+    		fOut.println("SPSM Non-matching calls: " + spsmNoMatchCounter);
+    	}
+    	reportSPSM() ;
+    }
+    
+    // Report SPSM performance
     public static void reportSPSM() {
     	System.out.println("\n\nSPSM Calls: " + spsmCallCounter);
     	System.out.println("SPSM Crashes: " + spsmCrashCounter);
