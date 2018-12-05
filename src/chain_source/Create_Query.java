@@ -100,7 +100,7 @@ public class Create_Query {
 		
 	
 		finalRes = queryCreator.createQueries(finalRes, queryData , qtype, dataDirectory, ontologyPath, WITHDATA, maxResults);
-//		finalRes = queryCreator.createQueries(finalRes, queryData , qtype, dataDirectory, ontologyPath, NODATA, maxResults);
+		// finalRes = queryCreator.createQueries(finalRes, queryData , qtype, dataDirectory, ontologyPath, NODATA, maxResults);
 		
 		System.out.println("\nQuery created is: \n\n" + finalRes.get(0).getQuery());
 	}
@@ -237,7 +237,6 @@ public class Create_Query {
 
 		//write prefix part of query
 		query = query + writePrefixHeaders(ontologies);
-		 System.out.println("Trace 1") ;
 
 		//start writing main bulk of query
 		query = query + "\nSELECT DISTINCT *\n"+"WHERE { ?id rdf:type ";
@@ -246,12 +245,9 @@ public class Create_Query {
 		for(int j = 0 ; j < ontologies.size() ; j++){
 			Ontology_Struc currentOntology = ontologies.get(j);
 			HashSet<String> values = currentOntology.getValues() ;
-			System.out.println("Trace 2") ;
 			if(values != null) {
-				System.out.println("Trace 3 " + values) ;
 				String predicateName = matchDetails.getRepairedSchemaTree().getValue() ;
 				if(values.contains(predicateName)) {
-					System.out.println("Trace 4") ;
 					predicate = currentOntology.getName() + ":" + predicateName ;				
 				}
 

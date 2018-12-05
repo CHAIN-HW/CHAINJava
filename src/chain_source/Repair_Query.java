@@ -18,7 +18,7 @@ import com.hp.hpl.jena.query.QueryFactory;
  * @date 10 January 2017
  *
  * Repair a query by replacement of matching properties and removal of
- * non-matching ones.
+ * non-matching ones.n
  * Creates the repaired query from the original query, plus the SPSM matches,
  * plus information about data bindings previously extracted from 
  * the original query.
