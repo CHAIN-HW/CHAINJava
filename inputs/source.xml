@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><context>
+  <node id="n0" preprocessed="true">
+    <name>River</name>
+    <label-formula>n0_0</label-formula>
+    <node-formula>n0_0</node-formula>
+    <tokens>
+      <token id="0">
+        <text>river</text>
+        <lemma>river</lemma>
+        <senses>
+          <sense id="n#9434308"/>
+        </senses>
+      </token>
+    </tokens>
+    <children>
+      <node id="n1" parent-id="n0" preprocessed="true">
+        <name>Mountain</name>
+        <label-formula>n1_0</label-formula>
+        <node-formula>n1_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>mountain</text>
+            <lemma>mountain</lemma>
+            <senses>
+              <sense id="n#9382700"/>
+              <sense id="n#13796604"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+      <node id="n2" parent-id="n0" preprocessed="true">
+        <name>elevation</name>
+        <label-formula>n2_0</label-formula>
+        <node-formula>n2_0 &amp; n0_0</node-formula>
+        <tokens>
+          <token id="0">
+            <text>elevation</text>
+            <lemma>elevation</lemma>
+            <senses>
+              <sense id="n#7385271"/>
+              <sense id="n#13963489"/>
+              <sense id="n#13858749"/>
+              <sense id="n#9389214"/>
+              <sense id="n#5138548"/>
+              <sense id="n#5094110"/>
+              <sense id="n#3285963"/>
+              <sense id="n#374352"/>
+            </senses>
+          </token>
+        </tokens>
+      </node>
+    </children>
+  </node>
+</context>

@@ -46,22 +46,110 @@ public class Run_CHAIn {
 		//need to pass in the query
 		//and also target schemas for dataset
 		//we are trying to query
-		String query = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
-					+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
-					+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
-					+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
-					+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
-					+ "SELECT *  \n"
-					+ "FROM <queryData/sepa/sepa_datafiles/waterBodyPressurestest.n3>\n"
-					+ "WHERE { ?id sepaw:dataSource ?dataSource;\n"
-					+ "sepaw:identifiedDate  ?identifiedDate  ;\n"
-					+ "sepaw:affectsGroundwater ?affectsGroundwater ;\n"
-					+ "sepaw:waterBodyId ?waterBodyId .}"
-					+ "\n\n";
-		String queryType="sepa";
+//		String query = "PREFIX  geo:  <http://www.w3.org/2003/01/geo/wgs84_pos#> \n"
+//					+ "PREFIX  sepaidw: <http://data.sepa.org.uk/id/Water/>   \n"
+//					+ "PREFIX  sepaidloc: <http://data.sepa.org.uk/id/Location/> \n"
+//					+ "PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+//					+ "PREFIX  sepaw: <http://data.sepa.org.uk/ont/Water#> \n"
+//					+ "SELECT *  \n"
+//					+ "FROM <queryData/sepa/sepa_datafiles/waterBodyPressurestest.n3>\n"
+//					+ "WHERE { ?id sepaw:dataSource ?dataSource;\n"
+//					+ "sepaw:identifiedDate  ?identifiedDate  ;\n"
+//					+ "sepaw:affectsGroundwater ?affectsGroundwater ;\n"
+//					+ "sepaw:waterBodyId ?waterBodyId .}"
+//					+ "\n\n";
+//		String queryType="sepa";
+//		double simThresholdVal = 0.3;
+//		String dataDir = "queryData/sepa/sepa_datafiles/";
+//		String ontologyPath = "queryData/sepa/sepa_ontology.json";
+//		String targetSchemas="places(dataSource, identifiedDate, affectsGroundwater, waterBodyId) ; waterBodyPressures(dataSource, identifiedDate, affectsGroundwater, waterBodyId)" ;
+//		
+		
+		/*
+		 * Urban Observatory data can be in .ttl (Turtle) or .nt (N-Triples) format 
+		 * the current implementation however uses .ttl
+		 * 
+		 * and it works as expected (might have to change Run_Query and Create_Query
+		 * in order to support the different files)
+		 * 
+		 * */
+		
+//		String query = "PREFIX urbobvs: <https://urbanobservatory.ac.uk/sensorReadings#> \n" 
+//				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+//				+ "SELECT * FROM <queryData/urbanobservatory/uo_datafiles/sensorReadingsTest.ttl> \n"
+//				+ "WHERE {\n ?s urbobvs:sensorName ?sensorName ; \n"
+//				+ "urbobvs:themeName ?themeName ; \n"
+//				+ "urbobvs:typeName ?typeName ; \n"
+//				+ "urbobvs:suspect ?suspect ; \n"
+//				+ "urbobvs:value ?value ; \n"
+//				+ "urbobvs:units ?units ; \n"
+//				+ "urbobvs:timestamp ?timestamp . } \n"
+//				+ "LIMIT 10" ;
+//		String queryType = "urbobvs";
+//		double simThresholdVal = 0.3;
+//		String dataDir = "queryData/urbanobservatory/uo_datafiles/";
+//		String ontologyPath = "queryData/urbanobservatory/uo_ontology/sensorReadings_ontology.json";
+//		String targetSchemas = "sensorReadings(sensorName,themeName,typeName,suspect,value,units,timestamp) ; readings(sensorName,themeName,typeName,suspect,value,units,timestamp) ";
+	
+		
+//		String query = "PREFIX urbobvs: <https://urbanobservatory.ac.uk/sensorThemes#> \n"
+//				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+//				+ "SELECT * FROM <queryData/urbanobservatory/uo_datafiles/sensorThemesTest.ttl> \n"
+//				+ "WHERE {\n ?s urbobvs:themeName ?themeName ; \n" 
+//				+ "urbobvs:typeName ?typeName ; \n"
+//				+ "urbobvs:groundHeightAboveSeaLevel ?groundHeightAboveSeaLevel ; \n" 
+//				+ "urbobvs:sensorHeightAboveGround ?sensorHeightAboveGround ; \n" 
+//				+ "urbobvs:thirdParty ?thirdParty ; \n"
+//				+ "urbobvs:sensorCentroidLongitude ?sensorCentroidLongitude ; \n" 
+//				+ "urbobvs:sensorName ?sensorName ; \n" 
+//				+ "urbobvs:brokerName ?brokerName ; \n"
+//				+ "urbobvs:sensorCentroidLatitude ?sensorCentroidLatitude ; \n"
+//				+ "urbobvs:locationWKT ?locationWKT .} \n"
+//				+ "LIMIT 10";
+//		String queryType = "urbobvs";
+//		double simThresholdVal = 0.3;
+//		String dataDir = "queryData/urbanobservatory/uo_datafiles/";
+//		String ontologyPath = "queryData/urbanobservatory/uo_ontology/sensorThemes_ontology.json";
+//		String targetSchemas = "sensorThemes(themeName,typeName,groundHeightAboveSeaLevel,sensorHeightAboveGround,thirdParty,sensorCentroidLongitude,sensorName,brokerName,sensorCentroidLatitude,locationWKT)";
+//		
+		
+		/* the following 2 queries don't seem to be working when in plural form e.g. themes, types
+		 * but they do work in their plural form in Run_Query.java
+		 * 
+		 * the issue is with the narrowing down of schemas - 
+		 * it doesn't like plural names for the schema head
+		 * 
+		 * had to change the files so that they were in singular form
+		 * e.g. theme, type
+		 * 
+		 * */
+		
+		String query = "PREFIX urbobvs: <https://urbanobservatory.ac.uk/theme#> \n" 
+				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+				+ "SELECT * FROM <queryData/urbanobservatory/uo_datafiles/themeTest.ttl> \n"
+				+ "WHERE {\n ?s urbobvs:themeName ?themeName .} \n";
+		String queryType = "urbobvs";
 		double simThresholdVal = 0.3;
-		String dataDir = "queryData/sepa/sepa_datafiles/";
-		String ontologyPath = "queryData/sepa/sepa_ontology.json";
+		String dataDir = "queryData/urbanobservatory/uo_datafiles/";
+		String ontologyPath = "queryData/urbanobservatory/uo_ontology/theme_ontology.json";
+		String targetSchemas = "theme(themeName)";
+		
+	
+//		String query = "PREFIX urbobvs: <https://urbanobservatory.ac.uk/type#> \n" 
+//				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \n"
+//				+ "SELECT * FROM <queryData/urbanobservatory/uo_datafiles/typeTest.ttl> \n"
+//				+ "WHERE {\n ?s urbobvs:lowerLimit ?lowerLimit ; \n"
+//				+ "urbobvs:upperLimit ?upperLimit ; \n"
+//				+ "urbobvs:typeName ?typeName ; \n"
+//				+ "urbobvs:units ?units ; \n"
+//				+ "urbobvs:themeName ?themeName . } \n"
+//				+ "LIMIT 10" ;		
+//		String queryType = "urbobvs";
+//		double simThresholdVal = 0.3;
+//		String dataDir = "queryData/urbanobservatory/uo_datafiles/";
+//		String ontologyPath = "queryData/urbanobservatory/uo_ontology/type_ontology.json";
+//		String targetSchemas = "type(lowerLimit,upperLimit,typeName,units,themeName)";
+		
 		
 		//note if there are several schemas here they are separated with ';'
 		//-- Two target schemas
@@ -73,7 +161,6 @@ public class Run_CHAIn {
 		//-- No narrowed schemas
 		// String targetSchemas="places(dataSource, identifiedDate, affectsGroundwater, waterBodyId)" ;
 		//-- Two targets, one  narrowed target schema
-		String targetSchemas="places(dataSource, identifiedDate, affectsGroundwater, waterBodyId) ; waterBodyPressures(dataSource, identifiedDate, affectsGroundwater, waterBodyId)" ;
 		
 		
 		run_CHAIn.runCHAIn(query, queryType, targetSchemas, dataDir, ontologyPath, 10, simThresholdVal, 5, null);
@@ -124,7 +211,6 @@ public class Run_CHAIn {
 			Query_Data queryData = new Query_Data(query) ;
 			
 			ArrayList<Match_Struc> repairedQueries = createRepairedQueries(current, queryData, targetSchemas, queryType, dataDir, ontologyPath, queryLim, simThresholdVal, resLimit);
-			
 			if(repairedQueries == null) {
 				System.out.println("\nSPSM Failure. Terminating.");
 				if(fOut!=null){
@@ -215,7 +301,6 @@ public class Run_CHAIn {
 		System.out.println("All Target Schemas: " + targetSchemas);
 		
 		targetSchemas = Narrow_Down.narrowDown(current.getQuerySchemaHead(), targetSchemas) ;
-		
 		System.out.println("Narrowed Target Schemas: " + targetSchemas);
 		
 		//start off by calling SPSM with schema created from query

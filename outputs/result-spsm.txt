@@ -1,0 +1,4 @@
+similarity(1.0).
+match([[River,Mountain],=,[River,Mountain]]).
+match([[River],=,[River]]).
+match([[River,elevation],=,[River,elevation]]).

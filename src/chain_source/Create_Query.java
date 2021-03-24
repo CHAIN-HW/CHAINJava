@@ -176,57 +176,110 @@ public class Create_Query {
 			int withBindings, int noResults,
 			ArrayList<Ontology_Struc> ontologies) {
 		
-		if(type.equals("sepa")){
-			return createSepaQuery(matchDetails, queryData, datasetDir, withBindings, noResults, ontologies);
+		if(type.equals("sepa") || type.equals("urbobvs")){
+			return createTheQuery(matchDetails, queryData, datasetDir, withBindings, noResults, ontologies,type);
 
-		}else{
+		}
+		else{
 			return createDbpediaQuery(matchDetails, queryData, withBindings, noResults, ontologies);
 			
 		}
 	}
-
-	//creates structure for sepa query
-	public String createSepaQuery(Match_Struc matchDetails, Query_Data queryData, String datafileDir, 
-			int withBindings, int noResults, ArrayList<Ontology_Struc> ontologies){
-		System.out.println("Creating sepa query");
-		
-		String query="";		
+	
+	//creates structure for urban observatory query
+		public String createTheQuery(Match_Struc matchDetails, Query_Data queryData, String datafileDir, 
+				int withBindings, int noResults, ArrayList<Ontology_Struc> ontologies, String type){
+			System.out.println("Creating query");
 			
-			//write prefix part of query
-			query = query + writePrefixHeaders(ontologies);
-			
-			//Use the predicate to locate the file
-			// String filename = matchDetails.getRepairedSchemaTree().getValue() + ".n3";
-			String filename = matchDetails.getRepairedPredicate() + ".n3";
-			
-			String dbDir = datafileDir + filename;
-			query = query + "\nSELECT *\n" + "FROM <"+ dbDir + ">\n"+"WHERE {  \n ?id";
-			
-			//then start getting different parts of data to search for
-			ArrayList<String> schemaChildren = matchDetails.getRepairedParams();
-			
-			
-			
-			if(schemaChildren.size()>0){
-				if(withBindings == WITHDATA ) {		
-					query=query+ writeDataMatching(schemaChildren, matchDetails, queryData, ontologies);
-				} else { //create an open query with no data
-					query=query+ writeEmptyDataMatching(schemaChildren,ontologies);
+			String query="";		
+				
+				//write prefix part of query
+				query = query + writePrefixHeaders(ontologies);
+				
+				//Use the predicate to locate the file
+				// String filename = matchDetails.getRepairedSchemaTree().getValue() + ".n3";
+				String filename = null;
+				
+				if(type.equals("sepa")) {
+					filename = matchDetails.getRepairedPredicate() + ".n3";
 				}
-			}
+				else if(type.equals("urbobvs")) {
+					filename = matchDetails.getRepairedPredicate() + ".ttl";
+				}
+				
+				String dbDir = datafileDir + filename;
+				query = query + "\nSELECT *\n" + "FROM <"+ dbDir + ">\n"+"WHERE {  \n ?id";
+				
+				//then start getting different parts of data to search for
+				ArrayList<String> schemaChildren = matchDetails.getRepairedParams();
+				
+				
+				
+				if(schemaChildren.size()>0){
+					if(withBindings == WITHDATA ) {		
+						query=query+ writeDataMatching(schemaChildren, matchDetails, queryData, ontologies);
+					} else { //create an open query with no data
+						query=query+ writeEmptyDataMatching(schemaChildren,ontologies);
+					}
+				}
+				
+				// Finish the query
+				query = query + "\n}\n";
+				
+				//final line, limit
+				if(noResults != 0){
+					//set limit
+					query = query + "LIMIT " + noResults;
+				}	
+				
 			
-			// Finish the query
-			query = query + "\n}\n";
-			
-			//final line, limit
-			if(noResults != 0){
-				//set limit
-				query = query + "LIMIT " + noResults;
-			}	
-			
-		
-		return query;
-	}
+			return query;
+		}
+
+	
+	
+	//creates structure for sepa query
+//	public String createSepaQuery(Match_Struc matchDetails, Query_Data queryData, String datafileDir, 
+//			int withBindings, int noResults, ArrayList<Ontology_Struc> ontologies){
+//		System.out.println("Creating sepa query");
+//		
+//		String query="";		
+//			
+//			//write prefix part of query
+//			query = query + writePrefixHeaders(ontologies);
+//			
+//			//Use the predicate to locate the file
+//			// String filename = matchDetails.getRepairedSchemaTree().getValue() + ".n3";
+//			String filename = matchDetails.getRepairedPredicate() + ".n3";
+//			
+//			String dbDir = datafileDir + filename;
+//			query = query + "\nSELECT *\n" + "FROM <"+ dbDir + ">\n"+"WHERE {  \n ?id";
+//			
+//			//then start getting different parts of data to search for
+//			ArrayList<String> schemaChildren = matchDetails.getRepairedParams();
+//			
+//			
+//			
+//			if(schemaChildren.size()>0){
+//				if(withBindings == WITHDATA ) {		
+//					query=query+ writeDataMatching(schemaChildren, matchDetails, queryData, ontologies);
+//				} else { //create an open query with no data
+//					query=query+ writeEmptyDataMatching(schemaChildren,ontologies);
+//				}
+//			}
+//			
+//			// Finish the query
+//			query = query + "\n}\n";
+//			
+//			//final line, limit
+//			if(noResults != 0){
+//				//set limit
+//				query = query + "LIMIT " + noResults;
+//			}	
+//			
+//		
+//		return query;
+//	}
 
 	//creates structure for dbpedia query
 	public String createDbpediaQuery(Match_Struc matchDetails, Query_Data queryData, 

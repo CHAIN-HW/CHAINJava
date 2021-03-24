@@ -1,0 +1,810 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix urbobvs:  <https://urbanobservatory.ac.uk/type#> .
+
+<https://urbanobservatory.ac.uk/type/Soil%20Moisture>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Soil Moisture" ;
+        urbobvs:units       "%VWC" ;
+        urbobvs:themeName   "Environment" .
+
+<https://urbanobservatory.ac.uk/type/Sound>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.001" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Sound" ;
+        urbobvs:units       "db" ;
+        urbobvs:themeName   "Environment" .
+
+<https://urbanobservatory.ac.uk/type/Luminosity>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Luminosity" ;
+        urbobvs:units       "Lux" ;
+        urbobvs:themeName   "Environment" .
+
+<https://urbanobservatory.ac.uk/type/Moisture>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Moisture" ;
+        urbobvs:units       "%" ;
+        urbobvs:themeName   "Environment" .
+
+<https://urbanobservatory.ac.uk/type/Sewage%20Level>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Sewage Level" ;
+        urbobvs:units       "mm" ;
+        urbobvs:themeName   "Environment" .
+
+<https://urbanobservatory.ac.uk/type/CO2%20Low%20Range>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "CO2 Low Range" ;
+        urbobvs:units       "ppm" ;
+        urbobvs:themeName   "Environment" .
+
+<https://urbanobservatory.ac.uk/type/CO2%20High%20Range>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "CO2 High Range" ;
+        urbobvs:units       "ppm" ;
+        urbobvs:themeName   "Environment" .
+
+<https://urbanobservatory.ac.uk/type/Soil%20Temperature>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Soil Temperature" ;
+        urbobvs:units       "Celsius" ;
+        urbobvs:themeName   "Environment" .
+
+<https://urbanobservatory.ac.uk/type/Max%20Sound>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.001" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Max Sound" ;
+        urbobvs:units       "db" ;
+        urbobvs:themeName   "Environment" .
+
+<https://urbanobservatory.ac.uk/type/Solar%20Radiation>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Solar Radiation" ;
+        urbobvs:units       "W/m2" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Temperature>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Temperature" ;
+        urbobvs:units       "Celsius" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Pressure>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Pressure" ;
+        urbobvs:units       "hpa" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/RainInt>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "RainInt" ;
+        urbobvs:units       "?" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Solar%20Diffuse%20Radiation>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Solar Diffuse Radiation" ;
+        urbobvs:units       "W/m2" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Rain%20Duration>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Rain Duration" ;
+        urbobvs:units       "seconds" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Visibility>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Visibility" ;
+        urbobvs:units       "km" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Rainfall>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Rainfall" ;
+        urbobvs:units       "mm" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Humidity>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Humidity" ;
+        urbobvs:units       "%" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Wind%20Direction>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Wind Direction" ;
+        urbobvs:units       "Bearing" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Rain>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Rain" ;
+        urbobvs:units       "mm" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Daily%20Accumulation%20Rainfall>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Daily Accumulation Rainfall" ;
+        urbobvs:units       "mm" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Max%20Temperature%20>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Max Temperature " ;
+        urbobvs:units       "Celsius" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Rain%20Acc>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Rain Acc" ;
+        urbobvs:units       "?" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Wind%20Speed>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Wind Speed" ;
+        urbobvs:units       "m/s" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Sunshine%20Duration>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Sunshine Duration" ;
+        urbobvs:units       "%" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Max%20Wind%20Speed>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Max Wind Speed" ;
+        urbobvs:units       "m/s" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Wind%20Gust>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Wind Gust" ;
+        urbobvs:units       "m/s" ;
+        urbobvs:themeName   "Weather" .
+
+<https://urbanobservatory.ac.uk/type/Journey%20Time>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Journey Time" ;
+        urbobvs:units       "seconds" ;
+        urbobvs:themeName   "Traffic" .
+
+<https://urbanobservatory.ac.uk/type/Congestion>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Congestion" ;
+        urbobvs:units       "%" ;
+        urbobvs:themeName   "Traffic" .
+
+<https://urbanobservatory.ac.uk/type/Traffic%20Flow>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Traffic Flow" ;
+        urbobvs:units       "Passenger Car Units" ;
+        urbobvs:themeName   "Traffic" .
+
+<https://urbanobservatory.ac.uk/type/Average%20Speed>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Average Speed" ;
+        urbobvs:units       "KmPH" ;
+        urbobvs:themeName   "Traffic" .
+
+<https://urbanobservatory.ac.uk/type/Parking%20Spaces>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Parking Spaces" ;
+        urbobvs:units       "Cars" ;
+        urbobvs:themeName   "Traffic" .
+
+<https://urbanobservatory.ac.uk/type/Cars>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Cars" ;
+        urbobvs:units       "Cars" ;
+        urbobvs:themeName   "Traffic" .
+
+<https://urbanobservatory.ac.uk/type/River%20Level>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "River Level" ;
+        urbobvs:units       "m" ;
+        urbobvs:themeName   "Water Level" .
+
+<https://urbanobservatory.ac.uk/type/Relative%20River%20Level>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Relative River Level" ;
+        urbobvs:units       "mAOD" ;
+        urbobvs:themeName   "Water Level" .
+
+<https://urbanobservatory.ac.uk/type/Relative%20Tidal%20Level>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Relative Tidal Level" ;
+        urbobvs:units       "mAOD" ;
+        urbobvs:themeName   "Water Level" .
+
+<https://urbanobservatory.ac.uk/type/Strain%204>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Strain 4" ;
+        urbobvs:units       "strain" ;
+        urbobvs:themeName   "Building" .
+
+<https://urbanobservatory.ac.uk/type/Strain%203>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Strain 3" ;
+        urbobvs:units       "strain" ;
+        urbobvs:themeName   "Building" .
+
+<https://urbanobservatory.ac.uk/type/Strain%202>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Strain 2" ;
+        urbobvs:units       "strain" ;
+        urbobvs:themeName   "Building" .
+
+<https://urbanobservatory.ac.uk/type/Strain%201>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Strain 1" ;
+        urbobvs:units       "strain" ;
+        urbobvs:themeName   "Building" .
+
+<https://urbanobservatory.ac.uk/type/PM>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "PM" ;
+        urbobvs:units       "ugm3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/Particle%20Count>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Particle Count" ;
+        urbobvs:units       "Kgm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/PM%204>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "PM 4" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/O3>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "O3" ;
+        urbobvs:units       "ppb" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/PM2.5>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "PM2.5" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/PM1>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "PM1" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/PM10>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "PM10" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/CO>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.001" ;
+        urbobvs:upperLimit  "1000.0" ;
+        urbobvs:typeName    "CO" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/NO>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.001" ;
+        urbobvs:upperLimit  "1000.0" ;
+        urbobvs:typeName    "NO" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/NO2>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.001" ;
+        urbobvs:upperLimit  "1000.0" ;
+        urbobvs:typeName    "NO2" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/NOx>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.001" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "NOx" ;
+        urbobvs:units       "ppb" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/Pm10%20Concentration>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Pm10 Concentration" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/CO2>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "CO2" ;
+        urbobvs:units       "ppm" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/VOC>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "VOC" ;
+        urbobvs:units       "ppb" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/allpollu>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "allpollu" ;
+        urbobvs:units       "%" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/NO2%20Concentration>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "NO2 Concentration" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/Pm2.5%20Concentration>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Pm2.5 Concentration" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/Ozone%20Concentration>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Ozone Concentration" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/SO2%20Concentration>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "SO2 Concentration" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/Odor>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Odor" ;
+        urbobvs:units       "?" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/Ammonia>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Ammonia" ;
+        urbobvs:units       "?" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/Dust>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.001" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Dust" ;
+        urbobvs:units       "?" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/NO%20Concentration>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.001" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "NO Concentration" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/NOXasNO2%20Concentration>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.001" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "NOXasNO2 Concentration" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/Non-volatile%20PM10>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.001" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Non-volatile PM10" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/Volatile%20PM10>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.001" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Volatile PM10" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/Non-volatile%20PM2.5>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.001" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Non-volatile PM2.5" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/Volatile%20PM2.5>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.001" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Volatile PM2.5" ;
+        urbobvs:units       "ugm -3" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/Filter>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Filter" ;
+        urbobvs:units       "%" ;
+        urbobvs:themeName   "Air Quality" .
+
+<https://urbanobservatory.ac.uk/type/Bus%20Count%20East>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Bus Count East" ;
+        urbobvs:units       "Vehicles" ;
+        urbobvs:themeName   "Vehicles" .
+
+<https://urbanobservatory.ac.uk/type/Bus%20Count%20West>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Bus Count West" ;
+        urbobvs:units       "Vehicles" ;
+        urbobvs:themeName   "Vehicles" .
+
+<https://urbanobservatory.ac.uk/type/Vehicle%20Count%20East>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Vehicle Count East" ;
+        urbobvs:units       "Vehicles" ;
+        urbobvs:themeName   "Vehicles" .
+
+<https://urbanobservatory.ac.uk/type/Vehicle%20Count%20West>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Vehicle Count West" ;
+        urbobvs:units       "Vehicles" ;
+        urbobvs:themeName   "Vehicles" .
+
+<https://urbanobservatory.ac.uk/type/Vehicle%20Count>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Vehicle Count" ;
+        urbobvs:units       "Vehicles" ;
+        urbobvs:themeName   "Vehicles" .
+
+<https://urbanobservatory.ac.uk/type/Bus%20Count>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Bus Count" ;
+        urbobvs:units       "Vehicles" ;
+        urbobvs:themeName   "Vehicles" .
+
+<https://urbanobservatory.ac.uk/type/Brood>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Brood" ;
+        urbobvs:units       "Celsius" ;
+        urbobvs:themeName   "Bee Hive" .
+
+<https://urbanobservatory.ac.uk/type/Weight>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Weight" ;
+        urbobvs:units       "kg" ;
+        urbobvs:themeName   "Bee Hive" .
+
+<https://urbanobservatory.ac.uk/type/Mean%20Fanning>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Mean Fanning" ;
+        urbobvs:units       "-" ;
+        urbobvs:themeName   "Bee Hive" .
+
+<https://urbanobservatory.ac.uk/type/Mean%20Flight%20Noise>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Mean Flight Noise" ;
+        urbobvs:units       "-" ;
+        urbobvs:themeName   "Bee Hive" .
+
+<https://urbanobservatory.ac.uk/type/Hive%20Activity>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Hive Activity" ;
+        urbobvs:units       "-" ;
+        urbobvs:themeName   "Bee Hive" .
+
+<https://urbanobservatory.ac.uk/type/Depth>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0001" ;
+        urbobvs:upperLimit  "5.0" ;
+        urbobvs:typeName    "Depth" ;
+        urbobvs:units       "m" ;
+        urbobvs:themeName   "Water Quality" .
+
+<https://urbanobservatory.ac.uk/type/Specific%20Conductance>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0001" ;
+        urbobvs:upperLimit  "2000.0" ;
+        urbobvs:typeName    "Specific Conductance" ;
+        urbobvs:units       "uS/cm" ;
+        urbobvs:themeName   "Water Quality" .
+
+<https://urbanobservatory.ac.uk/type/Turbidity>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0001" ;
+        urbobvs:upperLimit  "2000.0" ;
+        urbobvs:typeName    "Turbidity" ;
+        urbobvs:units       "FNU" ;
+        urbobvs:themeName   "Water Quality" .
+
+<https://urbanobservatory.ac.uk/type/Dissolved%20Oxygen%20Percentage>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0001" ;
+        urbobvs:upperLimit  "100.0" ;
+        urbobvs:typeName    "Dissolved Oxygen Percentage" ;
+        urbobvs:units       "%" ;
+        urbobvs:themeName   "Water Quality" .
+
+<https://urbanobservatory.ac.uk/type/Dissolved%20Oxygen>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0001" ;
+        urbobvs:upperLimit  "18.0" ;
+        urbobvs:typeName    "Dissolved Oxygen" ;
+        urbobvs:units       "mg/l" ;
+        urbobvs:themeName   "Water Quality" .
+
+<https://urbanobservatory.ac.uk/type/Fluorescent%20Dissolved%20Organic%20Matter>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0001" ;
+        urbobvs:upperLimit  "1000.0" ;
+        urbobvs:typeName    "Fluorescent Dissolved Organic Matter" ;
+        urbobvs:units       "QSU" ;
+        urbobvs:themeName   "Water Quality" .
+
+<https://urbanobservatory.ac.uk/type/NO3-N>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0001" ;
+        urbobvs:upperLimit  "30.0" ;
+        urbobvs:typeName    "NO3-N" ;
+        urbobvs:units       "mg/l" ;
+        urbobvs:themeName   "Water Quality" .
+
+<https://urbanobservatory.ac.uk/type/NH4+N>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0001" ;
+        urbobvs:upperLimit  "30.0" ;
+        urbobvs:typeName    "NH4+N" ;
+        urbobvs:units       "mg/l" ;
+        urbobvs:themeName   "Water Quality" .
+
+<https://urbanobservatory.ac.uk/type/Water%20Temperature>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Water Temperature" ;
+        urbobvs:units       "Celsius" ;
+        urbobvs:themeName   "Water Quality" .
+
+<https://urbanobservatory.ac.uk/type/Real%20Power>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Real Power" ;
+        urbobvs:units       "+kW" ;
+        urbobvs:themeName   "Electrical" .
+
+<https://urbanobservatory.ac.uk/type/Walking%20North>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Walking North" ;
+        urbobvs:units       "People" ;
+        urbobvs:themeName   "People" .
+
+<https://urbanobservatory.ac.uk/type/Walking%20South>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Walking South" ;
+        urbobvs:units       "People" ;
+        urbobvs:themeName   "People" .
+
+<https://urbanobservatory.ac.uk/type/Walking%20East>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Walking East" ;
+        urbobvs:units       "People" ;
+        urbobvs:themeName   "People" .
+
+<https://urbanobservatory.ac.uk/type/Walking%20West>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Walking West" ;
+        urbobvs:units       "People" ;
+        urbobvs:themeName   "People" .
+
+<https://urbanobservatory.ac.uk/type/Walking%20South%20West>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Walking South West" ;
+        urbobvs:units       "People" ;
+        urbobvs:themeName   "People" .
+
+<https://urbanobservatory.ac.uk/type/Walking%20North%20East>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Walking North East" ;
+        urbobvs:units       "People" ;
+        urbobvs:themeName   "People" .
+
+<https://urbanobservatory.ac.uk/type/Walking%20South%20East>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Walking South East" ;
+        urbobvs:units       "People" ;
+        urbobvs:themeName   "People" .
+
+<https://urbanobservatory.ac.uk/type/Walking%20North%20West>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Walking North West" ;
+        urbobvs:units       "People" ;
+        urbobvs:themeName   "People" .
+
+<https://urbanobservatory.ac.uk/type/Vertical%20Displacement>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "Vertical Displacement" ;
+        urbobvs:units       "m" ;
+        urbobvs:themeName   "Seismic" .
+
+<https://urbanobservatory.ac.uk/type/North-South%20Horizontal%20Displacement>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "North-South Horizontal Displacement" ;
+        urbobvs:units       "m" ;
+        urbobvs:themeName   "Seismic" .
+
+<https://urbanobservatory.ac.uk/type/East-West%20Horizontal%20Displacement>
+        rdf:type            urbobvs:Type ;
+        urbobvs:lowerLimit  "0.0" ;
+        urbobvs:upperLimit  "0.0" ;
+        urbobvs:typeName    "East-West Horizontal Displacement" ;
+        urbobvs:units       "m" ;
+        urbobvs:themeName   "Seismic" .

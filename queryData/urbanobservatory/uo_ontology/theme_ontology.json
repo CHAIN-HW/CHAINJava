@@ -1,0 +1,10 @@
+[{
+  "name":"rdf",
+  "link":"<http://www.w3.org/1999/02/22-rdf-syntax-ns#>",
+  "properties":"type"
+},
+{
+  "name":"urbobvs",
+  "link":"<https://urbanobservatory.ac.uk/theme#>",
+  "properties":"themeName"
+}]

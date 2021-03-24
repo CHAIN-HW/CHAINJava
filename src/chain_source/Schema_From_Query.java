@@ -63,8 +63,8 @@ public class Schema_From_Query {
 		Match_Struc result = new Match_Struc();	
 
 		
-		if(queryType.equals("sepa")){
-			result = schemaFromSepaQuery(query, result);
+		if(queryType.equals("sepa") || queryType.equals("urbobvs")){
+			result = schemaFromTheQuery(query, result,queryType);
 		}else if(queryType.equals("dbpedia")){
 			result = schemaFromDbpediaQuery(query, result);
 		}else{
@@ -77,7 +77,7 @@ public class Schema_From_Query {
 	}
 	
 	//create the schema for a sepa query that has been passed in as a parameter
-	public Match_Struc schemaFromSepaQuery(String query, Match_Struc res){
+	public Match_Struc schemaFromTheQuery(String query, Match_Struc res, String queryType){
 		String schema="";
 		String predicate = "" ;
 		
@@ -98,8 +98,14 @@ public class Schema_From_Query {
 				
 				datasetFile = datasetFileArr[datasetFileArr.length-1];
 				
-				//then remove the .n3 from the filename and we have our predicate
-				datasetFile = datasetFile.substring(0, datasetFile.length() - 3);
+				if(queryType.equals("sepa")) {
+					//then remove the .n3 from the filename and we have our predicate
+					datasetFile = datasetFile.substring(0, datasetFile.length() - 3);
+				}
+				else if(queryType.equals("urbobvs")) {
+					//remove the .ttl from the filename and get the predicate
+					datasetFile = datasetFile.substring(0, datasetFile.length() - 4);
+				}
 				
 				predicate = datasetFile ;
 				

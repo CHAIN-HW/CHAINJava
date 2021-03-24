@@ -1,0 +1,50 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix urbobvs:  <https://urbanobservatory.ac.uk/theme#> .
+
+<https://urbanobservatory.ac.uk/theme/Environment>
+        rdf:type           urbobvs:Theme ;
+        urbobvs:themeName  "Environment" .
+
+<https://urbanobservatory.ac.uk/theme/Weather>
+        rdf:type           urbobvs:Theme ;
+        urbobvs:themeName  "Weather" .
+
+<https://urbanobservatory.ac.uk/theme/Traffic>
+        rdf:type           urbobvs:Theme ;
+        urbobvs:themeName  "Traffic" .
+
+<https://urbanobservatory.ac.uk/theme/Water%20Level>
+        rdf:type           urbobvs:Theme ;
+        urbobvs:themeName  "Water Level" .
+
+<https://urbanobservatory.ac.uk/theme/Building>
+        rdf:type           urbobvs:Theme ;
+        urbobvs:themeName  "Building" .
+
+<https://urbanobservatory.ac.uk/theme/Air%20Quality>
+        rdf:type           urbobvs:Theme ;
+        urbobvs:themeName  "Air Quality" .
+
+<https://urbanobservatory.ac.uk/theme/Vehicles>
+        rdf:type           urbobvs:Theme ;
+        urbobvs:themeName  "Vehicles" .
+
+<https://urbanobservatory.ac.uk/theme/Bee%20Hive>
+        rdf:type           urbobvs:Theme ;
+        urbobvs:themeName  "Bee Hive" .
+
+<https://urbanobservatory.ac.uk/theme/Water%20Quality>
+        rdf:type           urbobvs:Theme ;
+        urbobvs:themeName  "Water Quality" .
+
+<https://urbanobservatory.ac.uk/theme/Electrical>
+        rdf:type           urbobvs:Theme ;
+        urbobvs:themeName  "Electrical" .
+
+<https://urbanobservatory.ac.uk/theme/People>
+        rdf:type           urbobvs:Theme ;
+        urbobvs:themeName  "People" .
+
+<https://urbanobservatory.ac.uk/theme/Seismic>
+        rdf:type           urbobvs:Theme ;
+        urbobvs:themeName  "Seismic" .
