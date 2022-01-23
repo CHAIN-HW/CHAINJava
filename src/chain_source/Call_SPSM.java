@@ -1,13 +1,17 @@
 package chain_source;
 
-/* @author Diana Bental
+/* @author Diana Bental 
  * @author Tanya Howden
+ * @author Tudor Finaru
  * 
  * Date September 2017
  * Modified November 2017
+ * Modified July 2021
  */
 
 import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.*;
 
 import it.unitn.disi.smatch.data.mappings.IContextMapping;
@@ -157,8 +161,24 @@ public class Call_SPSM{
 		//call SPSM by executing the appropriate bash file
 		try {
 			spsmCallCounter++ ;
-			final ProcessBuilder pb = new ProcessBuilder("/bin/sh","call-spsm.sh");
-			pb.directory(new File("spsm/s-match/bin"));
+			final ProcessBuilder pb;
+			
+			//running the .sh script is slightly trickier on Windows
+			if(OS_Util.isWindows()) {
+				List<String> cmdList = new ArrayList<String>();
+				cmdList.add("cmd.exe");
+				cmdList.add("/c");
+				cmdList.add("call-spsm.sh");
+				pb = new ProcessBuilder(cmdList);
+				
+				//need full path when using Windows
+				Path path = FileSystems.getDefault().getPath("").toAbsolutePath();
+				pb.directory(new File(path + "/spsm/s-match/bin"));
+			}
+			else {
+				pb = new ProcessBuilder("/bin/sh","call-spsm.sh");
+				pb.directory(new File("spsm/s-match/bin"));
+			}
 			
 			//start the process of executing file and wait for 
 			//it to finish before terminating the program
